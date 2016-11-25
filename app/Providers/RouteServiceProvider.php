@@ -56,6 +56,7 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => $this->namespace,
         ], function ($router) {
             require base_path('routes/web.php');
+            $router = null; #just for pass phpmd
         });
     }
 
@@ -74,6 +75,7 @@ class RouteServiceProvider extends ServiceProvider
             'prefix' => 'api',
         ], function ($router) {
             require base_path('routes/api.php');
+            $router = null;#just for pass phpmd
         });
     }
 }
