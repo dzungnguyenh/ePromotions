@@ -1,0 +1,17 @@
+machine:
+  php:
+    version: 7.0.4
+dependencies:
+  cache_directories:
+    - ~/.composer/cache
+  pre:
+    #- echo "memory_limit = 512M" > $PHPENV_ROOT/versions/$(phpenv global)/etc/conf.d/memory.ini
+    #- cp .env.circle .env
+test:
+  override:
+    # phpcs circleci status
+    - ./vendor/bin/phpcs -n --standard=phpcs.xml
+    # phpmd
+    - ./vendor/bin/phpmd app text phpmd.xml
+    # phpunit
+    #- phpdbg -qrr vendor/bin/phpunit --coverage-html $CIRCLE_ARTIFACTS/coverage
