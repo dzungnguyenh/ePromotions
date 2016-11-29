@@ -15,10 +15,13 @@ class CreateVoucherstable extends Migration
     {
         Schema::create('vouchers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',100)->unique();
-            $table->integer('poin');
-            $table->string('value',100);
+            $table->string('name',255)->unique();
+            $table->integer('point');
+            $table->float('value');
             $table->integer('user_id')->unsigned();
+            $table->timestamps();
+
+
         });
     }
 
