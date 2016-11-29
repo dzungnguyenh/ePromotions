@@ -13,7 +13,7 @@ class CreateBookDetail extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('book_detail', function (Blueprint $table) {
             $table->interger('quantity');
             $table->interger('book_id');
             $table->interger('product_id');
@@ -29,6 +29,6 @@ class CreateBookDetail extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('book_detail');
     }
 }
