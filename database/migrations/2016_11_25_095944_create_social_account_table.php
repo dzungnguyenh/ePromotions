@@ -20,7 +20,6 @@ class CreateSocialAccountTable extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
