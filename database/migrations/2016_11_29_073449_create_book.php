@@ -13,7 +13,7 @@ class CreateBook extends Migration
      */
     public function up()
     {
-        Schema::create('book', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateBook extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book');
+        Schema::dropIfExists('books');
     }
 }
