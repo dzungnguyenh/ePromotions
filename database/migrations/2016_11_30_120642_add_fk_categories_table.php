@@ -14,7 +14,7 @@ class AddFkCategoriesTable extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->foreign('parent_id','cate_fk')
+            $table->foreign('parent_id','categories_parent_id_foreign')
                 ->references('id')->on('categories')
                 ->onDelete('cascade');
         });
@@ -28,7 +28,7 @@ class AddFkCategoriesTable extends Migration
     public function down()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->dropForeign(['cate_fk']);
+            $table->dropForeign(['parent_id']);
         });
     }
 }

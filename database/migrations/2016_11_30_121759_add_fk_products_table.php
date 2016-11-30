@@ -14,10 +14,10 @@ class AddFkProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->foreign('user_id','user_fk')
+            $table->foreign('user_id','products_user_id_foreign')
                 ->references('id')->on('user')
                 ->onDelete('cascade');
-            $table->foreign('category_id','category_fk')
+            $table->foreign('category_id','products_category_id_foreign')
                 ->references('id')->on('categories')
                 ->onDelete('cascade');
         });
@@ -31,8 +31,8 @@ class AddFkProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropForeign(['user_fk']);
-            $table->dropForeign(['category_fk']);
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['category_id']);
         });
     }
 }
