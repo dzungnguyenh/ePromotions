@@ -13,7 +13,7 @@ class CreateShareEventTable extends Migration
      */
     public function up()
     {
-        Schema::create('share_event', function(Blueprint $table){
+        Schema::create('share_events', function(Blueprint $table){
             $table->integer('user_id');
             $table->integer('event_id');
             $table->integer('count');
@@ -28,6 +28,6 @@ class CreateShareEventTable extends Migration
      */
     public function down()
     {
-        Schema::drop('share_event');
+        Schema::drop('share_events');
     }
 }

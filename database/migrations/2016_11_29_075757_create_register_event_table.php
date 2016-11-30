@@ -13,7 +13,7 @@ class CreateRegisterEventTable extends Migration
      */
     public function up()
     {
-        Schema::create('register_event', function (Blueprint $table) {
+        Schema::create('register_events', function (Blueprint $table) {
             $table->integer('user_id');
             $table->integer('event_id');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateRegisterEventTable extends Migration
      */
     public function down()
     {
-        Schema::drop('register_event');
+        Schema::drop('register_events');
     }
 }

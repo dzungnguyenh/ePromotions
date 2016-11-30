@@ -15,9 +15,9 @@ class CreatePointsTable extends Migration
     {
         Schema::create('points', function (Blueprint $table) {
             $table->increments('id');
-            $tablr->integer('vote');
-            $tablr->integer('share');
-            $tablr->integer('book');
+            $table->integer('vote');
+            $table->integer('share');
+            $table->integer('book');
             $table->timestamps();
         }); 
     }
