@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSocialAccountTable extends Migration
+class CreateForignVouchersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateSocialAccountTable extends Migration
      */
     public function up()
     {
-        Schema::create('social_accounts', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
-            $table->string('social_id', 100);
-            $table->string('social_type', 100);
-            $table->timestamps();
+        Schema::table('vouchers', function (Blueprint $table) {
+            $table->foreign('user_id')
+            ->references('id')->on('user')
+            ->onDelete('cascade');
         });
     }
 
@@ -28,6 +27,8 @@ class CreateSocialAccountTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social_accounts');
+        Schema::table('vouchers', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
     }
 }

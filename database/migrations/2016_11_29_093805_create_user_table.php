@@ -24,7 +24,7 @@ class CreateUserTable extends Migration
             $table->string('address', 320)->nullable();
             $table->string('avatar', 320)->nullable();
             $table->integer('point')->nullable();
-            $table->integer('role_id')->nullable();
+            $table->integer('role_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });
