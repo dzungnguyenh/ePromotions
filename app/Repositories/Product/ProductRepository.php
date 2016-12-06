@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories\Product;
 
 use App\Repositories\BaseRepository;
@@ -8,17 +9,18 @@ class ProductRepository extends BaseRepository
 {
 
     /**
-    * Product
-    * @param model
+    * All of the registered after callbacks.
+    *
+    * @var product
     */
     protected $model;
     
     /**
-    * Constructer
+    * Create a new  instance.
     *
-    * @param model product
+    * @param product $product
     *
-    * @return product
+    * @return void
     */
     public function __construct(Product $product)
     {

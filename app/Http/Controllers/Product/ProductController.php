@@ -12,6 +12,7 @@ class ProductController extends Controller
     
     /**
     * Constructer
+    *
     *@param product
     *
     *@return
@@ -23,6 +24,7 @@ class ProductController extends Controller
 
      /**
     *Constructer
+    *
     *@param redirect product page
     *
     *@return
@@ -35,7 +37,6 @@ class ProductController extends Controller
 
     /**
     * redirect to create product page
-    *
     */
     public function create()
     {
@@ -50,6 +51,4 @@ class ProductController extends Controller
         $this->productRepository->delete($id);
         return redirect()->back();
     }
-
-
 }

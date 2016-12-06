@@ -6,13 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 abstract class BaseRepository
 {
 
-    /** variable model
-     * @var
+    /**
+     * declare model.
+     *
+     * @var model
      */
     protected $model;
 
     /**
      * Get all data from model
+     *
      * @param array $columns
      *
      * @return mixed
@@ -61,9 +64,12 @@ abstract class BaseRepository
     }
 
     /**
+    * Return data match parameter.
     *
+    * @param string $attribute
+    * @param string $value
+    * @param array  $columns
     *
-    * @param $attribute $value array $columns
     * @return mixed
     */
     public function findBy($attribute, $value, $columns = array('*'))
