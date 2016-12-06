@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Promotion extends Model{
+class Promotion extends Model
+{
     /**
      * The table associated with the model.
      *
@@ -16,6 +17,7 @@ class Promotion extends Model{
      *
      * @var array
      */
+    
     protected $fillable=['id','title','description','percent','quantity','date_start','date_end','product_id'];
 }
 

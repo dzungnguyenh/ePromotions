@@ -7,14 +7,15 @@ use Illuminate\Support\Facades\DB;
 use App\Promotion;
 use Validator;
 
-class PromotionController extends Controller {
-
+class PromotionController extends Controller 
+{
     /**
      * Display all promotions of the all bussiness.
      *
      * @return Response
      */
-    public function index() {
+    public function index() 
+    {
         $data = Promotion::all();
         return view('promotion.list', ['data' => $data]);
     }
@@ -24,7 +25,8 @@ class PromotionController extends Controller {
      *
      * @return Response
      */
-    public function show_add_form() {
+    public function show_add_form()
+    {
         return view('promotion.create');
     }
 
@@ -34,7 +36,8 @@ class PromotionController extends Controller {
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $validate = Validator::make($request->all(), [
                     'title' => 'required|unique:promotions,title',
                     'description' => 'required',
@@ -65,7 +68,8 @@ class PromotionController extends Controller {
      * @param  Request  $request
      * @return Response
      */
-    public function show_edit_form(Request $request) {
+    public function show_edit_form(Request $request)
+    {
         $id = $request->input('product-id');
         $promotion = DB::table('promotions')->where('id', $id)->get();
         return view('promotion.edit', ['data' => $promotion]);
@@ -77,7 +81,8 @@ class PromotionController extends Controller {
      * @param  Request  $request
      * @return Response
      */
-    public function update(Request $request) {
+    public function update(Request $request) 
+    {
         $id = $request->input('promotion-id');
         $promotion = DB::table('promotions')->where('id', $id)->update([
             'title' => $request->input('title'),
@@ -97,10 +102,10 @@ class PromotionController extends Controller {
      * @param  Request  $request
      * @return Response
      */
-    public function delete(Request $request) {
+    public function delete(Request $request)
+    {
         $id = $request->input('promotion-id');
         $promotion = DB::table('promotions')->where('id', $id)->delete();
         return redirect()->route('list');
     }
-
 }

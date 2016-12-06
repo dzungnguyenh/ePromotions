@@ -30,7 +30,5 @@ Route::group(['prefix' => 'promotions'], function () {
     Route::post('delete', ['as' => 'delete', 'uses' => 'PromotionController@delete']);
 });
 
-Route::resource('photos', 'PhotoController');
-
 
 
