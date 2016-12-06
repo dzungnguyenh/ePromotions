@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
+Route::get('/callback/{provider}', 'SocialAccountController@callback');
