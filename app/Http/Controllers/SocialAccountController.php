@@ -14,9 +14,9 @@ class SocialAccountController extends Controller
   /**
    * [redirect to social page]
    *
-   * @param [type] $provider [description]
+   * @param [Provider] $provider []
    *
-   * @return [type]           [social page]
+   * @return [void]           [social page]
    */
     public function redirect($provider)
     {
@@ -27,9 +27,9 @@ class SocialAccountController extends Controller
      * [callback home page]
      *
      * @param SocialAccountRepository $service  []
-     * @param Variable                $provider [description]
+     * @param Provider                $provider []
      *
-     * @return function                          [description]
+     * @return void                          [home page]
      */
     public function callback(SocialAccountRepository $service, $provider)
     {
