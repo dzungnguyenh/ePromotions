@@ -63,7 +63,7 @@
                                         @else
                                             {!! Auth::user()->name !!}
                                         @endif
-                                        <small>{!! trans('label.member_since') !!} {!! Auth::user()->created_at->format('M. Y') !!}</small>
+                                        <small>{!! trans('label.member_since') !!} {!! Auth::user()->created_at->format(trans('label.date_format')) !!}</small>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -73,11 +73,10 @@
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">
+                                            onclick="logout()" class="btn btn-default btn-flat">
                                             <span class="glyphicon glyphicon-log-out"></span>{!! trans('user.logout') !!}
                                         </a>
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST"">
                                             {{ csrf_field() }}
                                         </form>
                                     </div>
@@ -97,7 +96,7 @@
         </div>
 
         <!-- Main Footer -->
-        <footer class="main-footer" style="max-height: 100px;text-align: center">
+        <footer class="main-footer">
             <strong>{!! trans('label.copyright') !!} <a href="#">{!! trans('label.asiantech') !!}</a>.</strong> {!! trans('label.all_rights_reserved') !!}
         </footer>
 
@@ -163,6 +162,8 @@
     <!-- Datatables -->
     <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+    <script src="/admin/js/app.js"></script>
+    
 
     @yield('scripts')
 </body>

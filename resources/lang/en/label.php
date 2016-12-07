@@ -9,4 +9,5 @@ return [
     'home' => 'Home',
     'copyright' => 'Copyright © 2016',
     'all_rights_reserved' => 'All rights reserved.',
+    'date_format' => 'M. Y',
 ];
