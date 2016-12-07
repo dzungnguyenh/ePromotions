@@ -16,7 +16,7 @@ abstract class BaseRepository
     protected $model;
 
     /**
-     * [Get all resources]
+     * Get all resources
      *
      * @return \Illuminate\Support\Collection
      */
@@ -26,7 +26,7 @@ abstract class BaseRepository
     }
 
     /**
-     * [Creating a new resource]
+     * Creating a new resource
      *
      * @param array $inputs [values input text]
      *

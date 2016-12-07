@@ -12,16 +12,16 @@ class PointController extends Controller
 {
 
     /**
-     * [The PointRepository instance]
+     * The PointRepository instance
      *
-     * @param [PointRepository]
+     * @param PointRepository
      */
     protected $pointRepository;
 
     /**
-     * [Create a new PointRepository instance]
+     * Create a new PointRepository instance
      *
-     * @param PointRepository $pointRepository [description]
+     * @param PointRepository $pointRepository description
      *
      * @return void
      */
@@ -31,9 +31,9 @@ class PointController extends Controller
     }
 
     /**
-     * [Display a listing of the resource]
+     * Display a listing of the resource
      *
-     * @return [Response]
+     * @return Response
      */
     public function index()
     {
@@ -45,7 +45,7 @@ class PointController extends Controller
     /**
      * [Show the form for creating a new resource]
      *
-     * @return [Response]
+     * @return Response
      */
     public function create()
     {
@@ -53,11 +53,11 @@ class PointController extends Controller
     }
 
     /**
-     * [Store a newly created resource in storage]
+     * Store a newly created resource in storage
      *
      * @param CreatePointRequest $request [validate values input]
      *
-     * @return [Response]
+     * @return Response
      */
     public function store(CreatePointRequest $request)
     {

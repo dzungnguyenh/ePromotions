@@ -5,4 +5,6 @@ return [
     'share' => 'Share',
     'book' => 'Book',
     'create_point_successful' => 'Create point successful!',
+    'create' => 'Create',
+    'list' => 'List',
 ];

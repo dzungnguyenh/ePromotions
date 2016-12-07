@@ -9,7 +9,7 @@ use App\Models\Point;
 class PointRepository extends BaseRepository implements PointRepositoryInterface
 {
     /**
-     * [The Point instance]
+     * The Point instance
      *
      * @param Point $point [description]
      *

@@ -5,14 +5,14 @@ namespace App\Repositories\Point;
 interface PointRepositoryInterface
 {
     /**
-     * [Get all points]
+     * Get all points
      *
-     * @return [Reponse]
+     * @return Reponse
      */
     public function all();
 
     /**
-     * [Create a new point]
+     * Create a new point
      *
      * @param array $inputs [values input text]
      *
