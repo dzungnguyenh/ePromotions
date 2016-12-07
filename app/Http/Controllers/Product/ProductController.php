@@ -13,7 +13,7 @@ class ProductController extends Controller
     /**
     * Constructer
     *
-    *@param product
+    *@param ProductRepository $productRepository variable
     *
     *@return
     */
@@ -25,9 +25,7 @@ class ProductController extends Controller
      /**
     *Constructer
     *
-    *@param redirect product page
-    *
-    *@return
+    *@return index page with variable product contain all data in product table
     */
     public function index()
     {
@@ -36,7 +34,9 @@ class ProductController extends Controller
     }
 
     /**
-    * redirect to create product page
+    * Redirect to create product page
+    *
+    * @return product page
     */
     public function create()
     {
@@ -44,7 +44,11 @@ class ProductController extends Controller
     }
 
     /**
+    * Method to delete a row in table
     *
+    *@param integer $id Id of model will be deleted
+    *
+    * @return mixed
     */
     public function destroy($id)
     {
