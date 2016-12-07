@@ -8,23 +8,28 @@ use App\User;
 
 class SocialAccountRepository
 {
-    public function createOrGetUser(Provider $provider)
+    /**
+    * [create a new user if not exist or find user by social account if exist ]
+    *
+    * @param Provider $provider [provider from social account]
+    *
+    * @return [User]             [information of user]
+    */
+    public function registerLoginSocialAccount(Provider $provider)
     {
-        $ROLE_USER = 2;
         $providerAccount = $provider->user();
         $providerName = class_basename($provider);
 
         $account = SocialAccount::whereSocialType($providerName)
-            ->whereSocialId($providerAccount->getId())
-            ->first();
+        ->whereSocialId($providerAccount->getId())
+        ->first();
 
         if ($account) {
             return $account->user;
         } else {
-
             $account = new SocialAccount([
-                'social_id' => $providerAccount->getId(),
-                'social_type' => $providerName
+            'social_id' => $providerAccount->getId(),
+            'social_type' => $providerName
             ]);
 
             $user = User::whereEmail($providerAccount->getEmail())->first();
@@ -34,7 +39,7 @@ class SocialAccountRepository
                     'email' => $providerAccount->getEmail(),
                     'name' => $providerAccount->getName(),
                     'avatar' => $providerAccount->getAvatar(),
-                    'role_id' => $ROLE_USER,
+                    'role_id' => config('foo.USER_ID'),
                 ]);
             }
 
@@ -42,8 +47,6 @@ class SocialAccountRepository
             $account->save();
 
             return $user;
-
         }
-
     }
 }
