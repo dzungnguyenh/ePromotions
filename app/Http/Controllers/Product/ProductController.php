@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Product\ProductRepository;
+use App\Http\Requests\Product\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -20,6 +21,7 @@ class ProductController extends Controller
     public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
+        $this->middleware('business');
     }
 
      /**
@@ -41,6 +43,18 @@ class ProductController extends Controller
     public function create()
     {
         return view('product.create');
+    }
+    /**
+    * Method save data into product table
+    *
+    * @param ProductRequest $request request from client, ProductRequest handle
+    *
+    * @return mixed
+    */
+    public function store(ProductRequest $request)
+    {
+        $this->productRepository->insert($request);
+        return redirect()->back();
     }
 
     /**
