@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    /**
+    * Method for middleware business
+    *
+    * @return boolean
+    */
+    public function isBusiness()
+    {
+        return $this->role == 2;
+    }
 }
