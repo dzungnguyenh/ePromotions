@@ -39,19 +39,19 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title">
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title')}}">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" rows="5" id="description"  name="description"></textarea>
+                    <textarea class="form-control" rows="5" id="description"  name="description" >{{ old('description')}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="percent">Percent</label><span>( % )</span>
-                    <input type="number" class="form-control" id="percent" name="percent">
+                    <input type="number" class="form-control" id="percent" name="percent" value="{{ old('percent')}}">
                 </div>
                 <div class="form-group">
                     <label for="quantity">Quantity</label>
-                    <input type="number" class="form-control" id="quantity" name="quantity">
+                    <input type="number" class="form-control" id="quantity" name="quantity" value="{{ old('quantity')}}">
                 </div>
                 <div class="form-group">
                     <label for="start_date">Start date</label>

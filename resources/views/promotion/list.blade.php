@@ -39,7 +39,6 @@
                         <th>Updated at</th>
                         <th>Edit</th>
                         <th>Delete</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -53,20 +52,18 @@
                         <td>{{ $value->product_id }}</td>
                         <td>{{ $value->date_start }}</td>
                         <td>{{ $value->date_end }}</td>
+                        
                         <td>{{ $value->updated_at }}</td>
+                        
                         <td>
-                            <form action="{{ route('show-edit-form') }}" method="post">
-                                {{ csrf_field() }}
-                                <input type="hidden" class="form-control" value="{{ $value->id }}" name="product-id">
-                                <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-                            </form>
-                        </td>
+                            
+                            <a href="{{ route('show-edit-form', $value->id) }}" class="btn btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                            
+                        </td> 
+                        
                         <td>
-                            <form action="{{ route('delete') }}" method="post">
-                                {{ csrf_field() }}
-                                <input type="hidden" class="form-control" value="{{ $value->id }}" name="promotion-id">
-                                <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
-                            </form>
+                            <a href="{{ route('delete', $value->id) }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                           
                         </td>
                     </tr>
                     @endforeach
