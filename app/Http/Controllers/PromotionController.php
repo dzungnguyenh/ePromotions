@@ -97,7 +97,7 @@ class PromotionController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate->errors())->withInput();
         } else {
-                 DB::table('promotions')->where('id', $id)->update([
+            DB::table('promotions')->where('id', $id)->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
                 'percent' => $request->input('percent'),
