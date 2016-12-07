@@ -29,12 +29,4 @@ class CreatePointRequest extends FormRequest
             'book' => 'required',
         ];
     }
-    public function messages()
-    {
-        return [
-            'vote.required' => 'Vote is not null!',
-            'share.required' => 'Share is not null!',
-            'book.required' => 'Book is not null!',
-        ];
-    }
 }

@@ -3,26 +3,37 @@
 * Base Repository
 */
 namespace App\Repositories;
+
 use Exception;
-use DB;
-use Carbon\Carbon;
+
 abstract class BaseRepository
 {
+    /**
+     * [The Model instance]
+     *
+     * @param \Illuminate\Database\Eloquent\Model
+     */
     protected $model;
+
+    /**
+     * [Get all resources]
+     *
+     * @return \Illuminate\Support\Collection
+     */
     public function all()
     {
         return $this->model->all();
     }
+
+    /**
+     * [Creating a new resource]
+     *
+     * @param array $inputs [values input text]
+     *
+     * @return Model
+     */
     public function create($inputs)
     {
         return $this->model->create($inputs);
-    }
-    public function store($input)
-    {
-        $data = $this->model->create($input);
-        if (!$data) {
-            throw new Exception(trans('message.create_error'));
-        }
-        return $data;
     }
 }
