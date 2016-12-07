@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'gender', 'dob', 'phone', 'address', 'avatar', 'point', 'role_id',
     ];
 
     /**
@@ -26,6 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+    * Method for middleware user
+    *
+    * @return boolean
+    */
+    public function isUser()
+    {
+        return $this->role == 1;
+    }
+
     /**
     * Method for middleware business
     *
@@ -34,5 +45,16 @@ class User extends Authenticatable
     public function isBusiness()
     {
         return $this->role == 2;
+    }
+
+
+    /**
+    * Method for middleware admin
+    *
+    * @return boolean
+    */
+    public function isAdmin()
+    {
+        return $this->role == 3;
     }
 }
