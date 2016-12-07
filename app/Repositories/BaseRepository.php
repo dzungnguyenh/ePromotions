@@ -64,11 +64,12 @@ abstract class BaseRepository
     }
 
     /**
-    * Return data match parameter.
+    * Return data match parameter
     *
-    * @param string $attribute
-    * @param string $value
-    * @param array  $columns
+    * @param string
+    *
+    * @param string
+    * @param array string $columns
     *
     * @return mixed
     */

@@ -14,11 +14,11 @@ class ProductRepository extends BaseRepository
     * @var product
     */
     protected $model;
-    
+
     /**
     * Create a new  instance.
     *
-    * @param product $product
+    * @param Product $product an variable Product
     *
     * @return void
     */
