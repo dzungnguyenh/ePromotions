@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -33,10 +32,10 @@ class User extends Authenticatable
      * @return void
      */
     public static function boot()
-    {
+    {   
         parent::boot();
         static::creating(function ($user) {
-            $user->token = str_random(40);
+            $user->token = config('constants.LENGTHTOKEN');
         });
     }
 
