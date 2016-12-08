@@ -23,9 +23,9 @@ class EventController extends Controller
     }
     
     /**
-     *Constructor for EventController
+     *Running index page
      *
-     * @return [type]
+     * @return function [index]
      */
     public function index()
     {
@@ -77,7 +77,7 @@ class EventController extends Controller
     {
 
         $event = $this->event->findOrFail($id);
-       // return view('event.show', compact('event'));
+        return view('event.show', compact('event'));
     }
 
     /**

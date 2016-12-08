@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     /**
-     * Define model.
+     * Define models.
      *
      * @var string
      */
