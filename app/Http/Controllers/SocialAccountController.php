@@ -12,9 +12,9 @@ class SocialAccountController extends Controller
     /**
      * Redirect to social page
      *
-     * @param Provider $provider []
+     * @param Provider $provider Variable
      *
-     * @return void               Social page
+     * @return void              Social page
      */
     public function redirect($provider)
     {
@@ -24,8 +24,8 @@ class SocialAccountController extends Controller
     /**
      * Rediect to home page
      *
-     * @param SocialAccountRepository $service  []
-     * @param Provider                $provider []
+     * @param SocialAccountRepository $service  Execute register or login social account
+     * @param Provider                $provider Variable
      *
      * @return void                          Home page
      */
