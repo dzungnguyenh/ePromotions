@@ -1,0 +1,25 @@
+{
+  "name": "ePromotions",
+  "description": "ePromotions",
+  "main": "ePromotions",
+  "authors": [
+    "at-thanhtc <tranchithanhtkit@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ePromotions"
+  ],
+  "homepage": "https://github.com/at-dungnh/ePromotions",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "admin-lte#^2.3.8"
+  }
+}
