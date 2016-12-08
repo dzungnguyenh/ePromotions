@@ -18,5 +18,4 @@ return [
     'profile' => 'Profile',
     'signOut' => 'Sign Out',
     'logout' => 'logout'
-
 ];

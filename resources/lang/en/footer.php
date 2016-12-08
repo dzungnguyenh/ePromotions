@@ -15,5 +15,4 @@ return [
 
     'allRight' => ' All rights reserved.',
     'copyRight' => 'Copyright &copy; 2016 '
-
 ];
