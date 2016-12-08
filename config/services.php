@@ -36,14 +36,14 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '1825537217668365',
-        'client_secret' => '94f4f79f5ccac05560c1ed5404361a26',
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
         'redirect' => 'http://localhost/callback/facebook',
     ],
 
     'twitter' => [
-        'client_id' => 'jvVgZoMJFDGF0nuSRFzrE4jO3',
-        'client_secret' => 'onPJd84dU1ZrHgsGmWCFBI4iv5octmWDLQooJ1TZix1T34ttjf',
+        'client_id' => env('TWITTER_CLIENT_ID'),
+        'client_secret' => env('TWITTER_CLIENT_SECRET'),
         'redirect' => 'http://localhost/callback/twitter',
     ],
 
