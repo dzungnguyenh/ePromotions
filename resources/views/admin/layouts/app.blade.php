@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ url('/logout') }}"
-                                            onclick="logout()" class="btn btn-default btn-flat">
+                                            alt="{!! trans('user.logout') !!}" class="btn btn-default btn-flat btn-logout">
                                             <span class="glyphicon glyphicon-log-out"></span>{!! trans('user.logout') !!}
                                         </a>
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST"">

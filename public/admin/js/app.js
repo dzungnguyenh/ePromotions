@@ -3,14 +3,22 @@
  * @param  Object objButton []
  * @return boolean
  */
-function messageDeletePoint(objButton){  
-    return confirm(objButton.value);
-};
+$(".btn-delete").on('click', function(event){
+    event.preventDefault();
+
+    var confirmMsg = $(this).attr('alt');
+    if (confirm(confirmMsg)){
+        return true;
+    }else{
+        return false;
+    }
+})
+
 /**
  * Logout
  * @return void
  */
-function logout(){
+$(".btn-logout").on('click', function(event){
     event.preventDefault();
     document.getElementById('logout-form').submit();
-};
+})

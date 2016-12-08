@@ -60,8 +60,8 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="logout()">
+                                        <a href="{{ url('/logout') }}" class="btn-logout"
+                                            alt="{!! trans('user.logout') !!}">
                                             {!! trans('user.logout') !!}
                                         </a>
 
