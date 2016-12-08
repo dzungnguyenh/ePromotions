@@ -5,10 +5,9 @@
  */
 $(".btn-delete").on('click', function(event){
     event.preventDefault();
-
     var confirmMsg = $(this).attr('alt');
     if (confirm(confirmMsg)){
-        return true;
+        document.getElementById('form-delete-point').submit();
     }else{
         return false;
     }
