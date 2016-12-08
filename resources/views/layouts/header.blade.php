@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{!! trans('header.ePromotions') !!}</title>
+  <title>{!! trans('header.e_promotions') !!}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -19,9 +19,9 @@
   <!-- jquery -->
   <script type="text/javascript" src="bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
   <!-- customer -->
-  <link rel="stylesheet" href="css/styleAdmin.css">
+  <link rel="stylesheet" href="css/style_admin.css">
   <!-- submit Logout -->
-  <script type="text/javascript" src="js/styleAdmin.js"></script>
+  <script type="text/javascript" src="js/style_admin.js"></script>
 
 </head>
 
@@ -34,9 +34,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini">{!! trans('header.eP') !!}</span>
+      <span class="logo-mini">{!! trans('header.e_p') !!}</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">{!! trans('header.ePromotions') !!}</span>
+      <span class="logo-lg">{!! trans('header.e_promotions') !!}</span>
     </a>
 
     <!-- Header Navbar -->
@@ -72,7 +72,7 @@
                 <div class="pull-right">
                   <form id="logout-form" action="{{ url('/logout') }}" method="POST">
                     {{ csrf_field() }}
-                    <input type="submit" id="logout" name="" value="{!! trans('header.signOut') !!}">
+                    <input type="submit" id="logout" name="" value="{!! trans('header.sign_out') !!}">
                   </form>
                 </div>
               </li>
