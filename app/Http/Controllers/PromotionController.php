@@ -97,14 +97,14 @@ class PromotionController extends Controller
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate->errors())->withInput();
         } else {
-            DB::table('promotions')->where('id', $id)->update([
-                'title' => $request->input('title'),
-                'description' => $request->input('description'),
-                'percent' => $request->input('percent'),
-                'quantity' => $request->input('quantity'),
-                'date_start' => $request->input('start-date'),
-                'date_end' => $request->input('end-date'),
-            ]);
+            $promotion = Promotion::find($id);
+            $promotion->title = $request->input('title');
+            $promotion->description = $request->input('description');
+            $promotion->percent = $request->input('percent');
+            $promotion->quantity = $request->input('quantity');
+            $promotion->date_start = $request->input('start-date');
+            $promotion->date_end = $request->input('end-date');
+            $promotion->save();
             return redirect()->route('list');
         }
     }
@@ -118,7 +118,7 @@ class PromotionController extends Controller
      */
     public function delete($id)
     {
-        DB::table('promotions')->where('id', $id)->delete();
-        return redirect()->route('list');
+        $promotion = Promotion::find($id);
+        $promotion->delete();
     }
 }
