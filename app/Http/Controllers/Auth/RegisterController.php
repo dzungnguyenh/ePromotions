@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
+use App\Mail\ConfirmationAccount;
+use App\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Validator;
 
 class RegisterController extends Controller
 {
@@ -69,5 +73,35 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+    
+    /**
+     * Notification register
+     *
+     * @param Request $request array $user
+     *
+     * @return string           status
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        Mail::to($user->email)->send(new ConfirmationAccount($user));
+        return back()->with('status', 'Please confirm your email address.');
+        $this->guard()->login($user);
+        return redirect($this->redirectPath());
+    }
+
+    /**
+     * Confirm a use's email address
+     *
+     * @param string $token request token
+     *
+     * @return mixed
+     */
+    public function confirmEmail($token)
+    {
+        User::whereToken($token)->firstOrFail()->confirmEmail();
+        return redirect('login')->with('status', 'You are now confirmed. Please login.');
     }
 }
