@@ -16,7 +16,7 @@ class RolesTableSeeder extends Seeder
       $faker = Faker::create();
       for ($i=1; $i < 4; $i++) {
         Role::create([
-        	'role' => $faker->name,
+          'role' => $faker->name,
           'created_at' => $faker->dateTimeThisYear($max = 'now')
         ]);
       }

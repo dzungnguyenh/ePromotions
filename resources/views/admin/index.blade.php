@@ -1,5 +1,5 @@
-@extends ('layouts.templateAdmin')
+@extends ('layouts.template_admin')
 
 @section ('main-content')
-  Welcome To ePromotions
+  
 @endsection
