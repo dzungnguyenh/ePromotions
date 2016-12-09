@@ -4,17 +4,22 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    protected $table = 'user';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-    'name', 'email', 'password',
+
+        'name', 'email', 'password', 'gender', 'dob', 'phone', 'address', 'avatar', 'point', 'role_id',
     ];
 
     /**
@@ -49,5 +54,15 @@ class User extends Authenticatable
         $this->verified = true;
         $this->token = null;
         $this->save();
+    }
+    
+    /**
+     * Get the role that owns the user
+     *
+     * @return Role []
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }
