@@ -9,21 +9,21 @@
 <!-- Vote Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('vote', trans('point.vote')) !!}
-    {!! Form::input('number', 'vote', null , ['class' => 'form-control', 'step' => '1', 'min' => '0', 'max' => '10']) !!}
+    {!! Form::input('number', 'vote', null , ['class' => 'form-control', 'step' => config('constants.STEP_POINT'), 'min' => '0', 'max' => '10']) !!}
 </div>
 <div class="clearfix"></div>
 
 <!-- Share Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('share', trans('point.share')) !!}
-    {!! Form::input('number', 'share', null , ['class' => 'form-control', 'step' => '1', 'min' => '0', 'max' => '10']) !!}
+    {!! Form::input('number', 'share', null , ['class' => 'form-control', 'step' => config('constants.STEP_POINT'), 'min' => config('constants.MIN_POINT'), 'max' => config('constants.MAX_POINT')]) !!}
 </div>
 <div class="clearfix"></div>
 
 <!-- Book Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('book', trans('point.book')) !!}
-    {!! Form::input('number', 'book', null , ['class' => 'form-control', 'step' => '1', 'min' => '0', 'max' => '10']) !!}
+    {!! Form::input('number', 'book', null , ['class' => 'form-control', 'step' => config('constants.STEP_POINT'), 'min' => config('constants.MIN_POINT'), 'max' => config('constants.MAX_POINT')]) !!}
 </div>
 <div class="clearfix"></div>
 

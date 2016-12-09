@@ -7,7 +7,7 @@ $(".btn-delete").on('click', function(event){
     event.preventDefault();
     var confirmMsg = $(this).attr('alt');
     if (confirm(confirmMsg)){
-        document.getElementById('form-delete-point').submit();
+        $('#form-delete-point').submit();
     }else{
         return false;
     }
@@ -19,5 +19,5 @@ $(".btn-delete").on('click', function(event){
  */
 $(".btn-logout").on('click', function(event){
     event.preventDefault();
-    document.getElementById('logout-form').submit();
+    $('#logout-form').submit();
 })
