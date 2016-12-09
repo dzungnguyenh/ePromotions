@@ -88,7 +88,7 @@ class EventController extends Controller
      */
     public function update(EditEventRequest $request, $id)
     {
-        $input=$this->eventRepository->find($id);
+        $input=$request->all();
         $this->eventRepository->update($input, $id);
         return redirect()->route('event.index');
     }
