@@ -5,11 +5,12 @@
 namespace App\Repositories;
 
 use Exception;
+use DB;
 
 abstract class BaseRepository
 {
     /**
-     * [The Model instance]
+     * The Model instance
      *
      * @param \Illuminate\Database\Eloquent\Model
      */
@@ -38,7 +39,62 @@ abstract class BaseRepository
     {
         return $this->model->create($inputs);
     }
-/**
+
+    /**
+     * Find a resource
+     *
+     * @param int $id [id of model]
+     *
+     * @return Model
+     */
+    public function find($id)
+    {
+        $data = $this->model->find($id);
+        if (!$data) {
+            throw new Exception(trans('message.find_error'));
+        }
+        return $data;
+    }
+
+    /**
+     * Update a resource
+     *
+     * @param array $inputs [values input text]
+     * @param int   $id     [id of model]
+     *
+     * @return boolean
+     */
+    public function update($inputs, $id)
+    {
+        $data = $this->model->where('id', $id)->update($inputs);
+        if (!$data) {
+            throw new Exception(trans('message.update_error'));
+        }
+        return $data;
+    }
+
+    /**
+     * Delete a resource
+     *
+     * @param int $id [id of model
+     *
+     * @return boolean
+     */
+    public function delete($id)
+    {
+        try {
+            DB::beginTransaction();
+            $data = $this->model->destroy($id);
+            if (!$data) {
+                throw new Exception(trans('message.delete_error'));
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+    /**
     * Method update model
     *
     * @param array   $data      Fields be change
@@ -50,18 +106,6 @@ abstract class BaseRepository
     public function update(array $data, $id, $attribute = "id")
     {
         return $this->model->where($attribute, '=', $id)->update($data);
-    }
-
-    /**
-    * Delete model by id
-    *
-     * @param integer $id Field id of model
-     *
-     * @return mixed
-     */
-    public function delete($id)
-    {
-        return $this->model->destroy($id);
     }
 
     /**
