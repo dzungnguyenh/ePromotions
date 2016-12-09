@@ -18,6 +18,9 @@ Route::group(['prefix' => 'admin'], function()
 {
     Route::resource('point', 'Admin\PointController');
 });
+Route::group(['prefix' =>'business'], function(){
+	Route::resource('event', 'Business\EventController');
+});
 
 Auth::routes();
 

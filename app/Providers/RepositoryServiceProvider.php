@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use App;
 use App\Repositories\Point\PointRepository;
 use App\Repositories\Point\PointRepositoryInterface;
+use App\Repositories\Event\EventRepository;
+use App\Repositories\Event\EventRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -27,5 +29,6 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         App::bind(PointRepositoryInterface::class, PointRepository::class);
+        App::bind(EventRepositoryInterface::class, EventRepository::class);
     }
 }
