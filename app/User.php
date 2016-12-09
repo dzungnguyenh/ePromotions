@@ -40,7 +40,7 @@ class User extends Authenticatable
     {
         parent::boot();
         static::creating(function ($user) {
-            $user->token = config('constants.LENGTHTOKEN');
+            $user->token = str_random(config('constants.LENGTHTOKEN'));
         });
     }
 
@@ -55,7 +55,7 @@ class User extends Authenticatable
         $this->token = null;
         $this->save();
     }
-    
+
     /**
      * Get the role that owns the user
      *
