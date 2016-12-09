@@ -52,18 +52,12 @@
                         <td>{{ $value->product_id }}</td>
                         <td>{{ $value->date_start }}</td>
                         <td>{{ $value->date_end }}</td>
-                        
                         <td>{{ $value->updated_at }}</td>
-                        
                         <td>
-                            
                             <a href="{{ route('show-edit-form', $value->id) }}" class="btn btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                            
                         </td> 
-                        
                         <td>
                             <a href="{{ route('delete', $value->id) }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                           
                         </td>
                     </tr>
                     @endforeach
