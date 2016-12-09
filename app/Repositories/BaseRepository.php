@@ -26,14 +26,53 @@ abstract class BaseRepository
     }
 
     /**
-     * Creating a new resource
+     * [create description]
      *
-     * @param array $inputs [values input text]
+     * @param [type] $input [description]
      *
-     * @return Model
+     * @return [type]        [description]
      */
-    public function create($inputs)
+    public function create($input)
     {
-        return $this->model->create($inputs);
+        $this->model->create($input);
+    }
+
+    /**
+     * [find description]
+     *
+     * @param [type] $id [description]
+     *
+     * @return [type]     [description]
+     */
+    public function find($id)
+    {
+        return $this->model->findOrFail($id);
+    }
+
+    /**
+     * [update description]
+     *
+     * @param [type] $input [description]
+     * @param [type] $id    [description]
+     *
+     * @return [type]        [description]
+     */
+    public function update($input, $id)
+    {
+        $row_update = $this->model->findOrFail($id);
+        $row_update->update($input);
+    }
+
+     /**
+      * [delete description]
+      *
+      * @param [type] $id [description]
+      *
+      * @return [type]     [description]
+      */
+    public function delete($id)
+    {
+        $row_delete = $this->model->findOrFail($id);
+        $row_delete->delete($id);
     }
 }
