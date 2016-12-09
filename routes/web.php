@@ -22,7 +22,6 @@ Route::group(['prefix' => 'admin'], function()
 Auth::routes();
 
 Route::get('/home', 'Admin\HomeController@index');
-Route::get('/home', 'HomeController@index');
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
