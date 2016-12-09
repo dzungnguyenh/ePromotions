@@ -10,5 +10,5 @@ return [
     */
 
 
-    'pictureproduct' => 'image'.DIRECTORY_SEPARATOR.'product',
+    'picture_product' => 'image'.DIRECTORY_SEPARATOR.'product',
 ];

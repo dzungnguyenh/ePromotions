@@ -40,7 +40,7 @@ class ProductRepository extends BaseRepository
         $file = $request->file('picture');
         $now = Carbon::now();
         $pictureName = $now->toDateTimeString().$file->getClientOriginalName();
-        $path=config('path.pictureproduct');
+        $path=config('path.picture_product');
         $file->move($path, $pictureName);
 
         return $this->model->create([
