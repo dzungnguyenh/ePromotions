@@ -11,7 +11,7 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
     /**
      *__construct function
      *
-     * @param Event $event [description]
+     * @param Event $event [define table Event]
      */
     public function __construct(Event $event)
     {

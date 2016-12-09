@@ -16,9 +16,9 @@ abstract class BaseRepository
     protected $model;
 
     /**
-     * Get all resources
+     * Get all row in database table.
      *
-     * @return \Illuminate\Support\Collection
+     * @return list all rows.
      */
     public function all()
     {
@@ -26,11 +26,11 @@ abstract class BaseRepository
     }
 
     /**
-     * [create description]
+     * [create row in table]
      *
-     * @param [type] $input [description]
+     * @param [type] $input [value save in table]
      *
-     * @return [type]        [description]
+     * @return [type]        [row new in table]
      */
     public function create($input)
     {
@@ -38,11 +38,11 @@ abstract class BaseRepository
     }
 
     /**
-     * [find description]
+     * [get value find]
      *
-     * @param [type] $id [description]
+     * @param [type] $id [place in table find]
      *
-     * @return [type]     [description]
+     * @return [type]     [get value find]
      */
     public function find($id)
     {
@@ -50,12 +50,12 @@ abstract class BaseRepository
     }
 
     /**
-     * [update description]
+     * [update in table]
      *
-     * @param [type] $input [description]
-     * @param [type] $id    [description]
+     * @param [type] $input [value update in table]
+     * @param [type] $id    [place edit in table]
      *
-     * @return [type]        [description]
+     * @return [type]        [update table]
      */
     public function update($input, $id)
     {
@@ -64,11 +64,11 @@ abstract class BaseRepository
     }
 
      /**
-      * [delete description]
+      * [delete a line in the tabl]
       *
-      * @param [type] $id [description]
+      * @param [type] $id [place delete]
       *
-      * @return [type]     [description]
+      * @return [type]     [table have deleted a line in it]
       */
     public function delete($id)
     {

@@ -14,36 +14,36 @@ interface EventRepositoryInterface
     /**
      * Create function
      *
-     * @param [type] $input [description]
+     * @param [type] $input [value of form request]
      *
-     * @return [type]        [description]
+     * @return [type]        [create function]
      */
     public function create($input);
 
     /**
      * Update function
      *
-     * @param [type] $input [description]
-     * @param [type] $id    [description]
+     * @param [type] $input [value of form request]
+     * @param [type] $id    [place update]
      *
-     * @return [type]        [description]
+     * @return [type]        [update value]
      */
     public function update($input, $id);
 
     /**
      *Delete function
      *
-     * @param [type] $id [description]
+     * @param [type] $id [value place delete]
      *
-     * @return [type]     [description]
+     * @return [type]     [delete event detail]
      */
     public function delete($id);
     /**
      *Find function
      *
-     * @param [type] $id [description]
+     * @param [type] $id [place in event table]
      *
-     * @return [type]     [description]
+     * @return [type]     [search by id in the model]
      */
     public function find($id);
 }

@@ -25,15 +25,15 @@ class EventController extends Controller
     /**
      *Running index page
      *
-     * @return function [index]
+     * @return function [Return list event]
      */
     public function index()
     {
-           $event = $this->eventRepository->all();
-         return view('event.index', ['event'=>$event]);
+        $event = $this->eventRepository->all();
+        return view('event.index', ['event'=>$event]);
     }
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new event.
      *
      * @return \Illuminate\Http\Response
      */
@@ -42,11 +42,11 @@ class EventController extends Controller
         return view('event.create');
     }
     /**
-     *Funtion story
+     *Save event
      *
-     * @param CreateEventRequest $request []
+     * @param CreateEventRequest $request [Get request from form create]
      *
-     * @return [type]
+     * @return [index page]
      */
     public function store(CreateEventRequest $request)
     {
@@ -55,11 +55,11 @@ class EventController extends Controller
         return redirect()->route('event.index');
     }
     /**
-     * Display the specified resource.
+     * Display the detail event.
      *
-     * @param int $id []
+     * @param int $id [value specify place of model]
      *
-     * @return \Illuminate\Http\Response
+     * @return Event detail page
      */
     public function show($id)
     {
@@ -67,41 +67,53 @@ class EventController extends Controller
         return view('event.show', compact('event'));
     }
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing event.
      *
-     * @param int $id []
+     * @param int $id [value specify place edit of mode]
      *
-     * @return \Illuminate\Http\Response
+     * @return Edit page
      */
     public function edit($id)
     {
-         $event = $this->eventRepository->find($id);
+        $event = $this->eventRepository->find($id);
         return view('event.edit', compact('event'));
     }
     /**
-     * Update the specified resource in storage.
+     * Update the event.
      *
-     * @param \Illuminate\Http\Request $request []
-     * @param int                      $id      []
+     * @param \Illuminate\Http\Request $request [Get value Request]
+     * @param int                      $id      [Get place of edit page]
      *
-     * @return \Illuminate\Http\Response
+     * @return Event page with update event detail.
      */
     public function update(EditEventRequest $request, $id)
     {
+        $event=$this->eventRepository->find($id);
+        if (empty($event)) {
+            Session::flash('msg', trans('event.update_event_erro'));
+            return redirect()->route('event.index');
+        }
         $input=$request->all();
         $this->eventRepository->update($input, $id);
+        Session::flash('msg', trans('event.update_event_successful'));
         return redirect()->route('event.index');
     }
     /**
-     * Remove the specified resource from storage.
+     * Remove event.
      *
-     * @param int $id []
+     * @param int $id [Get place delete]
      *
-     * @return \Illuminate\Http\Response
+     * @return Event page with delete event detail.
      */
     public function destroy($id)
     {
+        $event=$this->eventRepository->find($id);
+        if (empty($event)) {
+            Session::flash('msg', trans('event.delete_event_erro'));
+            return redirect()->route('event.index');
+        }
         $this->eventRepository->delete($id);
+        Session::flash('msg', trans('delete_event_successful'));
         return redirect()->route('event.index');
     }
 }
