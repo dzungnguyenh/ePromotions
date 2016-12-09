@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+
         'name', 'email', 'password', 'gender', 'dob', 'phone', 'address', 'avatar', 'point', 'role_id',
     ];
 
@@ -27,8 +28,33 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+    'password', 'remember_token',
     ];
+
+    /**
+     * Boot the model
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($user) {
+            $user->token = str_random(config('constants.LENGTHTOKEN'));
+        });
+    }
+
+    /**
+     * Confirm the user
+     *
+     * @return void
+     */
+    public function confirmEmail()
+    {
+        $this->verified = true;
+        $this->token = null;
+        $this->save();
+    }
 
     /**
      * Get the role that owns the user

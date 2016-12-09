@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
+use App\Mail\ConfirmationAccount;
+use App\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Validator;
 
 class RegisterController extends Controller
 {
+    public $table = 'user';
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -49,9 +54,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+        'name' => 'required|max:255',
+        'email' => 'required|email|max:255|unique:users',
+        'password' => 'required|min:6|confirmed',
         ]);
     }
 
@@ -65,9 +70,39 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => bcrypt($data['password']),
         ]);
+    }
+    
+    /**
+     * Notification register
+     *
+     * @param Request $request array $user
+     *
+     * @return string           status
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        Mail::to($user->email)->send(new ConfirmationAccount($user));
+        return back()->with(trans('confirmation.confirm'), trans('confirmation.link'));
+        $this->guard()->login($user);
+        return redirect($this->redirectPath());
+    }
+
+    /**
+     * Confirm a use's email address
+     *
+     * @param string $token request token
+     *
+     * @return mixed
+     */
+    public function confirmEmail($token)
+    {
+        User::whereToken($token)->firstOrFail()->confirmEmail();
+        return redirect('login')->with(trans('confirmation.status'), trans('confirmation.notification'));
     }
 }
