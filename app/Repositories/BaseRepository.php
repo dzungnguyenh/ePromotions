@@ -59,8 +59,8 @@ abstract class BaseRepository
      */
     public function update($input, $id)
     {
-        $row_update = $this->model->findOrFail($id);
-        $row_update->update($input);
+        $rowUpdate = $this->model->findOrFail($id);
+        $rowUpdate->update($input);
     }
 
      /**
@@ -72,7 +72,7 @@ abstract class BaseRepository
       */
     public function delete($id)
     {
-        $row_delete = $this->model->findOrFail($id);
-        $row_delete->delete($id);
+        $rowDelete = $this->model->findOrFail($id);
+        $rowDelete->delete($id);
     }
 }

@@ -9,12 +9,12 @@ use App\Models\Event;
 class EventRepository extends BaseRepository implements EventRepositoryInterface
 {
     /**
-     *Construct function
+     *__construct function
      *
-     * @param Event $Event [description]
+     * @param Event $event [description]
      */
-    public function __construct(Event $Event)
+    public function __construct(Event $event)
     {
-        $this->model = $Event;
+        $this->model = $event;
     }
 }
