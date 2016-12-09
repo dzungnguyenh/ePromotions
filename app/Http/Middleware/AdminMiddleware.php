@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class ProductMiddleware
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,9 @@ class ProductMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->role==2) {
+        if (auth()->check() && auth()->user()->role->role==config('constants.ROLE_ADMIN')) {
             return $next($request);
         }
-            return redirect('business/login');
+        return redirect('business/login');
     }
 }
