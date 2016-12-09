@@ -9,7 +9,7 @@
 <!-- Vote Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('vote', trans('point.vote')) !!}
-    {!! Form::input('number', 'vote', null , ['class' => 'form-control', 'step' => config('constants.STEP_POINT'), 'min' => '0', 'max' => '10']) !!}
+    {!! Form::input('number', 'vote', null , ['class' => 'form-control', 'step' => config('constants.STEP_POINT'), 'min' => config('constants.MIN_POINT'), 'max' => config('constants.MAX_POINT')]) !!}
 </div>
 <div class="clearfix"></div>
 
