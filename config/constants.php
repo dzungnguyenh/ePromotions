@@ -9,4 +9,5 @@
     'MIN_POINT' => '0',
     'MAX_POINT' => '10',
     'STEP_POINT' => '1',
+    'LENGTHTOKEN' => '40',
 ];
