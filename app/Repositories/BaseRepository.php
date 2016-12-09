@@ -18,6 +18,8 @@ abstract class BaseRepository
     /**
      * Get all resources
      *
+     * @param array $columns Array data will be return 
+     *
      * @return \Illuminate\Support\Collection
      */
     public function all($columns = array('*'))
