@@ -94,32 +94,6 @@ abstract class BaseRepository
             throw $e;
         }
     }
-    /**
-    * Method update model
-    *
-    * @param array   $data      Fields be change
-    * @param integer $id        Id of model
-    * @param string  $attribute name of field be compare
-    *
-    * @return mixed
-    */
-    public function update(array $data, $id, $attribute = "id")
-    {
-        return $this->model->where($attribute, '=', $id)->update($data);
-    }
-
-    /**
-    * Search and return array model by id.
-    *
-     * @param integer $id      Id of model.
-     * @param array   $columns Name field in table
-     *
-     * @return mixed
-     */
-    public function find($id, $columns = array('*'))
-    {
-        return $this->model->find($id, $columns);
-    }
 
     /**
     * [Return data match parameter]
