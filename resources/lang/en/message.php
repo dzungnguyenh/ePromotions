@@ -5,4 +5,5 @@ return [
     'find_error' => 'Can not found.',
     'update_error' => 'Have error when update.',
     'delete_error' => 'Have error when delete.',
+    'passwoord_not_connect' => 'Password is not connect!',
 ];
