@@ -6,7 +6,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="https://avatars3.githubusercontent.com/u/12997183?v=3&s=200" class="img-circle" alt="User Image">
+        <img src="{!! Request::root() !!}/image/avatar/{{ Auth::user()->avatar }}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
         <p>{{ Auth::user()->name }}</p>
@@ -31,7 +31,14 @@
       <!-- Optionally, you can add icons to the links -->
       <li class="treeview">
         <a href="#"><i class="fa fa-book"></i> <span>{!! trans('left_bar.point') !!}</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
         </a>
+        <ul class="treeview-menu">
+          <li><a href="{!! url('admin/point') !!}">{!! trans('left_bar.view_list') !!}</a></li>
+          <li><a href="{!! url('admin/point/create') !!}">{!! trans('left_bar.create_new') !!}</a></li>
+        </ul>
       </li>
 
       <li class="treeview">
