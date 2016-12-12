@@ -38,7 +38,6 @@ class VoucherController extends Controller
     public function index()
     {
         $vouchers = $this->voucherRepository->all();
-
         return view('admin.voucher.index', compact('vouchers'));
     }
 
