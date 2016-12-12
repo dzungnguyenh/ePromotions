@@ -36,4 +36,38 @@ abstract class BaseRepository
     {
         return $this->model->create($inputs);
     }
+    /**
+     * Get by id.
+     *
+     * @param integer $id id
+     *
+     * @return Model
+     */
+    public function get($id)
+    {
+        return $this->model->find($id);
+    }
+    /**
+     * Delete a resource.
+     *
+     * @param integer $id id
+     *
+     * @return boolean
+     */
+    public function delete($id)
+    {
+        return $this->model->find($id)->delete();
+    }
+    /**
+     * Update a resource.
+     *
+     * @param integer $id     id
+     * @param array   $inputs inputs
+     *
+     * @return Model
+     */
+    public function update($id, $inputs)
+    {
+        return $this->model->find($id)->update($inputs);
+    }
 }

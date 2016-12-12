@@ -13,6 +13,8 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -28,7 +30,7 @@
 
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">{!! trans('label.toggle_navigation') !!}</span>
+                        <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -50,8 +52,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">{!! trans('user.login') !!}</a></li>
-                            <li><a href="{{ url('/register') }}">{!! trans('user.register') !!}</a></li>
+                            <li><a href="{{ url('/login') }}">Login</a></li>
+                            <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -60,12 +62,13 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/logout') }}" class="btn-logout"
-                                            alt="{!! trans('user.logout') !!}">
-                                            {!! trans('user.logout') !!}
+                                        <a href="{{ url('/logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST"">
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
@@ -76,13 +79,10 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+            @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-    <script src="/admin/js/app.js"></script>
-
 </body>
 </html>

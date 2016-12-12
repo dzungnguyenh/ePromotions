@@ -23,17 +23,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::group(['prefix' => 'promotions'], function () {
-    
-    Route::get('', 'PromotionController@index')->name('list');
-
-    Route::get('show-add-form', 'PromotionController@create')->name('show-add-form');
-
-    Route::post('add', ['as' => 'add', 'uses' => 'PromotionController@store']);
-
-    Route::get('show-edit-form/{id}', ['as' => 'show-edit-form', 'uses' => 'PromotionController@store']);
-
-    Route::put('show-edit-form/{id}', ['as' => 'update', 'uses' => 'PromotionController@update']);
-    
-    Route::get('delete/{id}', ['as' => 'delete', 'uses' => 'PromotionController@delete']);
-});
+Route::resource('promotions', 'Bussiness\PromotionController');
