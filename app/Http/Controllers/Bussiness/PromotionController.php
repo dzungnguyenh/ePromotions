@@ -34,7 +34,6 @@ class PromotionController extends Controller
     public function index()
     {
         $promotions = $this->promotion->all();
- 
         return view('promotion.list', compact('promotions'));
     }
 
@@ -58,11 +57,8 @@ class PromotionController extends Controller
     public function store(CreatePromotionRequest $request)
     {
         $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end', 'product_id');
-
         $this->promotion->create($promotion);
-
-        Session::flash('message', 'Successfully stored promotion!');
-
+        Session::flash('message', trans('promotion.create_promotion_successful'));
         return redirect()->route('promotions.index');
     }
 
@@ -76,7 +72,6 @@ class PromotionController extends Controller
     public function edit($id)
     {
         $promotion=$this->promotion->find($id);
-
         return view('promotion.edit', compact('promotion'));
     }
 
@@ -91,11 +86,8 @@ class PromotionController extends Controller
     public function update(CreatePromotionRequest $request, $id)
     {
         $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end');
-        
         $this->promotion->update($promotion, $id);
-
-        Session::flash('message', 'Successfully updated promotion!');
-
+        Session::flash('message', trans('promotion.update_promotion_successful'));
         return redirect()->route('promotions.index');
     }
 
@@ -109,9 +101,7 @@ class PromotionController extends Controller
     public function destroy($id)
     {
         $this->promotion->delete($id);
-
-        Session::flash('message', 'Successfully deleted promotion!');
-        
+        Session::flash('message', trans('promotion.delete_promotion_successful'));
         return redirect()->route('promotions.index');
     }
 }
