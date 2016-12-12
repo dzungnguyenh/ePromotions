@@ -14,3 +14,12 @@ $('#show-password').on('change', function(){
     $('#old-password').attr('type',$('#show-password').prop('checked') == true ? "text":"password");
     $('#reset-password').attr('type',$('#show-password').prop('checked') == true ? "text":"password");
 });
+
+$('.delete-product').on('click',function(event){
+    event.preventDefault();
+    var msg=$(this).attr('alt');
+    if(confirm(msg)){
+        $('.form-delete-product').submit();
+    }
+    return false;
+});

@@ -20,6 +20,6 @@ class AdminMiddleware
         if (auth()->check() && auth()->user()->role->role==config('constants.ROLE_ADMIN')) {
             return $next($request);
         }
-        return redirect('business/login');
+        return redirect('/login');
     }
 }

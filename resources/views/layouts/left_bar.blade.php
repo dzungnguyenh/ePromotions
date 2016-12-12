@@ -42,13 +42,13 @@
       </li>
 
       <li class="treeview">
-        <a href="#"><i class="fa fa-book"></i> <span>{!! trans('left_bar.user') !!}</span>
+        <a href=""><i class="fa fa-book"></i> <span>{!! trans('left_bar.user') !!}</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#">{!! trans('left_bar.view_list') !!}</a></li>
+          <li><a href="{!! url('admin/user') !!}">{!! trans('left_bar.view_list') !!}</a></li>
           <li><a href="#">{!! trans('left_bar.create_new') !!}</a></li>
         </ul>
       </li>
