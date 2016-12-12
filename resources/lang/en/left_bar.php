@@ -24,4 +24,5 @@ return [
   'event' => 'EVENT',
   'promotion' => 'PROMOTION',
   'order' => 'ORDER',
+  'voucher' => 'VOUCHER',
 ];
