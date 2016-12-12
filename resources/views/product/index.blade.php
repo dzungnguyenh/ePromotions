@@ -23,7 +23,7 @@
                 <td>{{$value->description}}</td>
                 <td>{{$value->quantity}}</td>
                 <td>{{$value->category_id}}</td>
-                <td class="product-img"><img src="{{asset(config('picture_product').'/'.$value->picture)}}"></td>
+                <td class="product-img"><img src="{{asset(config('path.picture_product').'/'.$value->picture)}}"></td>
                 <td>
                     <div class="row action">
                         <button class="btn btn-success btn-view view-product"><i class="glyphicon glyphicon-eye-open"></i>
@@ -33,8 +33,8 @@
                             <button type="submit" alt="{{trans('product.are_you_sure_delete')}}" class="delete-product btn btn-danger">
                                 <i class="glyphicon glyphicon-trash"></i>
                             </button>
-                        {{ Form::close() }}
-                        <button class="btn btn-info btn-edit"><i class="glyphicon glyphicon-edit"></i></button>
+                            {{ Form::close() }}
+                        <button class="btn btn-info btn-edit"><a href="{{route('product.show',[$value->id])}}"><i class="glyphicon glyphicon-edit"></i></a></button>
                     </div>
                 </td>
             </tr>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Product\ProductRepository;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use Session;
 
 class ProductController extends Controller
@@ -70,5 +71,38 @@ class ProductController extends Controller
         $this->productRepository->delete($id);
         Session::flash('msg', trans('product.delete_product_successful'));
         return redirect()->back();
+    }
+
+    /**
+    * Method to show prouct by id
+    *
+    * @param integer $id id of product
+    *
+    * @return product
+    */
+    public function show($id)
+    {
+        $product = $this->productRepository->find($id);
+        if(empty($product)) {
+            Session::flash('msg', trans('product.product_not_found'));
+            return Redirect::route('product');
+        } else {
+            return view('product.show')->with('product', $product);
+        }
+    }
+
+    /**
+    * Method update product
+    *
+    * @param request $request request from form
+    * @param integer $id      id
+    *
+    * @return mixed
+    */
+    public function update(UpdateProductRequest $request, $id)
+    {
+        $this->productRepository->store($request, $id);
+        Session::flash('msg', trans('product.update_product_successful'));
+        return redirect('product');
     }
 }
