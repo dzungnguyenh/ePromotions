@@ -12,6 +12,7 @@ return [
     'date_end' => 'End date',
     'edit_page' => 'Edit Promotion',
     'create_page' => 'Add New Promotion',
+    'list_page' => 'List Promotion',
     'submit' => 'Submit Now',
     'clear' => 'Clear Form',
 ];

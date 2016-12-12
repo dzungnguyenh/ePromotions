@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
 <div class="page-header">
-  <h3>List Promotion</h3>
+  <h3>{{ trans('promotion.list_page') }}</h3>
 </div>
 @if (Session::has('message'))
 <div class="alert alert-info alert-dismissible">
