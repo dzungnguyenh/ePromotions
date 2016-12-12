@@ -83,7 +83,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = $this->productRepository->find($id);
-        if(empty($product)) {
+        if (empty($product)) {
             Session::flash('msg', trans('product.product_not_found'));
             return Redirect::route('product');
         } else {
