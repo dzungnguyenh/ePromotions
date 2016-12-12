@@ -31,3 +31,5 @@ Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
 Route::resource('product','Product\ProductController');
+
+Route::resource('promotions', 'Bussiness\PromotionController');
