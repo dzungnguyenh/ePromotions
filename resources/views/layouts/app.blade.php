@@ -81,9 +81,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{!! Request::root() !!}/js/app.js"></script>
-    <script src="{!! Request::root() !!}/js/style_admin.js"></script>
-    <script src="{!! Request::root() !!}/admin/js/app.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/style_admin.js"></script>
+    <script src="/admin/js/app.js"></script>
 
 </body>
 </html>

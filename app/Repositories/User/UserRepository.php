@@ -65,8 +65,8 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         $destinationPath = public_path() . trans('user.avatar_path');
         $fileName = time().'.'.$file->getClientOriginalExtension();
         Input::file('avatar')->move($destinationPath, $fileName);
-        if (!empty(Auth::user()->avatar) && file_exists(public_path() . trans('user.avatar_path').'/'.Auth::user()->avatar)) {
-            File::delete(public_path() . trans('user.avatar_path').'/'.Auth::user()->avatar);
+        if (!empty(Auth::user()->avatar) && file_exists(public_path() . trans('user.avatar_path').DIRECTORY_SEPARATOR.Auth::user()->avatar)) {
+            File::delete(public_path() . trans('user.avatar_path').DIRECTORY_SEPARATOR .Auth::user()->avatar);
         }
         return $fileName;
     }
