@@ -18,6 +18,9 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
 {
     Route::resource('point', 'Admin\PointController');
 });
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' =>'business'], function(){
+	Route::resource('event', 'Business\EventController');
+});
 Route::group(['middleware' => 'auth'], function()
 {
     Route::resource('user', 'User\UserController');
