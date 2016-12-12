@@ -22,14 +22,9 @@ Route::group(['middleware' => 'auth'], function()
 {
     Route::resource('user', 'User\UserController');
 });
-
 Auth::routes();
-
 Route::get('/home', 'Admin\HomeController@index');
-
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
-
 Route::resource('product','Product\ProductController');
-
 Route::resource('promotions', 'Bussiness\PromotionController');
