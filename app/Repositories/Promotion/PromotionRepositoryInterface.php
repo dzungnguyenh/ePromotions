@@ -41,10 +41,10 @@ interface PromotionRepositoryInterface
     /**
      * Update a promotion.
      *
-     * @param integer $id     id
-     * @param array   $inputs input
+     * @param array   $inputs promotion
+     * @param integer $id     id promotion
      *
      * @return boolean
      */
-    public function update($id, $inputs);
+    public function update($inputs, $id);
 }

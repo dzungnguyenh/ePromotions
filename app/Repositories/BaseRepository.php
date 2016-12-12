@@ -5,11 +5,12 @@
 namespace App\Repositories;
 
 use Exception;
+use DB;
 
 abstract class BaseRepository
 {
     /**
-     * [The Model instance]
+     * The Model instance
      *
      * @param \Illuminate\Database\Eloquent\Model
      */
@@ -18,11 +19,13 @@ abstract class BaseRepository
     /**
      * Get all resources
      *
+     * @param array $columns Array data will be return
+     *
      * @return \Illuminate\Support\Collection
      */
-    public function all()
+    public function all($columns = array('*'))
     {
-        return $this->model->all();
+        return $this->model->get($columns);
     }
 
     /**
@@ -36,38 +39,70 @@ abstract class BaseRepository
     {
         return $this->model->create($inputs);
     }
+
     /**
-     * Get by id.
+     * Find a resource
      *
-     * @param integer $id id
+     * @param int $id [id of model]
      *
      * @return Model
      */
     public function find($id)
     {
+
         return $this->model->findOrFail($id);
     }
+
     /**
-     * Delete a resource.
+     * Update a resource
      *
-     * @param integer $id id
+     * @param array $inputs [values input text]
+     * @param int   $id     [id of model]
+     *
+     * @return boolean
+     */
+    public function update($inputs, $id)
+    {
+        $data = $this->model->where('id', $id)->update($inputs);
+        if (!$data) {
+            throw new Exception(trans('message.update_error'));
+        }
+        return $data;
+    }
+
+    /**
+     * Delete a resource
+     *
+     * @param int $id [id of model
      *
      * @return boolean
      */
     public function delete($id)
     {
-        return $this->model->find($id)->delete();
+        try {
+            DB::beginTransaction();
+            $data = $this->model->destroy($id);
+            if (!$data) {
+                throw new Exception(trans('message.delete_error'));
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
+
     /**
-     * Update a resource.
-     *
-     * @param integer $id     id
-     * @param array   $inputs inputs
-     *
-     * @return Model
-     */
-    public function update($id, $inputs)
+    * [Return data match parameter]
+    *
+    * @param string $attribute Name field table.
+    * @param string $value     Value of field table.
+    * @param array  $columns   Name field in table
+    *
+    * @return mixed
+    */
+    public function findBy($attribute, $value, $columns = array('*'))
     {
-        return $this->model->find($id)->update($inputs);
+        return $this->model->where($attribute, '=', $value)->first($columns);
     }
 }

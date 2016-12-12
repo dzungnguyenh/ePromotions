@@ -14,13 +14,26 @@
 Route::get('',function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin'], function()
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function()
 {
     Route::resource('point', 'Admin\PointController');
+});
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::resource('user', 'User\UserController');
 });
 
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index');
 
 Route::resource('promotions', 'Bussiness\PromotionController');
+
+Route::get('/home', 'Admin\HomeController@index');
+
+Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
+Route::get('/callback/{provider}', 'SocialAccountController@callback');
+
+Route::resource('product','Product\ProductController');
+

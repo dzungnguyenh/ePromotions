@@ -92,7 +92,7 @@ class PromotionController extends Controller
     {
         $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end');
         
-        $this->promotion->update($id, $promotion);
+        $this->promotion->update($promotion, $id);
 
         Session::flash('message', 'Successfully updated promotion!');
 
