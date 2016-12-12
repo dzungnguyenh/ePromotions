@@ -27,7 +27,7 @@ interface PromotionRepositoryInterface
      *
      * @return boolean
      */
-    public function get($id);
+    public function find($id);
 
     /**
      * Delete a promotion.

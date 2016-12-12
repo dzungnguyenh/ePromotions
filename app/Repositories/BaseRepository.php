@@ -43,9 +43,9 @@ abstract class BaseRepository
      *
      * @return Model
      */
-    public function get($id)
+    public function find($id)
     {
-        return $this->model->find($id);
+        return $this->model->findOrFail($id);
     }
     /**
      * Delete a resource.

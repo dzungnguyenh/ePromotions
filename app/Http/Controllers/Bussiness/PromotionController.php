@@ -65,7 +65,7 @@ class PromotionController extends Controller
 
         return redirect()->route('promotions.index');
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -75,7 +75,7 @@ class PromotionController extends Controller
      */
     public function edit($id)
     {
-        $promotion=$this->promotion->get($id);
+        $promotion=$this->promotion->find($id);
 
         return view('promotion.edit', compact('promotion'));
     }
