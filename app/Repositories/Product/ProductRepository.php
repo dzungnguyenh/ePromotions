@@ -37,12 +37,7 @@ class ProductRepository extends BaseRepository
     */
     public function insert($request)
     {
-        $file = $request->file('picture');
-        $now = Carbon::now();
-        $pictureName = $now->toDateTimeString().$file->getClientOriginalName();
-        $path=config('path.picture_product');
-        $file->move($path, $pictureName);
-
+        $pictureName = $this->saveFile($request->file('picture'));
         return $this->model->create([
                 'user_id'=>$request->user_id,
                 'product_name'=>$request->product_name,
@@ -52,5 +47,50 @@ class ProductRepository extends BaseRepository
                 'picture'=>$pictureName,
                 'category_id'=>$request->category_id,
             ]);
+    }
+
+    /**
+    * Method to update product
+    *
+    * @param request $request data from form
+    * @param integer $id      id of product
+    *
+    * @return true
+    */
+    public function store($request, $id)
+    {
+        $product = $this->model->findOrFail($id);
+        $file = $request->file('picture');
+        $pictureName = '';
+        // If update file then insert file into folder img and change picture in database
+        if ($file) {
+            $pictureName = $this->saveFile($file);
+        } else {
+            $pictureName = $product->picture;
+        }
+        return $product->update([
+            'product_name'=>$request->product_name,
+            'price'=>$request->price,
+            'description'=>$request->description,
+            'quantity'=>$request->quantity,
+            'picture'=>$pictureName,
+            'category_id'=>$request->category_id,
+        ]);
+    }
+
+    /**
+    * Method save  file into folder
+    *
+    * @param file $file file get from form.
+    *
+    * @return picture name to save into database
+    */
+    public function saveFile($file)
+    {
+        $now = Carbon::now();
+        $pictureName = $now->toDateTimeString().$file->getClientOriginalName();
+        $path=config('path.picture_product');
+        $file->move($path, $pictureName);
+        return $pictureName;
     }
 }

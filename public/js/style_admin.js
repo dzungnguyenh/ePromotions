@@ -23,3 +23,15 @@ $('.delete-product').on('click',function(event){
     }
     return false;
 });
+
+/**
+* Method to confirm before update product
+*/
+$('#btn-product-update').on('click',function(event){
+    event.preventDefault();
+    var msg=$(this).attr('alt');
+    if(confirm(msg)){
+        $('.product-update-form').submit();
+    }
+    return false;
+});
