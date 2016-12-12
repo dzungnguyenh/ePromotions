@@ -1,6 +1,6 @@
-@extends('admin.layouts.app')
+@extends ('layouts.template_admin')
 
-@section('content')
+@section ('main-content')
     <section class="content-header">
         <h1>{!! trans('point.point') !!}</h1>
     </section>
@@ -18,4 +18,3 @@
         </div>
     </div>
 @endsection
-

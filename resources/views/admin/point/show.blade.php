@@ -1,6 +1,6 @@
-@extends('admin.layouts.app')
+@extends ('layouts.template_admin')
 
-@section('content')
+@section ('main-content')
     <section class="content-header">
         <h1>{!! trans('point.show_detail') !!}</h1>
     </section>

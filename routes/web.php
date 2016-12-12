@@ -14,9 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admin'], function()
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function()
 {
     Route::resource('point', 'Admin\PointController');
+});
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::resource('user', 'User\UserController');
 });
 
 Auth::routes();
