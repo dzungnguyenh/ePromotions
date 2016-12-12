@@ -20,6 +20,6 @@ class BusinessMiddleware
         if (auth()->check() && auth()->user()->role->role==config('constants.ROLE_BUSINESS')) {
             return $next($request);
         }
-        return redirect('business/login');
+        return redirect('login');
     }
 }

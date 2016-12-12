@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Product\ProductRepository;
-use App\Http\Requests\Product\ProductRequest;
+use App\Http\Requests\ProductRequest;
+use Session;
 
 class ProductController extends Controller
 {
@@ -54,8 +55,9 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $this->productRepository->insert($request);
+        Session::flash('msg', trans('product.create_product_successful'));
         return redirect()->back();
-    }
+    } 
 
     /**
     * Method to delete a row in table
@@ -67,6 +69,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $this->productRepository->delete($id);
+        Session::flash('msg', trans('product.delete_product_successful'));
         return redirect()->back();
     }
 }

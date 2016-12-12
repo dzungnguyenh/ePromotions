@@ -32,3 +32,11 @@
   display:block;
   margin-bottom:20px;
 }
+.product-index form{
+  display: inline;
+}
+.product-index button{
+  width:25px;
+  height: :25px;
+  padding: 1px;
+}
