@@ -17,6 +17,6 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
      */
     public function __construct(Promotion $model)
     {
-    	$this->model = $model;
+        $this->model = $model;
     }
 }
