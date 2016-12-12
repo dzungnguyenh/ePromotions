@@ -23,7 +23,7 @@ class BusinessRepository extends BaseRepository implements BusinessRepositoryInt
     /**
      * Get list business
      *
-     * @param  int $role [role of business]
+     * @param int $role [role of business]
      *
      * @return array
      */

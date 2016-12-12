@@ -10,7 +10,7 @@
     <tbody>
     @foreach($businesses as $business)
         <tr>
-            <td>{!! $i++ !!}</td>
+            <td>{!! $sort++ !!}</td>
             <td>{!! $business->name !!}</td>
             <td>{!! $business->email !!}</td>
             <td>{!! $business->phone !!}</td>

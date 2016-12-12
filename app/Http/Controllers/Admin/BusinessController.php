@@ -32,10 +32,10 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        $i = config('constants.NO');
+        $sort = config('constants.NO');
         $role = config('constants.ROLEBUSSINESS');
         $businesses = $this->businessRepository->getBusiness($role);
 
-        return view('admin.business.index', compact('businesses', 'i'));
+        return view('admin.business.index', compact('businesses', 'sort'));
     }
 }
