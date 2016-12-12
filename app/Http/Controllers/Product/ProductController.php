@@ -57,8 +57,7 @@ class ProductController extends Controller
         $this->productRepository->insert($request);
         Session::flash('msg', trans('product.create_product_successful'));
         return redirect()->back();
-    } 
-
+    }
     /**
     * Method to delete a row in table
     *
