@@ -13,17 +13,17 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Percent</th>
-            <th>Quantity</th>
-            <th>Product id</th>
-            <th>Start Day</th>
-            <th>End Day</th>
-            <th>Updated at</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>{{ trans('promotion.id') }}</th>
+            <th>{{ trans('promotion.title') }}</th>
+            <th>{{ trans('promotion.description') }}</th>
+            <th>{{ trans('promotion.percent') }}</th>
+            <th>{{ trans('promotion.quantity') }}</th>
+            <th>{{ trans('promotion.product_id') }}</th>
+            <th>{{ trans('promotion.date_start') }}</th>
+            <th>{{ trans('promotion.date_end') }}</th>
+            <th>{{ trans('promotion.uploaded_at') }}</th>
+            <th>{{ trans('promotion.edit') }}</th>
+            <th>{{ trans('promotion.delete') }}</th>
         </tr>
     </thead>
     <tbody>

@@ -1,10 +1,9 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
+|routes/web.php
 | This file is where you may define all of the routes that are handled
 | by your application. Just tell Laravel the URIs it should respond
 | to using a Closure or controller method. Build something great!
@@ -18,12 +17,15 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
 {
     Route::resource('point', 'Admin\PointController');
     Route::resource('user', 'Admin\UserController');
-    Route::resource('business', 'Admin\BusinessController');
-});
+    Route::resource('business', 'Admin\BusinessController', [
+    'only' => ['index', 'show', 'destroy']
+]);
 
+});
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 {
     Route::resource('voucher', 'Admin\VoucherController');
+    Route::resource('category', 'Category\CategoryController');
 });
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' =>'business'], function(){
 	Route::resource('event', 'Business\EventController');
