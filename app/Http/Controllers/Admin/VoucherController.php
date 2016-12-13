@@ -104,7 +104,7 @@ class VoucherController extends Controller
      * Update a voucher
      *
      * @param CreateVoucherRequest $request [validate values input]
-     * @param int                $id      [id of voucher]
+     * @param int                  $id      [id of voucher]
      *
      * @return Reponse
      */
