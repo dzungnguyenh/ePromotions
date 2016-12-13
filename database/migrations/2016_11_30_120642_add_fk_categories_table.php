@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Kalnoy\Nestedset\NestedSet;
 
 class AddFkCategoriesTable extends Migration
 {
@@ -29,6 +30,7 @@ class AddFkCategoriesTable extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->dropForeign(['parent_id']);
+            NestedSet::dropColumns($table);
         });
     }
 }
