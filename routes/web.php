@@ -20,6 +20,11 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
     Route::resource('user', 'Admin\UserController');
     Route::resource('business', 'Admin\BusinessController');
 });
+
+Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
+{
+    Route::resource('voucher', 'Admin\VoucherController');
+});
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' =>'business'], function(){
 	Route::resource('event', 'Business\EventController');
 });
