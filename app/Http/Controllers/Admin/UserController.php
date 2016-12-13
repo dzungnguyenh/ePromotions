@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\User\UserRepository;
+use Session;
 
 class UserController extends Controller
 {
@@ -29,7 +30,10 @@ class UserController extends Controller
    */
     public function index()
     {
-        $user = $this->userRepository->all();
-        return view('admin.user.index', compact('user'));
+
+        $sort = config('constants.USER');
+        $role = config('constants.ROLEUSER');
+        $user = $this->userRepository->getUser($role);
+        return view('admin.user.index', compact('user', 'sort'));
     }
 }

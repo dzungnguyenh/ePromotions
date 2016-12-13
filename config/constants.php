@@ -10,4 +10,5 @@
     'MAX_POINT' => '10',
     'STEP_POINT' => '1',
     'LENGTHTOKEN' => '40',
+    'ROLEUSER' => '2',
 ];
