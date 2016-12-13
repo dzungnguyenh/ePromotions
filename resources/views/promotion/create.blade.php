@@ -40,7 +40,7 @@
         <label for="end_date">{{ trans('promotion.date_end') }}</label>
         <input type="datetime-local" class="form-control" id="end_date" name="date_end" value="{{ old('date_end') }}">
     </div>
-    <input type="hidden" name="product_id" value="1">
+    <input type="hidden" name="product_id" value="{{ $id }}">
     <input type="submit" class="btn btn-default" value="{{ trans('promotion.submit') }}" />
     <input type="reset" class="btn btn-default" value="{{ trans('promotion.clear') }}" />
 </form>
