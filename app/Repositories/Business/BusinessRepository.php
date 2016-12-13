@@ -29,7 +29,7 @@ class BusinessRepository extends BaseRepository implements BusinessRepositoryInt
      */
     public function getBusiness($role)
     {
-        $data = User::where('role_id', $role)->get();
+        $data = User::where('role_id', $role)->paginate(trans('business.limit'));
 
         return $data;
     }

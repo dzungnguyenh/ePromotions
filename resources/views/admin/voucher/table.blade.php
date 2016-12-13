@@ -14,13 +14,11 @@
             <td>{!! $voucher->point !!}</td>
             <td>{!! $voucher->value !!}</td>
             <td>
-                {!! Form::open([ 'route' => ['voucher.destroy', $voucher->id], 'method' => 'delete', 'id' => 'form-delete-point']) !!}
                 <div class='btn-group'>
                     <a href="{!! route('voucher.show', [$voucher->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                     <a href="{!! route('voucher.edit', [$voucher->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs btn-delete', 'alt' => trans('message.are_you_sure')]) !!}
+                    <a href="{!! route('admin.voucher.del', $voucher->id) !!}" alt="{{ trans('message.are_you_sure') }}" class='btn btn-default btn-xs btn-delete-voucher'><i class="glyphicon glyphicon-remove"></i></a>
                 </div>
-                {!! Form::close() !!}
             </td>
         </tr>
     @endforeach

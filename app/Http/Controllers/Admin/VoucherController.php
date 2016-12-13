@@ -67,4 +67,57 @@ class VoucherController extends Controller
 
         return redirect(route('voucher.index'));
     }
+
+    /**
+     * Delete a voucher
+     *
+     * @param int $id [id of voucher]
+     *
+     * @return Reponse
+     */
+    public function destroy($id)
+    {
+        $voucher = $this->voucherRepository->find($id);
+        if (empty($voucher)) {
+            Session::flash('msg', trans('voucher.voucher_not_found'));
+            return redirect(route('voucher.index'));
+        }
+        $this->voucherRepository->delete($id);
+        Session::flash('msg', trans('voucher.delete_voucher_successfully'));
+        return redirect(route('voucher.index'));
+    }
+
+    /**
+     * Edit a voucher
+     *
+     * @param int $id [id of voucher]
+     *
+     * @return Reponse
+     */
+    public function edit($id)
+    {
+        $voucher = $this->voucherRepository->find($id);
+        return view('admin.voucher.edit', compact('voucher'));
+    }
+
+    /**
+     * Update a voucher
+     *
+     * @param CreateVoucherRequest $request [validate values input]
+     * @param int                  $id      [id of voucher]
+     *
+     * @return Reponse
+     */
+    public function update(CreateVoucherRequest $request, $id)
+    {
+        $voucher = $this->voucherRepository->find($id);
+        if (empty($voucher)) {
+            Session::flash('msg', trans('voucher.voucher_not_found'));
+            return redirect(route('voucher.index'));
+        }
+        $inputs = $request->only('name', 'point', 'value');
+        $voucher = $this->voucherRepository->update($inputs, $id);
+        Session::flash('msg', trans('voucher.update_voucher_successfully'));
+        return redirect(route('voucher.index'));
+    }
 }

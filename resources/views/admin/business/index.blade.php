@@ -17,5 +17,6 @@
                 @include('admin.business.table')
             </div>
         </div>
+        {!! $businesses->render(); !!}
     </div>
 @endsection
