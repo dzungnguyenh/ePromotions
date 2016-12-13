@@ -13,4 +13,5 @@ return [
     'all_rights_reserved' => 'All rights reserved.',
     'date_format' => 'M. Y',
     'date_format_show' => 'd-m-Y H:i:s',
+    'no' => 'No',
 ];
