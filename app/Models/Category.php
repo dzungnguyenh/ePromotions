@@ -52,7 +52,7 @@ class Category extends Model
         }
 
         $traverse = function ($categories, $prefix = '*') use (&$traverse, &$results) {
-            foreach ($categories as $key => $category) {
+            foreach ($categories as $category) {
                 $category->name = PHP_EOL.$prefix.' '.$category->name;
                 $results[$category->id] =$category->name;
                 $traverse($category->children, $prefix.'*');
