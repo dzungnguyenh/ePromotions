@@ -32,4 +32,5 @@ return [
     'update_user_successfully' => 'Your information has been successfully updated!',
     'update_profile_error' => 'Can not update your information',
     'error_when_update' => 'Error when update',
+    'id_user' => 'ID User',
 ];
