@@ -17,7 +17,7 @@ return [
   'title_user' => 'USER MANAGEMENT',
   'user' => 'USER',
   'bussiness' => 'BUSSINESS',
-  'view_list' => 'Lists',
+  'view_list' => 'List',
   'create_new' => 'Create',
   'point' => 'POINT',
   'product' => 'PRODUCT',
@@ -25,4 +25,5 @@ return [
   'promotion' => 'PROMOTION',
   'order' => 'ORDER',
   'voucher' => 'VOUCHER',
+  'category' => 'CATEGORY',
 ];
