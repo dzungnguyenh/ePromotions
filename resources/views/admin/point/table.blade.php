@@ -12,11 +12,11 @@
             <td>{!! $point->share !!}</td>
             <td>{!! $point->book !!}</td>
             <td>
-                {!! Form::open([ 'route' => ['point.destroy', $point->id], 'method' => 'delete', 'id' => 'form-delete-point']) !!}
+                {!! Form::open([ 'route' => ['point.destroy', $point->id], 'method' => 'delete', 'id' => 'form-delete-point-'.$point->id]) !!}
                 <div class='btn-group'>
                     <a href="{!! route('point.show', [$point->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                     <a href="{!! route('point.edit', [$point->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs btn-delete', 'alt' => trans('message.are_you_sure')]) !!}
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs btn-delete-point', 'alt' => trans('message.are_you_sure'), 'id' => $point->id]) !!}
                 </div>
                 {!! Form::close() !!}
             </td>
