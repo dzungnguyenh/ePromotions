@@ -9,7 +9,7 @@
     <th>Action</th>
   </thead>
   <tbody>
-    @foreach($user as $user)
+    @foreach($users as $user)
     <tr>
       <td>{!! $user->id !!}</td>
       <td>{!! $user->name !!}</td>
@@ -18,12 +18,13 @@
       <td>{!! $user->phone !!}</td>
       <td>{!! $user->address !!}</td>
         <td>
-                {!! Form::open([ 'route' => ['user.destroy', $user->id], 'method' => 'delete', 'id' => 'form-delete-point']) !!}
+                {!! Form::open([ 'route' => ['users.destroy', $user->id], 'method' => 'delete', 'id' => 'form-delete-user-'.$user->id]) !!}
                 <div class='btn-group'>
                     <a href="" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs btn-delete', 'alt' => trans('message.are_you_sure')]) !!}
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs btn-delete-user', 'alt' => trans('user.delete_a_user'), 'name' => $user->name, 'id' => $user->id]) !!}
                 </div>
                 {!! Form::close() !!}
+                
             </td>
     </tr>
     @endforeach

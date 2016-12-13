@@ -32,7 +32,26 @@ class UserController extends Controller
     {
         $sort = config('constants.USER');
         $role = config('constants.ROLEUSER');
-        $user = $this->userRepository->getUser($role);
-        return view('admin.user.index', compact('user', 'sort'));
+        $users = $this->userRepository->getUser($role);
+        return view('admin.user.index', compact('users', 'sort'));
+    }
+
+    /**
+     * Delete a user
+     *
+     * @param int $id description
+     *
+     * @return Reponse
+     */
+    public function destroy($id)
+    {
+        $user = $this->userRepository->find($id);
+        if (empty($user)) {
+            Session::flash('msg', trans('user.not_uset'));
+            return redirect(route('users.index'));
+        }
+        $this->userRepository->delete($id);
+        Session::flash('msg', trans('user.delete_sucessfully'));
+        return redirect(route('users.index'));
     }
 }
