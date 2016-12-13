@@ -30,7 +30,6 @@ class UserController extends Controller
    */
     public function index()
     {
-
         $sort = config('constants.USER');
         $role = config('constants.ROLEUSER');
         $user = $this->userRepository->getUser($role);
