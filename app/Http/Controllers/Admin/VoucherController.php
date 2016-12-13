@@ -67,4 +67,23 @@ class VoucherController extends Controller
 
         return redirect(route('voucher.index'));
     }
+
+    /**
+     * Delete a voucher
+     *
+     * @param int $id [id of voucher]
+     *
+     * @return Reponse
+     */
+    public function destroy($id)
+    {
+        $voucher = $this->voucherRepository->find($id);
+        if (empty($voucher)) {
+            Session::flash('msg', trans('voucher.voucher_not_found'));
+            return redirect(route('voucher.index'));
+        }
+        $this->voucherRepository->delete($id);
+        Session::flash('msg', trans('voucher.delete_voucher_successfully'));
+        return redirect(route('voucher.index'));
+    }
 }

@@ -23,7 +23,8 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 {
-    Route::resource('voucher', 'Admin\VoucherController');
+    Route::resource('voucher', 'Admin\VoucherController', ['except' => ['delete']]);
+    Route::get('voucher/del/{id}', ['uses' => 'Admin\VoucherController@destroy', 'as' => 'admin.voucher.del']);
 });
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' =>'business'], function(){
 	Route::resource('event', 'Business\EventController');

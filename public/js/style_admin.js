@@ -35,3 +35,13 @@ $('#btn-product-update').on('click',function(event){
     }
     return false;
 });
+
+/**
+ * Accept delete a voucher
+ * @param  Object objButton []
+ * @return boolean
+ */
+$(".btn-delete-voucher").on('click', function(event){
+    var confirmMsg = $(this).attr('alt');
+    return confirm(confirmMsg);
+})
