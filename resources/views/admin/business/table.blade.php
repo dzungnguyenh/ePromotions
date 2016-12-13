@@ -16,10 +16,10 @@
             <td>{!! $business->phone !!}</td>
             <td>{!! $business->address !!}</td>
             <td>
-                {!! Form::open() !!}
+                {!! Form::open([ 'route' => ['business.destroy', $business->id], 'method' => 'delete', 'id' => 'form-delete-business']) !!}
                 <div class='btn-group'>
-                    <a href="#" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs btn-delete', 'alt' => trans('message.are_you_sure')]) !!}
+                    <a href="{!! route('business.show', [$business->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs btn-delete-business', 'alt' => trans('business.delete_a_business'), 'name' => $business->name]) !!}
                 </div>
                 {!! Form::close() !!}
             </td>
