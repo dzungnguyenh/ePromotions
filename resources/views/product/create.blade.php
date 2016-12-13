@@ -2,7 +2,7 @@
 
 @section('main-content')
     <section class="content">
-
+    <h2>{{trans('product.create_product')}}</h2>
     <!-- Your Page Content Here -->
     {!! Form::open([ 'route' => 'product.store', 'files' =>true,]) !!}
     {{ csrf_field() }}

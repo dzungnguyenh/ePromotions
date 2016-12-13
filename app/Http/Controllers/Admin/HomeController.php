@@ -27,12 +27,4 @@ class HomeController extends Controller
     {
         return view('admin.index');
     }
-
-    // public function destroy($id)
-    // {
-    //     $user = $this->userRepostitory->find($id);
-    //     if (empty($point)) {
-    //         Session::flash('msg',)
-    //     }
-    // }
 }

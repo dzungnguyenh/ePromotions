@@ -3,6 +3,7 @@
   return [
     'ROLEADMIN' => '1',
     'ROLEBUSSINESS' => '2',
+    'ROLEUSER' => '3',
     'ROLE_ADMIN' => 'Admin',
     'ROLE_BUSINESS' => 'Business',
     'ROLE_USER' => 'User',
@@ -11,4 +12,5 @@
     'STEP_POINT' => '1',
     'LENGTHTOKEN' => '40',
     'ROLEUSER' => '2',
+    'NO' => '1',
 ];

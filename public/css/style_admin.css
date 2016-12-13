@@ -35,8 +35,48 @@
 .product-index form{
   display: inline;
 }
+#product-up{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
 .product-index button{
   width:25px;
   height: :25px;
   padding: 1px;
 }
+img.update-img{
+  width: 20%;
+  height: 20%;
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+  display: block;
+}
+#product-up .lbl-img{
+  vertical-align: top;
+}
+.product-index{
+  height: 70%;
+  width: 100%;
+}
+.product-index tr{
+  height: 50px;
+}
+.product-img{
+  height: 20%;
+  width: 20%;
+}
+.product-img img{
+  width: 50%;
+  height:auto;
+}
+.product-index a{
+  color:none;
+  color:white;
+}
+
+
+
+
+

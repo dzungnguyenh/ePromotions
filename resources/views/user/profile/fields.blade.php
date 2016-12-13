@@ -23,7 +23,7 @@
     {!! Form::label('avatar', trans('user.avatar')) !!}
     </div>
     <div class="form-group col-sm-8">
-    <img src="{{ Request::root() }}/image/avatar/{{ Auth::user()->avatar }}" class="img-circle avatar" id="output">
+    <img src="{{ config('image.path_avatar')}}/{{Auth::user()->avatar }}" class="img-circle avatar" id="output">
     {!! Form::file('avatar', array('id' => 'load-avatar')) !!}
     </div>
 </div>
