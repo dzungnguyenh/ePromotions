@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Business\BusinessRepository;
+use Session;
 
 class BusinessController extends Controller
 {
@@ -37,5 +38,41 @@ class BusinessController extends Controller
         $businesses = $this->businessRepository->getBusiness($role);
 
         return view('admin.business.index', compact('businesses', 'sort'));
+    }
+
+    /**
+     * Show a business
+     *
+     * @param int $id [id of business]
+     *
+     * @return Reponse
+     */
+    public function show($id)
+    {
+        $business = $this->businessRepository->find($id);
+        if (empty($business)) {
+            Session::flash('msg', trans('business.business_not_found'));
+            return redirect(route('business.index'));
+        }
+        return view('admin.business.show', compact('business'));
+    }
+
+    /**
+     * Delete a business
+     *
+     * @param int $id [id of business]
+     *
+     * @return Reponse
+     */
+    public function destroy($id)
+    {
+        $business = $this->businessRepository->find($id);
+        if (empty($business)) {
+            Session::flash('msg', trans('business.business_not_found'));
+            return redirect(route('business.index'));
+        }
+        $this->businessRepository->delete($id);
+        Session::flash('msg', trans('business.delete_business_successfully'));
+        return redirect(route('business.index'));
     }
 }

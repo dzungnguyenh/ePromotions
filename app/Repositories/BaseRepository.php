@@ -108,4 +108,16 @@ abstract class BaseRepository
     {
         return $this->model->where($attribute, '=', $value)->first($columns);
     }
+
+    /**
+     * Paginate in view
+     *
+     * @param int $limit [limit records per page]
+     *
+     * @return array
+     */
+    public function paginate($limit)
+    {
+        return $this->model->paginate($limit);
+    }
 }

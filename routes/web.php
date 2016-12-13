@@ -18,7 +18,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function(
 {
     Route::resource('point', 'Admin\PointController');
     Route::resource('user', 'Admin\UserController');
-    Route::resource('business', 'Admin\BusinessController');
+    Route::resource('business', 'Admin\BusinessController', [
+    'only' => ['index', 'show', 'destroy']
+]);
+
 });
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
