@@ -19,18 +19,6 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     }
 
     /**
-     * Get all categories
-     *
-     * @return array List of categories
-     */
-    public function all()
-    {
-        $list = $this->model->all()->toTree();
-        $data = Category::recursiveTree($list, false, false);
-        return $data;
-    }
-
-    /**
      * Get all categories only have name
      *
      * @return array List of categories
@@ -65,20 +53,4 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
         $list = $this->model->whereIsRoot()->get()->toTree();
         return $list;
     }
-
-    // /**
-    //  * Update a category
-    //  *
-    //  * @param  array $inputs Array values for update
-    //  * @param  integer $id     Id of category
-    //  *
-    //  * @return Category         Category
-    //  */
-    // public function update($inputs, $id)
-    // {
-    //     // $category = $this->model->find($id);
-    //     $category = $this->model->where('id', $id);
-    //     $category->id = ;
-    //     return $category;
-    // }
 }
