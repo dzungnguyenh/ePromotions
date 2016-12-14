@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Product\ProductRepository;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Repositories\Category\CategoryRepository;
 use Session;
 use DB;
 use App\User;
@@ -15,29 +16,32 @@ use Auth;
 class ProductController extends Controller
 {
     protected $productRepository;
+    protected $categoryRepository;
     
     /**
     * Constructer
     *
-    *@param ProductRepository $productRepository variable
+    *@param ProductRepository  $productRepository  variable
+    *@param CategoryRepository $categoryRepository variable
     *
-    *@return
+    *@return initialized
     */
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository)
     {
         $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
         $this->middleware('business');
     }
 
      /**
-    *Constructer
+    *Constructer redirect to index product page with list product of that user
     *
     *@return index page with variable product contain all data in product table
     */
     public function index()
     {
-        $product = $this->productRepository->all();
-        return view('product.index')->with('listProduct', $product);
+        $listProduct = $this->productRepository->findBy('user_id', Auth::user()->id);
+        return view('product.index')->with('listProduct', $listProduct);
     }
 
     /**
@@ -47,7 +51,8 @@ class ProductController extends Controller
     */
     public function create()
     {
-        return view('product.create');
+        $listCategory = $this->categoryRepository->all()->pluck('category_name', 'id');
+        return view('product.create')->with(['listCategory'=>$listCategory]);
     }
     /**
     * Method save data into product table
@@ -109,7 +114,8 @@ class ProductController extends Controller
             Session::flash('msg', trans('product.product_not_found'));
             return Redirect::route('product');
         } else {
-            return view('product.edit')->with('product', $product);
+            $listCategory = $this->categoryRepository->all()->pluck('category_name', 'id');
+            return view('product.edit')->with(['product' => $product, 'listCategory' => $listCategory]);
         }
     }
 

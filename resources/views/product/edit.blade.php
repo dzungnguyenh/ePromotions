@@ -18,7 +18,7 @@
         <input type="number" name="quantity" class="form-control" value="{{$product->quantity}}">
 
         <label>{{trans('product.category')}}</label>
-        {!! Form::select('category_id', ['1' => 'Fashion', '2' => 'Electric'], $product->category_id, ['class'=>'form-control']) !!}
+        {!! Form::select('category_id', $listCategory , $product->category_id, ['class'=>'form-control']) !!}
 
         <label class="lbl-img control-label">{{trans('product.picture')}}
             <input type="file" name="picture" class="form-control" value="{{ $product->picture }}">

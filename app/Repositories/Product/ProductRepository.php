@@ -111,4 +111,20 @@ class ProductRepository extends BaseRepository
         $file->move($path, $pictureName);
         return $pictureName;
     }
+
+    /**
+    * Method save  file into folder
+    *
+    * @param file $file file get from form.
+    *
+    * @return picture name to save into database
+    */
+    public function get($file)
+    {
+        $now = Carbon::now();
+        $pictureName = $now->toDateTimeString().$file->getClientOriginalName();
+        $path=config('path.picture_product');
+        $file->move($path, $pictureName);
+        return $pictureName;
+    }
 }
