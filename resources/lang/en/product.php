@@ -28,6 +28,7 @@ return [
     'gender' => 'Gender',
     'order' => 'Order',
     'name' => 'Customer',
+    'view_product' => 'View Product',
     
     
 ];
