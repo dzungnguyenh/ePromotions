@@ -45,3 +45,10 @@ Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
 Route::resource('product','Product\ProductController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::resource('promotions', 'Business\PromotionController');
+Route::get('/add_promotion/{id}', 'Business\PromotionController@addPromotion')->name('add_promotion');
