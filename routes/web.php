@@ -13,7 +13,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function()
+Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 {
     Route::resource('point', 'Admin\PointController');
     Route::resource('business', 'Admin\BusinessController');
@@ -32,7 +32,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
     Route::resource('category', 'Category\CategoryController');
 });
 
-Route::group(['middleware' => ['auth', 'admin'], 'prefix' =>'business'], function(){
+Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
+    Route::resource('product','Product\ProductController');
     Route::resource('event', 'Business\EventController');
 });
 
@@ -44,7 +45,7 @@ Route::group(['middleware' => 'auth'], function()
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
-Route::resource('product','Product\ProductController');
+
 
 Auth::routes();
 

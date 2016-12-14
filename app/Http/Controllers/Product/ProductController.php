@@ -8,6 +8,9 @@ use App\Repositories\Product\ProductRepository;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Session;
+use DB;
+use App\User;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -74,7 +77,7 @@ class ProductController extends Controller
     }
 
     /**
-    * Method to show prouct by id
+    * Method to show all detail about product as product_detail, user ordered
     *
     * @param integer $id id of product
     *
@@ -87,7 +90,26 @@ class ProductController extends Controller
             Session::flash('msg', trans('product.product_not_found'));
             return Redirect::route('product');
         } else {
-            return view('product.show')->with('product', $product);
+            $orderDetail=$this->productRepository->orderDetail($id);
+            return view('product.show')->with(['product'=>$product, 'orderDetail'=>$orderDetail]);
+        }
+    }
+    
+    /**
+    * Method redirect to view edit page
+    *
+    * @param integer $id id of product
+    *
+    * @return edit page with product data
+    */
+    public function edit($id)
+    {
+        $product = $this->productRepository->find($id);
+        if (empty($product)) {
+            Session::flash('msg', trans('product.product_not_found'));
+            return Redirect::route('product');
+        } else {
+            return view('product.edit')->with('product', $product);
         }
     }
 
