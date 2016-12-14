@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function()
     Route::resource('user', 'User\UserController');
 });
 
+
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
