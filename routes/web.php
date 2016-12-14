@@ -45,8 +45,6 @@ Route::group(['middleware' => 'auth'], function()
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
