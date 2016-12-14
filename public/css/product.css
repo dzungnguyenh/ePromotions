@@ -1,0 +1,45 @@
+#product-view{
+    border: 1px solid red;
+    height: 100%;
+    width: 100%;
+}
+.product-view-detail a{
+    color:white;
+}
+.detail-cus{
+    height: 50px;
+    border:1px solid black;
+    width: 50px;
+}
+.order-detail{
+    background: #fff;
+    margin:0;
+    padding:0;
+    width: 100%;
+    height: 30px;
+}
+.order-detail div {
+    text-align: left;
+    height: 100%;
+}
+.detail-th{
+    border-bottom:1px solid #333; 
+}
+.detail-th div{
+    font-weight: bold;
+    font-size: 16px;
+}
+.order-detail div button{
+    height: 80%;
+    width: 30px;
+    padding: 1px
+}
+.order-detail div a{
+    color:white;
+}
+.detail-customer{
+    border: 1px solid #333;
+    margin:0 ;
+    height:100px;
+    display: none;
+}

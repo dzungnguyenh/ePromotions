@@ -14,10 +14,12 @@ class CreateBookDetail extends Migration
     public function up()
     {
         Schema::create('book_details', function (Blueprint $table) {
+            $talbe->increments('id');
             $table->integer('quantity');
             $table->integer('book_id');
             $table->integer('product_id');
             $table->float('price');
+            $table->integer('status');
             $table->timestamps();
         });
     }
