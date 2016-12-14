@@ -35,7 +35,7 @@
                                 <i class="glyphicon glyphicon-trash"></i>
                             </button>
                             {{ Form::close() }}
-                        <button class="btn btn-info btn-edit"><a href="{{route('product.show',[$value->id])}}"><i class="glyphicon glyphicon-edit"></i></a></button>
+                        <button class="btn btn-info btn-edit"><a href="{{route('product.edit',[$value->id])}}"><i class="glyphicon glyphicon-edit"></i></a></button>
                     </div>
                 </td>
             </tr>

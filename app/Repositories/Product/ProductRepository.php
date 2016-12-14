@@ -5,6 +5,7 @@ namespace App\Repositories\Product;
 use App\Repositories\BaseRepository;
 use App\Models\Product;
 use Carbon\Carbon;
+use DB;
 
 class ProductRepository extends BaseRepository
 {
@@ -50,6 +51,23 @@ class ProductRepository extends BaseRepository
     }
 
     /**
+    * Method to get all data order_detail, customer_detail by id_product
+    *
+    * @param integer $id id of product
+    *
+    * @return all data order_detail, customer_detail
+    */
+    public function orderDetail($id)
+    {
+        return DB::table('books')
+        ->join('book_details', 'books.id', '=', 'book_details.book_id')
+        ->join('user', 'user.id', '=', 'books.user_id')
+        ->where('book_details.product_id', $id)
+        ->select('*')
+        ->get();
+    }
+
+    /**
     * Method to update product
     *
     * @param request $request data from form
@@ -86,6 +104,22 @@ class ProductRepository extends BaseRepository
     * @return picture name to save into database
     */
     public function saveFile($file)
+    {
+        $now = Carbon::now();
+        $pictureName = $now->toDateTimeString().$file->getClientOriginalName();
+        $path=config('path.picture_product');
+        $file->move($path, $pictureName);
+        return $pictureName;
+    }
+
+    /**
+    * Method save  file into folder
+    *
+    * @param file $file file get from form.
+    *
+    * @return picture name to save into database
+    */
+    public function get($file)
     {
         $now = Carbon::now();
         $pictureName = $now->toDateTimeString().$file->getClientOriginalName();

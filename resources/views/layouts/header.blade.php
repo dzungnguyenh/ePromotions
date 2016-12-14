@@ -20,6 +20,7 @@
   <script type="text/javascript" src="{{asset('/bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
   <!-- customer -->
   <link rel="stylesheet" href="{{asset('/css/style_admin.css')}}">
+  <link rel="stylesheet" href="{{asset('/css/product.css')}}">
 
 </head>
 

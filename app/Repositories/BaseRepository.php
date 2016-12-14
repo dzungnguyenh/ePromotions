@@ -100,13 +100,12 @@ abstract class BaseRepository
     *
     * @param string $attribute Name field table.
     * @param string $value     Value of field table.
-    * @param array  $columns   Name field in table
     *
     * @return mixed
     */
-    public function findBy($attribute, $value, $columns = array('*'))
+    public function findBy($attribute, $value)
     {
-        return $this->model->where($attribute, '=', $value)->first($columns);
+        return $this->model->where($attribute, '=', $value)->get();
     }
 
     /**
