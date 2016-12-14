@@ -27,7 +27,7 @@
                 <td>
                     <div class="row action">
                         <button class="btn btn-info btn-edit"><a href="{{ route ('add_promotion', $value->id )}}"><i class="glyphicon glyphicon-gift"></i></a></button>
-                        <button class="btn btn-success btn-view view-product"><i class="glyphicon glyphicon-eye-open"></i>
+                        <button class="btn btn-success btn-view view-product"><a href="{{route('product.show', [$value->id])}}"><i class="glyphicon glyphicon-eye-open"></i></a></button>
                         </button>
                         {{ Form::open([ 'method' => 'delete', 'route' => ['product.destroy', $value->id],'class'=>'form-delete-product' ]) }}
                             {{ csrf_field() }}
