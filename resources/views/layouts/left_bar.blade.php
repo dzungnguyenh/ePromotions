@@ -48,7 +48,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{!! url('admin/user') !!}">{!! trans('left_bar.view_list') !!}</a></li>
+          <li><a href="{!! url('admin/users') !!}">{!! trans('left_bar.view_list') !!}</a></li>
           <li><a href="#">{!! trans('left_bar.create_new') !!}</a></li>
         </ul>
       </li>

@@ -70,4 +70,17 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         }
         return $fileName;
     }
+
+    /**
+     *Get list useer
+     *
+     *@param int $role description
+     *
+     *@return array
+     */
+    public function getUser($role)
+    {
+        $data = User::where('role_id', $role)->get();
+        return $data;
+    }
 }

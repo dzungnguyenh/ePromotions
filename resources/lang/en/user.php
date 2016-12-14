@@ -33,4 +33,8 @@ return [
     'update_profile_error' => 'Can not update your information',
     'error_when_update' => 'Error when update',
     'id_user' => 'ID User',
+    'role' => 'Role',
+    'delete_a_user' => 'Are you sure ?',
+    'not_user' => 'User not found',
+    'delete_successfully' => 'Deleted user successfully!'
 ];

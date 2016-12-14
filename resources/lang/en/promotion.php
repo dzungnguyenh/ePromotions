@@ -1,0 +1,23 @@
+<?php
+return [
+    'create_promotion_successful' => 'Successfully stored promotion!',
+    'delete_promotion_successful' => 'Successfully deleted promotion!',
+    'update_promotion_successful' => 'Successfully updated promotion!',
+    'are_you_sure_delete' => 'Are you sure delete?',
+    'id' => 'ID',
+    'title' => 'Title',
+    'description' => 'Description',
+    'percent' => 'Percent',
+    'quantity' => 'Quantity',
+    'product_id' => 'Product id',
+    'date_start' => 'Start date',
+    'uploaded_at' => 'Uploaded at',
+    'date_end' => 'End date',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'edit_page' => 'Edit Promotion',
+    'create_page' => 'Add New Promotion',
+    'list_page' => 'List Promotion',
+    'submit' => 'Submit Now',
+    'clear' => 'Clear Form',
+];
