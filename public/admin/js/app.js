@@ -3,12 +3,11 @@
  * @param  Object objButton []
  * @return boolean
  */
-$(".btn-delete-point").on('click', function(event){
+$(".btn-delete").on('click', function(event){
     event.preventDefault();
-    var id = $(this).attr('id');
     var confirmMsg = $(this).attr('alt');
     if (confirm(confirmMsg)){
-        $('#form-delete-point-' + id).submit();
+        $('#form-delete-point').submit();
     }else{
         return false;
     }
@@ -50,6 +49,22 @@ $(".btn-delete-category").on('click', function(event){
     var confirmMsg = $(this).attr('name') + $(this).attr('alt');
     if (confirm(confirmMsg)){
         $('#form-delete-category-' + id).submit();
+    }else{
+        return false;
+    }
+})
+
+/**
+ * Delete a user
+ *
+ * @return boolean
+ */
+$(".btn-delete-user").on('click', function(event){
+    event.preventDefault();
+    var id = $(this).attr('id');
+    var confirmMsg = $(this).attr('name') + $(this).attr('alt');
+    if (confirm(confirmMsg)){
+        $('#form-delete-user-' + id).submit();
     }else{
         return false;
     }
