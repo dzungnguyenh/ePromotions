@@ -26,8 +26,8 @@
                 <td class="product-img"><img src="{{asset(config('path.picture_product').'/'.$value->picture)}}"></td>
                 <td>
                     <div class="row action">
-                        <button class="btn btn-success btn-view view-product"><a href="{{route('product.show', [$value->id])}}"><i class="glyphicon glyphicon-eye-open"></i></a>
-                        </button>
+                    
+
                         {{ Form::open([ 'method' => 'delete', 'route' => ['product.destroy', $value->id],'class'=>'form-delete-product' ]) }}
                             {{ csrf_field() }}
                             <button type="submit" alt="{{trans('product.are_you_sure_delete')}}" class="delete-product btn btn-danger">
