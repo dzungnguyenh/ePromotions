@@ -14,7 +14,7 @@ class CreateBookDetail extends Migration
     public function up()
     {
         Schema::create('book_details', function (Blueprint $table) {
-            $table->increment('id');
+            $table->increments('id');
             $table->integer('quantity');
             $table->integer('book_id');
             $table->integer('product_id');
