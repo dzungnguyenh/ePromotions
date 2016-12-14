@@ -3,7 +3,6 @@
     <th>{!! trans('user.id_user') !!}</th>
     <th>{!! trans('user.name') !!}</th>
     <th>{!! trans('user.email') !!}</th>
-    <th>{!! trans('user.gender') !!}</th>
     <th>{!! trans('user.phone') !!}</th>
     <th>{!! trans('user.address') !!}</th>
     <th>Action</th>
@@ -14,17 +13,15 @@
       <td>{!! $user->id !!}</td>
       <td>{!! $user->name !!}</td>
       <td>{!! $user->email !!}</td>
-      <td>{!! $user->gender !!}</td>
       <td>{!! $user->phone !!}</td>
       <td>{!! $user->address !!}</td>
         <td>
                 {!! Form::open([ 'route' => ['users.destroy', $user->id], 'method' => 'delete', 'id' => 'form-delete-user-'.$user->id]) !!}
                 <div class='btn-group'>
-                    <a href="" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('users.show', [$user->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs btn-delete-user', 'alt' => trans('user.delete_a_user'), 'name' => $user->name, 'id' => $user->id]) !!}
                 </div>
                 {!! Form::close() !!}
-                
             </td>
     </tr>
     @endforeach

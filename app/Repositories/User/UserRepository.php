@@ -80,7 +80,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
      */
     public function getUser($role)
     {
-        $data = User::where('role_id', $role)->get();
+        $data = User::where('role_id', $role)->paginate(trans('business.limit'));
         return $data;
     }
 }

@@ -38,7 +38,9 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' =>'business'], functio
 
 Route::group(['middleware' => 'auth'], function()
 {
-    Route::resource('user', 'User\UserController');
+    Route::resource('user', 'User\UserController' , [
+        'only' => ['index', 'edit', 'update']
+    ]);
 });
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
