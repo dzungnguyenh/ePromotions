@@ -29,8 +29,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
     Route::get('voucher/del/{id}', ['uses' => 'Admin\VoucherController@destroy', 'as' => 'admin.voucher.del']);
     Route::resource('category', 'Category\CategoryController');
 });
-
-Route::group(['middleware' => ['auth', 'admin'], 'prefix' =>'business'], function(){
+Route::group(['middleware' => ['business'], 'prefix' =>'business'], function(){
 	Route::resource('event', 'Business\EventController');
 });
 
@@ -38,6 +37,7 @@ Route::group(['middleware' => 'auth'], function()
 {
     Route::resource('user', 'User\UserController');
 });
+
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
