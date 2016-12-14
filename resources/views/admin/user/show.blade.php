@@ -27,7 +27,7 @@
                     <!-- Birthday Field -->
                     <p class="form-group">
                         {!! Form::label('birthday', trans('user.dob')) !!}
-                        {!! $user->email !!}
+                        {!! $user->dob !!}
                     </p>
                     <!-- Phone Field -->
                     <p class="form-group">
