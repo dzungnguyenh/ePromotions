@@ -26,7 +26,7 @@
                 <td class="product-img"><img src="{{asset(config('path.picture_product').'/'.$value->picture)}}"></td>
                 <td>
                     <div class="row action">
-                        <button class="btn btn-success btn-view view-product"><i class="glyphicon glyphicon-eye-open"></i>
+                        <button class="btn btn-success btn-view view-product"><a href="{{route('product.show', [$value->id])}}"><i class="glyphicon glyphicon-eye-open"></i></a>
                         </button>
                         {{ Form::open([ 'method' => 'delete', 'route' => ['product.destroy', $value->id],'class'=>'form-delete-product' ]) }}
                             {{ csrf_field() }}
@@ -34,7 +34,7 @@
                                 <i class="glyphicon glyphicon-trash"></i>
                             </button>
                             {{ Form::close() }}
-                        <button class="btn btn-info btn-edit"><a href="{{route('product.show',[$value->id])}}"><i class="glyphicon glyphicon-edit"></i></a></button>
+                        <button class="btn btn-info btn-edit"><a href="{{route('product.edit',[$value->id])}}"><i class="glyphicon glyphicon-edit"></i></a></button>
                     </div>
                 </td>
             </tr>

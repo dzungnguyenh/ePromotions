@@ -5,6 +5,7 @@ namespace App\Repositories\Product;
 use App\Repositories\BaseRepository;
 use App\Models\Product;
 use Carbon\Carbon;
+use DB;
 
 class ProductRepository extends BaseRepository
 {
@@ -47,6 +48,23 @@ class ProductRepository extends BaseRepository
                 'picture'=>$pictureName,
                 'category_id'=>$request->category_id,
             ]);
+    }
+
+    /**
+    * Method to get all data order_detail, customer_detail by id_product
+    *
+    * @param integer $id id of product
+    *
+    * @return all data order_detail, customer_detail
+    */
+    public function orderDetail($id)
+    {
+        return DB::table('books')
+        ->join('book_details', 'books.id', '=', 'book_details.book_id')
+        ->join('user', 'user.id', '=', 'books.user_id')
+        ->where('book_details.product_id', $id)
+        ->select('*')
+        ->get();
     }
 
     /**
