@@ -1,6 +1,6 @@
-@extends('layouts.app')
-@section('content')
-<div class="container">
+@extends('layouts.template_admin')
+@section('main-content')
+<div class="container list-promotion">
 <div class="page-header">
   <h3>{{ trans('promotion.list_page') }}</h3>
 </div>
@@ -52,6 +52,6 @@
     @endforeach
     </tbody>
 </table>
-<h4><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><a href="{{ route('promotions.create') }}"> Add new promotion</a></h4>
+
 </div>
 @stop
