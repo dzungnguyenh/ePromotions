@@ -76,6 +76,19 @@
           <li><a href="{!! url('admin/voucher/create') !!}">{!! trans('left_bar.create_new') !!}</a></li>
         </ul>
       </li>
+
+      <li class="treeview">
+        <a href="#"><i class="fa fa-table"></i> <span>{!! trans('left_bar.category') !!}</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{!! url('admin/category') !!}">{!! trans('left_bar.view_list') !!}</a></li>
+          <li><a href="{!! url('admin/category/create') !!}">{!! trans('left_bar.create_new') !!}</a></li>
+        </ul>
+      </li>
+
     </ul>
 
     @else
@@ -127,7 +140,6 @@
           <li><a href="{{route('product.index')}}">{!! trans('product.view_product') !!}</a></li>
         </ul>
       </li>
-      
       @endif
 
     </ul>
