@@ -29,6 +29,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
     Route::get('voucher/del/{id}', ['uses' => 'Admin\VoucherController@destroy', 'as' => 'admin.voucher.del']);
     Route::resource('category', 'Category\CategoryController');
 });
+
 Route::group(['middleware' => ['business'], 'prefix' =>'business'], function(){
 	Route::resource('event', 'Business\EventController');
 });
