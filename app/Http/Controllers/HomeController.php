@@ -62,9 +62,9 @@ class HomeController extends Controller
     public function index()
     {
         $categoriies = $this->categoryRepository->allRoot();
-        $promotions = $this->promotionRepository->all()->take(-4);
-        $products = $this->productRepository->all()->take(-4);
-        $events = $this->eventRepository->all()->take(-4);
+        $promotions = $this->promotionRepository->all()->take(config('constants.LIMIT_RECORD'));
+        $products = $this->productRepository->all()->take(config('constants.LIMIT_RECORD'));
+        $events = $this->eventRepository->all()->take(config('constants.LIMIT_RECORD'));
         return view('index.index', compact('categoriies', 'promotions', 'products', 'events'));
     }
 }
