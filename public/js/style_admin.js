@@ -45,3 +45,19 @@ $(".btn-delete-voucher").on('click', function(event){
     var confirmMsg = $(this).attr('alt');
     return confirm(confirmMsg);
 })
+
+
+/**
+ * Accept delete a event
+ *
+ * @return bollean
+ */
+$(".btn-delete-events").on('click', function(event){
+    event.preventDefault();
+    var confirmMsg = $(this).attr('alt');
+    if (confirm(confirmMsg)){
+        $('#delete-event').submit();
+    }else{
+        return false;
+    }
+})

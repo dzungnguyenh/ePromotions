@@ -93,7 +93,7 @@ class ProductController extends Controller
         $product = $this->productRepository->find($id);
         if (empty($product)) {
             Session::flash('msg', trans('product.product_not_found'));
-            return Redirect::route('product');
+            return redirect()->route('product');
         } else {
             $orderDetail=$this->productRepository->orderDetail($id);
             return view('product.show')->with(['product'=>$product, 'orderDetail'=>$orderDetail]);
@@ -112,7 +112,7 @@ class ProductController extends Controller
         $product = $this->productRepository->find($id);
         if (empty($product)) {
             Session::flash('msg', trans('product.product_not_found'));
-            return Redirect::route('product');
+            return redirect()->route('product.index');
         } else {
             $listCategory = $this->categoryRepository->all()->pluck('category_name', 'id');
             return view('product.edit')->with(['product' => $product, 'listCategory' => $listCategory]);
@@ -131,6 +131,6 @@ class ProductController extends Controller
     {
         $this->productRepository->store($request, $id);
         Session::flash('msg', trans('product.update_product_successful'));
-        return redirect('product');
+        return redirect()->route('product.index');
     }
 }

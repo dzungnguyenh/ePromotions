@@ -18,7 +18,7 @@ class CreateVouchersTable extends Migration
             $table->string('name',255);
             $table->integer('point');
             $table->float('value');
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }
