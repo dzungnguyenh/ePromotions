@@ -14,5 +14,11 @@ return [
   */
 
   'all_right' => ' All rights reserved.',
-  'copy_right' => 'Copyright &copy; 2016 '
+  'copy_right' => 'Copyright &copy; 2016 ',
+  'contact' => 'CONTACT',
+  'contact_with_us' => 'Contact us and we will get back to you within 24 hours.',
+  'address' => ' Asiantech, Vietnamese',
+  'phone' => ' +00 1515151515',
+  'email' => ' asiantech@gmail.com',
+  'send' => 'Send',
 ];

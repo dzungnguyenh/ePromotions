@@ -10,9 +10,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 {
     Route::resource('point', 'Admin\PointController');

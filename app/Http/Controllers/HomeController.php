@@ -3,26 +3,68 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Category\CategoryRepository;
+use App\Repositories\Promotion\PromotionRepository;
+use App\Repositories\Product\ProductRepository;
+use App\Repositories\Event\EventRepository;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * The CategoryRepository instance
      *
-     * @return void
+     * @var CategoryRepository
      */
-    public function __construct()
+    protected $categoryRepository;
+
+    /**
+     * The PromotionRepository instance
+     *
+     * @var PromotionRepository
+     */
+    protected $promotionRepository;
+
+    /**
+     * The ProductRepository instance
+     *
+     * @var ProductRepository
+     */
+    protected $productRepository;
+
+    /**
+     * The EventRepository instance
+     *
+     * @var EventRepository
+     */
+    protected $eventRepository;
+    
+   /**
+    * Create a new controller instance.
+    *
+    * @param CategoryRepository  $categoryRepository  [description]
+    * @param PromotionRepository $promotionRepository [description]
+    * @param ProductRepository   $productRepository   [description]
+    * @param EventRepository     $eventRepository     [description]
+    */
+    public function __construct(CategoryRepository $categoryRepository, PromotionRepository $promotionRepository, ProductRepository $productRepository, EventRepository $eventRepository)
     {
-        $this->middleware('auth');
+        $this->categoryRepository = $categoryRepository;
+        $this->promotionRepository = $promotionRepository;
+        $this->productRepository = $productRepository;
+        $this->eventRepository = $eventRepository;
     }
 
     /**
-    * Show the application admin dashboard.
-    *
-    * @return \Illuminate\Http\Response
-    */
+     * Display information in index page
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return view('admin.index');
+        $categoriies = $this->categoryRepository->allRoot();
+        $promotions = $this->promotionRepository->all()->take(-4);
+        $products = $this->productRepository->all()->take(-4);
+        $events = $this->eventRepository->all()->take(-4);
+        return view('index.index', compact('categoriies', 'promotions', 'products', 'events'));
     }
 }
