@@ -30,5 +30,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-offset-5 col-sm-2">
     {!! Form::submit( trans('label.save'), ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('point.index') !!}" class="btn btn-default">{!!  trans('label.back') !!}</a>
+    <a href="{!! route('voucher.index') !!}" class="btn btn-default">{!!  trans('label.back') !!}</a>
 </div>
