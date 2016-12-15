@@ -45,3 +45,13 @@ $(".btn-delete-voucher").on('click', function(event){
     var confirmMsg = $(this).attr('alt');
     return confirm(confirmMsg);
 })
+
+/**
+ * Display category in selectbox
+ */
+$('#mydropdownmenu > li').click(function(e){
+    e.preventDefault();
+    var selected = $(this).text();
+    $('#mydropwodninput').val(selected);
+    $('#mydropdowndisplay').text(selected);
+})
