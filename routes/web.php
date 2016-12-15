@@ -35,6 +35,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
     Route::resource('product','Product\ProductController');
     Route::resource('event', 'Business\EventController');
+    Route::resource('promotions', 'Business\PromotionController');
+    Route::get('/add_promotion/{id}', 'Business\PromotionController@addPromotion')->name('add_promotion');
 });
 
 Route::group(['middleware' => 'auth'], function()
@@ -50,5 +52,3 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('promotions', 'Business\PromotionController');
-Route::get('/add_promotion/{id}', 'Business\PromotionController@addPromotion')->name('add_promotion');
