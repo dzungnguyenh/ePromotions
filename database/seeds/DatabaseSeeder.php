@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(VoucherTableSeeder::class);
         $this->call(ProductTableSeeder::class);
         $this->call(PromotionTableSeeder::class);
+        $this->call(ExchangeVoucherTableSeeder::class);
     }
 }

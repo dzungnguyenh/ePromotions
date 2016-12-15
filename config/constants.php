@@ -12,5 +12,6 @@
     'STEP_POINT' => '1',
     'LENGTHTOKEN' => '40',
     'NO' => '1',
+    'ZERO' => '0',
     'LIMIT' => '15',
 ];

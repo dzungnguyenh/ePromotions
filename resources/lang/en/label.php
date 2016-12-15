@@ -19,4 +19,5 @@ return [
     'vote' => ' Vote',
     'join' => ' Join',
     'load_more' => ' LOAD MORE +',
+    'space' => ' | ',
 ];
