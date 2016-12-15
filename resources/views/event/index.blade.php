@@ -1,8 +1,8 @@
-@extends ('layouts.template_admin')
+@extends ('layouts.template_business')
 
-@section('main-content')
+@section ('main-content')
     <section class="content-header">
-        <h1 class="pull-left">{!! trans('left_bar.user') !!}</h1>
+        <h1 class="pull-left">{!! trans('event.event') !!}</h1>
     </section>
     <div class="content">
         <div class="clearfix"></div>
@@ -11,12 +11,13 @@
                 {{ Session::get('msg') }}
             </div>
         @endif
+        <a href="{!! route('event.create') !!}">
+            <h3><span class="glyphicon glyphicon-plus"></span></h3>
+        </a>
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                @include('admin.user.table')
+                @include('event.table')
             </div>
         </div>
-        {!! $users->render(); !!}
-    </div>
 @endsection
