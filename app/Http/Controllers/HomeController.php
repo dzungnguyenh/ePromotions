@@ -57,7 +57,7 @@ class HomeController extends Controller
     /**
      * Display information in index page
      *
-     * @return Reponse
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {

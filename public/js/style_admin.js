@@ -53,6 +53,7 @@ $('#mydropdownmenu > li').click(function(e){
     var selected = $(this).text();
     $('#mydropwodninput').val(selected);
     $('#mydropdowndisplay').text(selected);
+})
 
 /**
  * Accept delete a event
