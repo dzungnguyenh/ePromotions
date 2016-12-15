@@ -36,5 +36,6 @@ return [
     'role' => 'Role',
     'delete_a_user' => 'Are you sure ?',
     'not_user' => 'User not found',
-    'delete_successfully' => 'Deleted user successfully!'
+    'delete_successfully' => 'Deleted user successfully!',
+    'detial_user' => 'Detial user'
 ];
