@@ -6,6 +6,7 @@ return [
     'value' => 'Value',
     'user' => 'User',
     'edit_voucher' => 'Edit Voucher',
+    'show_detail' => 'Detail Voucher',
     'create_voucher_successful' => 'Created voucher successfully!',
     'voucher_not_found' => 'Voucher not found',
     'delete_voucher_successfully' => 'Deleted voucher successfully!',

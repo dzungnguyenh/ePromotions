@@ -75,8 +75,18 @@ img.update-img{
   color:none;
   color:white;
 }
-
-
+.user-left{
+  float:left;
+  width:45%;
+  padding-left:10px;
+}
+.user-right{
+  float:right;
+  width:45%;
+}
+.list-promotion{
+  width: 100%;
+}
 
 
 

@@ -79,23 +79,4 @@ class UserController extends Controller
         Session::flash('msg', trans('user.update_user_successfully'));
         return redirect(route('user.index'));
     }
-
-    /**
-     * Delete a user
-     *
-     * @param int $id description
-     *
-     * @return Reponse
-     */
-    public function destroy($id)
-    {
-        $user = $this->userRepository->find($id);
-        if (empty($user)) {
-            Session::flash('msg', trans('user.not_uset'));
-            return redirect(route('user.index'));
-        }
-        $this->userRepository->delete($id);
-        Session::flash('msg', trans('user.delete_sucessfully'));
-        return redirect()->route('user.index');
-    }
 }

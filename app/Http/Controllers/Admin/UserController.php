@@ -54,4 +54,32 @@ class UserController extends Controller
         Session::flash('msg', trans('user.delete_sucessfully'));
         return redirect(route('users.index'));
     }
+
+    /**
+     * Show detail a user
+     *
+     * @param int $id user
+     *
+     * @return table
+     */
+    public function show($id)
+    {
+        $user = $this->userRepository->find($id);
+        if (empty($user)) {
+            Sesion::flash('msg', trans('user.not_user'));
+            return redirect(route('users.index'));
+        }
+        switch ($user['gender']) {
+            case '1':
+                $user['gender'] = "Male";
+                break;
+            case '2':
+                $user['gender'] = "Female";
+                break;
+            case '3':
+                $user['gender'] = "Other";
+                break;
+        }
+        return view('admin.user.show', compact('user'));
+    }
 }
