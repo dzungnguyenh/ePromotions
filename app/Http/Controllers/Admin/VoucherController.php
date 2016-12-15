@@ -20,16 +20,17 @@ class VoucherController extends Controller
     protected $voucherRepository;
 
     /**
-     * Create a new VoucherRepository instance
+     * Create a new VoucherRepository,ExchangeVoucherRepository instance
      *
      * @param VoucherRepository $voucherRepository description
+     * @param ExchangeVoucherRepository $exVoucherRepository description
      *
      * @return void
      */
-    public function __construct(VoucherRepository $voucherRepository, ExchangeVoucherRepository $exchangeVoucherRepository)
+    public function __construct(VoucherRepository $voucherRepository, ExchangeVoucherRepository $exVoucherRepository)
     {
         $this->voucherRepository = $voucherRepository;
-        $this->exchangeVoucherRepository = $exchangeVoucherRepository;
+        $this->exVoucherRepository = $exVoucherRepository;
     }
 
     /**
@@ -133,7 +134,7 @@ class VoucherController extends Controller
     public function show($id)
     {
         $voucher = $this->voucherRepository->find($id);
-        $exchangeVoucher = $this->exchangeVoucherRepository->findByIdVoucher($id);
+        $exchangeVoucher = $this->exVoucherRepository->findByIdVoucher($id);
         return view('admin.voucher.show', compact('voucher', 'exchangeVoucher'));
     }
 }
