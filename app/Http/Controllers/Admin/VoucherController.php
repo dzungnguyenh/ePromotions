@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Repositories\Voucher\VoucherRepository;
+use App\Repositories\ExchangeVoucher\ExchangeVoucherRepository;
 use App\Http\Requests\CreateVoucherRequest;
 
 class VoucherController extends Controller
@@ -25,9 +26,10 @@ class VoucherController extends Controller
      *
      * @return void
      */
-    public function __construct(VoucherRepository $voucherRepository)
+    public function __construct(VoucherRepository $voucherRepository, ExchangeVoucherRepository $exchangeVoucherRepository)
     {
         $this->voucherRepository = $voucherRepository;
+        $this->exchangeVoucherRepository = $exchangeVoucherRepository;
     }
 
     /**
@@ -131,6 +133,7 @@ class VoucherController extends Controller
     public function show($id)
     {
         $voucher = $this->voucherRepository->find($id);
-        return view('admin.voucher.show', compact('voucher'));
+        $exchangeVoucher = $this->exchangeVoucherRepository->findByIdVoucher($id);
+        return view('admin.voucher.show', compact('voucher', 'exchangeVoucher'));
     }
 }
