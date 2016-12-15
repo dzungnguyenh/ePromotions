@@ -23,7 +23,7 @@ class VoucherController extends Controller
      * Create a new VoucherRepository,ExchangeVoucherRepository instance
      *
      * @param VoucherRepository         $voucherRepository   description
-     * @param ExchangeVoucherRepository         $exVoucherRepository   description
+     * @param ExchangeVoucherRepository $exVoucherRepository description
      *
      * @return void
      */
