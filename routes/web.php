@@ -33,21 +33,22 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
     Route::resource('product','Product\ProductController');
     Route::resource('event', 'Business\EventController');
+    Route::resource('promotions', 'Business\PromotionController');
+    Route::get('/add_promotion/{id}', 'Business\PromotionController@addPromotion')->name('add_promotion');
 });
 
 Route::group(['middleware' => 'auth'], function()
 {
-    Route::resource('user', 'User\UserController');
+    Route::resource('user', 'User\UserController' , [
+        'only' => ['index', 'edit', 'update']
+    ]);
 });
+
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
-
-
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('promotions', 'Business\PromotionController');
-Route::get('/add_promotion/{id}', 'Business\PromotionController@addPromotion')->name('add_promotion');
