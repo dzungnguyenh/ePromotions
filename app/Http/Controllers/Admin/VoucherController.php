@@ -120,4 +120,17 @@ class VoucherController extends Controller
         Session::flash('msg', trans('voucher.update_voucher_successfully'));
         return redirect(route('voucher.index'));
     }
+
+    /**
+     * Show a voucher
+     *
+     * @param int $id [id of voucher]
+     *
+     * @return Reponse
+     */
+    public function show($id)
+    {
+        $voucher = $this->voucherRepository->find($id);
+        return view('admin.voucher.show', compact('voucher'));
+    }
 }
