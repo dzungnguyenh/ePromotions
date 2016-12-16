@@ -41,9 +41,9 @@
   <p>{!! trans('header.slogan') !!}</p> 
   <div class="container">
   <div class="col-sm-12 pull-right well">
-    <form class="form-inline" action="#" method="get">
+    <form class="form-inline" action="research" method="get">
       <div class="input-group col-sm-8">
-        <input class="form-control" type="text" value="" placeholder="Search" name="q">
+        <input class="form-control" type="text" value="" placeholder="Search" name="search" required="required">
         <div class="input-group-btn">
           <button type="button" class="btn btn-choice-category dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="mydropdowndisplay">{!! trans('header.choice_category') !!}</span><span class="caret"></span></button>
           <ul class="dropdown-menu" id="mydropdownmenu">
