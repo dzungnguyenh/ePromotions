@@ -34,6 +34,7 @@ Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
     Route::resource('event', 'Business\EventController');
     Route::resource('promotions', 'Business\PromotionController');
     Route::get('/add_promotion/{id}', 'Business\PromotionController@addPromotion')->name('add_promotion');
+    Route::get('/show_promotion/{attribute?}/{id}', 'Business\PromotionController@showBy')->name('show_promotion');
 });
 
 Route::group(['middleware' => 'auth'], function()
@@ -48,6 +49,7 @@ Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
 Auth::routes();
+
 
 Route::get('/', 'HomeController@index');
 

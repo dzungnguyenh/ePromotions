@@ -1,6 +1,6 @@
 @extends('layouts.template_admin')
 @section('main-content')
-    <div class="container">
+    <div class="container create-promotion">
         <div class="page-header">
             <h3>{{ trans('promotion.create_page') }}</h3>
         </div>
