@@ -1,5 +1,6 @@
 <?php
 return [
+    'app_name' => 'Promotions',
     'create_promotion_successful' => 'Successfully stored promotion!',
     'delete_promotion_successful' => 'Successfully deleted promotion!',
     'update_promotion_successful' => 'Successfully updated promotion!',
@@ -20,4 +21,7 @@ return [
     'list_page' => 'List Promotion',
     'submit' => 'Submit Now',
     'clear' => 'Clear Form',
+    'view_all' => 'View All',
+    'add_promotion' => 'Add promotion for this product',
+    'error_promotion' => "'You don't have any promotion for this product!'",
 ];

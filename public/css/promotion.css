@@ -1,0 +1,12 @@
+.edit-promotion, .create-promotion{
+	width: 100%;
+}
+.view-detail{
+	color: #3c8dbc !important;
+}
+.promotion{
+	box-shadow: 10px 10px 5px 2px #888888;
+}
+.promotion thead{
+	background-color: #3c8dbc;
+}
