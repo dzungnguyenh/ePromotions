@@ -14,7 +14,7 @@
       <td>{!! $user->name !!}</td>
       <td>{!! $user->email !!}</td>
       <td>{!! $user->phone !!}</td>
-      <td>{!! $user->address !!}</td>
+      <td>{!! str_limit($user->address, 20) !!}</td>
         <td>
                 {!! Form::open([ 'route' => ['users.destroy', $user->id], 'method' => 'delete', 'id' => 'form-delete-user-'.$user->id]) !!}
                 <div class='btn-group'>
