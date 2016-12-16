@@ -33,7 +33,7 @@ class ProductController extends Controller
         $this->middleware('business');
     }
 
-     /** 
+    /**
     *Constructer redirect to index product page with list product of that user
     *
     *@return index page with variable product contain all data in product table

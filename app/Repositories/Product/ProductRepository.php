@@ -158,10 +158,18 @@ class ProductRepository extends BaseRepository
         ->orderBy($order);
     }
 
-    public function findById($id){
+    /**
+    * Get product, category_name by id
+    *
+    * @param integer $id id of product
+    *
+    * @return product
+    */
+    public function findById($id)
+    {
         return $this->model
         ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->where('products.id',$id)
+        ->where('products.id', $id)
         ->first();
     }
 }
