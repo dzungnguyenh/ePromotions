@@ -127,4 +127,41 @@ class ProductRepository extends BaseRepository
         $file->move($path, $pictureName);
         return $pictureName;
     }
+
+    /**
+    * Method get all product,name category by userId
+    *
+    * @param integer $id id of Hotel
+    *
+    * @return array products, categories
+    */
+    public function getAllById($id)
+    {
+        return $this->model->leftjoin('categories', 'categories.id', '=', 'products.category_id')
+        ->where('user_id', $id)
+        ->paginate(5);
+    }
+
+    /**
+    * Get all  product  sort by order_value
+    *
+    * @param string $order filed to sort
+    *
+    * @return list product
+    */
+    public function getAll($order = 'products.id')
+    {
+        return $this->model
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->join('user', 'products.user_id', '=', 'user.id')
+        ->select('products.id', 'product_name', 'price', 'description', 'quantity', 'picture', 'categories.name as category_name', 'user.name as user_name', 'email', 'phone', 'address', 'avatar', 'products.created_at')
+        ->orderBy($order);
+    }
+
+    public function findById($id){
+        return $this->model
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->where('products.id',$id)
+        ->first();
+    }
 }

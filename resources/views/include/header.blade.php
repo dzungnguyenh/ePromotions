@@ -8,6 +8,8 @@
   <script type="text/javascript" src="{{asset('/bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
   <script src="{{asset('/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js')}}"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="{{ url('css/index_product.css')}}">
+
 </head>
 <body>
 
@@ -28,7 +30,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about">{!! trans('header.about') !!}</a></li>
         <li><a href="#promotion">{!! trans('header.promotion') !!}</a></li>
-        <li><a href="#product">{!! trans('header.product') !!}</a></li>
+        <li><a href="{{ url('/product') }}">{!! trans('header.product') !!}</a></li>
         <li><a href="#event">{!! trans('header.event') !!}</a></li>
         <li><a href="#contact">{!! trans('footer.contact') !!}</a></li>
       </ul>
