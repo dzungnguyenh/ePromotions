@@ -61,3 +61,13 @@ $(".btn-delete-events").on('click', function(event){
         return false;
     }
 })
+
+/**
+ * Display category in select box.
+ */
+$('#mydropdownmenu > li').click(function(e){
+    e.preventDefault();
+    var selected = $(this).text();
+    $('#mydropwodninput').val(selected);
+    $('#mydropdowndisplay').text(selected);
+})

@@ -10,9 +10,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 {
     Route::resource('point', 'Admin\PointController');
@@ -52,5 +49,5 @@ Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
