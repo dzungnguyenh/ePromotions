@@ -86,10 +86,10 @@ class PromotionController extends Controller
     public function store(CreatePromotionRequest $request)
     {
         $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end', 'product_id');
-        $product_id = $request->input('product_id');
+        $productId = $request->input('product_id');
         $this->promotion->create($promotion);
         Session::flash('message', trans('promotion.create_promotion_successful'));
-        return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $product_id]);
+        return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
     }
 
     /**
@@ -116,10 +116,10 @@ class PromotionController extends Controller
     public function update(CreatePromotionRequest $request, $id)
     {
         $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end');
-        $product_id = $request->input('product_id');
+        $productId = $request->input('product_id');
         $this->promotion->update($promotion, $id);
         Session::flash('message', trans('promotion.update_promotion_successful'));
-        return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $product_id]);
+        return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
     }
 
     /**
