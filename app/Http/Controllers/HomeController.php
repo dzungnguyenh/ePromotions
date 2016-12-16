@@ -67,4 +67,16 @@ class HomeController extends Controller
         $events = $this->eventRepository->all()->take(config('constants.LIMIT_RECORD'));
         return view('index.index', compact('categoriies', 'promotions', 'products', 'events'));
     }
+
+    /**
+    * Show list all product
+    *
+    * @return product page
+    */
+    public function product()
+    {
+        $products = $this->productRepository->getAll()->paginate(16);
+        // dd($products);
+        return view('index.product')->with('products', $products);
+    }
 }

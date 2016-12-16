@@ -29,6 +29,8 @@ return [
     'order' => 'Order',
     'name' => 'Customer',
     'view_product' => 'View Product',
+    'business_name' => 'Business name',
+    
     
     
 ];
