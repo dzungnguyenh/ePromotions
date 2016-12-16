@@ -24,7 +24,7 @@
       <a class="navbar-brand" href="#myPage">EPROMOTION</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>{!! trans('header.login') !!}</a></li>
+        <li><a href="{!! url('login') !!}""><span class="glyphicon glyphicon-log-in"></span>{!! trans('header.login') !!}</a></li>
       </ul>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
