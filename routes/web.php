@@ -10,9 +10,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 {
     Route::resource('point', 'Admin\PointController');
@@ -37,6 +34,7 @@ Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
     Route::resource('event', 'Business\EventController');
     Route::resource('promotions', 'Business\PromotionController');
     Route::get('/add_promotion/{id}', 'Business\PromotionController@addPromotion')->name('add_promotion');
+    Route::get('/show_promotion/{attribute?}/{id}', 'Business\PromotionController@showBy')->name('show_promotion');
 });
 
 Route::group(['middleware' => 'auth'], function()
@@ -52,5 +50,6 @@ Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+
+Route::get('/', 'HomeController@index');
 

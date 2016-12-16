@@ -47,4 +47,14 @@ interface PromotionRepositoryInterface
      * @return boolean
      */
     public function update($inputs, $id);
+
+    /**
+    * [Return data match parameter]
+    *
+    * @param string $attribute Name field table.
+    * @param string $value     Value of field table.
+    *
+    * @return mixed
+    */
+    public function findBy($attribute, $value);
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Repositories\Voucher\VoucherRepository;
+use App\Repositories\ExchangeVoucher\ExchangeVoucherRepository;
 use App\Http\Requests\CreateVoucherRequest;
 
 class VoucherController extends Controller
@@ -19,15 +20,17 @@ class VoucherController extends Controller
     protected $voucherRepository;
 
     /**
-     * Create a new VoucherRepository instance
+     * Create a new VoucherRepository,ExchangeVoucherRepository instance
      *
-     * @param VoucherRepository $voucherRepository description
+     * @param VoucherRepository         $voucherRepository   description
+     * @param ExchangeVoucherRepository $exVoucherRepository description
      *
      * @return void
      */
-    public function __construct(VoucherRepository $voucherRepository)
+    public function __construct(VoucherRepository $voucherRepository, ExchangeVoucherRepository $exVoucherRepository)
     {
         $this->voucherRepository = $voucherRepository;
+        $this->exVoucherRepository = $exVoucherRepository;
     }
 
     /**
@@ -119,5 +122,19 @@ class VoucherController extends Controller
         $voucher = $this->voucherRepository->update($inputs, $id);
         Session::flash('msg', trans('voucher.update_voucher_successfully'));
         return redirect(route('voucher.index'));
+    }
+
+    /**
+     * Show a voucher
+     *
+     * @param int $id [id of voucher]
+     *
+     * @return Reponse
+     */
+    public function show($id)
+    {
+        $voucher = $this->voucherRepository->find($id);
+        $exchangeVoucher = $this->exVoucherRepository->findByIdVoucher($id);
+        return view('admin.voucher.show', compact('voucher', 'exchangeVoucher'));
     }
 }

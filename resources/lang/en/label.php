@@ -14,4 +14,10 @@ return [
     'date_format' => 'M. Y',
     'date_format_show' => 'd-m-Y H:i:s',
     'no' => 'No',
+    'share' => ' Share',
+    'book' => ' Book',
+    'vote' => ' Vote',
+    'join' => ' Join',
+    'load_more' => ' LOAD MORE +',
+    'space' => ' | ',
 ];

@@ -100,12 +100,13 @@ abstract class BaseRepository
     *
     * @param string $attribute Name field table.
     * @param string $value     Value of field table.
+    * @param int    $limit     Number of item.
     *
     * @return mixed
     */
-    public function findBy($attribute, $value)
+    public function findBy($attribute, $value, $limit = null)
     {
-        return $this->model->where($attribute, '=', $value)->get();
+        return $this->model->where($attribute, '=', $value)->paginate($limit);
     }
 
     /**

@@ -16,12 +16,13 @@
   <link rel="stylesheet" href="{{asset('/bower_components/AdminLTE/dist/css/AdminLTE.min.css')}}">
   <!-- Skin -->
   <link rel="stylesheet" href="{{asset('/bower_components/AdminLTE/dist/css/skins/skin-blue.min.css')}}">
+  <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
   <!-- jquery -->
   <script type="text/javascript" src="{{asset('/bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
   <!-- customer -->
   <link rel="stylesheet" href="{{asset('/css/style_admin.css')}}">
   <link rel="stylesheet" href="{{asset('/css/product.css')}}">
-
+  <link rel="stylesheet" href="{{asset('/css/promotion.css')}}">
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">

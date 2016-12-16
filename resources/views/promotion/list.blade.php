@@ -10,7 +10,8 @@
                 {{ Session::get('message') }}
             </div>
         @endif
-        <table class="table table-striped table-bordered">
+        @if (count($promotions))
+            <table class="table table-striped table-bordered promotion">
             <thead>
                 <tr>
                     <th>{{ trans('promotion.id') }}</th>
@@ -30,8 +31,8 @@
         @foreach ($promotions as $promotion)
         <tr>
             <td>{{ $promotion->id }}</td>
-            <td>{{ $promotion->title }}</td>
-            <td>{{ $promotion->description }}</td>
+            <td>{{ str_limit($promotion->title, 50) }}</td>
+            <td>{{ str_limit($promotion->description, 100) }}</td>
             <td>{{ $promotion->percent }}</td>
             <td>{{ $promotion->quantity }}</td>
             <td>{{ $promotion->product_id }}</td>
@@ -54,5 +55,17 @@
             @endforeach
             </tbody>
         </table>
+        {{ $promotions->links()}}
+        @else 
+            <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p>{{ trans('promotion.error_promotion') }}</p>
+            </div>
+        @endif
+        @if(isset($id))
+        <p><a href="{{ route('add_promotion', ['id'=> $id]) }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{{ trans('promotion.add_promotion') }}</a></p>
+        @endif
     </div>
 @stop

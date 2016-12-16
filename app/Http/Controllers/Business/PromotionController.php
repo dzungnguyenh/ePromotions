@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Promotion\PromotionRepository;
 use App\Http\Requests\CreatePromotionRequest;
 use Session;
+use DB;
 
 class PromotionController extends Controller
 {
@@ -36,6 +37,21 @@ class PromotionController extends Controller
     {
         $promotions = $this->promotion->all();
         return view('promotion.list', compact('promotions'));
+    }
+
+    /**
+    * [Return data match parameter]
+    *
+    * @param string $attribute Name field table.
+    * @param string $id        Value of field table.
+    * @param int    $limit     Number of item.
+    *
+    * @return mixed
+    */
+    public function showBy($attribute, $id, $limit = 5)
+    {
+        $promotions = $this->promotion->findBy($attribute, $id, $limit);
+        return view('promotion.list', compact('promotions', 'id'));
     }
 
     /**
@@ -70,9 +86,10 @@ class PromotionController extends Controller
     public function store(CreatePromotionRequest $request)
     {
         $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end', 'product_id');
+        $productId = $request->input('product_id');
         $this->promotion->create($promotion);
         Session::flash('message', trans('promotion.create_promotion_successful'));
-        return redirect()->route('promotions.index');
+        return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
     }
 
     /**
@@ -99,9 +116,10 @@ class PromotionController extends Controller
     public function update(CreatePromotionRequest $request, $id)
     {
         $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end');
+        $productId = $request->input('product_id');
         $this->promotion->update($promotion, $id);
         Session::flash('message', trans('promotion.update_promotion_successful'));
-        return redirect()->route('promotions.index');
+        return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
     }
 
     /**
@@ -115,6 +133,6 @@ class PromotionController extends Controller
     {
         $this->promotion->delete($id);
         Session::flash('message', trans('promotion.delete_promotion_successful'));
-        return redirect()->route('promotions.index');
+        return redirect()->back();
     }
 }
