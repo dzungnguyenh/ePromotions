@@ -12,6 +12,7 @@
             <th>{{trans('product.quantity')}}</th>
             <th>{{trans('product.category')}}</th>
             <th>{{trans('product.picture')}}</th>
+            <th>{{trans('promotion.app_name')}}</th>
             <th>{{trans('product.action')}}</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{$value->quantity}}</td>
                 <td>{{$value->category_id}}</td>
                 <td class="product-img"><img src="{{asset(config('path.picture_product').'/'.$value->picture)}}"></td>
+                <td><a class="view-detail" href="{{ route('show_promotion', ['attribute' => 'product_id', 'id' => $value->id]) }}">{{trans('promotion.view_all')}}</a></td>
                 <td>
                     <div class="row action">
                         <button class="btn btn-info btn-edit"><a href="{{ route ('add_promotion', $value->id )}}"><i class="glyphicon glyphicon-gift"></i></a></button>

@@ -1,6 +1,6 @@
-@extends('layouts.app')
-@section('content')
-    <div class="container">
+@extends('layouts.template_admin')
+@section('main-content')
+    <div class="container edit-promotion">
         <div class="page-header">
             <h3>{{ trans('promotion.edit_page') }}</h3>
         </div>
@@ -16,7 +16,6 @@
         @endif
         <form action="{{ route('promotions.update', $promotion->id) }}" method="post">
             {{ csrf_field() }}
-            
             {{ method_field('PUT') }}
             <div class="form-group">
                 <label for="title_edit">{{ trans('promotion.title') }}</label>
@@ -42,7 +41,7 @@
                 <label for="end_date">{{ trans('promotion.date_end') }}</label>
                 <input type="datetime-local" class="form-control" id="end-date" name="date_end" value="{{ old('date_end',gmdate(config('date.date_time'),strtotime($promotion->date_end))) }}">
             </div>
-                <input type="hidden" class="form-control" name="promotion-id" value="{{ $promotion->id }}">
+                <input type="hidden" class="form-control" name="product_id" value="{{ $promotion->product_id }}">
                 <input type="submit" class="btn btn-default" value="{{ trans('promotion.submit') }}" />
         </form>
     </div>
