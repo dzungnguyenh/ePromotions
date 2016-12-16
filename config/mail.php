@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => 'it.leanh@gmail.com',
+        'address' => 'anhasiantech@gmail.com',
         'name' => 'ePromotions reset password',
     ],
 
