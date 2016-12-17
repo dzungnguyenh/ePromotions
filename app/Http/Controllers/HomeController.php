@@ -74,10 +74,10 @@ class HomeController extends Controller
      *
      * @return Reponse
      */
-    public function research(Request $Request)
+    public function research(Request $request)
     {
-        $category = $Request->input('category');
-        $search = $Request->input('search');
+        $category = $request->input('category');
+        $search = $request->input('search');
         if (empty($category)) {
             $category = "Product";
         }
