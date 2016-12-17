@@ -19,7 +19,7 @@
                     <td>{{$product->price}}</td>
                     <td>{{$product->description}}</td>
                     <td>{{$product->quantity}}</td>
-                    <td>{{$product->category_id}}</td>
+                    <td>{{$product->name}}</td>
                     <td class="product-img"><img src="{{asset(config('path.picture_product').'/'.$product->picture)}}"></td>
                 </tr>
             </tbody>

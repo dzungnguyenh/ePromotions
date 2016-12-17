@@ -47,7 +47,7 @@
         @endforeach
     </div>
     <div class="clearfix"></div>
-    <div class="load-more"><button>{!! trans('label.load_more') !!}</button></div>
+    <div class="load-more"><button><a href="{{ url('product') }}">{!! trans('label.load_more') !!}</a></button></div>
 </div><br>
 
 <div id="event" class="event"><div class="row"><div class="col-sm-12"><div class="panel panel-primary"><div class="panel-heading">{!! trans('header.event') !!}</div></div></div></div></div>

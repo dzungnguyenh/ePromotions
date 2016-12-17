@@ -93,5 +93,16 @@ class HomeController extends Controller
                  return view('index.search_event', compact('$result'));
             }
         }
+    /**
+    * Show list all product
+    *
+    * @return product page
+    */
+    public function product()
+    {
+        $products = $this->productRepository->getAll()->paginate(16);
+        // dd($products);
+        return view('index.product')->with('products', $products);
+
     }
 }

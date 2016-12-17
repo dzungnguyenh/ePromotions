@@ -23,7 +23,7 @@
                 <td>{{$value->price}}</td>
                 <td>{{$value->description}}</td>
                 <td>{{$value->quantity}}</td>
-                <td>{{$value->category_id}}</td>
+                <td>{{$value->name}}</td>
                 <td class="product-img"><img src="{{asset(config('path.picture_product').'/'.$value->picture)}}"></td>
                 <td><a class="view-detail" href="{{ route('show_promotion', ['attribute' => 'product_id', 'id' => $value->id]) }}">{{trans('promotion.view_all')}}</a></td>
                 <td>
@@ -44,6 +44,7 @@
             @endforeach
         </tbody>
     </table>
+     {!! $listProduct->render() !!}
     @if(Session::has('msg'))
         <div class="alert alert-success">
         {{ Session::get('msg') }}
