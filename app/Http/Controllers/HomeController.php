@@ -70,9 +70,9 @@ class HomeController extends Controller
     }
 
     /**
-     * Display information in index research
-     *
-     * @return Reponse
+     * [research description]
+     * @param  Request $request [description]
+     * @return [type]           [description]
      */
     public function research(Request $request)
     {
