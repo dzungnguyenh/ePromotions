@@ -70,9 +70,11 @@ class HomeController extends Controller
     }
 
     /**
-     * [research description]
-     * @param  Request $request [description]
-     * @return [type]           [description]
+     * Display research page
+     *
+     * @param Request $request [ value input tag ]
+     *
+     * @return [type]          [description]
      */
     public function research(Request $request)
     {
