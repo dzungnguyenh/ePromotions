@@ -93,6 +93,7 @@ class HomeController extends Controller
                  return view('index.search_event', compact('$result'));
             }
         }
+    }
     /**
     * Show list all product
     *
@@ -101,8 +102,6 @@ class HomeController extends Controller
     public function product()
     {
         $products = $this->productRepository->getAll()->paginate(16);
-        // dd($products);
-        return view('index.product')->with('products', $products);
-
+        return view('index.product')->with('products', $products) ;
     }
 }
