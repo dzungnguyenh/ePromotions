@@ -26,4 +26,5 @@ return [
   'order' => 'ORDER',
   'voucher' => 'VOUCHER',
   'category' => 'CATEGORY',
+  'block' => 'Block user',
 ];
