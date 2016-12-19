@@ -45,6 +45,11 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('product/{id}', 'HomeController@handlingAjaxVote');
 });
 
+Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
+{
+    Route::resource('userorder','User\UserOrderController');
+});
+
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');

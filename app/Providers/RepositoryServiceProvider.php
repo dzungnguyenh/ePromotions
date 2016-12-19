@@ -29,6 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         App::bind(PointRepositoryInterface::class, PointRepository::class);
+        App::bind(BookRepositoryInterface::class, BookRepository::class);
         App::bind(UserRepositoryInterface::class, UserRepository::class);
     }
 }
