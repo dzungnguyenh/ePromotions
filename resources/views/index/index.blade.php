@@ -13,7 +13,7 @@
             <p>Date post: {{ $promotion->created_at }} </p>
             </div>
             <div class="panel-footer">
-                <a href=""><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i> {!! trans('label.book') !!}</button></a>
+                <a href="{{ route('book.show', $promotion->product_id) }}"><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i> {!! trans('label.book') !!}</button></a>
                 <a href=""><button class="share"><i class="glyphicon glyphicon-send"></i>{!! trans('label.share') !!}</button></a>
                 <a href=""><button class="vote"><i class="glyphicon glyphicon-thumbs-up"></i>{!! trans('label.vote') !!}</button></a>
             </div>
@@ -38,7 +38,7 @@
             <p>Date post: {{ $product->created_at }} </p>
             </div>
             <div class="panel-footer">
-                <a href=""><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i>{!! trans('label.book') !!}</button></a>
+                <a href="{{ route('book.show', $product->id) }}"><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i>{!! trans('label.book') !!}</button></a>
                 <a href=""><button class="share"><i class="glyphicon glyphicon-send"></i>{!! trans('label.share') !!}</button></a>
                 <a href=""><button class="vote"><i class="glyphicon glyphicon-thumbs-up"></i>{!! trans('label.vote') !!}</button></a>
             </div>

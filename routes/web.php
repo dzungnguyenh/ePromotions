@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function()
     Route::resource('user', 'User\UserController' , [
         'only' => ['index', 'edit', 'update']
     ]);
+    Route::resource('book', 'Book\BookController');
 });
 
 
@@ -53,4 +54,6 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/product', 'HomeController@product');
+
+
 

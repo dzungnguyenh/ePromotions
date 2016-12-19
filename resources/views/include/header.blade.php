@@ -9,6 +9,7 @@
   <script src="{{asset('/bower_components/AdminLTE/bootstrap/js/bootstrap.min.js')}}"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" type="text/css" href="{{ url('css/index_product.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ url('css/book.css')}}">
 
 </head>
 <body>
