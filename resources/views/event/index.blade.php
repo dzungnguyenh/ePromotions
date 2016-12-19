@@ -2,7 +2,7 @@
 
 @section ('main-content')
     <section class="content-header">
-        <h1 class="pull-left">{!! trans('event.event') !!}</h1>
+        <h1 class="pull-left">{!! trans('event.event_list') !!}</h1>
     </section>
     <div class="content">
         <div class="clearfix"></div>

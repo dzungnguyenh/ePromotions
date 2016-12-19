@@ -31,4 +31,5 @@ return [
   'search' => 'Search',
   'epromotion' => 'ePromotion',
   'slogan' => 'We specialize in blablabla',
+  'title_E' => 'EPROMOTION',
 ];
