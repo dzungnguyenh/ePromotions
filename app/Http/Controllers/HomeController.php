@@ -76,13 +76,7 @@ class HomeController extends Controller
         $promotions = $this->promotionRepository->all()->take(config('constants.LIMIT_RECORD'));
         $products = $this->productRepository->all()->take(config('constants.LIMIT_RECORD'));
         $voteProducts = $this->voteProRepository->all();
-        foreach ($products as $product) {
-            foreach ($voteProducts as $voteProduct) {
-                if ($voteProduct->product_id == $product->id) {
-                    $arPointVote[$product->id] = $this->voteProRepository->getCountByIdProduct($product->id);
-                }
-            }
-        }
+        $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
         $events = $this->eventRepository->all()->take(config('constants.LIMIT_RECORD'));
         return view('index.index', compact('categoriies', 'promotions', 'products', 'events', 'voteProducts', 'arPointVote'));
     }
@@ -96,23 +90,7 @@ class HomeController extends Controller
      */
     public function handlingAjaxVote($productId)
     {
-        $voteProducts = $this->voteProRepository->all();
-        $countProductId = $this->voteProRepository->getCountByIdProduct($productId);
-        $flag = true;
-        foreach ($voteProducts as $voteProduct) {
-            if ((Auth::user()->id == $voteProduct->user_id) && ($voteProduct->product_id == $productId)) {
-                $flag = false;
-            }
-        }
-        if ($flag) {
-            $countProductId++;
-            $arVoteProducts = array(
-                    'user_id' => Auth::user()->id,
-                    'product_id' => $productId,
-                );
-            $this->voteProRepository->create($arVoteProducts);
-        }
-        return $countProductId;
+        return $this->voteProRepository->handlingAjaxVote($productId);
     }
 
     /**
