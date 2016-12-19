@@ -53,4 +53,5 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/product', 'HomeController@product');
+Route::get('/research', 'HomeController@research');
 

@@ -79,4 +79,32 @@ class HomeController extends Controller
         // dd($products);
         return view('index.product')->with('products', $products);
     }
+
+    /**
+    * Display research page
+    *
+    * @param Request $request [ value input tag ]
+    *
+    * @return [type]          [description]
+    */
+    public function research(Request $request)
+    {
+        $category = $request->input('category');
+        $search = $request->input('search');
+        if (empty($category)) {
+              $category = "Product";
+        }
+        if ($category=="Product") {
+            $result = DB::table('products') -> where('product_name', 'like', '%' . $search . '%') -> orwhere('description', 'like', '%'.$search.'%') -> get();
+               return view('index.search_product', compact('$result'));
+        } else {
+            if ($category=="Promotion") {
+                $result= DB::table('promotions')->where('title', 'like', '%'.$search.'%')->orwhere('description', 'like', '%'.$search.'%')->get();
+                return view('index.search_promotion', compact('$result'));
+            } else {
+                $result= DB::table('events')->where('title', 'like', '%' .$search. '%')->orwhere('description', 'like', '%' .$search. '%')->get();
+                return view('index.search_event', compact('$result'));
+            }
+        }
+    }
 }
