@@ -45,6 +45,11 @@ Route::group(['middleware' => 'auth'], function()
     Route::resource('book', 'Book\BookController');
 });
 
+Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
+{
+    Route::resource('userorder','User\UserOrderController');
+});
+
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');

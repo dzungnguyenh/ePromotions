@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Book;
+namespace App\Repositories\BookDetail;
 
-interface BookRepositoryInterface
+interface BookDetailRepositoryInterface
 {
     /**
      * Get all points

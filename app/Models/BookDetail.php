@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BookDetail extends Model
 {
+
     /**
      * The table associated with the model.
      *
