@@ -32,7 +32,7 @@ class VoteProductRepository extends BaseRepository implements VoteProductReposit
     }
 
     /**
-     * get array point vote
+     * Get array point vote from table vote_products
      *
      * @param array $products     [description]
      * @param array $voteProducts [description]
