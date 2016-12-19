@@ -10,7 +10,6 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -19,7 +18,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">EPROMOTION</a>
+      <a class="navbar-brand" href="#myPage">{!! trans('header.title_E') !!}</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="{!! url('login') !!}""><span class="glyphicon glyphicon-log-in"></span>{!! trans('header.login') !!}</a></li>

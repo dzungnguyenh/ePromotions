@@ -228,3 +228,20 @@
         font-size: 150px;
     }
   }
+  .panel-heading a{
+  color :white;
+  }
+  .title{
+    display: none;
+  }
+  .panel-heading a:hover + .title{
+    display: block;
+    background-color: #d6d6c2;
+    border-radius: 10px 10px;
+    position: absolute;
+    z-index: 100;
+    margin-left: 10px;
+    padding-left: 20px;
+    color:red;
+    text-align: left;
+  }

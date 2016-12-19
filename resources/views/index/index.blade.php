@@ -6,7 +6,12 @@
         @foreach($promotions as $promotion)
         <div class="col-sm-3">
           <div class="panel panel-primary">
-            <div class="panel-heading">{{ $promotion->title }}</div>
+            <div class="panel-heading">
+            <a href="">{{ str_limit($promotion->title,50) }}</a>
+            <div class="title">
+            {{ $promotion->title}}</a>
+            </div>
+            </div>
             <div class="panel-body">
             <a href=""><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" alt="Image"></a>
             <p>Price: <b>{{ $promotion->percent }} $</b></p>
@@ -31,7 +36,12 @@
         @foreach($products as $product)
         <div class="col-sm-3">
           <div class="panel panel-primary">
-            <div class="panel-heading">{{ $product->product_name }}</div>
+            <div class="panel-heading">
+            <a href="">{{ str_limit($product->product_name,50) }}</a>
+            <div class="title">
+            {{ $product->product_name }}</a>
+            </div>
+            </div>
             <div class="panel-body">
             <a href=""><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" alt="Image"></a>
             <p>Price: <b>{{ $product->price }} $</b></p>
@@ -57,7 +67,12 @@
         @foreach($events as $event)
         <div class="col-sm-4">
           <div class="panel panel-primary">
-            <div class="panel-heading">{{ $event->title }}</div>
+            <div class="panel-heading">
+            <a href="">{{ str_limit($event->title,50)}}</a>
+            <div class="title">
+            {{ $event->title }}</a>
+            </div>
+            </div>
             <div class="panel-body">
             <a href=""><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" alt="Image"></a>
             <p>Start time: <b>{{ $event->start_time }} $</b></p>
