@@ -82,18 +82,6 @@ class HomeController extends Controller
     }
 
     /**
-     * Ajax handling vote
-     *
-     * @param int $productId description
-     *
-     * @return int
-     */
-    public function handlingAjaxVote($productId)
-    {
-        return $this->voteProRepository->handlingAjaxVote($productId);
-    }
-
-    /**
     * Show list all product
     *
     * @return product page

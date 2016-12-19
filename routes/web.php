@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function()
     Route::resource('user', 'User\UserController' , [
         'only' => ['index', 'edit', 'update']
     ]);
-    Route::get('product/{id}', 'HomeController@handlingAjaxVote');
+    Route::get('product/{id}', 'API\ProductController@handlingAjaxVote');
 });
 
 Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
