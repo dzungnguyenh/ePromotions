@@ -83,14 +83,17 @@ class HomeController extends Controller
                 }
             }
         }
-        /*
-         * Default enable button vote
-         */
-        $disabled = "";
         $events = $this->eventRepository->all()->take(config('constants.LIMIT_RECORD'));
-        return view('index.index', compact('categoriies', 'promotions', 'products', 'events', 'voteProducts', 'arPointVote', 'disabled'));
+        return view('index.index', compact('categoriies', 'promotions', 'products', 'events', 'voteProducts', 'arPointVote'));
     }
 
+    /**
+     * Ajax handling vote
+     *
+     * @param int $productId description
+     *
+     * @return int
+     */
     public function handlingAjaxVote($productId)
     {
         $voteProducts = $this->voteProRepository->all();
@@ -120,7 +123,6 @@ class HomeController extends Controller
     public function product()
     {
         $products = $this->productRepository->getAll()->paginate(16);
-        // dd($products);
         return view('index.product')->with('products', $products);
     }
 }
