@@ -7,6 +7,7 @@ use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Promotion\PromotionRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Event\EventRepository;
+use DB;
 
 class HomeController extends Controller
 {
