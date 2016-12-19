@@ -69,7 +69,7 @@ class UserController extends Controller
             Session::flash('msg', trans('user.user_not_found'));
             return redirect(route('admin.point.index'));
         }
-        $input = $request->only('name', 'email', 'password', 'gender', 'dob', 'phone', 'address', 'avatar', 'point');
+        $input = $request->only('name', 'password', 'gender', 'dob', 'phone', 'address', 'avatar', 'point', 'role_id');
         if (!empty($request['old-password'])) {
             if (!Hash::check($request['old-password'], Auth::user()->password)) {
                 return redirect()->back()->withErrors(trans('message.password_not_connecting'));

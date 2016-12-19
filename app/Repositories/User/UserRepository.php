@@ -44,9 +44,14 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             } else {
                 $input['password'] = bcrypt($input['password']);
             }
+            if (Input::get('role_id') === 'on') {
+                $input['role_id'] = config('constants.ROLEBUSSINESS');
+            } else {
+                unset($input['role_id']);
+            }
             $data = User::where('id', $id)->update($input);
         } catch (Exception $e) {
-            return view('/home')->withError(trans('user.error_when_update'));
+            return view('/user')->withError(trans('user.error_when_update'));
         }
         if (!$data) {
             throw new Exception(trans('user.update_profile_error'));
