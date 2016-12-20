@@ -33,4 +33,26 @@ class BusinessRepository extends BaseRepository implements BusinessRepositoryInt
 
         return $data;
     }
+
+    /**
+     * Block a business
+     *
+     * @param int $id [id of business]
+     *
+     * @return boolean
+     */
+    public function blockBusiness($id)
+    {
+        try {
+            $data = User::where('id', $id)->update([
+                'role_id' => config('constants.BLOCK_USER'),
+            ]);
+        } catch (Exception $e) {
+            return view('/business')->withError(trans('user.error_when_block_user'));
+        }
+        if (!$data) {
+            throw new Exception(trans('user.block_user_error'));
+        }
+        return $data;
+    }
 }

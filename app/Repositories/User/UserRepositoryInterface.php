@@ -47,4 +47,13 @@ interface UserRepositoryInterface
      * @return boolean
      */
     public function delete($id);
+
+    /**
+     * Block a user
+     *
+     * @param int $id [id of user]
+     *
+     * @return boolean
+     */
+    public function blockUser($id);
 }
