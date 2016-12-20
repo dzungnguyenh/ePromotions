@@ -39,4 +39,13 @@ interface BusinessRepositoryInterface
      * @return boolean
      */
     public function delete($id);
+
+    /**
+     * Block a business
+     *
+     * @param int $id [id of business]
+     *
+     * @return boolean
+     */
+    public function blockBusiness($id);
 }

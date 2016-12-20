@@ -75,4 +75,20 @@ class BusinessController extends Controller
         Session::flash('msg', trans('business.delete_business_successfully'));
         return redirect(route('business.index'));
     }
+
+    /**
+     * Update a business when block
+     *
+     * @param int $id [id of business]
+     *
+     * @return boolean
+     */
+    public function update($id)
+    {
+        $business= $this->businessRepository->find($id);
+        if (empty($business)) {
+            Session::flash('msg', trans('business.business_not_found'));
+        }
+        $business = $this->businessRepository->blockBusiness($id);
+    }
 }

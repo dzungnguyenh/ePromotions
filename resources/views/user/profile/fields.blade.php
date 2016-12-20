@@ -86,6 +86,30 @@
     </div>
 </div>
 <div class="clearfix"></div>
+@if (Auth::user()->role_id == Config::get('constants.ROLEUSER'))
+<div class="content">
+    <div class="box box-primary">
+        <div class="form-group col-sm-12">
+        {!! Form::label('register-business', trans('user.register_business')) !!}
+        </div>
+        <div class="form-register-business">
+            <input type="checkbox" name="role_id" id="fancy-checkbox-primary" autocomplete="off" />
+            <div class="[ btn-group ]">
+                <label for="fancy-checkbox-primary" class="[ btn btn-primary ]">
+                    <span class="[ glyphicon glyphicon-ok ]"></span>
+                    <span> </span>
+                </label>
+                <label for="fancy-checkbox-primary" class="[ btn btn-default active ]">
+                    {!! trans('user.register_business') !!}
+                </label>
+            </div>
+        </div>
+        {!! Form::label('register-business', trans('business.infor_register_business')) !!}
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+@endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
