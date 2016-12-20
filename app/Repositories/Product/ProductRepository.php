@@ -139,8 +139,7 @@ class ProductRepository extends BaseRepository
     {
         return $this->model->leftjoin('categories', 'categories.id', '=', 'products.category_id')
         ->where('user_id', $id)
-        ->select('*', 'products.id')
-        ->paginate(5);
+        ->select('*', 'products.id');
     }
 
     /**

@@ -24,8 +24,6 @@
   <link rel="stylesheet" href="{{asset('/css/product.css')}}">
   <link rel="stylesheet" href="{{asset('/css/promotion.css')}}">
   <link rel="stylesheet" href="{{asset('/css/user_order_index.css')}}">
-
-  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script><script type="text/javascript" var_1="true" var_2="false" var_3="false" var_4="80" src="https://static1.fshare.vn/js/flies-obj-2.1.js?v=a5a98a85"></script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">

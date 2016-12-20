@@ -16,4 +16,5 @@
     'ZERO' => '0',
     'LIMIT' => '15',
     'LIMIT_RECORD' => '-4',
+    'PAGE_PRODUCT_BUSINESS' =>6,
 ];
