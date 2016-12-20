@@ -88,4 +88,26 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         $data = User::where('role_id', $role)->paginate(config('constants.LIMIT'));
         return $data;
     }
+
+    /**
+     * Block a user
+     *
+     * @param int $id [id of user]
+     *
+     * @return boolean
+     */
+    public function blockUser($id)
+    {
+        try {
+            $data = User::where('id', $id)->update([
+                'role_id' => config('constants.BLOCK_USER'),
+            ]);
+        } catch (Exception $e) {
+            return view('/user')->withError(trans('user.error_when_block_user'));
+        }
+        if (!$data) {
+            throw new Exception(trans('user.block_user_error'));
+        }
+        return $data;
+    }
 }

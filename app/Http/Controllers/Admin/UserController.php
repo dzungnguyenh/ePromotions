@@ -82,4 +82,20 @@ class UserController extends Controller
         }
         return view('admin.user.show', compact('user'));
     }
+
+    /**
+     * Update a user when block
+     *
+     * @param int $id [id of user]
+     *
+     * @return boolean
+     */
+    public function update($id)
+    {
+        $user = $this->userRepository->find($id);
+        if (empty($user)) {
+            Session::flash('msg', trans('user.user_not_found'));
+        }
+        $user = $this->userRepository->blockUser($id);
+    }
 }

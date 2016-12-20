@@ -71,3 +71,16 @@ $('#mydropdownmenu > li').click(function(e){
     $('#mydropwodninput').val(selected);
     $('#mydropdowndisplay').text(selected);
 })
+
+/**
+ * Show message into alert box
+ */
+$(document).ready(function(){
+    function isEmpty( el ){
+      return !$.trim(el.html())
+  }
+  if (!isEmpty($('#session-message'))) {
+    var message = $("#session-message").text().dialog();
+    return alert(message);
+  }
+})
