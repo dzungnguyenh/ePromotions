@@ -120,4 +120,17 @@ abstract class BaseRepository
     {
         return $this->model->paginate($limit);
     }
+    /**
+     * [find Like product]
+     *
+     * @param [type] $attribute [field name]
+     * @param [type] $value     [value search]
+     * @param int    $limit     Number of item.
+     *
+     * @return [type]            [all colum of search]
+     */
+    public function findLike($attribute, $value, $limit)
+    {
+        return $this->model->where($attribute, 'like', '%'.$value.'%')->paginate($limit);
+    }
 }

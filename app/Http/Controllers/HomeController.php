@@ -82,11 +82,11 @@ class HomeController extends Controller
     }
 
     /**
-    * Display research page
+    * Display product research
     *
     * @param Request $request [ value input tag ]
     *
-    * @return [type]          [description]
+    * @return [type]          [get all product]
     */
     public function research(Request $request)
     {
@@ -96,14 +96,13 @@ class HomeController extends Controller
               $category = "Product";
         }
         if ($category=="Product") {
-            $result = DB::table('products') -> where('product_name', 'like', '%' . $search . '%') -> orwhere('description', 'like', '%'.$search.'%') -> get();
-               return view('index.search_product', compact('$result'));
+            $products = $this->productRepository->findLike('product_name', $search, 16);
+            return view('index.product')->with('products', $products);
         } else {
             if ($category=="Promotion") {
-                $result= DB::table('promotions')->where('title', 'like', '%'.$search.'%')->orwhere('description', 'like', '%'.$search.'%')->get();
-                return view('index.search_promotion', compact('$result'));
+                $products = $this->promotionRepository->getByPromotion($search, 16);
+                return view('index.product')->with('products', $products);
             } else {
-                $result= DB::table('events')->where('title', 'like', '%' .$search. '%')->orwhere('description', 'like', '%' .$search. '%')->get();
                 return view('index.search_event', compact('$result'));
             }
         }

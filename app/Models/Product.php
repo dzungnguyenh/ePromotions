@@ -31,4 +31,13 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Category');
     }
+    /**
+     * [promotion description]
+     *
+     * @return [type] [description]
+     */
+    public function promotion()
+    {
+        return $this->hasMany('App\Models\Promotion');
+    }
 }
