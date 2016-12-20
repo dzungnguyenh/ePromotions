@@ -20,5 +20,6 @@
 <script type="text/javascript" src="/admin/js/app.js"></script>
 <script type="text/javascript" src="/js/product.js"></script>
 <script type="text/javascript" src="/admin/js/ajax.js"></script>
+<script type="text/javascript" src="/js/user_order.js"></script>
 </body>
 </html>

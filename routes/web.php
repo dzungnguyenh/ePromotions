@@ -44,6 +44,11 @@ Route::group(['middleware' => 'checkuser'], function()
     ]);
 });
 
+Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
+{
+    Route::resource('userorder','User\UserOrderController');
+});
+
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
