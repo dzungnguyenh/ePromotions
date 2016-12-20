@@ -58,11 +58,11 @@
                     <thead>
                         <tr>
                             <th>{{ trans('product.name') }}</th>
-                            <th >{{ trans('product.dob') }}</th>
-                            <th >{{ trans('product.phone') }}</th>
+                            <th>{{ trans('product.dob') }}</th>
+                            <th>{{ trans('product.phone') }}</th>
                             <th>{{ trans('product.address') }}</th>
-                            <th >{{ trans('product.email') }}</th>
-                            <th >{{ trans('product.gender') }}</th>
+                            <th>{{ trans('product.email') }}</th>
+                            <th>{{ trans('product.gender') }}</th>
                         </tr>
                     </thead>
                     <tbody>
