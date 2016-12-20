@@ -86,7 +86,7 @@ class HomeController extends Controller
     *
     * @param Request $request [ value input tag ]
     *
-    * @return [type]          [get all product]
+    * @return [type]          [get all product event of search]
     */
     public function research(Request $request)
     {
@@ -103,7 +103,7 @@ class HomeController extends Controller
                 $products = $this->promotionRepository->getByPromotion($search, 16);
                 return view('index.product')->with('products', $products);
             } else {
-                return view('index.search_event', compact('$result'));
+                // return view('index.search_event', compact('$result'));
             }
         }
     }

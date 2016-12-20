@@ -8,6 +8,7 @@ use App\Models\Promotion;
  
 class PromotionRepository extends BaseRepository implements PromotionRepositoryInterface
 {
+    protected $model;
     /**
      * Promotion constructor.
      *
@@ -29,7 +30,7 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
      */
     public function getByPromotion($search, $limit)
     {
-        return $this->model::with('product')->whereHas('product', function ($query) use ($search) {
+        return $this->model->with('product')->whereHas('product', function ($query) use ($search) {
             $query->where('product_name', 'like', '%'.$search.'%')->where('date_start', '<=', date('Y-m-d H:i:s'))->where('date_end', '>=', date('Y-m-d H:i:s'));
         })->paginate($limit);
     }
