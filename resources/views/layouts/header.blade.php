@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="{{asset('/css/style_admin.css')}}">
   <link rel="stylesheet" href="{{asset('/css/product.css')}}">
   <link rel="stylesheet" href="{{asset('/css/promotion.css')}}">
+  <meta name="_token" content="{!! csrf_token() !!}" />
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
