@@ -51,7 +51,6 @@
           <ul class="dropdown-menu" id="mydropdownmenu">
             <li><a href="#">{!! trans('header.category_promotion') !!}</a></li>
             <li><a href="#">{!! trans('header.category_product') !!}</a></li>
-            <li><a href="#">{!! trans('header.category_event') !!}</a></li>
           </ul>
           <input type="hidden" id="mydropwodninput" name="category">
         </div><!-- /btn-group -->

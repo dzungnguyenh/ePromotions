@@ -102,8 +102,6 @@ class HomeController extends Controller
             if ($category=="Promotion") {
                 $products = $this->promotionRepository->getByPromotion($search, 16);
                 return view('index.product')->with('products', $products);
-            } else {
-                // return view('index.search_event', compact('$result'));
             }
         }
     }
