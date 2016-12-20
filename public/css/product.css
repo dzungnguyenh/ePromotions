@@ -49,4 +49,19 @@
 .tbl-detail-customer tr th:nth-child(4){
      width: 55%;
 }
+#product-view .accept{
+     background: transparent;
+     border: none;
+}
+#product-view button[alt="1"].accept-book{
+    background: #b8d8ca;
+    cursor: default;
+    border:none;
+}
+#product-view button[alt="1"].accept-book:hover{
+    background: #b8d8ca;
+}
+.alert-accept{
+    display: none;
+}
 

@@ -9,6 +9,7 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::get('acceptbook/{id}', 'API\BookDetailController@handleAcceptBook');
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 {
