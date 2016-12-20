@@ -40,3 +40,12 @@
     height:100px;
     display: none;
 }
+.tbl-detail-customer th{
+    width:10%;
+}
+.tbl-detail-customer tr th:nth-child(4){
+     width: 55%;
+}
+.tbl-detail-customer tr th:nth-child(2){
+     width: 15%;
+}
