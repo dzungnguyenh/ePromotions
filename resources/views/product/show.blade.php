@@ -41,14 +41,14 @@
                     <div class="col-md-2" ><span>{{$value->name}}</span></div>
                     <div class="col-md-2"><span>{{$value->quantity}}</span></div>
                     <div class="col-md-2"><span>{{$value->created_at}}</span></div>
-                    <div class="col-md-2"><span>status</span></div>
+                    <div class="col-md-2"><span>{{$value->status}}</span></div>
 
                     <div class="col-md-2">
                         <button class="btn btn-success btn-view view-product">
                             <a href=""><i class="glyphicon glyphicon-ok"></i></a>
                         </button>
                         <button class="btn btn-success btn-view view-detail-cus" >
-                            <i class="glyphicon glyphicon glyphicon-cog"></i>
+                            <i class="glyphicon glyphicon glyphicon-eye-open"></i>
                         </button>
                     </div>
                 </div>
@@ -58,11 +58,11 @@
                     <thead>
                         <tr>
                             <th>{{ trans('product.name') }}</th>
-                            <th>{{ trans('product.dob') }}</th>
-                            <th>{{ trans('product.phone') }}</th>
-                            <th>{{ trans('product.address') }}</th>
-                            <th>{{ trans('product.email') }}</th>
-                            <th>{{ trans('product.gender') }}</th>
+                            <th style="width: 10%">{{ trans('product.dob') }}</th>
+                            <th style="width: 10%">{{ trans('product.phone') }}</th>
+                            <th style="width: 60%">{{ trans('product.address') }}</th>
+                            <th style="width: 10%">{{ trans('product.email') }}</th>
+                            <th style="width: 10%">{{ trans('product.gender') }}</th>
                         </tr>
                     </thead>
                     <tbody>
