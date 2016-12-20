@@ -80,7 +80,7 @@ $(document).ready(function(){
       return !$.trim(el.html())
   }
   if (!isEmpty($('#session-message'))) {
-    var message = $("#session-message").text().dialog();
+    var message = $("#session-message").text();
     return alert(message);
   }
 })
