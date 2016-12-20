@@ -5,10 +5,18 @@ $(document).ready(function(){
     var url = "/product";
     $('.vote').click(function(){
         var productId = $(this).val();
-        $.get(url + '/' + productId, function (data) {
-            //success data
-            console.log(data);
-            $('#ajaxVote' + productId).html(data);
+        url += '/' + productId;
+        var get = "GET";
+        $.ajax({
+            type: get,
+            url: url,
+            dataType: 'json',
+            success: function(data) {
+                $('#ajaxVote' + productId).html(data);
+            },
+            error: function(data) {
+                console.log('Error:', data);
+            }
         });
         $(this).prop('disabled', true);
     });

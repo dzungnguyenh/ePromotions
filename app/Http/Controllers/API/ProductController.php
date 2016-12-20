@@ -18,7 +18,7 @@ class ProductController extends Controller
     /**
     * Create a new controller instance.
     *
-    * @param VoteProductRepository $voteProRepository   [description]
+    * @param VoteProductRepository $voteProRepository [description]
     */
     public function __construct(VoteProductRepository $voteProRepository)
     {
