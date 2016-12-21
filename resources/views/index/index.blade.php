@@ -1,7 +1,7 @@
 @include('include.header')
 
 <div id="promotion" class="promotion"><div class="row"><div class="col-sm-12"><div class="panel panel-primary"><div class="panel-heading">{!! trans('header.promotion') !!}</div></div></div></div></div>
-<div class="container">    
+<div class="container">
     <div class="row">
         @foreach($promotions as $promotion)
         <div class="col-sm-3">
@@ -25,7 +25,7 @@
 </div><br>
 
 <div id="product" class="product"><div class="row"><div class="col-sm-12"><div class="panel panel-primary"><div class="panel-heading">{!! trans('header.product') !!}</div></div></div></div></div>
-<div class="container">    
+<div class="container">
     <div class="row">
         @foreach($products as $product)
         <div class="col-sm-3">
@@ -71,8 +71,8 @@
 </div><br>
 
 <div id="event" class="event"><div class="row"><div class="col-sm-12"><div class="panel panel-primary"><div class="panel-heading">{!! trans('header.event') !!}</div></div></div></div></div>
-<div class="container">    
-<div class="container">    
+<div class="container">
+<div class="container">
     <div class="row">
         @foreach($events as $event)
         <div class="col-sm-4">
