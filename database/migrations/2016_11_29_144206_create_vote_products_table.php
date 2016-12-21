@@ -15,7 +15,6 @@ class CreateVoteProductsTable extends Migration
     {
         Schema::create('vote_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('rank');
             $table->integer('user_id')->unsigned();
              $table->integer('product_id')->unsigned();
             $table->timestamps();

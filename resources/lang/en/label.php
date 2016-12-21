@@ -23,5 +23,6 @@ return [
     'end' => '...',
     'price' => 'Price: ',
     'date_port' => 'Date post: ',
+    'vote' => 'Vote: ',
     'currency' => '$',
 ];
