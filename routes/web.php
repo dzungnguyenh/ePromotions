@@ -42,6 +42,7 @@ Route::group(['middleware' => 'checkuser'], function()
     Route::resource('user', 'User\UserController' , [
         'only' => ['index', 'edit', 'update']
     ]);
+    Route::get('/event/{id}/join', 'User\RegisterEventController@join');
 });
 
 Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
