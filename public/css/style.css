@@ -117,11 +117,6 @@
       color: #aaa;
       font-size: 14px;
   }
-  .panel-footer .btn {
-      margin: 15px 0;
-      background-color: #f4511e;
-      color: #fff;
-  }
   .navbar {
       margin-bottom: 0;
       background-color: #2b2523;
@@ -158,19 +153,19 @@
     background-color: #ff7600;
     border-color: #ff7600;
   }
-  .panel-footer button.book{
+  .panel-footer button.btn-book{
     background-color: green;
     color: #fff;
   }
-  .panel-footer button.join{
+  .panel-footer button.btn-join{
     background-color: green;
     color: #fff;
   }
-  .panel-footer button.share{
+  .panel-footer button.btn-share{
     background-color: blue;
     color: #fff;
   }
-  .panel-footer button.vote{
+  .panel-footer button.btn-vote{
     background-color: orange;
     color: blue;
   }
