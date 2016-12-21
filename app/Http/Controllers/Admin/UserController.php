@@ -27,7 +27,8 @@ class UserController extends Controller
    /**
     * Create a new UserRepository instance
     *
-    * @param UserRepository $userRepository description
+    * @param UserRepository        $userRepository    description
+    * @param VoteProductRepository $voteProRepository description
     *
     * @return void
     */
