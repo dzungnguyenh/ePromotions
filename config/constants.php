@@ -12,8 +12,8 @@
     'STEP_POINT' => '1',
     'LENGTHTOKEN' => '40',
     'NO' => '1',
-    'LIMIT' => '10',
     'ZERO' => '0',
     'LIMIT' => '15',
     'LIMIT_RECORD' => '-4',
+    'BLOCK_USER' => '4',
 ];
