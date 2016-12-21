@@ -16,4 +16,5 @@
     'LIMIT' => '15',
     'LIMIT_RECORD' => '-4',
     'BLOCK_USER' => '4',
+    'SELECT_ONE' => '1',
 ];
