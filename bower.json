@@ -20,6 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "AdminLTE": "admin-lte#^2.3.8"
+    "AdminLTE": "admin-lte#^2.3.8",
+    "jquery": "^3.1.1"
   }
 }

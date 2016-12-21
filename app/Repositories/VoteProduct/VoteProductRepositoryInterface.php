@@ -1,59 +1,50 @@
 <?php
 
-namespace App\Repositories\User;
+namespace App\Repositories\VoteProduct;
 
-interface UserRepositoryInterface
+interface VoteProductRepositoryInterface
 {
     /**
-     * Get all Users
+     * Get all voteProduct
      *
      * @return Reponse
      */
     public function all();
 
     /**
-     * Create a new User
+     * Create a new voteProduct
      *
      * @param array $inputs [values input text]
      *
-     * @return User
+     * @return voteProduct
      */
     public function create($inputs);
 
     /**
-     * Find a User
+     * Find a voteProduct
      *
-     * @param int $id [id of User update]
+     * @param int $id [id of voteProduct update]
      *
-     * @return User
+     * @return voteProduct
      */
     public function find($id);
 
     /**
-     * Update a User
+     * Update a voteProduct
      *
      * @param array $inputs [values input text]
-     * @param int   $id     [id of User]
+     * @param int   $id     [id of voteProduct]
      *
      * @return boolean
      */
     public function update($inputs, $id);
 
     /**
-     * Delete a User
+     * Delete a voteProduct
      *
-     * @param int $id [id of User delete]
+     * @param int $id [id of voteProduct delete]
      *
      * @return boolean
      */
     public function delete($id);
-
-    /**
-     * Block a user
-     *
-     * @param int $id [id of user]
-     *
-     * @return boolean
-     */
-    public function blockUser($id);
 }
