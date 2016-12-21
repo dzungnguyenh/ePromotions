@@ -79,4 +79,18 @@ class VoteProductRepository extends BaseRepository implements VoteProductReposit
         }
         return $countProductId;
     }
+
+    /**
+     * Get list history voted
+     *
+     * @return mixed
+     */
+    public function getHistoryVoted()
+    {
+        return $this->model
+                    ->join('products', 'vote_products.product_id', '=', 'products.id')
+                    ->where('vote_products.user_id', '=', Auth::user()->id)
+                    ->select('vote_products.*', 'products.product_name')
+                    ->get();
+    }
 }

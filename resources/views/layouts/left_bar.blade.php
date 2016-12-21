@@ -114,6 +114,18 @@
         </ul>
       </li>
 
+      <li class="treeview">
+        <a href="#"><i class="fa fa-book"></i> <span>{!! trans('left_bar.history') !!}</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{route('user.history.voted')}}">{!! trans('left_bar.voted') !!}</a></li>
+          <li><a href="#">{!! trans('left_bar.join_event') !!}</a></li>
+        </ul>
+      </li>
+
       @if (Auth::user()->role_id == Config::get('constants.ROLEBUSSINESS'))
 
       <li class="treeview">
