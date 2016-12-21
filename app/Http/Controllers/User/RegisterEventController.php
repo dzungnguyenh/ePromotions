@@ -33,26 +33,32 @@ class RegisterEventController extends Controller
      */
     public function __construct(RegisterEventRepository $joinEventRepository, EventRepository $eventRepository)
     {
-        $this->registerEventRepository = $joinEventRepository;
+        $this->joinEventRepository = $joinEventRepository;
         $this->eventRepository = $eventRepository;
     }
 
     /**
      * Running index page
      *
-     * @param int $id [id of event]
+     * @param int $eventId [id of event]
      *
      * @return Reponse
      */
-    public function join($id)
+    public function join($eventId)
     {
-        $event = $this->eventRepository->find($id);
+        $event = $this->eventRepository->find($eventId);
         if (empty($event)) {
             Session::flash('msg', trans('event.event_not_found'));
             return redirect('/');
         }
-        $this->joinEventRepository->join($id);
-        Session::flash('msg', trans('event.register_event_successfully'));
-        return redirect('/');
+        $checkJoin = $this->joinEventRepository->checkJoin($eventId);
+        if (!empty($checkJoin)) {
+            Session::flash('msg', trans('event.has_been_register'));
+            return redirect('/');
+        } else {
+            $this->joinEventRepository->join($eventId);
+            Session::flash('msg', trans('event.register_event_successfully'));
+            return redirect('/');
+        }
     }
 }

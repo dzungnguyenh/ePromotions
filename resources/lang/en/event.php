@@ -23,5 +23,6 @@ return [
   'join_event' => 'Do you want join this event?',
   'register_event_error' => 'Register event error',
   'cant_not_register_event' => 'Can not register event',
+  'has_been_register' => 'You has been register this event. Please check again!',
   'register_event_successfully' => 'Register event successfully!',
 ];

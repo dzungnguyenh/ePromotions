@@ -21,6 +21,19 @@ class RegisterEventRepository extends BaseRepository implements RegisterEventRep
     }
 
     /**
+     * Check user has been register event
+     *
+     * @param int $eventId [id of event]
+     *
+     * @return Reponse
+     */
+    public function checkJoin($eventId)
+    {
+        $data = RegisterEvent::where('user_id', Auth::user()->id)->where('event_id', $eventId)->first();
+        return $data;
+    }
+
+    /**
      * Register a event
      *
      * @param int $id [id of event]
