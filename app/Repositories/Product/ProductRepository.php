@@ -172,4 +172,18 @@ class ProductRepository extends BaseRepository
         ->where('products.id', $id)
         ->first();
     }
+
+    /**
+     * Get list of products by id category
+     *
+     * @param integer $id Id category
+     *
+     * @return array     List of products
+     */
+    public function getByIdCategory($id)
+    {
+        return $this->model
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->where('categories.id', $id)->select('*', 'products.id')->get();
+    }
 }

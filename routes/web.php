@@ -51,14 +51,14 @@ Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
     Route::resource('userorder','User\UserOrderController');
 });
 
-
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
 Auth::routes();
 
-
 Route::get('/', 'HomeController@index');
 Route::get('/product', 'HomeController@product');
 Route::get('/home','Auth\HomeController@index');
+Route::get('/category/{id}', 'Product\ProductController@showByIdCategory');
 
+Route::get('/logout', 'UserController@logout');

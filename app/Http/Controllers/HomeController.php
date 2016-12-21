@@ -46,7 +46,7 @@ class HomeController extends Controller
      * @var voteProRepository
      */
     protected $voteProRepository;
-    
+
    /**
     * Create a new controller instance.
     *
@@ -72,13 +72,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categoriies = $this->categoryRepository->allRoot();
+        $categories = $this->categoryRepository->allRoot();
+        foreach ($categories as $key => $category) {
+            $childs[$key] = $this->categoryRepository->findDescendants($category->id);
+        }
         $promotions = $this->promotionRepository->all()->take(config('constants.LIMIT_RECORD'));
         $products = $this->productRepository->all()->take(config('constants.LIMIT_RECORD'));
         $voteProducts = $this->voteProRepository->all();
         $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
         $events = $this->eventRepository->all()->take(config('constants.LIMIT_RECORD'));
-        return view('index.index', compact('categoriies', 'promotions', 'products', 'events', 'voteProducts', 'arPointVote'));
+        return view('index.index', compact('categories', 'childs', 'promotions', 'products', 'voteProducts', 'arPointVote', 'events'));
     }
 
     /**
