@@ -42,6 +42,7 @@ Route::group(['middleware' => 'checkuser'], function()
     Route::resource('user', 'User\UserController' , [
         'only' => ['index', 'edit', 'update']
     ]);
+    Route::get('product/{id}', 'API\ProductController@handlingAjaxVote');
 });
 
 Route::group(['middleware' => 'user', 'prefix' => 'user'],function()

@@ -15,7 +15,6 @@
             <div class="panel-footer">
                 <a href=""><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i> {!! trans('label.book') !!}</button></a>
                 <a href=""><button class="share"><i class="glyphicon glyphicon-send"></i>{!! trans('label.share') !!}</button></a>
-                <a href=""><button class="vote"><i class="glyphicon glyphicon-thumbs-up"></i>{!! trans('label.vote') !!}</button></a>
             </div>
           </div>
         </div>
@@ -36,11 +35,32 @@
             <a href=""><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" alt="Image"></a>
             <p>Price: <b>{{ $product->price }} $</b></p>
             <p>Date post: {{ $product->created_at }} </p>
+            <p>Vote:
+                <b id="ajaxVote{{ $product->id }}" value="{{$product->id}}">
+                    @if(isset($arPointVote[$product->id]))
+                        {{ $arPointVote[$product->id] }}
+                    @else
+                        {{ config('constants.ZERO') }}
+                    @endif
+                </b>
+            </p>
             </div>
             <div class="panel-footer">
                 <a href=""><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i>{!! trans('label.book') !!}</button></a>
                 <a href=""><button class="share"><i class="glyphicon glyphicon-send"></i>{!! trans('label.share') !!}</button></a>
-                <a href=""><button class="vote"><i class="glyphicon glyphicon-thumbs-up"></i>{!! trans('label.vote') !!}</button></a>
+                <?php
+                    $disabled="";
+                ?>
+                @foreach($voteProducts as $voteProduct)
+                    @if ((Auth::user()->id == $voteProduct->user_id) && ($voteProduct->product_id == $product->id))
+                        <?php
+                            $disabled = "disabled";
+                        ?>
+                    @endif
+                @endforeach
+                <a><button class="vote" {{ $disabled }} value="{{$product->id}}"><i class="glyphicon glyphicon-thumbs-up"></i>
+                    {{ trans('label.vote') }}
+                </button></a>
             </div>
           </div>
         </div>
@@ -66,7 +86,6 @@
             <div class="panel-footer">
                 <a href=""><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i>{!! trans('label.join') !!}</button></a>
                 <a href=""><button class="share"><i class="glyphicon glyphicon-send"></i>{!! trans('label.share') !!}</button></a>
-                <a href=""><button class="vote"><i class="glyphicon glyphicon-thumbs-up"></i>{!! trans('label.vote') !!}</button></a>
             </div>
           </div>
         </div>
