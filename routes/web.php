@@ -55,6 +55,6 @@ Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
 Auth::routes();
 
-
-Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
+Route::get('/research', 'HomeController@research');
 Route::get('/product', 'HomeController@product');
