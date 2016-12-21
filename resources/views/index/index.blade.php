@@ -59,7 +59,7 @@
                     @endif
                 @endforeach
                 <a><button class="vote" {{ $disabled }} value="{{$product->id}}"><i class="glyphicon glyphicon-thumbs-up"></i>
-                    {{ trans('label.vote') }}
+                    {{ trans('label.btn_vote') }}
                 </button></a>
             </div>
           </div>

@@ -29,7 +29,7 @@ class RegisterEventController extends Controller
      * Create a new controller instance.
      *
      * @param RegisterEventRepository $joinEventRepository [description]
-     * @param EventRepository         $eventRepository         [description]
+     * @param EventRepository         $eventRepository     [description]
      */
     public function __construct(RegisterEventRepository $joinEventRepository, EventRepository $eventRepository)
     {
