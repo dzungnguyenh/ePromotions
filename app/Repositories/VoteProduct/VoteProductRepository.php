@@ -57,6 +57,7 @@ class VoteProductRepository extends BaseRepository implements VoteProductReposit
      * Ajax handling vote
      *
      * @param int $productId [id of product]
+     * @param int $pointVote [point vote]
      *
      * @return count
      */
@@ -81,7 +82,7 @@ class VoteProductRepository extends BaseRepository implements VoteProductReposit
             $arAddPointUser = array(
                     'point' => $newPoint,
                 );
-            DB::table('user')->where('id',Auth::user()->id)->update($arAddPointUser);
+            DB::table('user')->where('id', Auth::user()->id)->update($arAddPointUser);
         }
         return $countProductId;
     }
