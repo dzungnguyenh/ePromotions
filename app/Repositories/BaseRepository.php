@@ -125,12 +125,11 @@ abstract class BaseRepository
      *
      * @param [type] $attribute [field name]
      * @param [type] $value     [value search]
-     * @param int    $limit     Number of item.
      *
      * @return [type]            [all colum of search]
      */
-    public function findLike($attribute, $value, $limit)
+    public function findLike($attribute, $value)
     {
-        return $this->model->where($attribute, 'like', '%'.$value.'%')->paginate($limit);
+        return $this->model->where($attribute, 'like', '%'.$value.'%');
     }
 }

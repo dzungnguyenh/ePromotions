@@ -37,11 +37,16 @@ Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
     Route::get('/show_promotion/{attribute?}/{id}', 'Business\PromotionController@showBy')->name('show_promotion');
 });
 
-Route::group(['middleware' => 'auth'], function()
+Route::group(['middleware' => 'checkuser'], function()
 {
     Route::resource('user', 'User\UserController' , [
         'only' => ['index', 'edit', 'update']
     ]);
+});
+
+Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
+{
+    Route::resource('userorder','User\UserOrderController');
 });
 
 
@@ -53,5 +58,3 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/product', 'HomeController@product');
-Route::get('/research', 'HomeController@research');
-

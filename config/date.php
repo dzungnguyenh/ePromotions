@@ -10,4 +10,5 @@ return [
     */
     'date_time' => 'Y-m-d\TH:i',
     'format_timestamps' => 'Y-m-d H:i:s',
+    'date_system' => 'Y-m-d H:i:s',
 ];

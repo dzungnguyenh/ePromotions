@@ -6,4 +6,6 @@ return [
     'business_not_found' => 'Business not found',
     'delete_a_business' => ' will be delete. Are you sure?',
     'delete_business_successfully' => 'Delete business successfully!',
+    'infor_register_business' => 'If you are business you can post product and event.',
+    'block_business' => 'Block this business',
 ];

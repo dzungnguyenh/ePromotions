@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -17,21 +16,18 @@ class HomeController extends Controller
      * @var CategoryRepository
      */
     protected $categoryRepository;
-
     /**
      * The PromotionRepository instance
      *
      * @var PromotionRepository
      */
     protected $promotionRepository;
-
     /**
      * The ProductRepository instance
      *
      * @var ProductRepository
      */
     protected $productRepository;
-
     /**
      * The EventRepository instance
      *
@@ -54,7 +50,6 @@ class HomeController extends Controller
         $this->productRepository = $productRepository;
         $this->eventRepository = $eventRepository;
     }
-
     /**
      * Display information in index page
      *
@@ -68,7 +63,6 @@ class HomeController extends Controller
         $events = $this->eventRepository->all()->take(config('constants.LIMIT_RECORD'));
         return view('index.index', compact('categoriies', 'promotions', 'products', 'events'));
     }
-
     /**
     * Show list all product
     *
@@ -80,7 +74,6 @@ class HomeController extends Controller
         // dd($products);
         return view('index.product')->with('products', $products);
     }
-
     /**
     * Display product research
     *
@@ -92,17 +85,12 @@ class HomeController extends Controller
     {
         $category = $request->input('category');
         $search = $request->input('search');
-        if (empty($category)) {
-              $category = "Product";
-        }
-        if ($category=="Product") {
-            $products = $this->productRepository->findLike('product_name', $search, 16);
+        if ($category=="Promotion") {
+            $products = $this->productRepository->getByPromotion($search);
             return view('index.product')->with('products', $products);
         } else {
-            if ($category=="Promotion") {
-                $products = $this->promotionRepository->getByPromotion($search, 16);
-                return view('index.product')->with('products', $products);
-            }
+            $products = $this->productRepository->findLike('product_name', $search)->paginate(16);
+            return view('index.product')->with('products', $products);
         }
     }
 }

@@ -1,59 +1,50 @@
 <?php
 
-namespace App\Repositories\User;
+namespace App\Repositories\BookDetail;
 
-interface UserRepositoryInterface
+interface BookDetailRepositoryInterface
 {
     /**
-     * Get all Users
+     * Get all points
      *
      * @return Reponse
      */
     public function all();
 
     /**
-     * Create a new User
+     * Create a new point
      *
      * @param array $inputs [values input text]
      *
-     * @return User
+     * @return Point
      */
     public function create($inputs);
 
     /**
-     * Find a User
+     * Find a point
      *
-     * @param int $id [id of User update]
+     * @param int $id [id of point update]
      *
-     * @return User
+     * @return Point
      */
     public function find($id);
 
     /**
-     * Update a User
+     * Update a point
      *
      * @param array $inputs [values input text]
-     * @param int   $id     [id of User]
+     * @param int   $id     [id of point]
      *
      * @return boolean
      */
     public function update($inputs, $id);
 
     /**
-     * Delete a User
+     * Delete a point
      *
-     * @param int $id [id of User delete]
+     * @param int $id [id of point delete]
      *
      * @return boolean
      */
     public function delete($id);
-
-    /**
-     * Block a user
-     *
-     * @param int $id [id of user]
-     *
-     * @return boolean
-     */
-    public function blockUser($id);
 }
