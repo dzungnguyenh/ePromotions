@@ -2,11 +2,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Promotion\PromotionRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Event\EventRepository;
-use DB;
+use App\Repositories\VoteProduct\VoteProductRepository;
 
 class HomeController extends Controller
 {
@@ -34,21 +35,30 @@ class HomeController extends Controller
      * @var EventRepository
      */
     protected $eventRepository;
-    
+
+    /**
+     * The VoteProductRepository instance
+     *
+     * @var voteProRepository
+     */
+    protected $voteProRepository;
+
    /**
     * Create a new controller instance.
     *
-    * @param CategoryRepository  $categoryRepository  [description]
-    * @param PromotionRepository $promotionRepository [description]
-    * @param ProductRepository   $productRepository   [description]
-    * @param EventRepository     $eventRepository     [description]
+    * @param CategoryRepository    $categoryRepository  [description]
+    * @param PromotionRepository   $promotionRepository [description]
+    * @param ProductRepository     $productRepository   [description]
+    * @param EventRepository       $eventRepository     [description]
+    * @param VoteProductRepository $voteProRepository   [description]
     */
-    public function __construct(CategoryRepository $categoryRepository, PromotionRepository $promotionRepository, ProductRepository $productRepository, EventRepository $eventRepository)
+    public function __construct(CategoryRepository $categoryRepository, PromotionRepository $promotionRepository, ProductRepository $productRepository, EventRepository $eventRepository, VoteProductRepository $voteProRepository)
     {
         $this->categoryRepository = $categoryRepository;
         $this->promotionRepository = $promotionRepository;
         $this->productRepository = $productRepository;
         $this->eventRepository = $eventRepository;
+        $this->voteProRepository = $voteProRepository;
     }
     /**
      * Display information in index page
@@ -57,11 +67,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categoriies = $this->categoryRepository->allRoot();
+        $categories = $this->categoryRepository->allRoot();
+        foreach ($categories as $key => $category) {
+            $childs[$key] = $this->categoryRepository->findDescendants($category->id);
+        }
         $promotions = $this->promotionRepository->all()->take(config('constants.LIMIT_RECORD'));
         $products = $this->productRepository->all()->take(config('constants.LIMIT_RECORD'));
+        $voteProducts = $this->voteProRepository->all();
+        $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
         $events = $this->eventRepository->all()->take(config('constants.LIMIT_RECORD'));
-        return view('index.index', compact('categoriies', 'promotions', 'products', 'events'));
+        return view('index.index', compact('categories', 'childs', 'promotions', 'products', 'voteProducts', 'arPointVote', 'events'));
     }
     /**
     * Show list all product
@@ -70,9 +85,12 @@ class HomeController extends Controller
     */
     public function product()
     {
+        $categories = $this->categoryRepository->allRoot();
+        foreach ($categories as $key => $category) {
+            $childs[$key] = $this->categoryRepository->findDescendants($category->id);
+        }
         $products = $this->productRepository->getAll()->paginate(16);
-        // dd($products);
-        return view('index.product')->with('products', $products);
+        return view('index.product', compact('products', 'categories', 'childs'));
     }
     /**
     * Display product research
@@ -83,14 +101,18 @@ class HomeController extends Controller
     */
     public function research(Request $request)
     {
-        $category = $request->input('category');
+        $cate = $request->input('category_name');
         $search = $request->input('search');
-        if ($category=="Promotion") {
+        $categories = $this->categoryRepository->allRoot();
+        foreach ($categories as $key => $category) {
+            $childs[$key] = $this->categoryRepository->findDescendants($category->id);
+        };
+        if ($cate=="1") {
             $products = $this->productRepository->getByPromotion($search);
-            return view('index.product')->with('products', $products);
+            return view('index.product', compact('products', 'categories', 'childs'));
         } else {
             $products = $this->productRepository->findLike('product_name', $search)->paginate(16);
-            return view('index.product')->with('products', $products);
+            return view('index.product', compact('products', 'categories', 'childs'));
         }
     }
 }

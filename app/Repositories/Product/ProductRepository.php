@@ -184,4 +184,17 @@ class ProductRepository extends BaseRepository
             $query->where('date_start', '<=', date(config('date.date_system')))->where('date_end', '>=', date(config('date.date_system')));
         })->paginate(16);
     }
+    /**
+     * Get list of products by id category
+     *
+     * @param integer $id Id category
+     *
+     * @return array     List of products
+     */
+    public function getByIdCategory($id)
+    {
+        return $this->model
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->where('categories.id', $id)->select('*', 'products.id')->get();
+    }
 }
