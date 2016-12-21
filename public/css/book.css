@@ -19,7 +19,8 @@
 #price{
 	text-decoration:underline;
 }
-.quantity{
+#quantity{
+	margin: 0 !important;
 	width: 40px;
 }
 .error-quantity{

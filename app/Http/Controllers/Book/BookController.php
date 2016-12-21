@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Book;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Book\BookRepository;
-use App\Repositories\Book\BookDetailRepository;
+use App\Repositories\BookDetail\BookDetailRepository;
+use App\Repositories\Category\CategoryRepository;
 use App\Models\Product;
 use Session;
 
@@ -24,17 +25,26 @@ class BookController extends Controller
      * @param BookDetailRepository
      */
     protected $bookDetail;
+
+    /**
+     * The CategoryRepository instance
+     *
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
  
     /**
      * BookController constructor.
      *
-     * @param App\Repositories\Book\BookRepository       $book       description
-     * @param App\Repositories\Book\BookDetailRepository $bookDetail description
+     * @param App\Repositories\Book\BookRepository         $book               description
+     * @param App\Repositories\Book\BookDetailRepository   $bookDetail         description
+     * @param App\Repositories\Category\CategoryRepository $categoryRepository description
      */
-    public function __construct(BookRepository $book, BookDetailRepository $bookDetail)
+    public function __construct(BookRepository $book, BookDetailRepository $bookDetail, CategoryRepository $categoryRepository)
     {
         $this->book= $book;
         $this->bookDetail= $bookDetail;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -64,11 +74,15 @@ class BookController extends Controller
      */
     public function show($productId)
     {
+        $categories = $this->categoryRepository->allRoot();
+        foreach ($categories as $key => $category) {
+            $childs[$key] = $this->categoryRepository->findDescendants($category->id);
+        }
         $product=Product::where('id', $productId)->get();
         if ($product->isEmpty()) {
-            return view('errors.book.error_book');
+            return view('errors.book.error_book', ['categories'=> $categories, 'childs' => $childs]);
         } else {
-            return view('book.book', ['product' => $product]);
+            return view('book.book', ['product' => $product,'categories'=> $categories, 'childs' => $childs]);
         }
     }
 }

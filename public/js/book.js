@@ -9,7 +9,8 @@ $(document).ready(function(){
 			// Change value total to 0
 			$('#price').val(0);
 			// Change content span error
-			$('#error-quantity').html('*Quantity greater than 0');
+			$('#error-quantity').html(error_quantity);
+            alert(error_quantity);
 		}else{
 			// Get the price value
             var unit_price = $("#unit_price").val();
@@ -26,7 +27,7 @@ $(document).ready(function(){
     var quantity = $("#quantity").val();
     // Check if empty of not
     if (quantity  == 0) {
-        alert('Quantity greater than 0');
+        alert(error_quantity);
         return false;
         }
     });

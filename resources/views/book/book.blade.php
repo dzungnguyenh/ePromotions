@@ -32,7 +32,7 @@
                 <td>
                     <input type="number" min="0" class="quantity text-center" id="quantity" name="quantity" value="{{ trans('book.default_quantity') }}" />
                 </td>
-                <td><input type="number" class="price text-right" name="price" id="price" value="{{ $value->price*1 }}" readonly/><span>{{ trans('book.code_price') }}</span></td>
+                <td><input type="number" class="price text-right" name="price" id="price" value="{{ $value->price }}" readonly/><span>{{ trans('book.code_price') }}</span></td>
             </tr>
             <input type="hidden" name="product_id" value="{{ $value->id }}">
             @endforeach
@@ -74,4 +74,8 @@
     </div>
     </form>
 </div>
+<script type="text/javascript">
+    var error_quantity = '{!! trans('book.error_quantity') !!}';
+</script>
+<script type="text/javascript" src="{!! asset('js/book.js') !!}"></script>
 @include('include.footer')

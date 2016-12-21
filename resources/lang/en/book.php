@@ -1,4 +1,4 @@
-<?php
+0<?php
 return [
     'book_app' => 'Booking Application',
     'notification_success_before' => 'Your booking is ',
@@ -28,4 +28,5 @@ return [
     'note_content' => 'Verifed information about email, address, phone.',
     'error_result' => ' Sorry, no products matched your selection. Please choose a different value !',
     'home' => 'Return to home page',
+    'error_quantity' => 'Quantity greater than 0',
 ];

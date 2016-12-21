@@ -1,6 +1,4 @@
 @include('include.head')
-
-
 <div class="header">
 		<div class="container">
 			<div class="logo">
