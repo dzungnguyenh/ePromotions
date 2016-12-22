@@ -21,7 +21,6 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-<<<<<<< Updated upstream
     * Return promotions expired
     *
     * @param int      $val   Value id.
