@@ -245,4 +245,40 @@
     color:red;
     text-align: left;
   }
+  .logo h1 span {
+    font-size: 12px;
+    display: block;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-family: 'Noto Sans', sans-serif;
+    padding-top: 4px;
+  }
+
+  .logo h1 a {
+    text-decoration: none;
+    color: #000;
+  }
+  .logo h1 b {
+    font-size: 8px;
+    background: #ED0612;
+    font-weight: normal;
+    padding: 3px;
+    display: inline-block;
+    position: absolute;
+    top: 8px;
+    left: -2px;
+    color: #fff;
+    line-height: 8px;
   
+  }
+  .header {
+    text-align: center;
+    margin-top: 2em;
+  }
+  ..logo h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    color: #000;
+    display: inline-block;
+    position: relative;
+}

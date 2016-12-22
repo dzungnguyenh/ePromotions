@@ -63,9 +63,9 @@ class HomeController extends Controller
     * @param ProductRepository     $productRepository   [description]
     * @param EventRepository       $eventRepository     [description]
     * @param VoteProductRepository $voteProRepository   [description]
+    * @param UserRepository        $userRepository      [description]
     */
     public function __construct(CategoryRepository $categoryRepository, PromotionRepository $promotionRepository, ProductRepository $productRepository, EventRepository $eventRepository, VoteProductRepository $voteProRepository, UserRepository $userRepository)
-
     {
         $this->categoryRepository = $categoryRepository;
         $this->promotionRepository = $promotionRepository;
@@ -92,7 +92,7 @@ class HomeController extends Controller
         $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
         $events = $this->eventRepository->all()->take(config('constants.LIMIT_RECORD'));
         $flag = $this->userRepository->checkLogin();
-        return view('index.index', compact('categories', 'childs', 'promotions', 'products', 'voteProducts', 'arPointVote', 'events','flag'));
+        return view('index.index', compact('categories', 'childs', 'promotions', 'products', 'voteProducts', 'arPointVote', 'events', 'flag'));
     }
 
     /**

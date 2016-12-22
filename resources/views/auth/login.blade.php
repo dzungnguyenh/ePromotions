@@ -15,25 +15,10 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#myPage">{!! trans('header.title_E') !!}</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#about">{!! trans('header.about') !!}</a></li>
-            <li><a href="#promotion">{!! trans('header.promotion') !!}</a></li>
-            <li><a href="#product">{!! trans('header.product') !!}</a></li>
-            <li><a href="#event">{!! trans('header.event') !!}</a></li>
-            <li><a href="#contact">{!! trans('footer.contact') !!}</a></li>
-          </ul>
-        </div>
+<div class="header">
+    <div class="container">
+      <div class="logo">
+        <h1 ><a href="index.html"></b>{{trans('header.name_web')}}<span>{{trans('header.slogan')}}</span></a></h1>
       </div>
     </nav>
     <div id="login-form">

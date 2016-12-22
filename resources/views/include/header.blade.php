@@ -1,3 +1,4 @@
+@include('include.head')
 <div class="header">
 		<div class="container">
 			<div class="logo">
@@ -55,3 +56,5 @@
 				</div>
 		</div>
 </div>
+<!-- Search -->
+@include('include.search')
