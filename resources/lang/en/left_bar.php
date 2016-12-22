@@ -27,4 +27,7 @@ return [
   'voucher' => 'VOUCHER',
   'category' => 'CATEGORY',
   'block' => 'Block user',
+  'history' => 'HISTORY',
+  'voted' => 'Voted',
+  'join_event' => 'Join Event',
 ];

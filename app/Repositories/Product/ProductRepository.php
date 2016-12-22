@@ -63,7 +63,7 @@ class ProductRepository extends BaseRepository
         ->join('book_details', 'books.id', '=', 'book_details.book_id')
         ->join('user', 'user.id', '=', 'books.user_id')
         ->where('book_details.product_id', $id)
-        ->select('*')
+        ->select('*', 'book_details.id')
         ->get();
     }
 
@@ -139,7 +139,7 @@ class ProductRepository extends BaseRepository
     {
         return $this->model->leftjoin('categories', 'categories.id', '=', 'products.category_id')
         ->where('user_id', $id)
-        ->paginate(5);
+        ->select('*', 'products.id');
     }
 
     /**

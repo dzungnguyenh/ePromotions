@@ -3,6 +3,7 @@
 namespace App\Repositories\VoteProduct;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Repositories\BaseRepository;
 use App\Repositories\VoteProduct\VoteProductRepositoryInterface;
 use App\Models\VoteProduct;
@@ -56,10 +57,11 @@ class VoteProductRepository extends BaseRepository implements VoteProductReposit
      * Ajax handling vote
      *
      * @param int $productId [id of product]
+     * @param int $pointVote [point vote]
      *
      * @return count
      */
-    public function handlingAjaxVote($productId)
+    public function handlingAjaxVote($productId, $pointVote)
     {
         $voteProducts = $this->model->all();
         $countProductId = $this->getCountByIdProduct($productId);
@@ -76,7 +78,26 @@ class VoteProductRepository extends BaseRepository implements VoteProductReposit
                     'product_id' => $productId,
                 );
             $this->model->create($arVoteProducts);
+            $newPoint = Auth::user()->point + $pointVote;
+            $arAddPointUser = array(
+                    'point' => $newPoint,
+                );
+            DB::table('user')->where('id', Auth::user()->id)->update($arAddPointUser);
         }
         return $countProductId;
+    }
+
+    /**
+     * Get list history voted
+     *
+     * @return mixed
+     */
+    public function getHistoryVoted()
+    {
+        return $this->model
+                    ->join('products', 'vote_products.product_id', '=', 'products.id')
+                    ->where('vote_products.user_id', '=', Auth::user()->id)
+                    ->select('vote_products.*', 'products.product_name')
+                    ->get();
     }
 }
