@@ -1,0 +1,30 @@
+
+#book-page{
+	margin-bottom: 20px;
+}
+#book-page h3, strong {
+	color: #333333;
+	text-shadow: 0 0 1px rgba(88,80,80,0.5);
+}
+#book-page th{
+	color: rgb(182, 16, 20);
+	text-align: center;
+}
+.price{
+	border: none;
+	color: rgb(182, 16, 20);
+	font-weight: bold;
+	width: 90%;
+}
+#price{
+	text-decoration:underline;
+}
+#quantity{
+	margin: 0 !important;
+	width: 40px;
+}
+.error-quantity{
+	color: rgb(182, 16, 20);
+	font-style:italic;
+	min-height: 27px;
+}

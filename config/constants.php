@@ -21,5 +21,6 @@
     'Product' => '0',
     'Promotion' => '1',
     'limit_product' => '16',
+    'STR_LIMIT' => '50',
     'SELECT_ONE' => '1',
 ];
