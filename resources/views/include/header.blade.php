@@ -1,4 +1,7 @@
 @include('include.head')
+
+@include('common.alert_message')
+
 <div class="header">
 		<div class="container">
 			<div class="logo">
