@@ -18,4 +18,5 @@
     'BLOCK_USER' => '4',
     'Product' => '0',
     'Promotion' => '1',
+    'limit_product' => '16',
 ];

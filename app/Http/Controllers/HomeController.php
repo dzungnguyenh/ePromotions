@@ -89,7 +89,7 @@ class HomeController extends Controller
         foreach ($categories as $key => $category) {
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         }
-        $products = $this->productRepository->getAll()->paginate(16);
+        $products = $this->productRepository->getAll()->paginate(config('constants.limit_product'));
         return view('index.product', compact('products', 'categories', 'childs'));
     }
     /**
@@ -111,7 +111,7 @@ class HomeController extends Controller
             $products = $this->productRepository->getByPromotion($search);
             return view('index.product', compact('products', 'categories', 'childs'));
         } else {
-            $products = $this->productRepository->findLike('product_name', $search)->paginate(16);
+            $products = $this->productRepository->findLike('product_name', $search)->paginate(config('constants.limit_product'));
             return view('index.product', compact('products', 'categories', 'childs'));
         }
     }
