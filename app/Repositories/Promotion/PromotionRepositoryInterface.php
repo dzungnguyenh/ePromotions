@@ -57,4 +57,19 @@ interface PromotionRepositoryInterface
     * @return mixed
     */
     public function findBy($attribute, $value);
+
+    /**
+    * [Return data match parameter]
+    *
+    * @param string   $attribute1 Name field table.
+    * @param string   $attribute2 Name field table.
+    * @param string   $attribute3 Name field table.
+    * @param string   $value1     Value of field table.
+    * @param string   $value2     Value of field table.
+    * @param datetime $time       Value time.
+    * @param int      $limit      Number of item.
+    *
+    * @return mixed
+    */
+    public function findByAny($attribute1, $attribute2, $attribute3, $value1, $value2, $time, $limit = null);
 }

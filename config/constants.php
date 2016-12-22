@@ -16,4 +16,6 @@
     'LIMIT' => '15',
     'LIMIT_RECORD' => '-4',
     'BLOCK_USER' => '4',
+    'ONE' => '1',
+    'TWO' => '2',
 ];

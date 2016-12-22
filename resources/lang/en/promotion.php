@@ -24,4 +24,10 @@ return [
     'view_all' => 'View All',
     'add_promotion' => 'Add promotion for this product',
     'error_promotion' => "'You don't have any promotion for this product!'",
+    'before_promotion' => 'Expired promotion',
+    'present_promotion' => 'Present promotion',
+    'after_promotion' => 'Future promotion',
+    'value_before' => '1',
+    'value_present' => '2',
+    'value_after' => '3',
 ];

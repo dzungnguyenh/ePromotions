@@ -135,4 +135,20 @@ class PromotionController extends Controller
         Session::flash('message', trans('promotion.delete_promotion_successful'));
         return redirect()->back();
     }
+
+    /**
+     * Filter resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request description
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showByTime(Request $request)
+    {
+        $cars=$request->get('active');
+        $id = $request->input('product_id');
+        $time=date(config('date.format_timestamps'), time());
+        $promotions = $this->promotion->findByAny('date_start', 'date_end', 'product_id', $cars, $id, $time);
+        return view('promotion.list', compact('promotions', 'id'));
+    }
 }
