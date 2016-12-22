@@ -145,15 +145,15 @@ class PromotionController extends Controller
      */
     public function showByDate(Request $request)
     {
-        $val=$request->get('active');
+        $val=$request->get('promotion_status');
         $id = $request->input('product_id');
         $time=date(config('date.format_timestamps'), time());
-        if ($val == config('constants.ONE')) {
-            $promotions = $this->promotion->filterByTime($id, '<', '<', $time);
-        } elseif ($val == config('constants.TWO')) {
-            $promotions = $this->promotion->filterByTime($id, '<', '>', $time);
-        } else {
-            $promotions = $this->promotion->filterByTime($id, '>', '>', $time);
+        if ($val == config('constants.PROMOTION_EXPIRED')) {
+            $promotions = $this->promotion->filterExpired($id, $time);
+        } elseif ($val == config('constants.PROMOTION_PRESENT')) {
+            $promotions = $this->promotion->filterPresent($id, $time);
+        } elseif ($val == config('constants.PROMOTION_FUTURE')) {
+            $promotions = $this->promotion->filterFuture($id, $time);
         }
         return view('promotion.list', compact('promotions', 'id'));
     }

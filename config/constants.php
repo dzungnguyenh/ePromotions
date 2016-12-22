@@ -18,7 +18,8 @@
     'PAGE_PRODUCT_BUSINESS' =>6,
     'PAGE_PRODUCT_USER' =>12,
     'BLOCK_USER' => '4',
-    'ONE' => '1',
-    'TWO' => '2',
+    'PROMOTION_EXPIRED' => '1',
+    'PROMOTION_PRESENT' => '2',
+    'PROMOTION_FUTURE' => '3',
     'SELECT_ONE' => '1',
 ];

@@ -21,21 +21,53 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Return promotions taking place
+    * Return promotions expired
     *
-    * @param int      $val        Value id.
-    * @param string   $condition1 Condition character.
-    * @param string   $condition2 Condition character.
-    * @param datetime $time       Time now.
-    * @param int      $limit      Limit promotion earch page.
+    * @param int      $val   Value id.
+    * @param datetime $time  Time now.
+    * @param int      $limit Limit promotion earch page.
     *
     * @return mixed
     */
-    public function filterByTime($val, $condition1, $condition2, $time, $limit = null)
+    public function filterExpired($val, $time, $limit = null)
     {
         return $this->model->where([
-            ['date_start', $condition1 ,$time],
-            ['date_end', $condition2 , $time],
+            ['date_end', '<', $time],
+            ['product_id', '=', $val],
+        ])->paginate($limit);
+    }
+
+    /**
+    * Return promotions present
+    *
+    * @param int      $val   Value id.
+    * @param datetime $time  Time now.
+    * @param int      $limit Limit promotion earch page.
+    *
+    * @return mixed
+    */
+    public function filterPresent($val, $time, $limit = null)
+    {
+        return $this->model->where([
+            ['date_start', '<', $time],
+            ['date_end', '>', $time],
+            ['product_id', '=', $val],
+        ])->paginate($limit);
+    }
+
+    /**
+    * Return promotions future
+    *
+    * @param int      $val   Value id.
+    * @param datetime $time  Time now.
+    * @param int      $limit Limit promotion earch page.
+    *
+    * @return mixed
+    */
+    public function filterFuture($val, $time, $limit = null)
+    {
+        return $this->model->where([
+            ['date_start', '>', $time],
             ['product_id', '=', $val],
         ])->paginate($limit);
     }

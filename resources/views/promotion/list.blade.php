@@ -3,10 +3,10 @@
     <div class="container list-promotion">
         <form method="post" action="{{ route('filter_promotion') }}">
         {{ csrf_field() }}
-            <select name="active" class="form-control">
-                <option value="{{ trans('promotion.value_before') }}">{{ trans('promotion.before_promotion') }}</option>
+            <select name="promotion_status" class="form-control">
+                <option value="{{ trans('promotion.value_expired') }}">{{ trans('promotion.expired_promotion') }}</option>
                 <option value="{{ trans('promotion.value_present') }}">{{ trans('promotion.present_promotion') }}</option>
-                <option value="{{ trans('promotion.value_after') }}">{{ trans('promotion.after_promotion') }}</option>
+                <option value="{{ trans('promotion.value_future') }}">{{ trans('promotion.future_promotion') }}</option>
             </select>
             <input type="hidden" name="product_id" value="{{ $id }}">
             <button type="submit" class="btn btn-default">{{ trans('promotion.submit') }}</button>
