@@ -9,6 +9,7 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::get('acceptbook/{id}', 'API\BookDetailController@handleAcceptBook');
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 {
@@ -43,6 +44,10 @@ Route::group(['middleware' => 'checkuser'], function()
         'only' => ['index', 'edit', 'update']
     ]);
     Route::get('product/{id}', 'API\ProductController@handlingAjaxVote');
+    Route::get('user/history/voted', [
+            'uses' => 'Admin\UserController@getHistoryVoted',
+            'as' => 'user.history.voted',
+        ]);
 });
 
 Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
@@ -57,7 +62,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/product', 'HomeController@product');
-
+Route::get('/home','Auth\HomeController@index');
 Route::get('/category/{id}', 'Product\ProductController@showByIdCategory');
 
 Route::get('/logout', 'UserController@logout');

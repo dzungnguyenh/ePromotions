@@ -13,4 +13,5 @@ return [
     'point_not_found' => 'Point not found',
     'update_point_successfully' => 'Updated point successfully!',
     'delete_point_successfully' => 'Deleted point successfully!',
+    'desc' => 'DECS',
 ];
