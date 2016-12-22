@@ -147,7 +147,7 @@ class PromotionController extends Controller
     {
         $val=$request->get('promotion_status');
         $id = $request->input('product_id');
-        $time=date(config('date.format_timestamps'), time());
+        $time=$this->promotion->getTime();
         if ($val == config('constants.PROMOTION_EXPIRED')) {
             $promotions = $this->promotion->filterExpired($id, $time);
         } elseif ($val == config('constants.PROMOTION_PRESENT')) {

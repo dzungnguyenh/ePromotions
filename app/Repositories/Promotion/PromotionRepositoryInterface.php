@@ -90,4 +90,11 @@ interface PromotionRepositoryInterface
     * @return mixed
     */
     public function filterFuture($val, $time, $limit = null);
+
+    /**
+    * Return time
+    *
+    * @return time
+    */
+    public function getTime();
 }

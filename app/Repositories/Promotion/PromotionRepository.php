@@ -71,4 +71,14 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
             ['product_id', '=', $val],
         ])->paginate($limit);
     }
+
+    /**
+    * Return time
+    *
+    * @return time
+    */
+    public function getTime()
+    {
+        return date(config('date.format_timestamps'), time());
+    }
 }
