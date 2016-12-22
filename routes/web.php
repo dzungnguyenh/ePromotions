@@ -36,7 +36,7 @@ Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
     Route::resource('promotions', 'Business\PromotionController');
     Route::get('/add_promotion/{id}', 'Business\PromotionController@addPromotion')->name('add_promotion');
     Route::get('/show_promotion/{attribute?}/{id}', 'Business\PromotionController@showBy')->name('show_promotion');
-    Route::post('/filter_promotion', 'Business\PromotionController@showByTime')->name('filter_promotion');
+    Route::post('/filter_promotion', 'Business\PromotionController@showByDate')->name('filter_promotion');
 });
 
 Route::group(['middleware' => 'checkuser'], function()

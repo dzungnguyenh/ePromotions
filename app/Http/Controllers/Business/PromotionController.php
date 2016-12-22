@@ -143,12 +143,18 @@ class PromotionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showByTime(Request $request)
+    public function showByDate(Request $request)
     {
-        $cars=$request->get('active');
+        $val=$request->get('active');
         $id = $request->input('product_id');
         $time=date(config('date.format_timestamps'), time());
-        $promotions = $this->promotion->findByAny('date_start', 'date_end', 'product_id', $cars, $id, $time);
+        if ($val == config('constants.ONE')) {
+            $promotions = $this->promotion->filterByTime($id, '<', '<', $time);
+        } elseif ($val == config('constants.TWO')) {
+            $promotions = $this->promotion->filterByTime($id, '<', '>', $time);
+        } else {
+            $promotions = $this->promotion->filterByTime($id, '>', '>', $time);
+        }
         return view('promotion.list', compact('promotions', 'id'));
     }
 }

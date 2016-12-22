@@ -120,28 +120,4 @@ abstract class BaseRepository
     {
         return $this->model->paginate($limit);
     }
-    
-    /**
-    * [Return data match parameter]
-    *
-    * @param string   $attribute1 Name field table.
-    * @param string   $attribute2 Name field table.
-    * @param string   $attribute3 Name field table.
-    * @param string   $value1     Value of field table.
-    * @param string   $value2     Value of field table.
-    * @param datetime $time       Value time.
-    * @param int      $limit      Number of item.
-    *
-    * @return mixed
-    */
-    public function findByAny($attribute1, $attribute2, $attribute3, $value1, $value2, $time, $limit = null)
-    {
-        if ($value1==config('constants.ONE')) {
-            return $this->model->where($attribute2, '<', $time)->where($attribute3, '=', $value2)->paginate($limit);
-        } elseif ($value1==config('constants.TWO')) {
-            return $this->model->where($attribute1, '<', $time)->where($attribute2, '>', $time)->where($attribute3, '=', $value2)->paginate($limit);
-        } else {
-            return $this->model->where($attribute1, '>', $time)->where($attribute3, '=', $value2)->paginate($limit);
-        }
-    }
 }

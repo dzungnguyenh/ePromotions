@@ -19,4 +19,24 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     {
         $this->model = $model;
     }
+
+    /**
+    * Return promotions taking place
+    *
+    * @param int      $val        Value id.
+    * @param string   $condition1 Condition character.
+    * @param string   $condition2 Condition character.
+    * @param datetime $time       Time now.
+    * @param int      $limit      Limit promotion earch page.
+    *
+    * @return mixed
+    */
+    public function filterByTime($val, $condition1, $condition2, $time, $limit = null)
+    {
+        return $this->model->where([
+            ['date_start', $condition1 ,$time],
+            ['date_end', $condition2 , $time],
+            ['product_id', '=', $val],
+        ])->paginate($limit);
+    }
 }
