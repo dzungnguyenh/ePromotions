@@ -17,7 +17,7 @@ return [
   'e_p' => 'E_P',
   'profile' => 'Profile',
   'sign_out' => 'Sign Out',
-  'logout' => 'logout',
+  'logout' => 'LOGOUT',
   'title' => 'ePromotion',
   'login' => 'LOGIN',
   'about' => 'ABOUT',

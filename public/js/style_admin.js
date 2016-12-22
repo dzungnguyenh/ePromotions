@@ -71,3 +71,13 @@ $('#mydropdownmenu > li').click(function(e){
     $('#mydropwodninput').val(selected);
     $('#mydropdowndisplay').text(selected);
 })
+
+/**
+ * [description]
+ * @param  {[type]} event){                 event.preventDefault();    var confirmMsg [description]
+ * @return {[type]}          [description]
+ */
+$('#submit-form').on('click', function(event){
+    event.preventDefault();
+    $('#logout-form').submit();
+})

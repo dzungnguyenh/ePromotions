@@ -69,17 +69,7 @@ class UserController extends Controller
             Sesion::flash('msg', trans('user.not_user'));
             return redirect(route('users.index'));
         }
-        switch ($user['gender']) {
-            case '1':
-                $user['gender'] = "Male";
-                break;
-            case '2':
-                $user['gender'] = "Female";
-                break;
-            case '3':
-                $user['gender'] = "Other";
-                break;
-        }
+        $user = $this->userRepository->gender($id);
         return view('admin.user.show', compact('user'));
     }
 }

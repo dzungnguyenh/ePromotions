@@ -47,4 +47,13 @@ interface UserRepositoryInterface
      * @return boolean
      */
     public function delete($id);
+
+    /**
+     * Get gender user
+     *
+     * @param int $id description
+     *
+     * @return type
+     */
+    public function gender($id);
 }
