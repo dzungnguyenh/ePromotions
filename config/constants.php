@@ -12,8 +12,11 @@
     'STEP_POINT' => '1',
     'LENGTHTOKEN' => '40',
     'NO' => '1',
-    'LIMIT' => '10',
     'ZERO' => '0',
     'LIMIT' => '15',
     'LIMIT_RECORD' => '-4',
+    'PAGE_PRODUCT_BUSINESS' =>6,
+    'PAGE_PRODUCT_USER' =>12,
+    'BLOCK_USER' => '4',
+    'SELECT_ONE' => '1',
 ];

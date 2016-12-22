@@ -63,7 +63,7 @@ class ProductRepository extends BaseRepository
         ->join('book_details', 'books.id', '=', 'book_details.book_id')
         ->join('user', 'user.id', '=', 'books.user_id')
         ->where('book_details.product_id', $id)
-        ->select('*')
+        ->select('*', 'book_details.id')
         ->get();
     }
 
@@ -126,5 +126,64 @@ class ProductRepository extends BaseRepository
         $path=config('path.picture_product');
         $file->move($path, $pictureName);
         return $pictureName;
+    }
+
+    /**
+    * Method get all product,name category by userId
+    *
+    * @param integer $id id of Hotel
+    *
+    * @return array products, categories
+    */
+    public function getAllById($id)
+    {
+        return $this->model->leftjoin('categories', 'categories.id', '=', 'products.category_id')
+        ->where('user_id', $id)
+        ->select('*', 'products.id');
+    }
+
+    /**
+    * Get all  product  sort by order_value
+    *
+    * @param string $order filed to sort
+    *
+    * @return list product
+    */
+    public function getAll($order = 'products.id')
+    {
+        return $this->model
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->join('user', 'products.user_id', '=', 'user.id')
+        ->select('products.id', 'product_name', 'price', 'description', 'quantity', 'picture', 'categories.name as category_name', 'user.name as user_name', 'email', 'phone', 'address', 'avatar', 'products.created_at')
+        ->orderBy($order);
+    }
+
+    /**
+    * Get product, category_name by id
+    *
+    * @param integer $id id of product
+    *
+    * @return product
+    */
+    public function findById($id)
+    {
+        return $this->model
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->where('products.id', $id)
+        ->first();
+    }
+
+    /**
+     * Get list of products by id category
+     *
+     * @param integer $id Id category
+     *
+     * @return array     List of products
+     */
+    public function getByIdCategory($id)
+    {
+        return $this->model
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->where('categories.id', $id)->select('*', 'products.id')->get();
     }
 }

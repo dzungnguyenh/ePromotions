@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         @include('event.show_fields')
-                        <a href="{!! route('event.index') !!}" class="btn btn-default">{!! trans('label.back') !!}</a>
+                        <a href="{!! route('event.index') !!}" class="btn btn-info">{!! trans('label.back') !!}</a>
                     </div>
                 </div>
             </div>

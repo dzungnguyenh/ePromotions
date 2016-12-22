@@ -19,17 +19,17 @@
                     <td>{{$product->price}}</td>
                     <td>{{$product->description}}</td>
                     <td>{{$product->quantity}}</td>
-                    <td>{{$product->category_id}}</td>
+                    <td>{{$product->name}}</td>
                     <td class="product-img"><img src="{{asset(config('path.picture_product').'/'.$product->picture)}}"></td>
                 </tr>
             </tbody>
         </table><!-- end product-view-head -->
-
+        <div class="alert alert-success alert-accept">{{trans('order.accept_success')}}</div>
         <h2>{{trans('product.order')}}</h2>
         <div class="row col-md-10 order-detail detail-th" >
-            <div class="col-md-1" ><span>{{ trans('product.no') }}</span></div>
-            <div class="col-md-2" ><span>{{ trans('product.customer')}}</span></div>
-            <div class="col-md-2" ><span>{{ trans('product.quantity')}}</span></div>
+            <div class="col-md-1"><span>{{ trans('product.no') }}</span></div>
+            <div class="col-md-2"><span>{{ trans('product.customer')}}</span></div>
+            <div class="col-md-2"><span>{{ trans('product.quantity')}}</span></div>
             <div class="col-md-2"><span>{{ trans('product.date_order') }}</span></div>
             <div class="col-md-2"><span>{{ trans('product.status') }}</span></div>
             <div class="col-md-2"><span>{{ trans('product.action')}}</span></div>
@@ -41,18 +41,17 @@
                     <div class="col-md-2" ><span>{{$value->name}}</span></div>
                     <div class="col-md-2"><span>{{$value->quantity}}</span></div>
                     <div class="col-md-2"><span>{{$value->created_at}}</span></div>
-                    <div class="col-md-2"><span>status</span></div>
+                    <div class="col-md-2"><span class="span-status{{$value->id}}">{{$value->status}}</span></div>
 
                     <div class="col-md-2">
-                        <button class="btn btn-success btn-view view-product">
-                            <a href=""><i class="glyphicon glyphicon-ok"></i></a>
+                        <button class="btn btn-success btn-view accept-book" alt="{{ $value->status}}" role="{{$value->id}}">
+                            <i class="glyphicon glyphicon-ok"></i>
                         </button>
-                        <button class="btn btn-success btn-view view-detail-cus" >
-                            <i class="glyphicon glyphicon glyphicon-cog"></i>
+                        <button class="btn btn-success btn-view view-detail-cus"  >
+                            <i class="glyphicon glyphicon glyphicon-eye-open"></i>
                         </button>
                     </div>
                 </div>
-
                 <div class="row col-md-10 detail-customer">
                     <table class="table tbl-detail-customer">
                     <thead>

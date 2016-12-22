@@ -45,5 +45,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit( trans('label.save'), ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('event.index') !!}" class="btn btn-default">{!!  trans('label.back') !!}</a>
+    <a href="{!! route('event.index') !!}" class="btn btn-success">{!!  trans('label.back') !!}</a>
 </div>

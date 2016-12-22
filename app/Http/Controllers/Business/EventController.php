@@ -95,7 +95,7 @@ class EventController extends Controller
         }
         $input = $request->only('title', 'description', 'start_time', 'end_time', 'place');
         $this->eventRepository->update($input, $id);
-        Session::flash('msg', trans('event.update_event_successful'));
+        Session::flash('msg', trans('event.update_event_successfully'));
         return redirect()->route('event.index');
     }
     /**
@@ -113,7 +113,7 @@ class EventController extends Controller
             return redirect()->route('event.index');
         }
         $this->eventRepository->delete($id);
-        Session::flash('msg', trans('delete_event_successful'));
+        Session::flash('msg', trans('event.delete_event_successful'));
         return redirect()->route('event.index');
     }
 }

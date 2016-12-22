@@ -56,4 +56,19 @@ interface UserRepositoryInterface
      * @return type
      */
     public function gender($id);
+
+    /**
+     * Block a user
+     *
+     * @param int $id [id of user]
+     *
+     * @return boolean
+     */
+    public function blockUser($id);
+    /**
+     * Check status user
+     *
+     * @return void
+     */
+    public function checkLogin();
 }

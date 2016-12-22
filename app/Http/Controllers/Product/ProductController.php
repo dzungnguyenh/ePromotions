@@ -33,14 +33,14 @@ class ProductController extends Controller
         $this->middleware('business');
     }
 
-     /**
+    /**
     *Constructer redirect to index product page with list product of that user
     *
     *@return index page with variable product contain all data in product table
     */
     public function index()
     {
-        $listProduct = $this->productRepository->findBy('user_id', Auth::user()->id);
+        $listProduct = $this->productRepository->getAllById(Auth::user()->id)->paginate(config('constants.PAGE_PRODUCT_BUSINESS'));
         return view('product.index')->with('listProduct', $listProduct);
     }
 
@@ -90,7 +90,7 @@ class ProductController extends Controller
     */
     public function show($id)
     {
-        $product = $this->productRepository->find($id);
+        $product = $this->productRepository->findById($id);
         if (empty($product)) {
             Session::flash('msg', trans('product.product_not_found'));
             return redirect()->route('product');
@@ -114,7 +114,7 @@ class ProductController extends Controller
             Session::flash('msg', trans('product.product_not_found'));
             return redirect()->route('product.index');
         } else {
-            $listCategory = $this->categoryRepository->all()->pluck('category_name', 'id');
+            $listCategory = $this->categoryRepository->all()->pluck('name', 'id');
             return view('product.edit')->with(['product' => $product, 'listCategory' => $listCategory]);
         }
     }

@@ -45,9 +45,14 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             } else {
                 $input['password'] = bcrypt($input['password']);
             }
+            if (Input::get('role_id') === 'on') {
+                $input['role_id'] = config('constants.ROLEBUSSINESS');
+            } else {
+                unset($input['role_id']);
+            }
             $data = User::where('id', $id)->update($input);
         } catch (Exception $e) {
-            return view('/home')->withError(trans('user.error_when_update'));
+            return view('/user')->withError(trans('user.error_when_update'));
         }
         if (!$data) {
             throw new Exception(trans('user.update_profile_error'));
@@ -86,6 +91,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     }
 
     /**
+<<<<<<< HEAD
      * Get gender a user
      *
      * @param int $id description
@@ -121,5 +127,26 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         } else {
             return false;
         }
+    }
+     /**
+     * Block a user
+     *
+     * @param int $id [id of user]
+     *
+     * @return boolean
+     */
+    public function blockUser($id)
+    {
+        try {
+            $data = User::where('id', $id)->update([
+                'role_id' => config('constants.BLOCK_USER'),
+            ]);
+        } catch (Exception $e) {
+            return view('/user')->withError(trans('user.error_when_block_user'));
+        }
+        if (!$data) {
+            throw new Exception(trans('user.block_user_error'));
+        }
+        return $data;
     }
 }

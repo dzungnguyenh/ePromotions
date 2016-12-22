@@ -37,5 +37,11 @@ return [
     'delete_a_user' => 'Are you sure ?',
     'not_user' => 'User not found',
     'delete_successfully' => 'Deleted user successfully!',
-    'detial_user' => 'Detial user'
+    'detial_user' => 'Detial user',
+    'register_business' => 'Register business',
+    'block_user' => 'Block this user',
+    'error_when_block_user' => 'Have error when block user',
+    'block_user_error' => 'Block user error',
+    'history_vote' => 'History Voted',
+    'created_at' => 'Day Voted'
 ];

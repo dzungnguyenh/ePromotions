@@ -1,0 +1,35 @@
+.row-padding{
+    padding: 0;
+    margin:0;
+}
+..row-padding button{
+    width: 70px;
+}
+.item-product{
+    position: relative;
+    margin-bottom:20px;
+}
+.detail-product{
+    width: 500px;
+    height: 500px;
+    border: 1px solid #333;
+    border-radius:  15px;
+    position: absolute;
+    background: #fff; 
+    left:100%;
+    top:0%;
+    z-index: 999;
+    display: none;
+    padding: 20px
+}
+.row-product div:nth-of-type(4n+3) .detail-product{
+    left:-167%;
+    top:0%;
+}
+.row-product div:nth-of-type(4n) .detail-product{
+    left:-167%;
+    top:0%;
+}
+.btn-detail-product{
+    cursor: pointer;
+}

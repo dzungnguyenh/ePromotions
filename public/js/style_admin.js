@@ -81,3 +81,15 @@ $('#submit-form').on('click', function(event){
     event.preventDefault();
     $('#logout-form').submit();
 })
+ /**
+ * Show message into alert box
+ */
+$(document).ready(function(){
+    function isEmpty( el ){
+      return !$.trim(el.html())
+  }
+  if (!isEmpty($('#session-message'))) {
+    var message = $("#session-message").text();
+    return alert(message);
+  }
+})

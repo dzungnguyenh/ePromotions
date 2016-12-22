@@ -9,6 +9,7 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::get('acceptbook/{id}', 'API\BookDetailController@handleAcceptBook');
 
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 {
@@ -37,19 +38,31 @@ Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
     Route::get('/show_promotion/{attribute?}/{id}', 'Business\PromotionController@showBy')->name('show_promotion');
 });
 
-Route::group(['middleware' => 'auth'], function()
+Route::group(['middleware' => 'checkuser'], function()
 {
     Route::resource('user', 'User\UserController' , [
         'only' => ['index', 'edit', 'update']
     ]);
+    Route::get('product/{id}', 'API\ProductController@handlingAjaxVote');
+    Route::get('user/history/voted', [
+            'uses' => 'Admin\UserController@getHistoryVoted',
+            'as' => 'user.history.voted',
+        ]);
 });
 
+Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
+{
+    Route::resource('userorder','User\UserOrderController');
+});
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
 Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
 Auth::routes();
 
-
 Route::get('/', 'HomeController@index');
+Route::get('/product', 'HomeController@product');
+Route::get('/home','Auth\HomeController@index');
+Route::get('/category/{id}', 'Product\ProductController@showByIdCategory');
 
+Route::get('/logout', 'UserController@logout');
