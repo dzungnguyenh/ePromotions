@@ -182,7 +182,7 @@ class ProductRepository extends BaseRepository
         return $this->model->with('promotion')->where('product_name', 'like', '%'.$search.'%')
         ->whereHas('promotion', function ($query) {
             $query->where('date_start', '<=', date(config('date.date_system')))->where('date_end', '>=', date(config('date.date_system')));
-        })->paginate(16);
+        })->paginate(config('constants.limit_product'));
     }
     /**
      * Get list of products by id category
