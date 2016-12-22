@@ -91,7 +91,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     }
 
     /**
-<<<<<<< HEAD
      * Get gender a user
      *
      * @param int $id description
