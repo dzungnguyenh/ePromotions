@@ -20,4 +20,5 @@ return [
     'join' => ' Join',
     'load_more' => ' LOAD MORE +',
     'space' => ' | ',
+    'unlock' => 'Unlock',
 ];

@@ -110,4 +110,37 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         }
         return $data;
     }
+
+    /**
+     * Get list user has been block
+     *
+     * @return Response
+     */
+    public function getBlockUser()
+    {
+        $data = User::where('role_id', config('constants.BLOCK_USER'))->paginate(config('constants.LIMIT'));
+        return $data;
+    }
+
+    /**
+     * Unlock a user account
+     *
+     * @param int $id [id of user]
+     *
+     * @return Response
+     */
+    public function unlockUser($id)
+    {
+        try {
+            $data = User::where('id', $id)->update([
+                'role_id' => config('constants.ROLEUSER'),
+            ]);
+        } catch (Exception $e) {
+            throw new Exception(trans('user.can_not_unlock_user'));
+        }
+        if (!$data) {
+            throw new Exception(trans('user.unlock_user_error'));
+        }
+        return $data;
+    }
 }

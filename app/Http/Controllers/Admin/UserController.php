@@ -98,4 +98,31 @@ class UserController extends Controller
         }
         $user = $this->userRepository->blockUser($id);
     }
+
+    /**
+     * Display users has been block
+     *
+     * @return Reponse
+     */
+    public function getBlockUser()
+    {
+        $users = $this->userRepository->getBlockUser();
+        return view('admin.user_block.index', compact('users'));
+    }
+
+    /**
+     * Unlock for a user account
+     *
+     * @param int $id [id of user]
+     *
+     * @return void
+     */
+    public function unlock($id)
+    {
+        $user = $this->userRepository->find($id);
+        if (empty($user)) {
+            Session::flash('msg', trans('user.user_not_found'));
+        }
+        $this->userRepository->unlockUser($id);
+    }
 }
