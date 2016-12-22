@@ -10,6 +10,8 @@ use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\RegisterEvent\RegisterEventRepository;
 use App\Repositories\RegisterEvent\RegisterEventRepositoryInterface;
+use App\Repositories\Book\BookRepository;
+use App\Repositories\Book\BookRepositoryInterface;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -34,5 +36,7 @@ class RepositoryServiceProvider extends ServiceProvider
         App::bind(BookRepositoryInterface::class, BookRepository::class);
         App::bind(UserRepositoryInterface::class, UserRepository::class);
         App::bind(RegisterEventRepositoryInterface::class, RegisterEventRepository::class);
+        App::bind(BookRepositoryInterface::class, BookRepository::class);
+        App::bind(BookDetailRepositoryInterface::class, BookDetailRepository::class);
     }
 }

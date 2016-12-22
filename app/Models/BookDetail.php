@@ -6,6 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class BookDetail extends Model
 {
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'book_details';
-    protected $fillable = ['quantity', 'book_id', 'product_id', 'price', 'status'];
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id',
+        'quantity',
+        'book_id',
+        'product_id',
+        'price',
+        'status'
+        ];
 }

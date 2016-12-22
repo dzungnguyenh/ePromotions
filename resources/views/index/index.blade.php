@@ -13,7 +13,7 @@
             <p>{!! trans('label.date_port') !!}<b>{{ $promotion->created_at }}</b></p>
             </div>
             <div class="panel-footer">
-                <a href=""><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i> {!! trans('label.book') !!}</button></a>
+                <a href="{{ route('book.show', $promotion->product_id) }}"><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i> {!! trans('label.book') !!}</button></a>
                 <a href=""><button class="share"><i class="glyphicon glyphicon-send"></i>{!! trans('label.share') !!}</button></a>
             </div>
           </div>
@@ -46,7 +46,7 @@
             </p>
             </div>
             <div class="panel-footer">
-                <a href=""><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i>{!! trans('label.book') !!}</button></a>
+                <a href="{{ route('book.show', $product->id) }}"><button class="book"><i class="glyphicon glyphicon-shopping-cart"></i>{!! trans('label.book') !!}</button></a>
                 <a href=""><button class="share"><i class="glyphicon glyphicon-send"></i>{!! trans('label.share') !!}</button></a>
                 <?php
                     $disabled="";
