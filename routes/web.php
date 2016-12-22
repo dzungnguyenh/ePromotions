@@ -43,6 +43,9 @@ Route::group(['middleware' => 'checkuser'], function()
     Route::resource('user', 'User\UserController' , [
         'only' => ['index', 'edit', 'update']
     ]);
+
+    Route::resource('book', 'Book\BookController');
+
     Route::get('product/{id}', 'API\ProductController@handlingAjaxVote');
     Route::get('user/history/voted', [
             'uses' => 'Admin\UserController@getHistoryVoted',

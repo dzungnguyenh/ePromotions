@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
@@ -12,7 +11,6 @@ class UserOrderController extends Controller
 {
     protected $bookRepository;
     protected $bookDetailRepository;
-
     /**
     * Instance UserOrderController
     *
@@ -26,7 +24,6 @@ class UserOrderController extends Controller
         $this->bookDetailRepository = $bookDetailRepository;
         $this->bookRepository = $bookRepository;
     }
-
     /**
     * Index method
     *
@@ -38,7 +35,6 @@ class UserOrderController extends Controller
         // dd($orders);
         return view('user.order.index')->with(['orders'=>$orders]);
     }
-
     /**
     * Delete order
     *
