@@ -95,7 +95,7 @@ class HomeController extends Controller
         foreach ($categories as $key => $category) {
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         }
-        $products = $this->productRepository->getAll()->paginate(16);
-        return view('index.product')->with(['products'=> $products,'categories'=>$categories,'childs'=>$childs]);
+        $products = $this->productRepository->getAll()->paginate(config('constants.PAGE_PRODUCT_USER'));
+        return view('index.product', compact('products', 'categories', 'childs'));
     }
 }

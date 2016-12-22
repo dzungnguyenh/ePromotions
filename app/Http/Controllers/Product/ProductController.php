@@ -40,7 +40,7 @@ class ProductController extends Controller
     */
     public function index()
     {
-        $listProduct = $this->productRepository->getAllById(Auth::user()->id);
+        $listProduct = $this->productRepository->getAllById(Auth::user()->id)->paginate(config('constants.PAGE_PRODUCT_BUSINESS'));
         return view('product.index')->with('listProduct', $listProduct);
     }
 
