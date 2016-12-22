@@ -5,22 +5,37 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\User\UserRepository;
+use App\Repositories\VoteProduct\VoteProductRepository;
 use Session;
 
 class UserController extends Controller
 {
+    /**
+     * The UserRepository instance
+     *
+     * @var UserRepository
+     */
     protected $UserRepository;
-  
-  /**
-   * Create a new UserRepository instance
-   *
-   * @param UserRepository $userRepository description
-   *
-   * @return void
-   */
-    public function __construct(UserRepository $userRepository)
+    
+    /**
+     * The VoteProductRepository instance
+     *
+     * @var voteProRepository
+     */
+    protected $voteProRepository;
+
+   /**
+    * Create a new UserRepository instance
+    *
+    * @param UserRepository        $userRepository    description
+    * @param VoteProductRepository $voteProRepository description
+    *
+    * @return void
+    */
+    public function __construct(UserRepository $userRepository, VoteProductRepository $voteProRepository)
     {
         $this->userRepository = $userRepository;
+        $this->voteProRepository = $voteProRepository;
     }
 
   /**
@@ -124,5 +139,16 @@ class UserController extends Controller
             Session::flash('msg', trans('user.user_not_found'));
         }
         $this->userRepository->unlockUser($id);
+    }
+
+    /**
+     * Get list history voted
+     *
+     * @return mixed
+     */
+    public function getHistoryVoted()
+    {
+        $listHistoryVotes = $this->voteProRepository->getHistoryVoted();
+        return view('user.history.index', compact('listHistoryVotes'));
     }
 }

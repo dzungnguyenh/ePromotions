@@ -21,4 +21,10 @@ return [
     'load_more' => ' LOAD MORE +',
     'space' => ' | ',
     'unlock' => 'Unlock',
+    'end' => '...',
+    'price' => 'Price: ',
+    'date_port' => 'Date post: ',
+    'vote' => 'Vote: ',
+    'btn_vote' => 'Vote',
+    'currency' => '$',
 ];

@@ -4,23 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class RegisterEvent extends Model
 {
-
     /**
-     * The table associated with the model.
+     * The table register event with the model.
      *
      * @var string
      */
-    protected $table = 'books';
-
+    protected $table = 'register_events';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    
     protected $fillable = [
-        'id',
-        'user_id'
-        ];
+        'user_id',
+        'event_id',
+    ];
 }

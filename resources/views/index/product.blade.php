@@ -19,9 +19,9 @@
                         <p class="product-description">{{ substr($product->description,0,20) }}</p>
                         <p><span class="quantity">Date create: {{ $product->created_at->format(config('date.date_time')) }}</span></p>
                         <div class="row row-padding">
-                            <button class="btn btn-success"><i class="glyphicon glyphicon-thumbs-up"></i></button>
-                            <button class="btn btn-success"><i class="glyphicon glyphicon-share"></i></button>
-                            <button class="btn btn-success"><i class="glyphicon glyphicon-shopping-cart"></i></button>
+                            <a href=""><button class="btn btn-success"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
+                            <a href=""><button class="btn btn-success"><i class="glyphicon glyphicon-share"></i></button></a>
+                            <a href="{{ route('book.show', $product->id) }}"><button class="btn btn-success"><i class="glyphicon glyphicon-shopping-cart"></i></button></a>
                         </div>
                      <div class="detail-product">
                         <div class="sub-product">
