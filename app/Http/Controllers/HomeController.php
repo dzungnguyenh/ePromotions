@@ -107,7 +107,7 @@ class HomeController extends Controller
         foreach ($categories as $key => $category) {
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         };
-        if ($cate=="1") {
+        if ($cate==config('constants.Promotion')) {
             $products = $this->productRepository->getByPromotion($search);
             return view('index.product', compact('products', 'categories', 'childs'));
         } else {
