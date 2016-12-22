@@ -15,7 +15,10 @@
     'ZERO' => '0',
     'LIMIT' => '15',
     'LIMIT_RECORD' => '-4',
+    'PAGE_PRODUCT_BUSINESS' =>6,
+    'PAGE_PRODUCT_USER' =>12,
     'BLOCK_USER' => '4',
     'ONE' => '1',
     'TWO' => '2',
+    'SELECT_ONE' => '1',
 ];

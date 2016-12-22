@@ -42,4 +42,6 @@ return [
     'block_user' => 'Block this user',
     'error_when_block_user' => 'Have error when block user',
     'block_user_error' => 'Block user error',
+    'history_vote' => 'History Voted',
+    'created_at' => 'Day Voted'
 ];

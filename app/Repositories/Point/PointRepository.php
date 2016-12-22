@@ -19,4 +19,14 @@ class PointRepository extends BaseRepository implements PointRepositoryInterface
     {
         $this->model = $point;
     }
+
+    /**
+     * Get list point latest
+     *
+     * @return mixed
+     */
+    public function getLatestPoint()
+    {
+        return $this->model->orderBy('id', trans('point.desc'))->limit(config('constants.SELECT_ONE'))->get();
+    }
 }

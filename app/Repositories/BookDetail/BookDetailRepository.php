@@ -20,4 +20,23 @@ class BookDetailRepository extends BaseRepository implements BookDetailRepositor
     {
         $this->model = $bookdetail;
     }
+
+    /**
+    * Method accept book successfull by Ajax
+    *
+    * @param integer $id id of book_detail
+    *
+    *@return string
+    */
+    public function acceptBookAjax($id)
+    {
+        $order = $this->find($id);
+        //if order haven't accept then accept order
+        if ($order->status == 0) {
+            $order->update(['status' =>1]);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
