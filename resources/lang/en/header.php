@@ -13,7 +13,7 @@ return [
   |
   */
 
-  'e_promotions' => 'E_PROMOTIONS',
+  'e_promotions' => 'E PROMOTIONS',
   'e_p' => 'E_P',
   'profile' => 'Profile',
   'sign_out' => 'Sign Out',
