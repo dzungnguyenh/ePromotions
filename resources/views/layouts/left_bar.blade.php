@@ -42,7 +42,7 @@
       </li>
 
       <li class="treeview">
-        <a href=""><i class="fa fa-book"></i> <span>{!! trans('left_bar.user') !!}</span>
+        <a href=""><i class="glyphicon glyphicon-user"></i> <span>{!! trans('left_bar.user') !!}</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -54,7 +54,7 @@
       </li>
 
       <li class="treeview">
-        <a href="#"><i class="fa fa-book"></i> <span>{!! trans('left_bar.bussiness') !!}</span>
+        <a href="#"><i class="glyphicon glyphicon-home"></i> <span>{!! trans('left_bar.bussiness') !!}</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
