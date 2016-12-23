@@ -30,6 +30,8 @@ return [
     'name' => 'Customer',
     'view_product' => 'View Product',
     'business_name' => 'Business name',
+    'message_research_head' => "Find",
+    'message_research_body' => "product with keywork",
     
     
     
