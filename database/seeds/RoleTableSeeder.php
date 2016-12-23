@@ -33,6 +33,11 @@ class RoleTableSeeder extends Seeder
             'role' => 'User',
             'created_at' => $created,
             'updated_at' => $updated,
+          ],
+          [
+            'role' => 'Block',
+            'created_at' => $created,
+            'updated_at' => $updated,
           ]
         ]);
     }
