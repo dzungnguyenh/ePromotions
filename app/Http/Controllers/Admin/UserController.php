@@ -84,7 +84,6 @@ class UserController extends Controller
             Sesion::flash('msg', trans('user.not_user'));
             return redirect(route('users.index'));
         }
-        $user = $this->userRepository->gender($id);
         return view('admin.user.show', compact('user'));
     }
 

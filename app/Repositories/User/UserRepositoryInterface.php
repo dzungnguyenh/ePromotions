@@ -49,15 +49,6 @@ interface UserRepositoryInterface
     public function delete($id);
 
     /**
-     * Get gender user
-     *
-     * @param int $id description
-     *
-     * @return type
-     */
-    public function gender($id);
-
-    /**
      * Block a user
      *
      * @param int $id [id of user]
@@ -65,6 +56,7 @@ interface UserRepositoryInterface
      * @return boolean
      */
     public function blockUser($id);
+    
     /**
      * Check status user
      *

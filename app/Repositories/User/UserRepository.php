@@ -91,31 +91,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     }
 
     /**
-<<<<<<< HEAD
-     * Get gender a user
-     *
-     * @param int $id description
-     *
-     * @return user
-     */
-    public function gender($id)
-    {
-        $data = User::where('id', $id)->first();
-        switch ($data['gender']) {
-            case '1':
-                $data['gender'] = "Male";
-                break;
-            case '2':
-                $data['gender'] = "Female";
-                break;
-            case '3':
-                $data['gender'] = "Other";
-                break;
-        }
-        return $data;
-    }
-
-    /**
      *Check user login
      *
      * @return boolean
@@ -128,6 +103,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             return false;
         }
     }
+    
      /**
      * Block a user
      *

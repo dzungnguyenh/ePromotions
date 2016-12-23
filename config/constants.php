@@ -20,4 +20,8 @@
     'BLOCK_USER' => '4',
     'STR_LIMIT' => '50',
     'SELECT_ONE' => '1',
+    'MALE' => '1',
+    'FEMALE' => '2',
+    'OTHER' => '3',
+
 ];
