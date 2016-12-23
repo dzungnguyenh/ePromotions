@@ -57,4 +57,44 @@ interface PromotionRepositoryInterface
     * @return mixed
     */
     public function findBy($attribute, $value);
+
+    /**
+    * Return promotions present
+    *
+    * @param int      $val   Value id.
+    * @param datetime $time  Time now.
+    * @param int      $limit Limit promotion earch page.
+    *
+    * @return mixed
+    */
+    public function filterExpired($val, $time, $limit = null);
+
+    /**
+    * Return promotions present
+    *
+    * @param int      $val   Value id.
+    * @param datetime $time  Time now.
+    * @param int      $limit Limit promotion earch page.
+    *
+    * @return mixed
+    */
+    public function filterPresent($val, $time, $limit = null);
+
+    /**
+    * Return promotions future
+    *
+    * @param int      $val   Value id.
+    * @param datetime $time  Time now.
+    * @param int      $limit Limit promotion earch page.
+    *
+    * @return mixed
+    */
+    public function filterFuture($val, $time, $limit = null);
+
+    /**
+    * Return time
+    *
+    * @return time
+    */
+    public function getTime();
 }
