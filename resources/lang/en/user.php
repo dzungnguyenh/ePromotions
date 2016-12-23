@@ -42,6 +42,8 @@ return [
     'block_user' => 'Block this user',
     'error_when_block_user' => 'Have error when block user',
     'block_user_error' => 'Block user error',
+    'can_not_unlock_user' => 'Can not unlock user account',
+    'unlock_user_error' => 'Error when unlock user. Please try again!',
     'history_vote' => 'History Voted',
-    'created_at' => 'Day Voted'
+    'created_at' => 'Day Voted',
 ];

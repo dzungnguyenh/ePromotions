@@ -25,6 +25,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
 {
     Route::resource('voucher', 'Admin\VoucherController');
     Route::resource('users', 'Admin\UserController');
+    Route::get('user/block-user', 'Admin\UserController@getBlockUser');
+    Route::put('users/{id}/unlock', 'Admin\UserController@unlock');
     Route::resource('voucher', 'Admin\VoucherController', ['except' => ['delete']]);
     Route::get('voucher/del/{id}', ['uses' => 'Admin\VoucherController@destroy', 'as' => 'admin.voucher.del']);
     Route::resource('category', 'Category\CategoryController');
@@ -39,7 +41,7 @@ Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
     Route::post('/filter_promotion', 'Business\PromotionController@showByDate')->name('filter_promotion');
 });
 
-Route::group(['middleware' => 'checkuser'], function()
+Route::group(['middleware' => ['auth', 'checkuser']], function()
 {
     Route::resource('user', 'User\UserController' , [
         'only' => ['index', 'edit', 'update']
