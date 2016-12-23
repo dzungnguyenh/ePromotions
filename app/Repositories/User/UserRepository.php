@@ -89,7 +89,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         $data = User::where('role_id', $role)->paginate(config('constants.LIMIT'));
         return $data;
     }
-
     /**
      *Check user login
      *
