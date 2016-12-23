@@ -66,7 +66,7 @@ class UserController extends Controller
             return redirect(route('users.index'));
         }
         $this->userRepository->delete($id);
-        Session::flash('msg', trans('user.delete_sucessfully'));
+        Session::flash('msg', trans('user.delete_successfully'));
         return redirect(route('users.index'));
     }
 
@@ -83,17 +83,6 @@ class UserController extends Controller
         if (empty($user)) {
             Sesion::flash('msg', trans('user.not_user'));
             return redirect(route('users.index'));
-        }
-        switch ($user['gender']) {
-            case '1':
-                $user['gender'] = "Male";
-                break;
-            case '2':
-                $user['gender'] = "Female";
-                break;
-            case '3':
-                $user['gender'] = "Other";
-                break;
         }
         return view('admin.user.show', compact('user'));
     }

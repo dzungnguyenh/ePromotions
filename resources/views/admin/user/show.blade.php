@@ -21,8 +21,14 @@
                     </p>
                     <!-- Gender Field -->
                     <p class="form-group">
-                        {!! Form::label('Gender', trans('user.gender')) !!}
-                        {!! $user->gender !!}
+                        {!! Form::label('gender', trans('user.gender')) !!}
+                        @if ($user['gender'] == config('constants.MALE'))
+                        {!! trans('user.male') !!}
+                        @elseif ($user['gender'] == 'constants.FEMALE')
+                        {!! trans('user.female') !!}
+                        @else
+                        {!! trans('user.other') !!}
+                        @endif
                     </p>
                     <!-- Birthday Field -->
                     <p class="form-group">
