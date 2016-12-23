@@ -84,3 +84,12 @@ $(document).ready(function(){
     return alert(message);
   }
 })
+
+$(".btn-join").on('click', function(event){
+    var confirmMsg = $(this).attr('alt');
+    if (confirm(confirmMsg)){
+        e.preventDefault();
+    }else{
+        return false;
+    }
+})

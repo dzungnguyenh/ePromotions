@@ -20,4 +20,10 @@ return [
     'join' => ' Join',
     'load_more' => ' LOAD MORE +',
     'space' => ' | ',
+    'end' => '...',
+    'price' => 'Price: ',
+    'date_port' => 'Date post: ',
+    'vote' => 'Vote: ',
+    'btn_vote' => 'Vote',
+    'currency' => '$',
 ];
