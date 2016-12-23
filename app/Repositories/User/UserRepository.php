@@ -5,6 +5,7 @@ namespace App\Repositories\User;
 use App\Repositories\BaseRepository;
 use App\Repositories\User\UserRepositoryInterface;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Input;
 use Auth;
 use File;
@@ -88,8 +89,21 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         $data = User::where('role_id', $role)->paginate(config('constants.LIMIT'));
         return $data;
     }
-
     /**
+     *Check user login
+     *
+     * @return boolean
+     */
+    public function checkLogin()
+    {
+        if (isset(Auth::user()->id)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+     /**
      * Block a user
      *
      * @param int $id [id of user]

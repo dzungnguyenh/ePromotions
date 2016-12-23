@@ -65,4 +65,11 @@ interface UserRepositoryInterface
      * @return Response
      */
     public function unlockUser($id);
+    
+    /**
+     * Check status user
+     *
+     * @return void
+     */
+    public function checkLogin();
 }

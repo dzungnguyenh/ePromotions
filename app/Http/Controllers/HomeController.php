@@ -8,6 +8,7 @@ use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Promotion\PromotionRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Event\EventRepository;
+use App\Repositories\User\UserRepository;
 use App\Repositories\VoteProduct\VoteProductRepository;
 
 class HomeController extends Controller
@@ -41,6 +42,13 @@ class HomeController extends Controller
     protected $eventRepository;
 
     /**
+     * The userRepository instance
+     *
+     * @var userRepository
+     */
+    protected $userRepository;
+    
+    /**
      * The VoteProductRepository instance
      *
      * @var voteProRepository
@@ -55,13 +63,15 @@ class HomeController extends Controller
     * @param ProductRepository     $productRepository   [description]
     * @param EventRepository       $eventRepository     [description]
     * @param VoteProductRepository $voteProRepository   [description]
+    * @param UserRepository        $userRepository      [description]
     */
-    public function __construct(CategoryRepository $categoryRepository, PromotionRepository $promotionRepository, ProductRepository $productRepository, EventRepository $eventRepository, VoteProductRepository $voteProRepository)
+    public function __construct(CategoryRepository $categoryRepository, PromotionRepository $promotionRepository, ProductRepository $productRepository, EventRepository $eventRepository, VoteProductRepository $voteProRepository, UserRepository $userRepository)
     {
         $this->categoryRepository = $categoryRepository;
         $this->promotionRepository = $promotionRepository;
         $this->productRepository = $productRepository;
         $this->eventRepository = $eventRepository;
+        $this->userRepository = $userRepository;
         $this->voteProRepository = $voteProRepository;
     }
 
@@ -81,7 +91,8 @@ class HomeController extends Controller
         $voteProducts = $this->voteProRepository->all();
         $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
         $events = $this->eventRepository->all()->take(config('constants.LIMIT_RECORD'));
-        return view('index.index', compact('categories', 'childs', 'promotions', 'products', 'voteProducts', 'arPointVote', 'events'));
+        $flag = $this->userRepository->checkLogin();
+        return view('index.index', compact('categories', 'childs', 'promotions', 'products', 'voteProducts', 'arPointVote', 'events', 'flag'));
     }
 
     /**
