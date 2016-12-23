@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -19,21 +18,18 @@ class HomeController extends Controller
      * @var CategoryRepository
      */
     protected $categoryRepository;
-
     /**
      * The PromotionRepository instance
      *
      * @var PromotionRepository
      */
     protected $promotionRepository;
-
     /**
      * The ProductRepository instance
      *
      * @var ProductRepository
      */
     protected $productRepository;
-
     /**
      * The EventRepository instance
      *
@@ -74,7 +70,6 @@ class HomeController extends Controller
         $this->userRepository = $userRepository;
         $this->voteProRepository = $voteProRepository;
     }
-
     /**
      * Display information in index page
      *
@@ -94,7 +89,6 @@ class HomeController extends Controller
         $flag = $this->userRepository->checkLogin();
         return view('index.index', compact('categories', 'childs', 'promotions', 'products', 'voteProducts', 'arPointVote', 'events', 'flag'));
     }
-
     /**
     * Show list all product
     *
@@ -106,7 +100,30 @@ class HomeController extends Controller
         foreach ($categories as $key => $category) {
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         }
-        $products = $this->productRepository->getAll()->paginate(config('constants.PAGE_PRODUCT_USER'));
+        $products = $this->productRepository->getAll()->paginate(config('constants.limit_product'));
         return view('index.product', compact('products', 'categories', 'childs'));
+    }
+    /**
+    * Display product research
+    *
+    * @param Request $request [ value input tag ]
+    *
+    * @return [type]          [get all product event of search]
+    */
+    public function research(Request $request)
+    {
+        $cate = $request->input('category_name');
+        $search = $request->input('search');
+        $categories = $this->categoryRepository->allRoot();
+        foreach ($categories as $key => $category) {
+            $childs[$key] = $this->categoryRepository->findDescendants($category->id);
+        };
+        if ($cate==config('constants.Promotion')) {
+            $products = $this->productRepository->getByPromotion($search);
+            return view('index.product', compact('products', 'categories', 'childs'));
+        } else {
+            $products = $this->productRepository->findLike('product_name', $search)->paginate(config('constants.limit_product'));
+            return view('index.product', compact('products', 'categories', 'childs'));
+        }
     }
 }

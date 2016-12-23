@@ -8,6 +8,7 @@ use App\Models\Promotion;
  
 class PromotionRepository extends BaseRepository implements PromotionRepositoryInterface
 {
+    protected $model;
     /**
      * Promotion constructor.
      *

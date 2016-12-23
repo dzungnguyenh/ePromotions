@@ -120,4 +120,16 @@ abstract class BaseRepository
     {
         return $this->model->paginate($limit);
     }
+    /**
+     * [find Like product]
+     *
+     * @param [type] $attribute [field name]
+     * @param [type] $value     [value search]
+     *
+     * @return [type]            [all colum of search]
+     */
+    public function findLike($attribute, $value)
+    {
+        return $this->model->where($attribute, 'like', '%'.$value.'%');
+    }
 }

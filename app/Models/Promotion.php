@@ -28,4 +28,13 @@ class Promotion extends Model
         'date_end',
         'product_id'
     ];
+    /**
+     * [product description]
+     *
+     * @return [type] [description]
+     */
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
+    }
 }
