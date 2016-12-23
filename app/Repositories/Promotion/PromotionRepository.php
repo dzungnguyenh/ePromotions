@@ -82,4 +82,75 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     {
         return date(config('date.format_timestamps'), time());
     }
+
+    /**
+    * Check input day start
+    *
+    * @param datetime $dateStart Time.
+    *
+    * @return boolean
+    */
+    public function checkDateStart($dateStart)
+    {
+        if ($dateStart < $this->getTime()) {
+            return true;
+        }
+    }
+
+    /**
+    * Check error day start
+    *
+    * @param datetime $dateStart Time.
+    *
+    * @return string
+    */
+    public function errorDateStart($dateStart)
+    {
+        if ($this->checkDateStart($dateStart)) {
+            return config('promotion.ERROR_DATE_START');
+        }
+    }
+
+    /**
+    * Check input day end
+    *
+    * @param datetime $dateEnd   Time.
+    * @param datetime $dateStart Time.
+    *
+    * @return boolean
+    */
+    public function checkDateEnd($dateEnd, $dateStart)
+    {
+        if ($dateEnd <= $dateStart) {
+            return true;
+        }
+    }
+
+    /**
+    * Check error day end
+    *
+    * @param datetime $dateEnd   Time.
+    * @param datetime $dateStart Time.
+    *
+    * @return string
+    */
+    public function errorDateEnd($dateEnd, $dateStart)
+    {
+        if ($this->checkDateEnd($dateEnd, $dateStart)) {
+            return config('promotion.ERROR_DATE_END');
+        }
+    }
+
+    /**
+    * Get error when submit
+    *
+    * @param datetime $dateStart Time.
+    * @param datetime $dateEnd   Time.
+    *
+    * @return array
+    */
+    public function getError($dateStart, $dateEnd)
+    {
+        return array($this->errorDateStart($dateStart), $this->errorDateEnd($dateEnd, $dateStart));
+    }
 }
