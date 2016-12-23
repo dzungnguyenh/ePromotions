@@ -56,4 +56,13 @@ interface UserRepositoryInterface
      * @return boolean
      */
     public function blockUser($id);
+    
+    /**
+     * Unlock a user account
+     *
+     * @param int $id [id of user]
+     *
+     * @return Response
+     */
+    public function unlockUser($id)
 }
