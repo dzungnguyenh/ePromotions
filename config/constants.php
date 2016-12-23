@@ -26,7 +26,6 @@
     'PROMOTION_FUTURE' => '3',
     'STR_LIMIT' => '50',
     'SELECT_ONE' => '1',
-];
     'MALE' => '1',
     'FEMALE' => '2',
     'OTHER' => '3',
