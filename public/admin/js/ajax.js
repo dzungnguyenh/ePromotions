@@ -15,7 +15,6 @@ $(document).ready(function(){
             type: type,
             url: my_url,
             success: function (data) {
-                console.log(data);
                 $("#user-" + user_id).remove();
             },
             error: function (data) {
@@ -39,7 +38,6 @@ $(document).ready(function(){
             type: type,
             url: my_url,
             success: function (data) {
-                console.log(data);
                 $("#business-" + business_id).remove();
             },
             error: function (data) {
@@ -62,7 +60,6 @@ $(document).ready(function(){
             type: type,
             url: my_url,
             success: function (data) {
-                console.log(data);
                 $("#user-block-" + user_id).remove();
             },
             error: function (data) {
