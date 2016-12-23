@@ -51,16 +51,18 @@
                 <?php
                     $disabled="";
                 ?>
-                @foreach($voteProducts as $voteProduct)
-                    @if ((Auth::user()->id == $voteProduct->user_id) && ($voteProduct->product_id == $product->id))
-                        <?php
-                            $disabled = "disabled";
-                        ?>
-                    @endif
-                @endforeach
-                <a><button class="vote" {{ $disabled }} value="{{$product->id}}"><i class="glyphicon glyphicon-thumbs-up"></i>
-                    {{ trans('label.btn_vote') }}
-                </button></a>
+                @if (!(Auth::guest()))
+                    @foreach($voteProducts as $voteProduct)
+                        @if ((Auth::user()->id == $voteProduct->user_id) && ($voteProduct->product_id == $product->id))
+                            <?php
+                                $disabled = "disabled";
+                            ?>
+                        @endif
+                    @endforeach
+                @endif
+                <a><button class="vote" {{ $disabled }} data-login="{{ Auth::guest() }}" value="{{$product->id}}"><i class="glyphicon glyphicon-thumbs-up"></i>
+                    {{ trans('label.vote') }}
+                </button><span id="please-login" data-please-login="{{ trans('message.please_login') }}"></span></a>
             </div>
           </div>
         </div>
