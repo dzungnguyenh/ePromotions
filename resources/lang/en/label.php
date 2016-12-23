@@ -20,6 +20,7 @@ return [
     'join' => ' Join',
     'load_more' => ' LOAD MORE +',
     'space' => ' | ',
+    'unlock' => 'Unlock',
     'end' => '...',
     'price' => 'Price: ',
     'date_port' => 'Date post: ',

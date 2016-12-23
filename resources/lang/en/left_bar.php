@@ -27,6 +27,7 @@ return [
   'voucher' => 'VOUCHER',
   'category' => 'CATEGORY',
   'block' => 'Block user',
+  'block_user' => 'BLOCK USER',
   'history' => 'HISTORY',
   'voted' => 'Voted',
   'join_event' => 'Join Event',

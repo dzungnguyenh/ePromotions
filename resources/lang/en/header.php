@@ -52,5 +52,5 @@ return [
   'contact_phone' => '+(84) 0511 3664 579',
   'contact_mail' => 'hr@asiantech.vn',
   'search' => 'Search',
-  'array_search' => array('0' => 'Select a service...', '1' => 'Product', '2' => 'Promotion', '3' => 'Event'),
+  'array_search' => array('0' => 'Product', '1' => 'Promotion'),
 ];

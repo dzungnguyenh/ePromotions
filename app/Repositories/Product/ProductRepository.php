@@ -9,14 +9,12 @@ use DB;
 
 class ProductRepository extends BaseRepository
 {
-
     /**
     * All of the registered after callbacks.
     *
     * @var product
     */
     protected $model;
-
     /**
     * Create a new  instance.
     *
@@ -28,7 +26,6 @@ class ProductRepository extends BaseRepository
     {
         $this->model=$product;
     }
-
     /**
     * Method insert data into product model
     *
@@ -173,6 +170,20 @@ class ProductRepository extends BaseRepository
         ->first();
     }
 
+    /**
+     * [getByProduct description]
+     *
+     * @param [type] $search [Search product by promotion]
+     *
+     * @return [type]         [get all colum of search]
+     */
+    public function getByPromotion($search)
+    {
+        return $this->model->with('promotion')->where('product_name', 'like', '%'.$search.'%')
+        ->whereHas('promotion', function ($query) {
+            $query->where('date_start', '<=', date(config('date.date_system')))->where('date_end', '>=', date(config('date.date_system')));
+        })->paginate(config('constants.limit_product'));
+    }
     /**
      * Get list of products by id category
      *
