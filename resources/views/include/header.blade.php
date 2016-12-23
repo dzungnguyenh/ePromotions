@@ -17,7 +17,6 @@
           @endif
         </ul>
       </div>
-
       <div class="header-ri">
         <ul class="social-top">
           <li><a href="#" class="icon facebook"><i class="fa fa-facebook" aria-hidden="true"></i><span></span></a></li>

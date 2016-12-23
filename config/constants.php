@@ -21,6 +21,9 @@
     'Product' => '0',
     'Promotion' => '1',
     'limit_product' => '16',
+    'PROMOTION_EXPIRED' => '1',
+    'PROMOTION_PRESENT' => '2',
+    'PROMOTION_FUTURE' => '3',
     'STR_LIMIT' => '50',
     'SELECT_ONE' => '1',
 ];
