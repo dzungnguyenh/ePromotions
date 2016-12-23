@@ -3,7 +3,7 @@
 <div class="header">
 		<div class="container">
 			<div class="logo">
-				<h1 ><a href="index.html"><b>{{trans('header.logo_1')}}<br>{{trans('header.logo_2')}}<br>{{trans('header.logo_3')}}</b>{{trans('header.name_web')}}<span>{{trans('header.slogan')}}</span></a></h1>
+				<h1 ><a href="/"><b>{{trans('header.logo_1')}}<br>{{trans('header.logo_2')}}<br>{{trans('header.logo_3')}}</b>{{trans('header.name_web')}}<span>{{trans('header.slogan')}}</span></a></h1>
 			</div>
 			<div class="head-t">
 				<ul class="card">
@@ -43,7 +43,7 @@
                     </a>
 										<span class="caret"></span></button>
 										<ul class="dropdown-menu dropdown-menu-right">
-								      <li><a href="{{url('/profile')}}" ><i class="fa fa-user" aria-hidden="true"></i>{{trans('header.profile')}}</a></li>
+								      <li><a href="{{url('/home')}}" ><i class="fa fa-user" aria-hidden="true"></i>{{trans('header.profile')}}</a></li>
 								      <li><a href="{{url('/setting')}}" ><i class="fa fa-cog" aria-hidden="true"></i>{{trans('header.setting')}}</a></li>
 											<li>
 												<a href="{{url('/logout')}}" ><i class="fa fa-outdent" aria-hidden="true"></i>{{trans('header.logout')}}</a>

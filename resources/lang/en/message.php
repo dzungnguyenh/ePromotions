@@ -7,4 +7,5 @@ return [
     'delete_error' => 'Have error when delete.',
     'passwoord_not_connect' => 'Password is not connect!',
     'your_account_is_block' => 'Your account has been locked. Please contact your system administrator.',
+    'please_login' => 'Please sign in to vote !',
 ];
