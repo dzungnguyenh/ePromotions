@@ -56,4 +56,11 @@ interface UserRepositoryInterface
      * @return boolean
      */
     public function blockUser($id);
+    
+    /**
+     * Check status user
+     *
+     * @return void
+     */
+    public function checkLogin();
 }
