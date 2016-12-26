@@ -120,15 +120,12 @@
       </li>
 
       <li class="treeview">
-        <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span>{!! trans('left_bar.order') !!}</span>
+        <a href="{{route('order.index')}}"><i class="fa fa-book"></i> <span>{!! trans('left_bar.order') !!}</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
-        <ul class="treeview-menu">
-          <li><a href="#">{!! trans('left_bar.view_list') !!}</a></li>
-          <li><a href="#">{!! trans('left_bar.create_new') !!}</a></li>
-        </ul>
+
       </li>
 
       <li class="treeview">
@@ -139,7 +136,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="{{route('user.history.voted')}}">{!! trans('left_bar.voted') !!}</a></li>
-          <li><a href="#">{!! trans('left_bar.join_event') !!}</a></li>
+          <li><a href="{{route('history-join-event')}}">{!! trans('left_bar.join_event') !!}</a></li>
         </ul>
       </li>
 

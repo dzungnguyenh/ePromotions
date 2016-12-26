@@ -2,7 +2,7 @@
 
 @section('main-content')
     <div id="product-up">
-    <h2>{{ trans('product.update_product') }}</h2>
+    <h2 class="h2-title">{{ trans('product.update_product') }}</h2>
     {!! Form::open([ 'method' =>'Patch','route' => [ 'product.update',$product->id], 'files' =>true, 'class' => 'product-update-form' ]) !!}
     {{ csrf_field() }}
         <label>{{trans('product.product_name')}}</label>
