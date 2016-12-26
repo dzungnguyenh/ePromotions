@@ -46,7 +46,7 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
     {
         $now = Carbon::now();
         $image = $now->toDateTimeString().$file->getClientOriginalName();
-        $path=config('path.image_event');
+        $path=config('path.picture_event');
         $file->move($path, $image);
         return $image;
     }
