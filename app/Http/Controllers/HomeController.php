@@ -9,6 +9,7 @@ use App\Repositories\Product\ProductRepository;
 use App\Repositories\Event\EventRepository;
 use App\Repositories\User\UserRepository;
 use App\Repositories\VoteProduct\VoteProductRepository;
+use Session;
 
 class HomeController extends Controller
 {
@@ -119,11 +120,13 @@ class HomeController extends Controller
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         };
         if ($cate==config('constants.Promotion')) {
-            $products = $this->productRepository->getByPromotion($search);
-            return view('index.product', compact('products', 'categories', 'childs'));
+            $products = $this->productRepository->getByPromotion($search)->paginate(config('constants.limit_product'));
+            $totalProduct = $this->productRepository->getByPromotion($search)->count();
+            return view('index.product', compact('products', 'categories', 'childs', 'totalProduct', 'search'));
         } else {
             $products = $this->productRepository->findLike('product_name', $search)->paginate(config('constants.limit_product'));
-            return view('index.product', compact('products', 'categories', 'childs'));
+            $totalProduct = $this->productRepository->findLike('product_name', $search)->count();
+            return view('index.product', compact('products', 'categories', 'childs', 'totalProduct', 'search'));
         }
     }
 }
