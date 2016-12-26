@@ -143,16 +143,51 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
+    * Check isset promotion
+    *
+    * @param int      $productId Product id.
+    * @param datetime $val       Time.
+    *
+    * @return boolean
+    */
+    public function checkIssetPromotion($productId, $val)
+    {
+        $promotions= $this->findBy('product_id', $productId);
+        foreach ($promotions as $value) {
+            if ($value['date_start']< $val && $value['date_end'] > $val) {
+                return true;
+                break;
+            }
+        }
+    }
+
+    /**
+    * Get error isset promotion
+    *
+    * @param datetime $dateStart Time.
+    * @param int      $productId Product id.
+    *
+    * @return string
+    */
+    public function errorIssetPromotion($dateStart, $productId)
+    {
+        if ($this->checkIssetPromotion($productId, $dateStart)) {
+            return config('promotion.ERROR_ISSET');
+        }
+    }
+
+    /**
     * Get error when submit
     *
     * @param datetime $dateStart Time.
     * @param datetime $dateEnd   Time.
+    * @param int      $productId Product id.
     *
     * @return array
     */
-    public function getError($dateStart, $dateEnd)
+    public function getError($dateStart, $dateEnd, $productId)
     {
-        return array($this->errorDateStart($dateStart), $this->errorDateEnd($dateEnd, $dateStart));
+        return array($this->errorDateStart($dateStart), $this->errorDateEnd($dateEnd, $dateStart), $this->errorIssetPromotion($dateStart, $productId));
     }
 
     /**
