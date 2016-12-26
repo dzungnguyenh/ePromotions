@@ -111,5 +111,12 @@ img.update-img{
 .form-register-business input[type="checkbox"]:checked + .btn-group > label span:last-child {
   display: none;   
 }
+.tr-top{
+  background: rgba(47, 156, 206, 0.84);
+}
+.h2-title{
+  text-transform: uppercase;
+  text-align: center;
+}
 
 
