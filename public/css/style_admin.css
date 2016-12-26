@@ -111,5 +111,8 @@ img.update-img{
 .form-register-business input[type="checkbox"]:checked + .btn-group > label span:last-child {
   display: none;   
 }
+span #point{
+  color:yellow;
+}
 
 
