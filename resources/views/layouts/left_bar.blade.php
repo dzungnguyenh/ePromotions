@@ -111,17 +111,12 @@
       <li class="header">{!! trans('left_bar.title_user') !!}</li>
       <!-- Optionally, you can add icons to the links -->
       <li class="treeview">
-        <a href="#"><i class="fa fa-book"></i> <span>{!! trans('left_bar.point') !!}</span>
-        <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
+        <a href="#"><i class="fa fa-book"></i>
+        <span>
+        {!! trans('left_bar.point') !!}
+        <strong id="point">{!! Auth::user()->point !!}</strong>
+        </span>
         </a>
-        <ul class="treeview-menu">
-          <li><a href="#">
-          {!! trans('label.point') !!}
-          {!! Auth::user()->point !!}
-          </a></li>
-          </ul>
       </li>
 
       <li class="treeview">

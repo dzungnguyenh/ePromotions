@@ -17,6 +17,6 @@
                 @include('admin.user.table')
             </div>
         </div>
-        {!! $users->render(); !!}
+        {!! $users->render() !!}
     </div>
 @endsection

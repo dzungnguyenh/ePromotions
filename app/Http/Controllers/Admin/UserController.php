@@ -63,11 +63,11 @@ class UserController extends Controller
         $user = $this->userRepository->find($id);
         if (empty($user)) {
             Session::flash('msg', trans('user.not_uset'));
-            return redirect(route('users.index'));
+            return back()->withInput();
         }
         $this->userRepository->delete($id);
         Session::flash('msg', trans('user.delete_successfully'));
-        return redirect(route('users.index'));
+        return back()->withInput();
     }
 
     /**

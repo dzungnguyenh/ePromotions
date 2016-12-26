@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         @include('admin.point.show_fields')
-                        <a href="{!! route('point.index') !!}" class="btn btn-default">{!! trans('label.back') !!}</a>
+                        <a href="{!! URL::previous() !!}" class="btn btn-default">{!! trans('label.back') !!}</a>
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@
                         </a>
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            @if (Auth::user()->role_id == Config::get('constants.ROLEUSER'))
+                            @if (Auth::user()->role_id == Config::get('constants.ROLEUSER') || Auth::user()->role_id == Config::get('constants.ROLEBUSSINESS') )
                             <li>
                                 <a href="#" >
                                 <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>{{trans('header.point')}}{!! Auth::user()->point !!}

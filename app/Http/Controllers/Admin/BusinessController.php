@@ -73,7 +73,7 @@ class BusinessController extends Controller
         }
         $this->businessRepository->delete($id);
         Session::flash('msg', trans('business.delete_business_successfully'));
-        return redirect(route('business.index'));
+        return back()->withInput();
     }
 
     /**
