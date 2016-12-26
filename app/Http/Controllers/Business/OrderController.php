@@ -60,7 +60,7 @@ class OrderController extends Controller
     *
     * @return redirect
     */
-    public function research(Request $request)
+    public function search(Request $request)
     {
         $orders = $this->bookRepository->search($request->id, Auth::user()->id);
         return view('business.order', compact('orders'));

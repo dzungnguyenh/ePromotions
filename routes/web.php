@@ -37,7 +37,7 @@ Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
     Route::resource('event', 'Business\EventController');
     Route::resource('promotions', 'Business\PromotionController');
     Route::resource('order','Business\OrderController');
-    Route::get('searchorder',['as' => 'searchorder', 'uses' => 'Business\OrderController@research']);
+    Route::get('searchorder',['as' => 'searchorder', 'uses' => 'Business\OrderController@search']);
     Route::get('/add_promotion/{id}', 'Business\PromotionController@addPromotion')->name('add_promotion');
     Route::get('/show_promotion/{attribute?}/{id}', 'Business\PromotionController@showBy')->name('show_promotion');
     Route::post('/filter_promotion', 'Business\PromotionController@showByDate')->name('filter_promotion');
