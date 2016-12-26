@@ -97,4 +97,52 @@ interface PromotionRepositoryInterface
     * @return time
     */
     public function getTime();
+
+    /**
+    * Check input day start
+    *
+    * @param datetime $dateStart Time.
+    *
+    * @return boolean
+    */
+    public function checkDateStart($dateStart);
+
+    /**
+    * Check error day start
+    *
+    * @param datetime $dateStart Time.
+    *
+    * @return string
+    */
+    public function errorDateStart($dateStart);
+
+    /**
+    * Check input day end
+    *
+    * @param datetime $dateEnd   Time.
+    * @param datetime $dateStart Time.
+    *
+    * @return boolean
+    */
+    public function checkDateEnd($dateEnd, $dateStart);
+
+    /**
+    * Check error day end
+    *
+    * @param datetime $dateEnd   Time.
+    * @param datetime $dateStart Time.
+    *
+    * @return string
+    */
+    public function errorDateEnd($dateEnd, $dateStart);
+
+    /**
+    * Get error when submit
+    *
+    * @param datetime $dateStart Time.
+    * @param datetime $dateEnd   Time.
+    *
+    * @return array
+    */
+    public function getError($dateStart, $dateEnd);
 }
