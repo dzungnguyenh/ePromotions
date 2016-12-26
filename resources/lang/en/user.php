@@ -46,4 +46,5 @@ return [
     'unlock_user_error' => 'Error when unlock user. Please try again!',
     'history_vote' => 'History Voted',
     'created_at' => 'Day Voted',
+    'unlock_user' => 'Unlock user account',
 ];

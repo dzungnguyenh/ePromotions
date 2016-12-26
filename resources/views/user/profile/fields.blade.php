@@ -23,7 +23,11 @@
     {!! Form::label('avatar', trans('user.avatar')) !!}
     </div>
     <div class="form-group col-sm-8">
-    <img src="{{ config('image.path_avatar')}}/{{Auth::user()->avatar }}" class="img-circle avatar" id="output">
+    @if(!empty(Auth::user()->avatar))
+        <img src="{{ config('image.path_avatar')}}/{{Auth::user()->avatar }}" class="img-circle avatar" id="output">
+    @else
+        <img src="{{ config('image.path_avatar')}}/avatar-default.png" class="img-circle avatar" id="output">
+    @endif
     {!! Form::file('avatar', array('id' => 'load-avatar')) !!}
     </div>
 </div>
