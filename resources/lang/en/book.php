@@ -1,4 +1,4 @@
-0<?php
+<?php
 return [
     'book_app' => 'Booking Application',
     'notification_success_before' => 'Your booking is ',
@@ -29,4 +29,11 @@ return [
     'error_result' => ' Sorry, no products matched your selection. Please choose a different value !',
     'home' => 'Return to home page',
     'error_quantity' => 'Quantity greater than 0',
+    'no' =>'No.',
+    'not_success' => 'Not success',
+    'success' => 'Success',
+    'book_search' =>'Search product',
+    'are_you_sure_delete' => 'Are You Sure Delete ?',
+    'are_you_sure_accept' => 'Are You Sure Accept?',
+    'delete_order_successful' =>'Delete Order successfull',
 ];

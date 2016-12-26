@@ -1,0 +1,13 @@
+.detail-cus-order, .detail-product-order{
+    cursor: pointer;
+}
+.img-order-product{
+    width: 70px; height: auto;
+}
+.form-inline{
+    display: inline;
+}
+.title-h2{
+    text-align: center;
+    text-transform: uppercase;
+}

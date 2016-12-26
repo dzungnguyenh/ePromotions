@@ -15,9 +15,10 @@
                             </i>: {{ $product->price }}
                         </span>
                         </p>
-                        <span class="quantity">Quantity: {{ $product->quantity }}</span>
-                        <p class="product-description">{{ substr($product->description,0,20) }}</p>
-                        <p><span class="quantity">Date create: {{ $product->created_at->format(config('date.date_time')) }}</span></p>
+                        <p>Quantity: {{ $product->quantity }}</p>
+                        <p class="product-description">{{ substr($product->description,0,50) }}</p>
+
+                        <p>Date create: {{ $product->created_at->format(config('date.date_time')) }}</p>
                         <div class="row row-padding">
                             <a href=""><button class="btn btn-success"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
                             <a href=""><button class="btn btn-success"><i class="glyphicon glyphicon-share"></i></button></a>
@@ -25,8 +26,8 @@
                         </div>
                      <div class="detail-product">
                         <div class="sub-product">
-                            <p>{{ trans('product.product_name') }} : {{$product->product_name}}</p>
-                            <p>{{ trans('product.price') }} : {{$product->price}}</p>
+                            <h3>{{$product->product_name}}</h3>
+                            <p>{{ trans('product.price') }} : {{ number_format($product->price)}}</p>
                             <p>{{ trans('product.description') }} : {{$product->description}}</p>                           
                         </div><!-- end sub-product -->
                         <div class="sub-business">
