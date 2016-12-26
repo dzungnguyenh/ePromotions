@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html>
 <head>
   <meta charset="utf-8">
@@ -24,7 +24,6 @@
   <link rel="stylesheet" href="{{asset('/css/product.css')}}">
   <link rel="stylesheet" href="{{asset('/css/promotion.css')}}">
   <meta name="_token" content="{!! csrf_token() !!}" />
-  <link rel="stylesheet" href="{{asset('/css/user_order_index.css')}}">
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -55,14 +54,22 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{ config('image.path_avatar')}}/{{Auth::user()->avatar }}" class="user-image" alt="User Image">
+              @if(!empty(Auth::user()->avatar))
+                <img src="{{ config('image.path_avatar')}}/{{Auth::user()->avatar }}" class="user-image" alt="User Image">
+              @else
+                <img src="{{ config('image.path_avatar')}}/avatar-default.png" class="user-image" alt="User Image">
+              @endif
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{ config('image.path_avatar') }}/{{ Auth::user()->avatar }}" class="img-circle" alt="User Image">
+                @if(!empty(Auth::user()->avatar))
+                  <img src="{{ config('image.path_avatar')}}/{{Auth::user()->avatar }}" class="img-circle" alt="User Image">
+                @else
+                  <img src="{{ config('image.path_avatar')}}/avatar-default.png" class="img-circle" alt="User Image">
+                @endif
                 <p>
                   {{ Auth::user()->name }}
                 </p>
