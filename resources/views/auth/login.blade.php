@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="http://localhost/css/style_login.css">
+    <link rel="stylesheet" href="{{asset('/css/style_login.css')}}">
     <script src="{{asset('/js/login.js')}}" type="text/javascript" charset="utf-8" async defer></script>
     <!-- Scripts -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
