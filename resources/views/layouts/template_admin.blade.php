@@ -1,4 +1,7 @@
-@include ('layouts.header')
+@include ('layouts.head')
+  @yield('head-link')
+  </head>
+@include('layouts.header')  
   <!-- Left side column. contains the logo and sidebar -->
   @include ('layouts.left_bar')
 
@@ -17,3 +20,6 @@
 
   <!-- Main Footer -->
 @include ('layouts.footer')
+  @yield('footer-link')  
+  </body>
+  </html>

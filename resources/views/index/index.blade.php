@@ -5,4 +5,6 @@
 
 @include('index.event')
 
-@include('index.product')
+@include('index.product-index')
+
+@include('include.footer')

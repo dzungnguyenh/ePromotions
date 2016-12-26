@@ -1,10 +1,10 @@
 @extends('layouts.template_admin')
 @section('main-content')
     <div id="product-view">
-        <h1>{{trans('product.product')}}</h1>
+        <h1 class="h2-title">{{trans('product.product')}}</h1>
         <table class="table table-striped product-view-head">
             <thead>
-                <tr>
+                <tr class="tr-top">
                     <th>{{trans('product.product_name')}}</th>
                     <th>{{trans('product.price')}}</th>
                     <th>{{trans('product.description')}}</th>

@@ -55,4 +55,14 @@ class RegisterEventRepository extends BaseRepository implements RegisterEventRep
         }
         return $data;
     }
+
+    /**
+     * Get list history join event
+     *
+     * @return Response
+     */
+    public function getJoinEvent()
+    {
+        return $this->model->with('event')->where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->paginate(trans('event.limit_paginate_history_join'));
+    }
 }
