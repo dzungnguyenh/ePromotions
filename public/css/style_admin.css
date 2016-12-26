@@ -89,4 +89,27 @@ img.update-img{
 }
 
 
+.form-register-business input[type="checkbox"] {
+  display: none;
+}
+
+.form-register-business input[type="checkbox"] + .btn-group > label span {
+  width: 20px;
+}
+
+.form-register-business input[type="checkbox"] + .btn-group > label span:first-child {
+  display: none;
+}
+.form-register-business input[type="checkbox"] + .btn-group > label span:last-child {
+  display: inline-block;   
+}
+
+.form-register-business input[type="checkbox"]:checked + .btn-group > label span:first-child {
+  display: inline-block;
+  line-height: 20px;
+}
+.form-register-business input[type="checkbox"]:checked + .btn-group > label span:last-child {
+  display: none;   
+}
+
 

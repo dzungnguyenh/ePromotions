@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title></title>
     <link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="http://localhost/css/style_login.css">
-    <script src="http://localhost/js/login.js" type="text/javascript" charset="utf-8" async defer></script>
+    <link rel="stylesheet" href="{{asset('/css/style_login.css')}}">
+    <script src="{{asset('/js/login.js')}}" type="text/javascript" charset="utf-8" async defer></script>
     <!-- Scripts -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{asset('/bower_components/AdminLTE/bootstrap/css/bootstrap.min.css')}}">
@@ -18,7 +18,7 @@
 <div class="header">
     <div class="container">
       <div class="logo">
-        <h1 ><a href="index.html"></b>{{trans('header.name_web')}}<span>{{trans('header.slogan')}}</span></a></h1>
+        <h1 ><a href="/"></b>{{trans('header.name_web')}}<span>{{trans('header.slogan')}}</span></a></h1>
       </div>
     </nav>
     <div id="login-form">

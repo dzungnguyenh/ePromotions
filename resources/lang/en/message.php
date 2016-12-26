@@ -8,4 +8,5 @@ return [
     'passwoord_not_connect' => 'Password is not connect!',
     'your_account_is_block' => 'Your account has been locked. Please contact your system administrator.',
     'please_login' => 'Please sign in to vote !',
+    'password_not_connecting' => 'Your password not connecting. Please try again!',
 ];

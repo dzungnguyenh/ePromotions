@@ -85,11 +85,16 @@ class PromotionController extends Controller
      */
     public function store(CreatePromotionRequest $request)
     {
-        $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end', 'product_id');
-        $productId = $request->input('product_id');
-        $this->promotion->create($promotion);
-        Session::flash('message', trans('promotion.create_promotion_successful'));
-        return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
+        $errorDate = $this->promotion->getError($request->input('date_start'), $request->input('date_end'));
+        if ($errorDate) {
+            return redirect()->back()->withErrors(compact('errorDate'))->withInput();
+        } else {
+            $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end', 'product_id');
+            $productId = $request->input('product_id');
+            $this->promotion->create($promotion);
+            Session::flash('message', trans('promotion.create_promotion_successful'));
+            return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
+        }
     }
 
     /**
@@ -148,11 +153,11 @@ class PromotionController extends Controller
         $val=$request->get('promotion_status');
         $id = $request->input('product_id');
         $time=$this->promotion->getTime();
-        if ($val == config('constants.PROMOTION_EXPIRED')) {
+        if ($val == config('promotion.EXPIRED')) {
             $promotions = $this->promotion->filterExpired($id, $time);
-        } elseif ($val == config('constants.PROMOTION_PRESENT')) {
+        } elseif ($val == config('promotion.PRESENT')) {
             $promotions = $this->promotion->filterPresent($id, $time);
-        } elseif ($val == config('constants.PROMOTION_FUTURE')) {
+        } elseif ($val == config('promotion.FUTURE')) {
             $promotions = $this->promotion->filterFuture($id, $time);
         }
         return view('promotion.list', compact('promotions', 'id'));

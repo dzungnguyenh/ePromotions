@@ -14,7 +14,7 @@
             <td>{!! $business->name !!}</td>
             <td>{!! $business->email !!}</td>
             <td>{!! $business->phone !!}</td>
-            <td>{!! $business->address !!}</td>
+            <td>{!! str_limit($business->address, trans('business.address_limit')) !!}</td>
             <td>
                 {!! Form::open([ 'route' => ['business.destroy', $business->id], 'method' => 'delete', 'id' => 'form-delete-business-'.$business->id]) !!}
                 <div class='btn-group'>

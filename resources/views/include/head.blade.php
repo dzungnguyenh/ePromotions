@@ -9,6 +9,7 @@
 <link href="{{asset('/bower_components/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
 <!-- Custom Theme files -->
 <link rel="stylesheet" href="{{asset('/css/book.css')}}">
+<link rel="stylesheet" href="{{asset('/css/search.css')}}">
 <link href="/css/style-home.css" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" type="text/css" href="{{asset('css/index_product.css')}}">
 <script type="text/javascript" src="{{asset('/bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
