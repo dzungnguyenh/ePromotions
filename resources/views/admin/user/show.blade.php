@@ -57,6 +57,11 @@
                     </p>
                     </div>
                     <div class="user-left">
+                    <!-- Point Field -->
+                    <p class="form-group">
+                        {!! Form::label('updated_at', trans('label.point')) !!}
+                        {!! $user->point !!}
+                    </p>
                      <!-- Avatar Field -->
                     <p class="form-group-2">
                         {!! Form::label('avatar', trans('user.avatar')) !!}
