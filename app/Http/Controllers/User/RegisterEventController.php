@@ -61,4 +61,16 @@ class RegisterEventController extends Controller
             return redirect('/');
         }
     }
+
+    /**
+     * Get list history join event
+     *
+     * @return Response
+     */
+    public function getJoinEvent()
+    {
+        $sort = config('constants.NO');
+        $historyJoins = $this->joinEventRepository->getJoinEvent();
+        return view('user.history.historyEvent', compact('historyJoins', 'sort'));
+    }
 }

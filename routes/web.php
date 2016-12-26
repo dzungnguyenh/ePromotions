@@ -47,6 +47,10 @@ Route::group(['middleware' => ['auth', 'checkuser']], function()
         'only' => ['index', 'edit', 'update']
     ]);
     Route::get('/event/{id}/join', 'User\RegisterEventController@join');
+    Route::get('/event/history-event', [
+        'as' => 'history-join-event',
+        'uses' => 'User\RegisterEventController@getJoinEvent',
+        ]);
     Route::resource('book', 'Book\BookController');
     Route::get('product/{id}', 'API\ProductController@handlingAjaxVote');
     Route::get('user/history/voted', [

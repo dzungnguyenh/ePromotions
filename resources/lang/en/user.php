@@ -47,4 +47,5 @@ return [
     'history_vote' => 'History Voted',
     'created_at' => 'Day Voted',
     'unlock_user' => 'Unlock user account',
+    'history_join_event' => 'History join event',
 ];

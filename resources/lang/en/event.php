@@ -12,8 +12,6 @@ return [
   'end_time' => 'End Time',
   'place' => 'Place',
   'update' => 'Update',
-  'start_time' => 'Start time: ',
-  'end_time' => 'End time: ',
   'create_event_successful' => 'Created event successfully!',
   'event_not_found' => 'Event not found',
   'update_event_successfully' => 'Updated event successfully!',
@@ -25,4 +23,5 @@ return [
   'cant_not_register_event' => 'Can not register event',
   'has_been_register' => 'You has been register this event. Please check again!',
   'register_event_successfully' => 'Register event successfully!',
+  'limit_paginate_history_join' => '5',
 ];

@@ -135,7 +135,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="{{route('user.history.voted')}}">{!! trans('left_bar.voted') !!}</a></li>
-          <li><a href="#">{!! trans('left_bar.join_event') !!}</a></li>
+          <li><a href="{{route('history-join-event')}}">{!! trans('left_bar.join_event') !!}</a></li>
         </ul>
       </li>
 
