@@ -4,6 +4,7 @@ namespace App\Repositories\Product;
 
 use App\Repositories\BaseRepository;
 use App\Models\Product;
+use App\Models\Promotion;
 use Carbon\Carbon;
 use DB;
 
@@ -26,6 +27,7 @@ class ProductRepository extends BaseRepository
     {
         $this->model=$product;
     }
+
     /**
     * Method insert data into product model
     *
@@ -184,6 +186,7 @@ class ProductRepository extends BaseRepository
             $query->where('date_start', '<=', date(config('date.date_system')))->where('date_end', '>=', date(config('date.date_system')));
         })->paginate(config('constants.limit_product'));
     }
+
     /**
      * Get list of products by id category
      *
@@ -196,5 +199,20 @@ class ProductRepository extends BaseRepository
         return $this->model
         ->join('categories', 'categories.id', '=', 'products.category_id')
         ->where('categories.id', $id)->select('*', 'products.id')->get();
+    }
+
+    /**
+     * Get 8 product which top vote
+     *
+     * @return array Products
+     */
+    public function getProductTopVote()
+    {
+        $list = $this->model
+        ->with('voteProducts')
+        ->withCount('voteProducts')
+        ->orderBy('vote_products_count', 'desc')
+        ->take(config('constants.LIMIT_PRODUCT_INDEX'))->get();
+        return $list;
     }
 }
