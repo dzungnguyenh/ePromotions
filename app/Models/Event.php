@@ -24,6 +24,6 @@ class Event extends Model
      * @var array
      */
     protected $fillable = [
-        'id','title', 'description', 'start_time', 'end_time','place',
+        'id','title', 'description', 'start_time', 'end_time','place','image','user_id'
     ];
 }

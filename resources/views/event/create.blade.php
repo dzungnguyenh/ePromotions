@@ -8,7 +8,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    {!! Form::open(['route' => 'event.store']) !!}
+                    {!! Form::open(array('route'=>array('event.store'),'method'=>'POST','enctype' => 'multipart/form-data', 'class' => 'basic-grey')) !!}  
 
                         @include('event.fields')
 

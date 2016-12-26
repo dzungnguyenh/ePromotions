@@ -20,6 +20,8 @@ class CreateEventTable extends Migration
             $table->datetime('start_time');
             $table->datetime('end_time');
             $table->string('place', 1000);
+            $table->string('image',200);
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }

@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use App\User;
+
 
 class EventTableSeeder extends Seeder
 {
@@ -13,6 +15,7 @@ class EventTableSeeder extends Seeder
     public function run()
     {
       $faker = Faker::create();
+      $users = User::all()->pluck('id');
       for($i = 0; $i < 10; $i++) {
         $created = $faker->dateTimeThisDecade($max = 'now');
         $updated = $faker->dateTimeThisDecade($max = 'now');
@@ -25,6 +28,8 @@ class EventTableSeeder extends Seeder
               'start_time' => $start,
               'end_time' => $end,
               'place' => $faker->address,
+              'image' => 'event.jpg',
+              'user_id' => $faker->randomElement($users->toArray()),
               'created_at' => $created,
               'updated_at' => $updated,
           ]);
