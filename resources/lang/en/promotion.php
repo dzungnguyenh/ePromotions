@@ -30,4 +30,6 @@ return [
     'value_expired' => '1',
     'value_present' => '2',
     'value_future' => '3',
+    'min_quantity' => '1',
+    'row_description' => '5',
 ];

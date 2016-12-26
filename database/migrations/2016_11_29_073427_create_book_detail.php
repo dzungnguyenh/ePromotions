@@ -16,8 +16,8 @@ class CreateBookDetail extends Migration
         Schema::create('book_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('quantity');
-            $table->integer('book_id');
-            $table->integer('product_id');
+            $table->integer('book_id')->unsigned();;
+            $table->integer('product_id')->unsigned();;
             $table->float('price');
             $table->boolean('status');
             $table->timestamps();

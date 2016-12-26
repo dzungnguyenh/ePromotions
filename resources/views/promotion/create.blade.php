@@ -14,7 +14,6 @@
                 </ul>
             </div>
         @endif
-
         <form action="{{ route('promotions.store') }}" method="post">
             {{ csrf_field() }}
             <div class="row">
@@ -28,11 +27,11 @@
                 </div>
                 <div class="form-group col-md-5">
                     <label for="description">{{ trans('promotion.description') }}</label>
-                    <textarea class="form-control" rows="5" id="description"  name="description" >{{ old('description')}}</textarea>
+                    <textarea class="form-control" rows="{{ trans('promotion.row_description') }}" id="description"  name="description" >{{ old('description')}}</textarea>
                 </div>
                 <div class="form-group col-md-5">
                     <label for="quantity">{{ trans('promotion.quantity') }}</label>
-                    <input type="number" class="form-control" id="quantity" name="quantity" value="{{ old('quantity')}}">
+                    <input type="number" min="{{ trans('promotion.min_quantity') }}" class="form-control" id="quantity" name="quantity" value="{{ old('quantity')}}">
                 </div>
                 <div class="form-group col-md-5">
                     <label for="start_date">{{ trans('promotion.date_start') }}</label>
