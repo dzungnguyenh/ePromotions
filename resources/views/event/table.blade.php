@@ -16,7 +16,7 @@
             <td>{!! $event->start_time !!}</td>
             <td>{!! $event->end_time !!}</td>
             <td>{{ str_limit($event->place, 20) }}</td>
-            <td><img id="image" src="{!! asset(config('path.image_event').'/'.$event->image) !!}" width="100px" class="img-responsive" />
+            <td><img id="image" src="{!! asset(config('path.picture_event').'/'.$event->image) !!}" width="100px" class="img-responsive" />
             <td>
                 {!! Form::open([ 'route' => ['event.destroy', $event->id], 'method' => 'delete', 'id' => 'delete-event']) !!}
                 <div class='btn-group'>

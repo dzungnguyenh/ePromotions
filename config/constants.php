@@ -29,5 +29,10 @@
     'MALE' => '1',
     'FEMALE' => '2',
     'OTHER' => '3',
-
+    'LIMIT_PROMOTION_INDEX' => 4,
+    'LIMIT_PRODUCT_INDEX' => 8,
+    'LIMIT_EVENT_INDEX' => 3,
+    'length_titile' => 20,
+    'length_titile_event' => 15,
+    'length_description' => 130,
 ];

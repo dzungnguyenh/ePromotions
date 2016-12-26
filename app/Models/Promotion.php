@@ -12,12 +12,12 @@ class Promotion extends Model
      * @var string
      */
     protected $table = 'promotions';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    
     protected $fillable = [
         'id',
         'title',
@@ -28,10 +28,11 @@ class Promotion extends Model
         'date_end',
         'product_id'
     ];
+
     /**
-     * [product description]
+     * Get parent that own promotion
      *
-     * @return [type] [description]
+     * @return Product
      */
     public function product()
     {

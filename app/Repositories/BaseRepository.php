@@ -132,4 +132,13 @@ abstract class BaseRepository
     {
         return $this->model->where($attribute, 'like', '%'.$value.'%');
     }
+    /**
+     * [count number colums in table]
+     *
+     * @return array
+     */
+    public function count()
+    {
+        return $this->model->count();
+    }
 }

@@ -50,4 +50,14 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
         $file->move($path, $image);
         return $image;
     }
+
+    /**
+    * Get events newest
+    *
+    * @return array Events
+    */
+    public function getEventNewest()
+    {
+        return $this->model->latest()->take(config('constants.LIMIT_EVENT_INDEX'))->get();
+    }
 }
