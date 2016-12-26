@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $table = 'products';
-    
+
     protected $fillable = [
         'product_name', 'price', 'description', 'quantity', 'picture', 'category_id', 'user_id'
     ];
@@ -21,7 +21,7 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
-    
+
     /**
     *Method relationship
     *
@@ -31,13 +31,24 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Category');
     }
+
     /**
-     * [promotion description]
+     * Get chilren of product
      *
-     * @return [type] [description]
+     * @return array Promotions
      */
     public function promotion()
     {
         return $this->hasMany('App\Models\Promotion');
+    }
+
+    /**
+     * Get chilren of product
+     *
+     * @return array VoteProducts
+     */
+    public function voteProducts()
+    {
+        return $this->hasMany('App\Models\VoteProduct');
     }
 }

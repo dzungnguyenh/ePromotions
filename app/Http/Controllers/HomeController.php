@@ -44,7 +44,7 @@ class HomeController extends Controller
      * @var userRepository
      */
     protected $userRepository;
-    
+
     /**
      * The VoteProductRepository instance
      *
@@ -82,14 +82,15 @@ class HomeController extends Controller
         foreach ($categories as $key => $category) {
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         }
-        $promotions = $this->promotionRepository->all()->take(config('constants.LIMIT_RECORD'));
-        $products = $this->productRepository->all()->take(config('constants.LIMIT_RECORD'));
+        $promotions = $this->promotionRepository->getNeartest();
+        $products = $this->productRepository->getProductTopVote();
         $voteProducts = $this->voteProRepository->all();
         $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
-        $events = $this->eventRepository->all()->take(config('constants.LIMIT_RECORD'));
+        $events = $this->eventRepository->getEventNewest();
         $flag = $this->userRepository->checkLogin();
         return view('index.index', compact('categories', 'childs', 'promotions', 'products', 'voteProducts', 'arPointVote', 'events', 'flag'));
     }
+    
     /**
     * Show list all product
     *
