@@ -46,19 +46,17 @@
       </li>
 
       <li class="treeview">
-        <a href=""><i class="fa fa-book"></i> <span>{!! trans('left_bar.user') !!}</span>
+        <a href=""><i class="glyphicon glyphicon-user"></i> <span>{!! trans('left_bar.user') !!}</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
           <li><a href="{!! url('admin/users') !!}">{!! trans('left_bar.view_list') !!}</a></li>
-          <li><a href="#">{!! trans('left_bar.block') !!}</a></li>
-        </ul>
-      </li>
+      </ul>
 
       <li class="treeview">
-        <a href="#"><i class="fa fa-book"></i> <span>{!! trans('left_bar.bussiness') !!}</span>
+        <a href="#"><i class="glyphicon glyphicon-home"></i> <span>{!! trans('left_bar.bussiness') !!}</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -118,7 +116,7 @@
       </li>
 
       <li class="treeview">
-        <a href="#"><i class="fa fa-book"></i> <span>{!! trans('left_bar.order') !!}</span>
+        <a href="#"><i class="glyphicon glyphicon-shopping-cart"></i> <span>{!! trans('left_bar.order') !!}</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -130,7 +128,7 @@
       </li>
 
       <li class="treeview">
-        <a href="#"><i class="fa fa-book"></i> <span>{!! trans('left_bar.history') !!}</span>
+        <a href="#"><i class="glyphicon glyphicon-info-sign"></i> <span>{!! trans('left_bar.history') !!}</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -144,7 +142,7 @@
       @if (Auth::user()->role_id == Config::get('constants.ROLEBUSSINESS'))
 
       <li class="treeview">
-        <a href="#"><i class="fa fa-book"></i> <span>{!! trans('left_bar.bussiness') !!}</span>
+        <a href="#"><i class="glyphicon glyphicon-home"></i> <span>{!! trans('left_bar.bussiness') !!}</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -157,7 +155,7 @@
         </ul>
       </li>
       <li class="treeview">
-        <a href="#"><i class="fa fa-book"></i> <span>{!! trans('product.product') !!}</span>
+        <a href="#"><i class="glyphicon glyphicon-apple"></i> <span>{!! trans('product.product') !!}</span>
           <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
           </span>
