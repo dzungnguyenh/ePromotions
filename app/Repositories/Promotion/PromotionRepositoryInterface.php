@@ -137,14 +137,35 @@ interface PromotionRepositoryInterface
     public function errorDateEnd($dateEnd, $dateStart);
 
     /**
+    * Check isset promotion
+    *
+    * @param int      $productId Product id.
+    * @param datetime $val       Time.
+    *
+    * @return boolean
+    */
+    public function checkIssetPromotion($productId, $val);
+
+    /**
+    * Get error isset promotion
+    *
+    * @param datetime $dateStart Time.
+    * @param int      $productId Product id.
+    *
+    * @return string
+    */
+    public function errorIssetPromotion($dateStart, $productId);
+
+    /**
     * Get error when submit
     *
     * @param datetime $dateStart Time.
     * @param datetime $dateEnd   Time.
+    * @param int      $productId Product id.
     *
     * @return array
     */
-    public function getError($dateStart, $dateEnd);
+    public function getError($dateStart, $dateEnd, $productId);
 
     /**
      * Get limit 4 promotions which being sale off

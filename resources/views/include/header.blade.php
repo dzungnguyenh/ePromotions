@@ -42,19 +42,32 @@
                         </a>
                         <span class="caret"></span></button>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a href="{{url('/home')}}" ><i class="fa fa-user" aria-hidden="true"></i>{{trans('header.profile')}}</a></li>
-                            <li><a href="{{url('/setting')}}" ><i class="fa fa-cog" aria-hidden="true"></i>{{trans('header.setting')}}</a></li>
+                            @if (Auth::user()->role_id == Config::get('constants.ROLEUSER'))
+                            <li>
+                                <a href="#" >
+                                <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>{{trans('header.point')}}{!! Auth::user()->point !!}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('/home')}}" ><i class="fa fa-user" aria-hidden="true"></i>{{trans('header.profile')}}</a>
+                            </li>
                             <li>
                                 <a href="{{url('/logout')}}" ><i class="fa fa-outdent" aria-hidden="true"></i>{{trans('header.logout')}}</a>
                             </li>
+                            @else
+                            <li>
+                                <a href="{{url('/home')}}" ><i class="fa fa-user" aria-hidden="true"></i>{{trans('header.profile')}}</a>
+                            </li>
+                            <li>
+                                <a href="{{url('/logout')}}" ><i class="fa fa-outdent" aria-hidden="true"></i>{{trans('header.logout')}}</a>
+                                @endif
+                            </li>
+                            @endif
                         </ul>
-                    </li>
-                    @endif
-                </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
             </div>
-            <div class="clearfix"></div>
         </div>
-    </div>
-</div>
-<!-- Search -->
-@include('include.search')
+        <!-- Search -->
+        @include('include.search')

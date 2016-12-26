@@ -11,6 +11,7 @@ return [
   'start_time' => 'Start Time',
   'end_time' => 'End Time',
   'place' => 'Place',
+  'image' => 'Image',
   'update' => 'Update',
   'create_event_successful' => 'Created event successfully!',
   'event_not_found' => 'Event not found',

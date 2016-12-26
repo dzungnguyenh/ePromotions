@@ -23,7 +23,7 @@ class CreateUserTable extends Migration
             $table->string('phone', 15)->nullable();
             $table->string('address', 320)->nullable();
             $table->string('avatar', 320)->nullable();
-            $table->integer('point')->nullable();
+            $table->integer('point')->nullable()->default(0);
             $table->integer('role_id')->unsigned()->default(3);
             $table->boolean('verified')->default(false);
             $table->string('token', 40)->nullable();

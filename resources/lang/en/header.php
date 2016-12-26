@@ -53,4 +53,5 @@ return [
   'contact_mail' => 'hr@asiantech.vn',
   'search' => 'Search',
   'array_search' => array('0' => 'Product', '1' => 'Promotion'),
+  'point' => 'Point ',
 ];

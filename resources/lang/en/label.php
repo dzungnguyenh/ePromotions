@@ -1,8 +1,8 @@
 <?php
 return [
     'action' => 'Action',
-    'created_at' => 'Created At',
-    'updated_at' => 'Updated At',
+    'created_at' => 'Created At: ',
+    'updated_at' => 'Updated At: ',
     'save' => 'Save',
     'back' => 'Back',
     'asiantech' => 'Asiantech',
@@ -27,4 +27,5 @@ return [
     'vote' => 'Vote: ',
     'btn_vote' => 'Vote',
     'currency' => '$',
+    'point' => 'Point: ',
 ];
