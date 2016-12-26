@@ -36,4 +36,5 @@ return [
     'are_you_sure_delete' => 'Are You Sure Delete ?',
     'are_you_sure_accept' => 'Are You Sure Accept?',
     'delete_order_successful' =>'Delete Order successfull',
+    'list_order' => 'List Order',
 ];

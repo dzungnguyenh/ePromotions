@@ -4,7 +4,7 @@
 @endsection
 @section('main-content')
     <div id="order-business">
-        <h2 class="title-h2">List order</h2>
+        <h2 class="title-h2">{{ trans('book.list_order')}}</h2>
 
         <form action="{{route('searchorder')}}" method="get" class="form-search-guest">
             <div class="col-md-3 col-md-offset-9">
