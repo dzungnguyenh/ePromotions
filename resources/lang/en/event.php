@@ -11,6 +11,7 @@ return [
   'start_time' => 'Start Time',
   'end_time' => 'End Time',
   'place' => 'Place',
+  'image' => 'Image',
   'update' => 'Update',
   'start_time' => 'Start time: ',
   'end_time' => 'End time: ',

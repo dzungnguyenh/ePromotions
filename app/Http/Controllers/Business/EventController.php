@@ -8,6 +8,9 @@ use Session;
 use App\Repositories\Event\EventRepository;
 use App\Http\Requests\CreateEventRequest;
 use App\Http\Requests\EditEventRequest;
+use App\User;
+use Auth;
+use DB;
 
 class EventController extends Controller
 {
@@ -29,7 +32,7 @@ class EventController extends Controller
      */
     public function index()
     {
-         $event = $this->eventRepository->all();
+         $event = $this->eventRepository->getById(Auth::User()->id);
          return view('event.index', ['event'=>$event]);
     }
     /**
@@ -51,6 +54,8 @@ class EventController extends Controller
     public function store(CreateEventRequest $request)
     {
         $input = $request->all();
+        $input['user_id'] = Auth::user()->id;
+        $input['image']=$this->eventRepository->saveFile($input['image']);
         $this->eventRepository->create($input);
         return redirect()->route('event.index');
     }
@@ -94,6 +99,9 @@ class EventController extends Controller
             return redirect()->route('event.index');
         }
         $input = $request->only('title', 'description', 'start_time', 'end_time', 'place');
+        if ($request->hasFile('image')) {
+            $input['image']=$this->eventRepository->saveFile($request->file('image'));
+        }
         $this->eventRepository->update($input, $id);
         Session::flash('msg', trans('event.update_event_successfully'));
         return redirect()->route('event.index');

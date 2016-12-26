@@ -85,8 +85,12 @@ class PromotionController extends Controller
      */
     public function store(CreatePromotionRequest $request)
     {
-        $errorDate = $this->promotion->getError($request->input('date_start'), $request->input('date_end'));
-        if ($errorDate) {
+        $dateStart= $request->input('date_start');
+        $dateEnd= $request->input('date_end');
+        $productId= $request->input('product_id');
+        $errorDate = $this->promotion->getError($dateStart, $dateEnd, $productId);
+        $errorDate = array_filter($errorDate);
+        if (count($errorDate) != 0) {
             return redirect()->back()->withErrors(compact('errorDate'))->withInput();
         } else {
             $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end', 'product_id');
