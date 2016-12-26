@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         @include('admin.voucher.show_fields')
-                        <a href="{!! route('voucher.index') !!}" class="col-sm-offset-4 col-sm-1 btn btn-default">{!! trans('label.back') !!}</a>
+                        <a href="{!! URL::previous() !!}" class="col-sm-offset-4 col-sm-1 btn btn-default">{!! trans('label.back') !!}</a>
                     </div>
                 </div>
             </div>

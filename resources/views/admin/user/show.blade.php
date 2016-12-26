@@ -69,7 +69,7 @@
                     </p>
                     </div>
                     <div class='clearfix'></div>
-                    <a href="{!! route('users.index') !!}" class="btn btn-default">{!! trans('label.back') !!}</a>
+                    <a class="btn btn-default"  href="{!! URL::previous() !!}">{!! trans('label.back') !!}</a>
                 </div>
             </div>
         </div>
