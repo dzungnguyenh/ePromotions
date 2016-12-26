@@ -203,7 +203,7 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
         ->where('promotions.date_end', '>=', $now)
         ->take(config('constants.LIMIT_PROMOTION_INDEX'))->get();
         if (count($list) < config('constants.LIMIT_PROMOTION_INDEX')) {
-            $list = $this->model->with('product')
+            $list = $this->model->with('product.voteProducts')
             ->latest()->take(config('constants.LIMIT_PROMOTION_INDEX'))->get();
         }
         return $list;

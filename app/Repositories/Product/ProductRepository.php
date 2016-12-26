@@ -209,7 +209,6 @@ class ProductRepository extends BaseRepository
     public function getProductTopVote()
     {
         $list = $this->model
-        ->with('voteProducts')
         ->withCount('voteProducts')
         ->orderBy('vote_products_count', 'desc')
         ->take(config('constants.LIMIT_PRODUCT_INDEX'))->get();

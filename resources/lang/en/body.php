@@ -18,5 +18,5 @@ return [
     'percent' => '%',
     'quantity' => 'Quantity ',
     'empty' => 'Stop business',
-    'voted' => 'Voted',
+    'voted' => 'Voted ',
 ];

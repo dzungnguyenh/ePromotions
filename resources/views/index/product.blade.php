@@ -1,4 +1,4 @@
- @include('include.header')
+@include('include.header')
         <div class="container panel-product-index">
             <div class="row row-product">
                 @foreach($products as $product)
@@ -28,12 +28,12 @@
                         <div class="sub-product">
                             <h3>{{$product->product_name}}</h3>
                             <p>{{ trans('product.price') }} : {{ number_format($product->price)}}</p>
-                            <p>{{ trans('product.description') }} : {{$product->description}}</p>                           
+                            <p>{{ trans('product.description') }} : {{$product->description}}</p>
                         </div><!-- end sub-product -->
                         <div class="sub-business">
                              <p>{{ trans('product.business_name') }} : {{$product->user_name}}</p>
                              <p>{{ trans('product.phone') }} :  {{$product->phone}}</p>
-                             <p>{{ trans('product.address') }}:  {{$product->address}}</p>                          
+                             <p>{{ trans('product.address') }}:  {{$product->address}}</p>
                         </div><!-- end sub-business -->
                      </div>
                     </div><!-- end .item-product-->
