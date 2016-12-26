@@ -15,7 +15,7 @@
             </ul>
         </div>
         @endif
-        <form action="{{ route('event.update', $event->id) }}" method="post">
+        <form action="{{ route('event.update', $event->id) }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PUT') }}
             <div class="form-group">
@@ -37,6 +37,12 @@
             <div class="form-group">
                 <label for="description">{{ trans('event.place') }}</label>
                 <textarea class="form-control" rows="5" id="place"  name="place" >{{ old('place', $event->place) }}</textarea>
+            </div>
+            <div class="form-group">
+                <label class="lbl-img control-label">{{trans('event.image')}}
+                <input type="file" name="image" class="form-control" value="{{ $event->image }}">
+                </label>
+                <img class="update-img" src="{{asset(config('path.image_event').DIRECTORY_SEPARATOR.$event->image)}}">
             </div>
                 <input type="hidden" class="form-control" name="product_id" value="{{ $event->product_id }}">
                 <input type="submit" class="btn btn-info" value="{{ trans('event.update') }}" />

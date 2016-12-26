@@ -33,3 +33,9 @@
     {!! Form::label(trans('event.place')) !!}
     <p>{!! $event->place !!}</p>
 </div>
+
+<!-- Image -->
+<div class="form-group col-sm-12 event-image">
+    {!! Form::label(trans('event.image')) !!}
+    <img src="{!! asset(config('path.image_event').DIRECTORY_SEPARATOR.$event->image) !!}">
+</div>

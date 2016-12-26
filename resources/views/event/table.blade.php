@@ -5,6 +5,7 @@
         <th>{!! trans('event.start_time') !!}</th>
         <th>{!! trans('event.end_time') !!}</th>
         <th>{!! trans('event.place') !!}</th>
+        <th>{!! trans('event.image') !!}</th>
         <th colspan="3">{!! trans('label.action') !!}</th>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
             <td>{!! $event->start_time !!}</td>
             <td>{!! $event->end_time !!}</td>
             <td>{{ str_limit($event->place, 20) }}</td>
+            <td><img id="image" src="{!! asset(config('path.image_event').'/'.$event->image) !!}" width="100px" class="img-responsive" />
             <td>
                 {!! Form::open([ 'route' => ['event.destroy', $event->id], 'method' => 'delete', 'id' => 'delete-event']) !!}
                 <div class='btn-group'>
