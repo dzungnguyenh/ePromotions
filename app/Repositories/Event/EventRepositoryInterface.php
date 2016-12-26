@@ -38,6 +38,7 @@ interface EventRepositoryInterface
      * @return [type]     [delete event detail]
      */
     public function delete($id);
+
     /**
      *Find function
      *
@@ -46,4 +47,11 @@ interface EventRepositoryInterface
      * @return [type]     [search by id in the model]
      */
     public function find($id);
+
+    /**
+     * Get events newest
+     *
+     * @return array Events
+     */
+    public function getEventNewest();
 }

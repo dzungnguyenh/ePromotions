@@ -17,4 +17,14 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
     {
         $this->model = $event;
     }
+
+    /**
+     * Get events newest
+     *
+     * @return array Events
+     */
+    public function getEventNewest()
+    {
+        return $this->model->latest()->take(config('constants.LIMIT_EVENT_INDEX'))->get();
+    }
 }

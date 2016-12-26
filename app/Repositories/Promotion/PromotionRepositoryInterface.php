@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Repositories\Promotion;
- 
+
 interface PromotionRepositoryInterface
 {
     /**
@@ -145,4 +145,12 @@ interface PromotionRepositoryInterface
     * @return array
     */
     public function getError($dateStart, $dateEnd);
+
+    /**
+     * Get limit 4 promotions which being sale off
+     * If not, promotions.date_end neartest
+     *
+     * @return array Categories
+     */
+    public function getNeartest();
 }
