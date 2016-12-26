@@ -41,7 +41,7 @@
                               </div>
                             @endif
                             <br />
-                            <div class="starbox small ghosting">{{trans('body.voted')}}
+                            <div class="starbox small ghosting">{{trans('body.voted')}}{{$product->vote_products_count}}
                             </div>
                         </div>
                         <div class="clearfix"></div>
