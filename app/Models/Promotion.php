@@ -22,6 +22,7 @@ class Promotion extends Model
         'id',
         'title',
         'description',
+        'image',
         'percent',
         'quantity',
         'date_start',

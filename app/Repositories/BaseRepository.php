@@ -141,4 +141,19 @@ abstract class BaseRepository
     {
         return $this->model->count();
     }
+
+    /**
+    * Get name image when upload success
+    *
+    * @param file   $image file.
+    * @param string $path  path.
+    *
+    * @return string
+    */
+    public function uploadImage($image, $path)
+    {
+        $nameImage =time().'-'.$image->getClientOriginalName();
+        $image->move($path, $nameImage);
+        return $nameImage;
+    }
 }

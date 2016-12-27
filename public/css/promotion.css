@@ -10,3 +10,11 @@
 .promotion thead{
 	background-color: #3c8dbc;
 }
+.upload-image{
+	padding: 0 15px 0 15px;
+}
+.img-promotion{
+	max-width: 150px;
+	max-height: 150px;
+	overflow: hidden;
+}

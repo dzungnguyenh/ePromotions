@@ -8,6 +8,7 @@ return [
     'id' => 'ID',
     'title' => 'Title',
     'description' => 'Description',
+    'image' => 'Image',
     'percent' => 'Percent',
     'quantity' => 'Quantity',
     'product_id' => 'Product id',
