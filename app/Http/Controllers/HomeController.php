@@ -130,4 +130,35 @@ class HomeController extends Controller
             return view('index.product', compact('products', 'categories', 'childs', 'totalProduct', 'search'));
         }
     }
+
+    /**
+     * [list event]
+     *
+     * @return [type] [list event exist in table]
+     */
+    public function event()
+    {
+        $categories = $this->categoryRepository->allRoot();
+        foreach ($categories as $key => $category) {
+            $childs[$key] = $this->categoryRepository->findDescendants($category->id);
+        }
+        $events = $this->eventRepository->getEventExist();
+        return view('index.event-index', compact('categories', 'childs', 'events'));
+    }
+    /**
+     * [get Event Detail]
+     *
+     * @param [type] $id [id event]
+     *
+     * @return [type]     [value colum event in table ]
+     */
+    public function eventDetail($id)
+    {
+        $categories = $this->categoryRepository->allRoot();
+        foreach ($categories as $key => $category) {
+            $childs[$key] = $this->categoryRepository->findDescendants($category->id);
+        }
+        $eventDetail = $this->eventRepository->find($id);
+        return view('index.event-detail', compact('categories', 'childs', 'eventDetail'));
+    }
 }

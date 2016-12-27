@@ -60,4 +60,16 @@ class EventRepository extends BaseRepository implements EventRepositoryInterface
     {
         return $this->model->latest()->take(config('constants.LIMIT_EVENT_INDEX'))->get();
     }
+    
+    /**
+     * [get Event Exist]
+     *
+     * @return [type] [list event]
+     */
+    public function getEventExist()
+    {
+        return $this->model
+        ->where('end_time', '>=', date(config('date.date_system')))
+        ->get();
+    }
 }
