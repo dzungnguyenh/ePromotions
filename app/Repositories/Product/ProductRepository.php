@@ -167,6 +167,7 @@ class ProductRepository extends BaseRepository
     public function findById($id)
     {
         return $this->model
+        ->withCount('voteProducts')
         ->join('categories', 'categories.id', '=', 'products.category_id')
         ->where('products.id', $id)
         ->first();
@@ -190,15 +191,16 @@ class ProductRepository extends BaseRepository
     /**
      * Get list of products by id category
      *
-     * @param integer $id Id category
+     * @param integer $id    Id category
+     * @param integer $count Quantity for take
      *
      * @return array     List of products
      */
-    public function getByIdCategory($id)
+    public function getByIdCategory($id, $count)
     {
         return $this->model
         ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->where('categories.id', $id)->select('*', 'products.id')->get();
+        ->where('categories.id', $id)->select('*', 'products.id')->take($count)->get();
     }
 
     /**

@@ -78,3 +78,5 @@ Route::get('/category/{id}', 'Product\ProductController@showByIdCategory');
 
 Route::get('/logout', 'UserController@logout');
 Route::get('/research', 'HomeController@research')->name('research');
+
+Route::get('/product/{id}', 'Product\ProductController@showDetail');

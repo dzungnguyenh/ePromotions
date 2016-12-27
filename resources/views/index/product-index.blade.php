@@ -25,7 +25,7 @@
                     <div class="mid-1">
                       <div class="women">
                         <!--- Click redirect to product -->
-                        <h6><a href="{!! route('product.show', [$product->id]) !!}">
+                        <h6><a href="{!! url('/product', [$product->id]) !!}">
                           {{str_limit($product->product_name, config('constants.length_titile'))}}
                         </a></h6>
                       </div>

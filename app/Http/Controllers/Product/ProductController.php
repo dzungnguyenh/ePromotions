@@ -17,7 +17,7 @@ class ProductController extends Controller
 {
     protected $productRepository;
     protected $categoryRepository;
-    
+
     /**
     * Constructer
     *
@@ -30,7 +30,6 @@ class ProductController extends Controller
     {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
-        $this->middleware('business');
     }
 
     /**
@@ -99,7 +98,7 @@ class ProductController extends Controller
             return view('product.show')->with(['product'=>$product, 'orderDetail'=>$orderDetail]);
         }
     }
-    
+
     /**
     * Method redirect to view edit page
     *
@@ -132,5 +131,28 @@ class ProductController extends Controller
         $this->productRepository->store($request, $id);
         Session::flash('msg', trans('product.update_product_successful'));
         return redirect()->route('product.index');
+    }
+
+    /**
+    * Show detail product and sibling product
+    *
+    * @param integer $id id of product
+    *
+    * @return product
+    */
+    public function showDetail($id)
+    {
+        $product = $this->productRepository->findById($id);
+        if (empty($product)) {
+            Session::flash('msg', trans('product.product_not_found'));
+            return redirect()->route('product');
+        } else {
+            $categories = $this->categoryRepository->allRoot();
+            foreach ($categories as $key => $category) {
+                $childs[$key] = $this->categoryRepository->findDescendants($category->id);
+            }
+            $products = $this->productRepository->getByIdCategory($product->category_id, config('constants.LIMIT_PRODUCT_INDEX'));
+            return view('index.product-detail', compact('categories', 'childs', 'product', 'products'));
+        }
     }
 }

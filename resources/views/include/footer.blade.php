@@ -37,3 +37,4 @@
 <script type="text/javascript" src="/js/style_admin.js"></script>
 <script type="text/javascript" src="/js/style_public.js"></script>
 <script type="text/javascript" src="{{asset('js/index_product.js')}}"></script>
+<script type="text/javascript" src="/js/share.js"></script>
