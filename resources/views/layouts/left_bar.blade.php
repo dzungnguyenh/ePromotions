@@ -120,10 +120,7 @@
       </li>
 
       <li class="treeview">
-        <a href="{{route('order.index')}}"><i class="fa fa-book"></i> <span>{!! trans('left_bar.order') !!}</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
+        <a href="/user/orders"><i class="fa fa-book"></i> <span>{!! trans('left_bar.order') !!}</span>
         </a>
 
       </li>

@@ -30,6 +30,7 @@
             <thead>
                 <tr>
                     <th>{{ trans('promotion.id') }}</th>
+                    <th>{{ trans('promotion.image') }}</th>
                     <th>{{ trans('promotion.title') }}</th>
                     <th>{{ trans('promotion.description') }}</th>
                     <th>{{ trans('promotion.percent') }}</th>
@@ -46,6 +47,7 @@
         @foreach ($promotions as $promotion)
         <tr>
             <td>{{ $promotion->id }}</td>
+            <td><img class="img-promotion" src="{{ URL::to('/') .DIRECTORY_SEPARATOR.config('promotion.IMAGE_PATH'). $promotion->image }}"></td>
             <td>{{ str_limit($promotion->title, 50) }}</td>
             <td>{{ str_limit($promotion->description, 100) }}</td>
             <td>{{ $promotion->percent }}</td>

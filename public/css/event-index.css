@@ -1,0 +1,13 @@
+.img-event-detail{
+	width: 500px;
+	height: 300px;
+}
+.event-detail-title{
+	color:green;
+}
+.date-start-event-detail{
+	color: red;
+}
+.date-end-event-detail{
+	color: blue;
+}

@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth', 'checkuser']], function()
 Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
 {
     Route::resource('userorder','User\UserOrderController');
+    Route::get('orders','Book\BookDetailController@showList');
 });
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
@@ -73,6 +74,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/product', 'HomeController@product');
+Route::get('/event', 'HomeController@event');
+Route::get('/event-detail/{id}', 'HomeController@eventDetail');
 Route::get('/home','Auth\HomeController@index');
 Route::get('/category/{id}', 'Product\ProductController@showByIdCategory');
 

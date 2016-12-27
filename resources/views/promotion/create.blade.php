@@ -5,7 +5,7 @@
             <h3>{{ trans('promotion.create_page') }}</h3>
         </div>
         @if(count($errors)>0)
-            <div class="alert alert-danger alert-dismissible col-md-10">
+            <div class="alert alert-danger alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <ul>
                 @foreach($errors->all() as $error)
@@ -14,9 +14,13 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('promotions.store') }}" method="post">
+        <form action="{{ route('promotions.store') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="row">
+                <div class="form-group upload-image">
+                    <label for="image">{{ trans('promotion.image') }}</label>
+                    <input type="file" name="image" id="image" value="{{ old('image')}}">
+                </div>
                 <div class="form-group col-md-5">
                     <label for="title_store">{{ trans('promotion.title') }}</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title')}}">
