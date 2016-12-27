@@ -8,6 +8,7 @@ use App\Repositories\Promotion\PromotionRepository;
 use App\Http\Requests\CreatePromotionRequest;
 use Session;
 use DB;
+use Carbon\Carbon;
 
 class PromotionController extends Controller
 {
@@ -94,6 +95,7 @@ class PromotionController extends Controller
             return redirect()->back()->withErrors(compact('errorDate'))->withInput();
         } else {
             $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end', 'product_id');
+            $promotion['image']= $this->promotion->uploadImage($request->file('image'), config('promotion.IMAGE_PATH'));
             $productId = $request->input('product_id');
             $this->promotion->create($promotion);
             Session::flash('message', trans('promotion.create_promotion_successful'));
