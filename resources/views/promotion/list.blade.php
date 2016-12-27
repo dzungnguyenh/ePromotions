@@ -1,5 +1,6 @@
 @extends('layouts.template_admin')
 @section('main-content')
+
     <div class="container list-promotion">
         <form method="post" action="{{ route('filter_promotion') }}">
         {{ csrf_field() }}
@@ -8,12 +9,15 @@
                 <option value="{{ trans('promotion.value_present') }}">{{ trans('promotion.present_promotion') }}</option>
                 <option value="{{ trans('promotion.value_future') }}">{{ trans('promotion.future_promotion') }}</option>
             </select>
-            <input type="hidden" name="product_id" value="{{ $id }}">
+            <input type="hidden" name="product_id" value="">
             <button type="submit" class="btn btn-default">{{ trans('promotion.submit') }}</button>
         </form>
         
         <div class="page-header">
             <h3>{{ trans('promotion.list_page') }}</h3>
+            <a href="{!! route('promotions.create') !!}">
+            <h3><span class="glyphicon glyphicon-plus"></span></h3>
+        </a>
         </div>
         @if (Session::has('message'))
             <div class="alert alert-info alert-dismissible">
@@ -66,7 +70,6 @@
             @endforeach
             </tbody>
         </table>
-        {{ $promotions->links()}}
         @else 
             <div class="alert alert-danger" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

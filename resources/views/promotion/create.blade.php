@@ -45,7 +45,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 col-md-offset-6 text-right">
-                    <input type="hidden" name="product_id" value="{{ $id }}">
+                    <input type="hidden" name="product_id" value="">
                     <input type="submit" class="btn btn-primary" value="{{ trans('promotion.submit') }}" />
                     <input type="reset" class="btn btn-primary" value="{{ trans('promotion.clear') }}" />
                 </div>
