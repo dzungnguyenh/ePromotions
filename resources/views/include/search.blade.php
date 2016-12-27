@@ -1,5 +1,5 @@
 <!--banner-->
-<div class="banner-top" style="margin-bottom: 100px">
+<div class="banner-top">
  <div class="container">
 	 <h3 >{{trans('header.search')}}</h3>
 	{!! Form::open([ 'route' => 'research', 'method' => 'get']) !!}

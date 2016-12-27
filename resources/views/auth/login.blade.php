@@ -40,7 +40,7 @@
                 <li>
                   <input type="email" required autofocus class="input" name="email" placeholder="{!! trans('login_trans.your_mail') !!}"/>
                   <span class="icon"><i class="glyphicon glyphicon-envelope"></i></span>
-                  
+
                   @if ($errors->has('email'))
                   <span class="help-block">
                     <strong>{{ $errors->first('email') }}</strong>
@@ -70,9 +70,9 @@
         </form>
       </div>
       <div class="social-login">{!! trans('login_trans.social_network') !!} &nbsp;
-        <a href="" class="fb"><i class="fa fa-facebook"></i></a>
-        <a href="" class="tw"><i class="fa fa-twitter"></i></a>
-        <a href="" class="gp"><i class="fa fa-google-plus"></i></a>
+        <a href="{{url('redirect/facebook')}}" class="fb"><i class="fa fa-facebook"></i></a>
+        <a href="{{url('redirect/twitter')}}" class="tw"><i class="fa fa-twitter"></i></a>
+        <a href="{{url('redirect/google')}}" class="gp"><i class="fa fa-google-plus"></i></a>
       </div>
     </section>
     <!-- Form register -->
@@ -84,7 +84,7 @@
             <li>
               <input id="name" type="text" required class="input" name="name" required placeholder="{!! trans('login_trans.full_name') !!}"/>
               <span class="icon"><i class="fa fa-user"></i></span>
-              
+
               @if ($errors->has('name'))
               <span class="help-block">
                 <strong>{{ $errors->first('name') }}</strong>
@@ -94,7 +94,7 @@
             <li>
               <input id="email" type="email" required class="input" name="email" placeholder="{!! trans('login_trans.your_mail') !!}"/>
               <span class="icon"><i class="glyphicon glyphicon-envelope"></i></span>
-              
+
               @if ($errors->has('email'))
               <span class="help-block">
                 <strong>{{ $errors->first('email') }}</strong>
@@ -104,7 +104,7 @@
             <li>
               <input id="password" type="password" required class="input" name="password" placeholder="{!! trans('login_trans.password') !!}"/>
               <span class="icon"><i class="fa fa-lock"></i></span>
-              
+
               @if ($errors->has('password'))
               <span class="help-block">
                 <strong>{{ $errors->first('password') }}</strong>
