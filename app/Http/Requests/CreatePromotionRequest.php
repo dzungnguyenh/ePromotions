@@ -26,6 +26,7 @@ class CreatePromotionRequest extends FormRequest
         return [
             'title' => 'required|unique:promotions|max:255',
             'description' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'percent'=>'required',
             'quantity'=>'required',
             'date_start'=>'required',
