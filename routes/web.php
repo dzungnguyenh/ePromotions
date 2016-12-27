@@ -73,6 +73,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/product', 'HomeController@product');
+Route::get('/event', 'HomeController@event');
+Route::get('/event-detail/{id}', 'HomeController@eventDetail');
 Route::get('/home','Auth\HomeController@index');
 Route::get('/category/{id}', 'Product\ProductController@showByIdCategory');
 
