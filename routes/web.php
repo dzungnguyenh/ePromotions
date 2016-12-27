@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth', 'checkuser']], function()
 Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
 {
     Route::resource('userorder','User\UserOrderController');
+    Route::get('orders','Book\BookDetailController@showList');
 });
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');

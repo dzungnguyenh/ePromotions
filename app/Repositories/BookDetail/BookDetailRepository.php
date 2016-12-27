@@ -5,6 +5,7 @@ namespace App\Repositories\BookDetail;
 use App\Repositories\BaseRepository;
 use App\Repositories\BookDetail\BookDetailRepositoryInterface;
 use App\Models\BookDetail;
+use Auth;
 
 class BookDetailRepository extends BaseRepository implements BookDetailRepositoryInterface
 {
@@ -38,5 +39,20 @@ class BookDetailRepository extends BaseRepository implements BookDetailRepositor
         } else {
             return false;
         }
+    }
+
+    /**
+    * Get List Order of user
+    *
+    *@return mixed
+    */
+    public function showList()
+    {
+        $list = $this->model->join('books', 'book_details.book_id', '=', 'books.id')
+            ->join('products', 'products.id', '=', 'book_details.product_id')
+            ->select('book_details.*', 'products.product_name')
+            ->where('books.user_id', Auth::user()->id)
+            ->get();
+        return $list;
     }
 }
