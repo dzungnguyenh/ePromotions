@@ -38,17 +38,14 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
     /**
     * Method get all orders by business
     *
-    * @param integer $id user_id in product table
-    *
     * @return collection
     */
-    public function getAllByBusiness($id)
+    public function getAllByBusiness()
     {
         return $this->model
         ->join('book_details', 'books.id', 'book_details.book_id')
         ->join('products', 'book_details.product_id', 'products.id')
         ->join('user', 'books.user_id', 'user.id')
-        ->where('products.user_id', $id)
         ->select('*', 'book_details.id', 'book_details.quantity as book_quantity')
         ->get();
     }
