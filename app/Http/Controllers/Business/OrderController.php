@@ -66,4 +66,3 @@ class OrderController extends Controller
         return view('business.order', compact('orders'));
     }
 }
-

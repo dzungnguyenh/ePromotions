@@ -56,4 +56,3 @@ class BusinessRepository extends BaseRepository implements BusinessRepositoryInt
         return $data;
     }
 }
-
