@@ -148,8 +148,8 @@
         <ul class="treeview-menu">
           <li><a href="{{route('product.index')}}">{!! trans('left_bar.product') !!}</a></li>
           <li><a href="{{route('event.index')}}">{!! trans('left_bar.event') !!}</a></li>
-          <li><a href="#">{!! trans('left_bar.promotion') !!}</a></li>
-          <li><a href="#">{!! trans('left_bar.order') !!}</a></li>
+          <li><a href="{{ url('/business/promotions') }}">{!! trans('left_bar.promotion') !!}</a></li>
+          <li><a href="{{ url('/business/order') }}">{!! trans('left_bar.order') !!}</a></li>
         </ul>
       </li>
       <li class="treeview">

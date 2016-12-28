@@ -1,8 +1,12 @@
 @extends('layouts.template_admin')
 @section('main-content')
 
-    <h1 class="h2-title">{{trans('product.product')}}</h1>
-
+    <div class="page-header">
+            <h3>{{trans('product.product')}}</h3>
+            <a href="{!! route('product.create') !!}">
+            <h3><span class="glyphicon glyphicon-plus"></span></h3>
+        </a>
+        </div>
     <table class="table table-striped product-index">
         <thead>
             <tr class="tr-top">
@@ -21,14 +25,13 @@
             <tr>
                 <td>{{$value->product_name}}</td>
                 <td>{{$value->price}}</td>
-                <td>{{$value->description}}</td>
+                <td>{{ str_limit($value->description, 100) }}</td>
                 <td>{{$value->quantity}}</td>
                 <td>{{$value->name}}</td>
                 <td class="product-img"><img src="{{asset(config('path.picture_product').'/'.$value->picture)}}"></td>
                 <td><a class="view-detail" href="{{ route('show_promotion', ['attribute' => 'product_id', 'id' => $value->id]) }}">{{trans('promotion.view_all')}}</a></td>
                 <td>
-                    <div class="row action">
-                        <button class="btn btn-info btn-edit"><a href="{{ route ('add_promotion', $value->id )}}"><i class="glyphicon glyphicon-gift"></i></a></button>
+                    <div class="row action ">
                         <button class="btn btn-success btn-view view-product"><a href="{{route('product.show', [$value->id])}}"><i class="glyphicon glyphicon-eye-open"></i></a></button>
                         </button>
                         {{ Form::open([ 'method' => 'delete', 'route' => ['product.destroy', $value->id],'class'=>'form-delete-product' ]) }}

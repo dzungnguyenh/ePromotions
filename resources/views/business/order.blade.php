@@ -10,7 +10,7 @@
             <div class="col-md-3 col-md-offset-9">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
-                        <input type="text" class="form-control " placeholder="{{trans('book.book_search')}}"  
+                        <input type="text" class="form-control " placeholder="{{trans('order.order_search')}}"  
                         name="id"/>
                         <span class="input-group-btn">
                             <button class="btn btn-info " type="submit">
@@ -38,6 +38,7 @@
             </thead>
             <tbody>
             @foreach($orders as $order)
+            
                 <tr>
                     <td>{{$order->id}}</td>
                     <td>

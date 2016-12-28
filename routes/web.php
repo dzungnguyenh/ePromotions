@@ -59,12 +59,13 @@ Route::group(['middleware' => ['auth', 'checkuser']], function()
             'uses' => 'Admin\UserController@getHistoryVoted',
             'as' => 'user.history.voted',
         ]);
+    Route::get('user/orders','Book\BookDetailController@showList');
+
 });
 
 Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
 {
     Route::resource('userorder','User\UserOrderController');
-    Route::get('orders','Book\BookDetailController@showList');
 });
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');
