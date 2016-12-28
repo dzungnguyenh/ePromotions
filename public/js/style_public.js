@@ -3,7 +3,7 @@
  */
 $(document).ready(function(){
     $('.vote').click(function(){
-        var url = "/product/";
+        var url = "/vote-product/";
         var dataLogin = $(this).attr('data-login');
         var productId = $(this).val();
         url += productId;

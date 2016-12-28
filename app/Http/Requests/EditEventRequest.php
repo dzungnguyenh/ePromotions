@@ -24,7 +24,7 @@ class EditEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:1000',
+            'title' => 'required|unique:events|max:1000,title'. $this->get('event_id'),
             'description'=>'required',
             'start_time' => 'required',
             'end_time' => 'required',
