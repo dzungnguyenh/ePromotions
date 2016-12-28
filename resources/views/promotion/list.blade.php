@@ -9,7 +9,7 @@
                 <option value="{{ trans('promotion.value_present') }}">{{ trans('promotion.present_promotion') }}</option>
                 <option value="{{ trans('promotion.value_future') }}">{{ trans('promotion.future_promotion') }}</option>
             </select>
-            <input type="hidden" name="product_id" value="">
+            <input type="hidden" name="product_id" value="{{ $productId }}">
             <button type="submit" class="btn btn-default">{{ trans('promotion.submit') }}</button>
         </form>
         
@@ -80,8 +80,8 @@
             <p>{{ trans('promotion.error_promotion') }}</p>
             </div>
         @endif
-        @if(isset($id))
-        <p><a href="{{ route('add_promotion', ['id'=> $id]) }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{{ trans('promotion.add_promotion') }}</a></p>
+        @if(isset($productId))
+        <p><a href="{{ route('add_promotion', ['productId'=> $productId]) }}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>{{ trans('promotion.add_promotion') }}</a></p>
         @endif
     </div>
 @stop

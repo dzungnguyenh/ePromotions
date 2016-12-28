@@ -23,11 +23,11 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Return promotions expired
+    * Return promotions expired.
     *
-    * @param int      $val   Value id.
-    * @param datetime $time  Time now.
-    * @param int      $limit Limit promotion earch page.
+    * @param int      $val   Value id
+    * @param datetime $time  Time now
+    * @param int      $limit Limit promotion earch page
     *
     * @return mixed
     */
@@ -40,11 +40,11 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Return promotions present
+    * Return promotions present.
     *
-    * @param int      $val   Value id.
-    * @param datetime $time  Time now.
-    * @param int      $limit Limit promotion earch page.
+    * @param int      $val   Value id
+    * @param datetime $time  Time now
+    * @param int      $limit Limit promotion earch page
     *
     * @return mixed
     */
@@ -58,11 +58,11 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Return promotions future
+    * Return promotions future.
     *
-    * @param int      $val   Value id.
-    * @param datetime $time  Time now.
-    * @param int      $limit Limit promotion earch page.
+    * @param int      $val   Value id
+    * @param datetime $time  Time now
+    * @param int      $limit Limit promotion earch page
     *
     * @return mixed
     */
@@ -75,7 +75,7 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Return time
+    * Return time.
     *
     * @return time
     */
@@ -85,41 +85,32 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Check input day
+    * Check value input date.
     *
-    * @param datetime $dateStart Time.
-    * @param datetime $dateEnd   Time.
+    * @param datetime $dateStart Time
+    * @param datetime $dateEnd   Time
     *
-    * @return boolean
+    * @return string
     */
     public function checkDate($dateStart, $dateEnd)
     {
-        if ($dateStart < $this->getTime()) {
-            return config('promotion.ERROR_DATE_START');
-        }
-        if ($dateEnd <= $dateStart) {
-            return config('promotion.ERROR_DATE_END');
+        if ($dateStart < $this->getTime() || $dateEnd <= $dateStart) {
+            return config('promotion.ERROR_DATE');
         }
     }
 
     /**
-    * Check isset promotion
+    * Check isset promotion when store.
     *
-    * @param int      $productId   Product id.
-    * @param int      $promotionId Promotion id.
-    * @param datetime $dateStart   Time.
-    * @param datetime $dateEnd     Time.
+    * @param int      $productId Product id
+    * @param datetime $dateStart Time
+    * @param datetime $dateEnd   Time
     *
-    * @return boolean
+    * @return string
     */
-    public function checkIsset($productId, $promotionId, $dateStart, $dateEnd)
+    public function checkIssetStore($productId, $dateStart, $dateEnd)
     {
-        if ($productId == null) {
-            $promotions= $this->findEliminate('id', $promotionId);
-        }
-        if ($promotionId == null) {
-            $promotions= $this->findBy('product_id', $productId);
-        }
+        $promotions= $this->findBy('product_id', $productId);
         foreach ($promotions as $value) {
             if (!($value['date_start'] < $dateStart && $value['date_end'] < $dateStart ||
                 $value['date_start'] > $dateEnd && $value['date_end'] > $dateEnd)) {
@@ -130,19 +121,54 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Get error when submit
+    * Check isset promotion when update.
     *
-    * @param int      $productId   Product id.
-    * @param int      $promotionId Promotion id.
-    * @param datetime $dateStart   Time.
-    * @param datetime $dateEnd     Time.
+    * @param int      $promotionId Promotion id
+    * @param datetime $dateStart   Time
+    * @param datetime $dateEnd     Time
+    *
+    * @return string
+    */
+    public function checkIssetUpdate($promotionId, $dateStart, $dateEnd)
+    {
+        $promotions= $this->findEliminate('id', $promotionId);
+        foreach ($promotions as $value) {
+            if (!($value['date_start'] < $dateStart && $value['date_end'] < $dateStart ||
+                $value['date_start'] > $dateEnd && $value['date_end'] > $dateEnd)) {
+                return config('promotion.ERROR_ISSET');
+                break;
+            }
+        }
+    }
+
+    /**
+    * Get error when store.
+    *
+    * @param int      $productId Product id
+    * @param datetime $dateStart Time
+    * @param datetime $dateEnd   Time
     *
     * @return array
     */
-    public function getError($productId, $promotionId, $dateStart, $dateEnd)
+    public function getErrorStore($productId, $dateStart, $dateEnd)
     {
-        return array($this->checkDate($dateStart, $dateEnd), $this->checkIsset($productId, $promotionId, $dateStart, $dateEnd));
+        return array($this->checkDate($dateStart, $dateEnd), $this->checkIssetStore($productId, $dateStart, $dateEnd));
     }
+
+    /**
+    * Get error when update.
+    *
+    * @param int      $promotionId Promotion id
+    * @param datetime $dateStart   Time
+    * @param datetime $dateEnd     Time
+    *
+    * @return array
+    */
+    public function getErrorUpdate($promotionId, $dateStart, $dateEnd)
+    {
+        return array($this->checkDate($dateStart, $dateEnd), $this->checkIssetUpdate($promotionId, $dateStart, $dateEnd));
+    }
+
 
     /**
      * Get limit 4 promotions which being sale off
@@ -164,10 +190,10 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
     
     /**
-    * Get name image when upload success
+    * Get name image when upload success.
     *
-    * @param file   $image file.
-    * @param string $path  path.
+    * @param file   $image file
+    * @param string $path  path
     *
     * @return string
     */

@@ -29,7 +29,7 @@
                 <td>{{$value->quantity}}</td>
                 <td>{{$value->name}}</td>
                 <td class="product-img"><img src="{{asset(config('path.picture_product').'/'.$value->picture)}}"></td>
-                <td><a class="view-detail" href="{{ route('show_promotion', ['attribute' => 'product_id', 'id' => $value->id]) }}">{{trans('promotion.view_all')}}</a></td>
+                <td><a class="view-detail" href="{{ route('show_promotion',['productId' => $value->id]) }}">{{trans('promotion.view_all')}}</a></td>
                 <td>
                     <div class="row action ">
                         <button class="btn btn-success btn-view view-product"><a href="{{route('product.show', [$value->id])}}"><i class="glyphicon glyphicon-eye-open"></i></a></button>

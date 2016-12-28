@@ -43,28 +43,27 @@ class PromotionController extends Controller
     /**
     * [Return data match parameter]
     *
-    * @param string $attribute Name field table.
-    * @param string $id        Value of field table.
+    * @param string $productId Value of field table.
     * @param int    $limit     Number of item.
     *
     * @return mixed
     */
-    public function showBy($attribute, $id, $limit = 5)
+    public function showBy($productId, $limit = 5)
     {
-        $promotions = $this->promotion->findBy($attribute, $id, $limit);
-        return view('promotion.list', compact('promotions', 'id'));
+        $promotions = $this->promotion->findBy('product_id', $productId, $limit);
+        return view('promotion.list', compact('promotions', 'productId'));
     }
 
     /**
      * Display a form of the resource.
      *
-     * @param int $id id
+     * @param int $productId Product id
      *
      * @return \Illuminate\Http\Response
      */
-    public function addPromotion($id)
+    public function addPromotion($productId)
     {
-        return view('promotion.create', compact('id'));
+        return view('promotion.create', compact('productId'));
     }
 
     /**
@@ -89,7 +88,7 @@ class PromotionController extends Controller
         $dateStart= $request->input('date_start');
         $dateEnd= $request->input('date_end');
         $productId= $request->input('product_id');
-        $errorDate = $this->promotion->getError($productId, null, $dateStart, $dateEnd);
+        $errorDate = $this->promotion->getErrorStore($productId, $dateStart, $dateEnd);
         $errorDate = array_filter($errorDate);
         if (count($errorDate) != 0) {
             return redirect()->back()->withErrors(compact('errorDate'))->withInput();
@@ -99,7 +98,7 @@ class PromotionController extends Controller
             $productId = $request->input('product_id');
             $this->promotion->create($promotion);
             Session::flash('message', trans('promotion.create_promotion_successful'));
-            return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
+            return redirect()->route('show_promotion', ['productId'=> $productId]);
         }
     }
 
@@ -119,24 +118,24 @@ class PromotionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request description
-     * @param int                      $id      id
+     * @param \Illuminate\Http\Request $request     Description
+     * @param int                      $promotionId Promotion id
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(CreatePromotionRequest $request, $id)
+    public function update(CreatePromotionRequest $request, $promotionId)
     {
         $dateStart= $request->input('date_start');
         $dateEnd= $request->input('date_end');
         $productId= $request->input('product_id');
-        $errorDate = $this->promotion->getError(null, $id, $dateStart, $dateEnd);
+        $errorDate = $this->promotion->getErrorUpdate($promotionId, $dateStart, $dateEnd);
         $errorDate = array_filter($errorDate);
         if (count($errorDate) != 0) {
             return redirect()->back()->withErrors(compact('errorDate'))->withInput();
         } else {
             $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end');
             $promotion['image']= $this->promotion->uploadImage($request->file('image'), config('promotion.IMAGE_PATH'));
-            $this->promotion->update($promotion, $id);
+            $this->promotion->update($promotion, $promotionId);
             Session::flash('message', trans('promotion.update_promotion_successful'));
             return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
         }
@@ -166,15 +165,15 @@ class PromotionController extends Controller
     public function showByDate(Request $request)
     {
         $val=$request->get('promotion_status');
-        $id = $request->input('product_id');
+        $productId = $request->input('product_id');
         $time=$this->promotion->getTime();
         if ($val == config('promotion.EXPIRED')) {
-            $promotions = $this->promotion->filterExpired($id, $time);
+            $promotions = $this->promotion->filterExpired($productId, $time);
         } elseif ($val == config('promotion.PRESENT')) {
-            $promotions = $this->promotion->filterPresent($id, $time);
+            $promotions = $this->promotion->filterPresent($productId, $time);
         } elseif ($val == config('promotion.FUTURE')) {
-            $promotions = $this->promotion->filterFuture($id, $time);
+            $promotions = $this->promotion->filterFuture($productId, $time);
         }
-        return view('promotion.list', compact('promotions', 'id'));
+        return view('promotion.list', compact('promotions', 'productId'));
     }
 }
