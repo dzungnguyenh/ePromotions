@@ -35,7 +35,7 @@ class OrderController extends Controller
     */
     public function index()
     {
-        $orders = $this->bookRepository->search($id = "", Auth::user()->id);
+        $orders = $this->bookRepository->getAllByUser(Auth::user()->id);
         return view('business.order', compact('orders'));
     }
 
