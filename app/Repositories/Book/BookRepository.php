@@ -48,7 +48,7 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
         ->join('book_details', 'books.id', 'book_details.book_id')
         ->join('products', 'book_details.product_id', 'products.id')
         ->join('user', 'books.user_id', 'user.id')
-        ->where('products.user_id',Auth::user()->id)
+        ->where('products.user_id', Auth::user()->id)
         ->select('*', 'book_details.id', 'book_details.id as bookDetailId', 'book_details.quantity as book_quantity')
         ->get();
     }
@@ -77,7 +77,7 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
     /**
      * Handle accept order ò business
      *
-     * @param int $orderId [id of book_details]
+     * @param int $orderId   [id of book_details]
      * @param int $pointBook [point book]
      *
      * @return response
