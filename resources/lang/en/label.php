@@ -28,4 +28,6 @@ return [
     'btn_vote' => 'Vote',
     'currency' => '$',
     'point' => 'Point: ',
+    'disabled' => 'disabled',
+    'null' => '',
 ];
