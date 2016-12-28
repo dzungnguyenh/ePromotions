@@ -44,7 +44,7 @@
                 </label>
                 <img class="update-img" src="{{asset(config('path.picture_event').DIRECTORY_SEPARATOR.$event->image)}}">
             </div>
-                <input type="hidden" class="form-control" name="product_id" value="{{ $event->product_id }}">
+                <input type="hidden" class="form-control" name="event_id" value="{{ $event->id }}">
                 <input type="submit" class="btn btn-info" value="{{ trans('event.update') }}" />
         </form>
     </div>
