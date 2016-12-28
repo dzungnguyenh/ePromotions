@@ -3,8 +3,10 @@
 namespace App\Repositories\Book;
 
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\DB;
 use App\Repositories\Book\BookRepositoryInterface;
 use App\Models\Book;
+use Auth;
 
 class BookRepository extends BaseRepository implements BookRepositoryInterface
 {
@@ -46,7 +48,8 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
         ->join('book_details', 'books.id', 'book_details.book_id')
         ->join('products', 'book_details.product_id', 'products.id')
         ->join('user', 'books.user_id', 'user.id')
-        ->select('*', 'book_details.id', 'book_details.quantity as book_quantity')
+        ->where('products.user_id',Auth::user()->id)
+        ->select('*', 'book_details.id', 'book_details.id as bookDetailId', 'book_details.quantity as book_quantity')
         ->get();
     }
 
@@ -69,5 +72,21 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
         ->orWhere('user.name', 'like', "%$id%")
         ->select('*', 'book_details.id', 'book_details.quantity as book_quantity')
         ->get();
+    }
+
+    /**
+     * Handle accept order ò business
+     *
+     * @param int $orderId [id of book_details]
+     * @param int $pointBook [point book]
+     *
+     * @return response
+     */
+    public function handleAcceptOrder($orderId, $pointBook)
+    {
+        DB::table('book_details')->where('id', $orderId)->update(['status'=>config('constants.STATUS_ONE')]);
+        $newPoint = Auth::user()->point + $pointBook;
+        DB::table('user')->where('id', Auth::user()->id)->update(['point' => $newPoint]);
+        return response()->json(trans('book.success'));
     }
 }
