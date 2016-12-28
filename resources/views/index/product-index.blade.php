@@ -42,6 +42,13 @@
                             @endif
                             <br />
                             <div class="starbox small ghosting">{{trans('body.voted')}}
+                              <b id="ajaxVote{{ $product->id }}" value="{{$product->id}}">
+                                  @if(isset($arPointVote[$product->id]))
+                                      {{ $arPointVote[$product->id] }}
+                                  @else
+                                      {{ config('constants.ZERO') }}
+                                  @endif
+                              </b>
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -52,37 +59,23 @@
                           </button>
 
                             <?php
-                              $voted = false;
+                              $disabled="";
                             ?>
                           @if (!(Auth::guest()))
                               @foreach($voteProducts as $voteProduct)
                                   @if ((Auth::user()->id == $voteProduct->user_id) && ($voteProduct->product_id == $product->id))
                                         <?php
-                                          $voted = true;
+                                          $disabled = "disabled";
                                         ?>
                                   @endif
                               @endforeach
-                              @if ($voted)
-                                <a href="">
-                                  <button class="btn btn-success my-cart-btn">
-                                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{trans('body.vote')}}
-                                  </button>
-                                </a>
-                              @else
-                                <a href="">
-                                  <button class="btn btn-success my-cart-btn my-cart-b">
-                                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{trans('body.vote')}}
-                                  </button>
-                                </a>
-                              @endif
-                          @else
+                          @endif
                             <a>
-                              <button class="btn btn-success my-cart-btn my-cart-b vote" data-login="{{ Auth::guest() }}" value="{{$product->id}}">
+                              <button class="btn btn-success my-cart-btn my-cart-b vote" {{ $disabled }} data-login="{{ Auth::guest() }}" value="{{$product->id}}">
                                 <i class="glyphicon glyphicon-thumbs-up"></i>{{ trans('body.vote') }}
                               </button>
                               <span id="please-login" data-please-login="{{ trans('message.please_login') }}"></span>
                             </a>
-                          @endif
                       </div>
                     </div>
                   </div>
