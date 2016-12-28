@@ -89,7 +89,7 @@ class PromotionController extends Controller
         $dateStart= $request->input('date_start');
         $dateEnd= $request->input('date_end');
         $productId= $request->input('product_id');
-        $errorDate = $this->promotion->getError($dateStart, $dateEnd, $productId);
+        $errorDate = $this->promotion->getError($productId, null, $dateStart, $dateEnd);
         $errorDate = array_filter($errorDate);
         if (count($errorDate) != 0) {
             return redirect()->back()->withErrors(compact('errorDate'))->withInput();
@@ -126,11 +126,20 @@ class PromotionController extends Controller
      */
     public function update(CreatePromotionRequest $request, $id)
     {
-        $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end');
-        $productId = $request->input('product_id');
-        $this->promotion->update($promotion, $id);
-        Session::flash('message', trans('promotion.update_promotion_successful'));
-        return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
+        $dateStart= $request->input('date_start');
+        $dateEnd= $request->input('date_end');
+        $productId= $request->input('product_id');
+        $errorDate = $this->promotion->getError(null, $id, $dateStart, $dateEnd);
+        $errorDate = array_filter($errorDate);
+        if (count($errorDate) != 0) {
+            return redirect()->back()->withErrors(compact('errorDate'))->withInput();
+        } else {
+            $promotion = $request->only('title', 'description', 'percent', 'quantity', 'date_start', 'date_end');
+            $promotion['image']= $this->promotion->uploadImage($request->file('image'), config('promotion.IMAGE_PATH'));
+            $this->promotion->update($promotion, $id);
+            Session::flash('message', trans('promotion.update_promotion_successful'));
+            return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
+        }
     }
 
     /**

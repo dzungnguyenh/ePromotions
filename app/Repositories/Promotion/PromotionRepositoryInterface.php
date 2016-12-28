@@ -99,73 +99,38 @@ interface PromotionRepositoryInterface
     public function getTime();
 
     /**
-    * Check input day start
+    * Check input day
     *
     * @param datetime $dateStart Time.
+    * @param datetime $dateEnd   Time.
     *
     * @return boolean
     */
-    public function checkDateStart($dateStart);
-
-    /**
-    * Check error day start
-    *
-    * @param datetime $dateStart Time.
-    *
-    * @return string
-    */
-    public function errorDateStart($dateStart);
-
-    /**
-    * Check input day end
-    *
-    * @param datetime $dateEnd   Time.
-    * @param datetime $dateStart Time.
-    *
-    * @return boolean
-    */
-    public function checkDateEnd($dateEnd, $dateStart);
-
-    /**
-    * Check error day end
-    *
-    * @param datetime $dateEnd   Time.
-    * @param datetime $dateStart Time.
-    *
-    * @return string
-    */
-    public function errorDateEnd($dateEnd, $dateStart);
+    public function checkDate($dateStart, $dateEnd);
 
     /**
     * Check isset promotion
     *
-    * @param int      $productId Product id.
-    * @param datetime $val       Time.
+    * @param int      $productId   Product id.
+    * @param int      $promotionId Promotion id.
+    * @param datetime $dateStart   Time.
+    * @param datetime $dateEnd     Time.
     *
     * @return boolean
     */
-    public function checkIssetPromotion($productId, $val);
-
-    /**
-    * Get error isset promotion
-    *
-    * @param datetime $dateStart Time.
-    * @param int      $productId Product id.
-    *
-    * @return string
-    */
-    public function errorIssetPromotion($dateStart, $productId);
+    public function checkIsset($productId, $promotionId, $dateStart, $dateEnd);
 
     /**
     * Get error when submit
     *
-    * @param datetime $dateStart Time.
-    * @param datetime $dateEnd   Time.
-    * @param int      $productId Product id.
+    * @param int      $productId   Product id.
+    * @param int      $promotionId Promotion id.
+    * @param datetime $dateStart   Time.
+    * @param datetime $dateEnd     Time.
     *
     * @return array
     */
-    public function getError($dateStart, $dateEnd, $productId);
+    public function getError($productId, $promotionId, $dateStart, $dateEnd);
 
     /**
      * Get limit 4 promotions which being sale off
@@ -174,4 +139,14 @@ interface PromotionRepositoryInterface
      * @return array Categories
      */
     public function getNeartest();
+
+    /**
+    * Get name image when upload success
+    *
+    * @param file   $image file.
+    * @param string $path  path.
+    *
+    * @return string
+    */
+    public function uploadImage($image, $path);
 }
