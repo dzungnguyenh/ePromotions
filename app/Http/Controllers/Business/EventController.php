@@ -101,6 +101,10 @@ class EventController extends Controller
         $input = $request->only('title', 'description', 'start_time', 'end_time', 'place');
         if ($request->hasFile('image')) {
             $input['image']=$this->eventRepository->saveFile($request->file('image'));
+            $pathImageOld = $event->image;
+            if (file_exists(config('path.picture_event').DIRECTORY_SEPARATOR.$pathImageOld) == true) {
+                unlink(config('path.picture_event').DIRECTORY_SEPARATOR.$pathImageOld);
+            }
         }
         $this->eventRepository->update($input, $id);
         Session::flash('msg', trans('event.update_event_successfully'));
