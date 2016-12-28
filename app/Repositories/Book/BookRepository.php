@@ -68,7 +68,7 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
         ->join('products', 'book_details.product_id', 'products.id')
         ->join('user', 'books.user_id', 'user.id')
         ->where('products.user_id', $user)
-        ->where('product_name', 'like', "%$id%")
+        ->orwhere('products.product_name', 'like', "%$id%")
         ->orWhere('user.name', 'like', "%$id%")
         ->select('*', 'book_details.id', 'book_details.quantity as book_quantity')
         ->get();
