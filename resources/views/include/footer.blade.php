@@ -3,8 +3,8 @@
 	<div class="container">
 		<div class="clearfix"></div>
 			<div class="footer-bottom">
-				<h2 ><a href="index.html"><b>{{trans('header.logo_1')}}<br>{{trans('header.logo_2')}}<br>{{trans('header.logo_3')}}</b>{{trans('header.name_web')}}<span>{{trans('header.slogan')}}</span></a></h2>
-				<p>{{trans('header.name_web')}}</p>
+				<h2 ><a href="index.html"><b>{{trans('header.logo_1')}}<br>{{trans('header.logo_2')}}<br>{{trans('header.logo_3')}}</b>{{trans('header.e_promotions')}}<span>{{trans('header.slogan')}}</span></a></h2>
+				<p>{{trans('header.e_promotions')}}</p>
 				<ul class="social-fo">
 					<li><a href="#" class=" face"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 					<li><a href="#" class=" twi"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>

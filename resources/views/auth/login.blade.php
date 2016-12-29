@@ -18,7 +18,7 @@
 <div class="header">
     <div class="container">
       <div class="logo">
-        <h1 ><a href="/"></b>{{trans('header.name_web')}}<span>{{trans('header.slogan')}}</span></a></h1>
+        <h1 ><a href="/"></b>{{trans('header.e_promotions')}}<span>{{trans('header.slogan')}}</span></a></h1>
       </div>
     </nav>
     <div id="login-form">

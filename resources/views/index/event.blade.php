@@ -14,7 +14,7 @@
     @foreach ($events as $event)
       <div class="col-md-4 m-w3ls">
         <div class="col-md1 ">
-          <a href="{{route('event.show', [$event->id])}}">
+          <a class="join-event" href="{{route('event.show', [$event->id])}}">
             <img src="{{ config('image.event_avatar')}}/{{ $event->image }}" class="img-event-detail" alt="">
             <div class="big-sa">
               <h3>{{str_limit($event->title, config('constants.length_titile_event'))}}</h3>

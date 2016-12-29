@@ -45,7 +45,7 @@ return [
   'profile' => 'Profile',
   'setting' => 'Setting',
   'logout' => 'Log out',
-  'copyright' => '2016 The Shop Online. All Rights Reserved | Design by  ',
+  'copyright' => '2016 The E_promotions. All Rights Reserved | Design by BuaTeam-AT  ',
   'link_copyright' => 'http://w3layouts.com/',
   'link' => 'W3Layouts',
   'contact_address' => 'Asiantech , 6th Floor, VNPT Building.',
