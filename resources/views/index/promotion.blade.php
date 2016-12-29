@@ -83,14 +83,12 @@
                            <span id="please-login" data-please-login="{{ trans('message.please_login') }}"></span>
                          </a>
                        @endif
->>>>>>> Stashed changes
                     </div>
                     <!-- end book -->
                   </div>
                 </div>
               </div>
               @endforeach
-
              </div>
           </div>
         </div>
