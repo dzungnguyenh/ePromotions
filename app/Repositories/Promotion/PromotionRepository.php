@@ -212,6 +212,6 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     public function filterIndex()
     {
         $time = $this->getTime();
-        return $this->model->where('date_start', '>', $time)->take(5)->get();
+        return $this->model->where('date_start', '>', $time)->take(10)->get();
     }
 }

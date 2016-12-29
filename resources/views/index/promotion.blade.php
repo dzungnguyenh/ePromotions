@@ -1,8 +1,8 @@
 <div class="content-top ">
   <div class="container ">
-    <div class="spec" style="color: #FAB005">
-        <a style="text-decoration: none;" href="{{url('/promotion')}}" alt='{{trans('body.title_promotion')}}'>
-          <h3>{{trans('body.title_promotion')}}<i style="color: #FAB005" class="fa fa-chevron-circle-right" aria-hidden="true"></i></h3>
+    <div class="spec">
+        <a href="{{url('/promotion')}}" alt='{{trans('body.title_promotion')}}'>
+          <h3>{{trans('body.title_promotion')}}<i class="fa fa-chevron-circle-right" aria-hidden="true"></i></h3>
         </a>
       <div class="ser-t">
         <b></b>

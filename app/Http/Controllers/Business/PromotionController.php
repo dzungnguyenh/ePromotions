@@ -178,7 +178,7 @@ class PromotionController extends Controller
             $promotion['image']= $this->promotion->uploadImage($request->file('image'), config('promotion.IMAGE_PATH'));
             $this->promotion->update($promotion, $promotionId);
             Session::flash('message', trans('promotion.update_promotion_successful'));
-            return redirect()->route('show_promotion', ['attribute'=>'product_id', 'id'=> $productId]);
+            return redirect()->route('show_promotion', ['productId'=> $productId]);
         }
     }
 
