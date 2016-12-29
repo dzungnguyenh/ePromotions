@@ -8,6 +8,7 @@ use App\Repositories\Book\BookRepository;
 use App\Repositories\BookDetail\BookDetailRepository;
 use App\Repositories\Category\CategoryRepository;
 use App\Models\Product;
+use DB;
 use Session;
 
 class BookController extends Controller
@@ -79,6 +80,15 @@ class BookController extends Controller
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         }
         $product=Product::where('id', $productId)->get();
+        $promotionProduct=DB::table('products')
+        ->join('promotions', 'products.id', '=', 'promotions.product_id')
+        ->where('date_start', '<=', date(config('date.date_system')))
+        ->where('date_end', '>=', date(config('date.date_system')))
+        ->where('products.id', '=', $productId)
+        ->first();
+        if (isset($promotionProduct)) {
+            $product[config('promotion.place')]->price = $promotionProduct->price - (($promotionProduct->price*$promotionProduct->percent)/config('promotion.hundred'));
+        };
         if ($product->isEmpty()) {
             return view('errors.book.error_book', ['categories'=> $categories, 'childs' => $childs]);
         } else {
