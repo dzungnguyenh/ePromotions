@@ -84,9 +84,31 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
      */
     public function handleAcceptOrder($orderId, $pointBook)
     {
+        $this->updateQuantityProduc($orderId);
         DB::table('book_details')->where('id', $orderId)->update(['status'=>config('constants.STATUS_ONE')]);
         $newPoint = Auth::user()->point + $pointBook;
         DB::table('user')->where('id', Auth::user()->id)->update(['point' => $newPoint]);
         return response()->json(trans('book.success'));
+    }
+
+    /**
+     * [updateQuantityProduc at accept odder]
+     *
+     * @param [type] $orderId [id of order detail]
+     *
+     * @return [type]          [null]
+     */
+    public function updateQuantityProduc($orderId)
+    {
+        $getBookDetail=DB::table('book_details')
+        ->select('product_id', 'quantity')
+        ->where('id', $orderId)->get();
+        $quantityProduct=DB::table('products')
+        ->select('quantity')
+        ->where('id', $getBookDetail[0]->product_id)
+        ->get();
+        DB::table('products')
+        ->where('id', $getBookDetail[0]->product_id)
+        ->update(['quantity'=>($quantityProduct[0]->quantity - $getBookDetail[0]->quantity)]);
     }
 }
