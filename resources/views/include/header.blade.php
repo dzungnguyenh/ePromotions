@@ -40,7 +40,7 @@
                             @endif
                             <span class="hidden-xs">{{ Auth::user()->name }}</span>
                         </a>
-                        <span class="caret"></span></button>
+                        <span class="caret"></span>
                         <ul class="dropdown-menu dropdown-menu-right">
                             @if (Auth::user()->role_id == Config::get('constants.ROLEUSER') || Auth::user()->role_id == Config::get('constants.ROLEBUSSINESS') )
                             <li>
@@ -64,10 +64,12 @@
                             </li>
                             @endif
                         </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+                    </li>
+                </ul>
             </div>
+            <div class="clearfix"></div>
         </div>
-        <!-- Search -->
-        @include('include.search')
+    </div>
+</div>
+<!-- Search -->
+@include('include.search')

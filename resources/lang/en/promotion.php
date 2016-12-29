@@ -39,4 +39,12 @@ return [
     'indicator_one' => '0',
     'indicator_two' => '1',
     'indicator_three' => '2',
+    'cost' => 'Cost',
+    'total_product' => 'Total product',
+    'quantity_discounts' => 'Quantity discounts',
+    'sale' => 'Sale',
+    'after_sale' => 'Cost after sale',
+    'business_name' => "Business's product",
+    'time_takes_place' => 'Duration of the promotion',
+    'detail_product' => 'Detail',
 ];
