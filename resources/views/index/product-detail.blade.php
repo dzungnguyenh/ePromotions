@@ -7,7 +7,7 @@
 
         <div class="single-w3agile">
           <div id="picture-frame">
-            <img src="image/pages/of.png" data-src="images/si-1.jpg" alt="" class="img-responsive"/>
+            <img src="/{{config('image.path_product')}}/{{$product->picture}}" data-src="images/si-1.jpg" alt="" class="img-responsive"/>
           </div>
         </div>
 

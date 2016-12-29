@@ -18,7 +18,7 @@
               @foreach ($promotions as $promotion)
               <div class="col-md-3 m-wthree">
                 <div class="col-m">
-                  <a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
+                  <a href="{!! url('/product', [$promotion->product->id]) !!}" data-toggle="modal" data-target="#myModal1" class="offer-img">
                     <!-- image product -->
                     <img src="{{config('image.path_product')}}/{{$promotion->product->picture}}" class="img-responsive" alt="">
                     <div class="offer"><p><span>{{trans('body.negative')}}{{$promotion->percent}}{{trans('body.percent')}}</span></p></div>
@@ -26,7 +26,7 @@
                   <div class="mid-1">
                     <div class="women">
                       <!--- Click redirect to product -->
-                      <h6><a href="{!! url('/product', [$promotion->product->id]) !!}"">
+                      <h6><a href="{!! url('/product', [$promotion->product->id]) !!}">
                         {{str_limit($promotion->product->product_name, config('constants.length_titile'))}}
                       </a></h6>
                     </div>
@@ -53,6 +53,10 @@
                     <!-- begin book -->
                     <div class="add">
                        <a href="{{ route('book.show', $promotion->product_id) }}"><button class="book my-cart-btn my-cart-b"><i class="glyphicon glyphicon-shopping-cart"></i> {!! trans('label.book') !!}</button></a>
+
+                       
+                    </div>
+                    <!-- end book -->
                   </div>
                 </div>
               </div>
