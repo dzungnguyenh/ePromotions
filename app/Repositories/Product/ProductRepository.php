@@ -220,7 +220,7 @@ class ProductRepository extends BaseRepository
     /**
      * Filter list of products by id category
      *
-     * @param integer $id    Id category
+     * @param integer $id Id category
      *
      * @return array     List of products
      */

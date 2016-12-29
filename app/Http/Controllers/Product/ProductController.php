@@ -168,15 +168,21 @@ class ProductController extends Controller
         }
     }
 
-    public function filterProduct($id){
+     /**
+      * Filter product by it category
+      *
+      * @param integer $id id category
+      *
+      * @return list
+      */
+    public function filterProduct($id)
+    {
         $categories = $this->categoryRepository->allRoot();
         foreach ($categories as $key => $category) {
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         }
         $voteProducts = $this->voteProRepository->all();
-        if (empty($product)) {
         $products = $this->productRepository->getAllByIdCategory($id);
-        }
         $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
         return view('index.product', compact('categories', 'childs', 'products', 'voteProducts', 'arPointVote'));
     }
