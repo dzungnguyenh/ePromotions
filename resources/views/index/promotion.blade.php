@@ -18,7 +18,7 @@
               @foreach ($promotions as $promotion)
               <div class="col-md-3 m-wthree">
                 <div class="col-m">
-                  <a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
+                  <a href="{!! url('/product', [$promotion->product->id]) !!}" data-toggle="modal" data-target="#myModal1" class="offer-img">
                     <!-- image product -->
                     <img src="{{config('image.path_product')}}/{{$promotion->product->picture}}" class="img-responsive" alt="">
                     <div class="offer"><p><span>{{trans('body.negative')}}{{$promotion->percent}}{{trans('body.percent')}}</span></p></div>
@@ -26,7 +26,7 @@
                   <div class="mid-1">
                     <div class="women">
                       <!--- Click redirect to product -->
-                      <h6><a href="{!! url('/product', [$promotion->product->id]) !!}"">
+                      <h6><a href="{!! url('/product', [$promotion->product->id]) !!}">
                         {{str_limit($promotion->product->product_name, config('constants.length_titile'))}}
                       </a></h6>
                     </div>
@@ -54,35 +54,7 @@
                     <div class="add">
                        <a href="{{ route('book.show', $promotion->product_id) }}"><button class="book my-cart-btn my-cart-b"><i class="glyphicon glyphicon-shopping-cart"></i> {!! trans('label.book') !!}</button></a>
 
-                       @if (!(Auth::guest()))
-                           @foreach($voteProducts as $voteProduct)
-                               @if ((Auth::user()->id == $voteProduct->user_id) && ($voteProduct->product_id == $promotion->product->id))
-                                    <?php
-                                       $voted = true;
-                                    ?>
-                               @endif
-                           @endforeach
-                           @if ($voted)
-                             <a href="">
-                               <button class="btn btn-success my-cart-btn">
-                               <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{trans('body.vote')}}
-                               </button>
-                             </a>
-                           @else
-                             <a href="">
-                               <button class="btn btn-success my-cart-btn my-cart-b">
-                               <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{trans('body.vote')}}
-                               </button>
-                             </a>
-                           @endif
-                       @else
-                         <a>
-                           <button class="btn btn-success my-cart-btn my-cart-b vote" data-login="{{ Auth::guest() }}" value="{{$promotion->product->id}}">
-                             <i class="glyphicon glyphicon-thumbs-up"></i>{{ trans('body.vote') }}
-                           </button>
-                           <span id="please-login" data-please-login="{{ trans('message.please_login') }}"></span>
-                         </a>
-                       @endif
+                       
                     </div>
                     <!-- end book -->
                   </div>

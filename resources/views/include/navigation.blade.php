@@ -12,17 +12,16 @@
   <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
     <ul class="nav navbar-nav ">
       <li class=" active"><a href="{{ url('/') }}" class="hyper "><span>Home</span></a></li>
-
       @foreach ($categories as $key => $category)
         <li class="dropdown ">
-          <a href="#" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>{{ $category->name }}<b class="caret"></b></span></a>
+          <a href="{!! url('/filter', $category->id) !!}" class="dropdown-toggle hyper" data-toggle="dropdown" ><span>{{ $category->name }}<b class="caret"></b></span></a>
           <ul class="dropdown-menu multi">
             <div class="row">
               <ul class="multi-column-dropdown">
                 @foreach ($childs[$key] as $row)
                   <li>
                     {{-- {!! route('/category', [$row->id]) !!} --}}
-                    <a href="">
+                    <a href="/filter/{{ $row->id }}">
                       <i class="fa fa-angle-right" aria-hidden="true"></i>
                       {{ $row->name }}
                     </a>

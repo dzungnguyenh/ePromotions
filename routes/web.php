@@ -74,6 +74,7 @@ Route::get('/callback/{provider}', 'SocialAccountController@callback');
 
 Auth::routes();
 
+Route::get('/filter/{id}','Product\ProductController@filterProduct');
 Route::get('/', 'HomeController@index');
 Route::get('/product', 'HomeController@product');
 Route::get('/event', 'HomeController@event');

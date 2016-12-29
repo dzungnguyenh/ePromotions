@@ -167,4 +167,17 @@ class ProductController extends Controller
             return view('index.product-detail', compact('categories', 'childs', 'product', 'products', 'voteProducts', 'arPointVote'));
         }
     }
+
+    public function filterProduct($id){
+        $categories = $this->categoryRepository->allRoot();
+        foreach ($categories as $key => $category) {
+            $childs[$key] = $this->categoryRepository->findDescendants($category->id);
+        }
+        $voteProducts = $this->voteProRepository->all();
+        if (empty($product)) {
+        $products = $this->productRepository->getAllByIdCategory($id);
+        }
+        $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
+        return view('index.product', compact('categories', 'childs', 'products', 'voteProducts', 'arPointVote'));
+    }
 }
