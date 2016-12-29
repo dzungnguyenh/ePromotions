@@ -111,4 +111,38 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
         ->where('id', $getBookDetail->product_id)
         ->update(['quantity'=>($quantityProduct->quantity - $getBookDetail->quantity)]);
     }
+
+    /**
+     * Handle share of user
+     *
+     * @param int $productId  [id of product]
+     * @param int $pointShare [point share]
+     *
+     * @return response
+     */
+    public function handleShare($productId, $pointShare)
+    {
+        $newPoint = Auth::user()->point;
+        if (!(Auth::guest())) {
+            $arGetUserShare = array(
+                    'user_id' => Auth::user()->id,
+                    'product_id' => $productId,
+                );
+            $userShare = DB::table('share_products')->where($arGetUserShare)->first();
+            if (empty($userShare)) {
+                $arGetUserShare = array(
+                        'user_id' => Auth::user()->id,
+                        'product_id' => $productId,
+                        'count' => $pointShare,
+                    );
+                DB::table('share_products')->insert($arGetUserShare);
+            } else {
+                $userShare->count++;
+                DB::table('share_products')->update(['count' => $userShare->count]);
+            }
+            $newPoint += $pointShare;
+            DB::table('user')->where('id', Auth::user()->id)->update(['point' => $newPoint]);
+        }
+        return response()->json($newPoint);
+    }
 }
