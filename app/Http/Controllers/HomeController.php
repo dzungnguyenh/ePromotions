@@ -104,7 +104,9 @@ class HomeController extends Controller
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         }
         $products = $this->productRepository->getAll()->paginate(config('constants.limit_product'));
-        return view('index.product', compact('products', 'categories', 'childs'));
+        $voteProducts = $this->voteProRepository->all();
+        $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
+        return view('index.product', compact('products', 'categories', 'childs', 'voteProducts', 'arPointVote'));
     }
     /**
     * Display product research
