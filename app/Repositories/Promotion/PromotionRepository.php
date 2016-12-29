@@ -23,11 +23,11 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Return promotions expired
+    * Return promotions expired.
     *
-    * @param int      $val   Value id.
-    * @param datetime $time  Time now.
-    * @param int      $limit Limit promotion earch page.
+    * @param int      $val   Value id
+    * @param datetime $time  Time now
+    * @param int      $limit Limit promotion earch page
     *
     * @return mixed
     */
@@ -40,11 +40,11 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Return promotions present
+    * Return promotions present.
     *
-    * @param int      $val   Value id.
-    * @param datetime $time  Time now.
-    * @param int      $limit Limit promotion earch page.
+    * @param int      $val   Value id
+    * @param datetime $time  Time now
+    * @param int      $limit Limit promotion earch page
     *
     * @return mixed
     */
@@ -58,11 +58,11 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Return promotions future
+    * Return promotions future.
     *
-    * @param int      $val   Value id.
-    * @param datetime $time  Time now.
-    * @param int      $limit Limit promotion earch page.
+    * @param int      $val   Value id
+    * @param datetime $time  Time now
+    * @param int      $limit Limit promotion earch page
     *
     * @return mixed
     */
@@ -75,7 +75,7 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Return time
+    * Return time.
     *
     * @return time
     */
@@ -85,110 +85,90 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     }
 
     /**
-    * Check input day start
+    * Check value input date.
     *
-    * @param datetime $dateStart Time.
-    *
-    * @return boolean
-    */
-    public function checkDateStart($dateStart)
-    {
-        if ($dateStart < $this->getTime()) {
-            return true;
-        }
-    }
-
-    /**
-    * Check error day start
-    *
-    * @param datetime $dateStart Time.
+    * @param datetime $dateStart Time
+    * @param datetime $dateEnd   Time
     *
     * @return string
     */
-    public function errorDateStart($dateStart)
+    public function checkDate($dateStart, $dateEnd)
     {
-        if ($this->checkDateStart($dateStart)) {
-            return config('promotion.ERROR_DATE_START');
+        if ($dateStart < $this->getTime() || $dateEnd <= $dateStart) {
+            return config('promotion.ERROR_DATE');
         }
     }
 
     /**
-    * Check input day end
+    * Check isset promotion when store.
     *
-    * @param datetime $dateEnd   Time.
-    * @param datetime $dateStart Time.
-    *
-    * @return boolean
-    */
-    public function checkDateEnd($dateEnd, $dateStart)
-    {
-        if ($dateEnd <= $dateStart) {
-            return true;
-        }
-    }
-
-    /**
-    * Check error day end
-    *
-    * @param datetime $dateEnd   Time.
-    * @param datetime $dateStart Time.
+    * @param int      $productId Product id
+    * @param datetime $dateStart Time
+    * @param datetime $dateEnd   Time
     *
     * @return string
     */
-    public function errorDateEnd($dateEnd, $dateStart)
-    {
-        if ($this->checkDateEnd($dateEnd, $dateStart)) {
-            return config('promotion.ERROR_DATE_END');
-        }
-    }
-
-    /**
-    * Check isset promotion
-    *
-    * @param int      $productId Product id.
-    * @param datetime $val       Time.
-    *
-    * @return boolean
-    */
-    public function checkIssetPromotion($productId, $val)
+    public function checkIssetStore($productId, $dateStart, $dateEnd)
     {
         $promotions= $this->findBy('product_id', $productId);
         foreach ($promotions as $value) {
-            if ($value['date_start']< $val && $value['date_end'] > $val) {
-                return true;
+            if (!($value['date_start'] < $dateStart && $value['date_end'] < $dateStart ||
+                $value['date_start'] > $dateEnd && $value['date_end'] > $dateEnd)) {
+                return config('promotion.ERROR_ISSET');
                 break;
             }
         }
     }
 
     /**
-    * Get error isset promotion
+    * Check isset promotion when update.
     *
-    * @param datetime $dateStart Time.
-    * @param int      $productId Product id.
+    * @param int      $promotionId Promotion id
+    * @param datetime $dateStart   Time
+    * @param datetime $dateEnd     Time
     *
     * @return string
     */
-    public function errorIssetPromotion($dateStart, $productId)
+    public function checkIssetUpdate($promotionId, $dateStart, $dateEnd)
     {
-        if ($this->checkIssetPromotion($productId, $dateStart)) {
-            return config('promotion.ERROR_ISSET');
+        $promotions= $this->findEliminate('id', $promotionId);
+        foreach ($promotions as $value) {
+            if (!($value['date_start'] < $dateStart && $value['date_end'] < $dateStart ||
+                $value['date_start'] > $dateEnd && $value['date_end'] > $dateEnd)) {
+                return config('promotion.ERROR_ISSET');
+                break;
+            }
         }
     }
 
     /**
-    * Get error when submit
+    * Get error when store.
     *
-    * @param datetime $dateStart Time.
-    * @param datetime $dateEnd   Time.
-    * @param int      $productId Product id.
+    * @param int      $productId Product id
+    * @param datetime $dateStart Time
+    * @param datetime $dateEnd   Time
     *
     * @return array
     */
-    public function getError($dateStart, $dateEnd, $productId)
+    public function getErrorStore($productId, $dateStart, $dateEnd)
     {
-        return array($this->errorDateStart($dateStart), $this->errorDateEnd($dateEnd, $dateStart), $this->errorIssetPromotion($dateStart, $productId));
+        return array($this->checkDate($dateStart, $dateEnd), $this->checkIssetStore($productId, $dateStart, $dateEnd));
     }
+
+    /**
+    * Get error when update.
+    *
+    * @param int      $promotionId Promotion id
+    * @param datetime $dateStart   Time
+    * @param datetime $dateEnd     Time
+    *
+    * @return array
+    */
+    public function getErrorUpdate($promotionId, $dateStart, $dateEnd)
+    {
+        return array($this->checkDate($dateStart, $dateEnd), $this->checkIssetUpdate($promotionId, $dateStart, $dateEnd));
+    }
+
 
     /**
      * Get limit 4 promotions which being sale off
@@ -207,5 +187,31 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
             ->latest()->take(config('constants.LIMIT_PROMOTION_INDEX'))->get();
         }
         return $list;
+    }
+    
+    /**
+    * Get name image when upload success.
+    *
+    * @param file   $image file
+    * @param string $path  path
+    *
+    * @return string
+    */
+    public function uploadImage($image, $path)
+    {
+        $nameImage =time().'-'.$image->getClientOriginalName();
+        $image->move($path, $nameImage);
+        return $nameImage;
+    }
+
+    /**
+    * Filter promotions index.
+    *
+    * @return mixed
+    */
+    public function filterIndex()
+    {
+        $time = $this->getTime();
+        return $this->model->where('date_start', '>', $time)->take(5)->get();
     }
 }

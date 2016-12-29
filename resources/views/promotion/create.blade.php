@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group col-md-5">
                     <label for="percent">{{ trans('promotion.percent') }}</label><span>( % )</span>
-                    <input type="number" class="form-control" id="percent" name="percent" value="{{ old('percent')}}">
+                    <input type="number" class="form-control" id="percent" name="percent" value="{{ old('percent')}}" min="{{ trans('promotion.min_percent') }}" max="{{ trans('promotion.max_percent') }}">
                 </div>
                 <div class="form-group col-md-5">
                     <label for="description">{{ trans('promotion.description') }}</label>
@@ -49,7 +49,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4 col-md-offset-6 text-right">
-                    <input type="hidden" name="product_id" value="">
+                    <input type="hidden" name="product_id" value="{{ $productId }}">
                     <input type="submit" class="btn btn-primary" value="{{ trans('promotion.submit') }}" />
                     <input type="reset" class="btn btn-primary" value="{{ trans('promotion.clear') }}" />
                 </div>

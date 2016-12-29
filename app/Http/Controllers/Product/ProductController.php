@@ -60,7 +60,7 @@ class ProductController extends Controller
     */
     public function create()
     {
-        $listCategory = $this->categoryRepository->all()->pluck('category_name', 'id');
+        $listCategory = $this->categoryRepository->all()->pluck('name', 'id');
         return view('product.create')->with(['listCategory'=>$listCategory]);
     }
     /**

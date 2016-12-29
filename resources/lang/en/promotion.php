@@ -33,4 +33,10 @@ return [
     'value_future' => '3',
     'min_quantity' => '1',
     'row_description' => '5',
+    'min_percent' => '1',
+    'max_percent' => '100',
+    'alt_image' => 'Please wait...',
+    'indicator_one' => '0',
+    'indicator_two' => '1',
+    'indicator_three' => '2',
 ];
