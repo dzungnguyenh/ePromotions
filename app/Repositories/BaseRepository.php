@@ -110,6 +110,20 @@ abstract class BaseRepository
     }
 
     /**
+    * [Return data match parameter]
+    *
+    * @param string $attribute Name field table.
+    * @param string $value     Value of field table.
+    * @param int    $limit     Number of item.
+    *
+    * @return mixed
+    */
+    public function findEliminate($attribute, $value, $limit = null)
+    {
+        return $this->model->where($attribute, '<>', $value)->paginate($limit);
+    }
+
+    /**
      * Paginate in view
      *
      * @param int $limit [limit records per page]
@@ -140,20 +154,5 @@ abstract class BaseRepository
     public function count()
     {
         return $this->model->count();
-    }
-
-    /**
-    * Get name image when upload success
-    *
-    * @param file   $image file.
-    * @param string $path  path.
-    *
-    * @return string
-    */
-    public function uploadImage($image, $path)
-    {
-        $nameImage =time().'-'.$image->getClientOriginalName();
-        $image->move($path, $nameImage);
-        return $nameImage;
     }
 }

@@ -33,4 +33,6 @@ return [
     'value_future' => '3',
     'min_quantity' => '1',
     'row_description' => '5',
+    'min_percent' => '1',
+    'max_percent' => '100',
 ];
