@@ -84,6 +84,7 @@ class BookController extends Controller
         ->join('promotions', 'products.id', '=', 'promotions.product_id')
         ->where('date_start', '<=', date(config('date.date_system')))
         ->where('date_end', '>=', date(config('date.date_system')))
+        ->where('products.id', '=', $productId)
         ->first();
         if (isset($promotionProduct)) {
             $product[config('promotion.place')]->price = $promotionProduct->price - (($promotionProduct->price*$promotionProduct->percent)/config('promotion.hundred'));
