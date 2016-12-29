@@ -102,13 +102,13 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
     {
         $getBookDetail=DB::table('book_details')
         ->select('product_id', 'quantity')
-        ->where('id', $orderId)->get();
+        ->where('id', $orderId)->first();
         $quantityProduct=DB::table('products')
         ->select('quantity')
-        ->where('id', $getBookDetail[0]->product_id)
-        ->get();
+        ->where('id', $getBookDetail->product_id)
+        ->first();
         DB::table('products')
-        ->where('id', $getBookDetail[0]->product_id)
-        ->update(['quantity'=>($quantityProduct[0]->quantity - $getBookDetail[0]->quantity)]);
+        ->where('id', $getBookDetail->product_id)
+        ->update(['quantity'=>($quantityProduct->quantity - $getBookDetail->quantity)]);
     }
 }
