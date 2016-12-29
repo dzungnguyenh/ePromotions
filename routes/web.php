@@ -86,3 +86,4 @@ Route::get('/research', 'HomeController@research')->name('research');
 
 Route::get('/product/{id}', 'Product\ProductController@showDetail');
 Route::get('/promotion/{promotionId}', 'Business\PromotionController@showDetail')->name('show-detail');
+Route::get('/share-product/{id}', 'API\ProductController@handleShare');
