@@ -9,16 +9,9 @@
                 <option value="{{ trans('promotion.value_present') }}">{{ trans('promotion.present_promotion') }}</option>
                 <option value="{{ trans('promotion.value_future') }}">{{ trans('promotion.future_promotion') }}</option>
             </select>
-            <input type="hidden" name="product_id" value="{{ $productId }}">
+            <input type="hidden" name="product_id" value="{{ $productId }}"><br>
             <button type="submit" class="btn btn-default">{{ trans('promotion.submit') }}</button>
-        </form>
-        
-        <div class="page-header">
-            <h3>{{ trans('promotion.list_page') }}</h3>
-            <a href="{!! route('promotions.create') !!}">
-            <h3><span class="glyphicon glyphicon-plus"></span></h3>
-        </a>
-        </div>
+        </form><br>
         @if (Session::has('message'))
             <div class="alert alert-info alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

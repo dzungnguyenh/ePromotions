@@ -22,3 +22,10 @@
 	max-height: 500px;
 	overflow: hidden;
 }
+.detail-promotion{
+	margin-bottom: 20px;
+}
+.sale{
+	font-weight: bold;
+	color: red;
+}
