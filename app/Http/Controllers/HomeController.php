@@ -82,13 +82,14 @@ class HomeController extends Controller
         foreach ($categories as $key => $category) {
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         }
+        $promotionSlide= $this->promotionRepository->filterIndex();
         $promotions = $this->promotionRepository->getNeartest();
         $products = $this->productRepository->getProductTopVote();
         $voteProducts = $this->voteProRepository->all();
         $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
         $events = $this->eventRepository->getEventNewest();
         $flag = $this->userRepository->checkLogin();
-        return view('index.index', compact('categories', 'childs', 'promotions', 'products', 'voteProducts', 'arPointVote', 'events', 'flag'));
+        return view('index.index', compact('categories', 'childs', 'promotions', 'products', 'voteProducts', 'arPointVote', 'events', 'flag', 'promotionSlide'));
     }
     
     /**
@@ -103,7 +104,9 @@ class HomeController extends Controller
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         }
         $products = $this->productRepository->getAll()->paginate(config('constants.limit_product'));
-        return view('index.product', compact('products', 'categories', 'childs'));
+        $voteProducts = $this->voteProRepository->all();
+        $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
+        return view('index.product', compact('products', 'categories', 'childs', 'voteProducts', 'arPointVote'));
     }
     /**
     * Display product research

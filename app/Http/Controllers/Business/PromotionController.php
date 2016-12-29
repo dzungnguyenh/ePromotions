@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Business;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Promotion\PromotionRepository;
+use App\Repositories\Category\CategoryRepository;
+use App\Repositories\Product\ProductRepository;
+use App\Repositories\User\UserRepository;
 use App\Http\Requests\CreatePromotionRequest;
 use Session;
 use DB;
@@ -18,15 +21,42 @@ class PromotionController extends Controller
      * @param PromotionRepository
      */
     protected $promotion;
+
+    /**
+     * The CategoryRepository instance
+     *
+     * @var CategoryRepository
+     */
+    protected $category;
+
+    /**
+     * The ProductRepository instance
+     *
+     * @var ProductRepository
+     */
+    protected $product;
+
+    /**
+     * The UserRepository instance
+     *
+     * @var UserRepository
+     */
+    protected $user;
  
     /**
      * PromotionController constructor.
      *
      * @param App\Repositories\Promotion\PromotionRepository $promotion description
+     * @param App\Repositories\Category\CategoryRepository   $category  description
+     * @param App\Repositories\Product\ProductRepository     $product   description
+     * @param App\Repositories\User\UserRepository           $user      description
      */
-    public function __construct(PromotionRepository $promotion)
+    public function __construct(PromotionRepository $promotion, CategoryRepository $category, ProductRepository $product, UserRepository $user)
     {
         $this->promotion= $promotion;
+        $this->category= $category;
+        $this->product= $product;
+        $this->user= $user;
     }
 
     /**
@@ -67,13 +97,24 @@ class PromotionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show resource.
+     *
+     * @param int $promotionId Promotion id
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function showDetail($promotionId)
     {
-        return view('promotion.create');
+        $categories = $this->category->allRoot();
+        foreach ($categories as $key => $category) {
+            $childs[$key] = $this->category->findDescendants($category->id);
+        }
+        $promotion= $this->promotion->find($promotionId);
+        $productId= $promotion->product_id;
+        $product= $this->product->find($productId);
+        $userId = $product->user_id;
+        $user= $this->user->find($userId);
+        return view('promotion.detail', compact('categories', 'childs', 'promotion', 'productId', 'product', 'user'));
     }
 
     /**
