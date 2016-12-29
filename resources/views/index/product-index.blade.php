@@ -54,9 +54,7 @@
                         <div class="clearfix"></div>
                       </div>
                         <div class="add add-2">
-                          <button class="btn btn-danger my-cart-btn my-cart-b ">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>{{trans('body.book')}}
-                          </button>
+                          <a href="{{ route('book.show', $product->id) }}"><button class="book my-cart-btn my-cart-b"><i class="glyphicon glyphicon-shopping-cart"></i> {!! trans('label.book') !!}</button></a>
 
                             <?php
                               $disabled="";

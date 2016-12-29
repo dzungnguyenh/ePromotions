@@ -51,9 +51,9 @@
                     <td>
                         <img  class="img-order-product" src="{{asset(config('path.picture_product').$order->picture)}}">
                     </td>
-                    <td>{!! $order->status==0?trans('book.not_success'):trans('book.success') !!}</td>
+                    <td id="accept-order{{$order->bookDetailId}}">{!! $order->status==0?trans('book.not_success'):trans('book.success') !!}</td>
                     <td>
-                        <button class="btn btn-primary are_you_sure_accept">
+                        <button class="btn btn-primary are_you_sure_accept accept-order" value="{{$order->bookDetailId}}" {!! $order->status==0?trans('label.null'):trans('label.disabled') !!}>
                             <i class="glyphicon glyphicon-ok"></i>
                         </button>
                         <form class="form-inline form-delete-order-business" 

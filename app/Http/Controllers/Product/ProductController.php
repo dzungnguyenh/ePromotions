@@ -8,6 +8,7 @@ use App\Repositories\Product\ProductRepository;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Repositories\Category\CategoryRepository;
+use App\Repositories\VoteProduct\VoteProductRepository;
 use Session;
 use DB;
 use App\User;
@@ -18,18 +19,27 @@ class ProductController extends Controller
     protected $productRepository;
     protected $categoryRepository;
 
+        /**
+     * The VoteProductRepository instance
+     *
+     * @var voteProRepository
+     */
+    protected $voteProRepository;
+
     /**
     * Constructer
     *
-    *@param ProductRepository  $productRepository  variable
-    *@param CategoryRepository $categoryRepository variable
+    *@param ProductRepository     $productRepository  variable
+    *@param CategoryRepository    $categoryRepository variable
+    *@param VoteProductRepository $voteProRepository  [description]
     *
     *@return initialized
     */
-    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository)
+    public function __construct(ProductRepository $productRepository, CategoryRepository $categoryRepository, VoteProductRepository $voteProRepository)
     {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->voteProRepository = $voteProRepository;
     }
 
     /**
@@ -152,7 +162,9 @@ class ProductController extends Controller
                 $childs[$key] = $this->categoryRepository->findDescendants($category->id);
             }
             $products = $this->productRepository->getByIdCategory($product->category_id, config('constants.LIMIT_PRODUCT_INDEX'));
-            return view('index.product-detail', compact('categories', 'childs', 'product', 'products'));
+            $voteProducts = $this->voteProRepository->all();
+            $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
+            return view('index.product-detail', compact('categories', 'childs', 'product', 'products', 'voteProducts', 'arPointVote'));
         }
     }
 }

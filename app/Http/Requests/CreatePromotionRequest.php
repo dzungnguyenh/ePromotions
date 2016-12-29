@@ -23,8 +23,13 @@ class CreatePromotionRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->method() == 'PUT') {
+            $title = 'required|max:255|unique:promotions,title,' . $this->get('promotion_id');
+        } else {
+            $title = 'required|max:255|unique:promotions';
+        }
         return [
-            'title' => 'required|unique:promotions|max:255',
+            'title' => $title,
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'percent'=>'required',
