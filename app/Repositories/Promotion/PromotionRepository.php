@@ -203,4 +203,15 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
         $image->move($path, $nameImage);
         return $nameImage;
     }
+
+    /**
+    * Filter promotions index.
+    *
+    * @return mixed
+    */
+    public function filterIndex()
+    {
+        $time = $this->getTime();
+        return $this->model->where('date_start', '>', $time)->take(5)->get();
+    }
 }

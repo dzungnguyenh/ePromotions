@@ -18,3 +18,7 @@
 	max-height: 150px;
 	overflow: hidden;
 }
+#carousel-example-generic .item{
+	max-height: 500px;
+	overflow: hidden;
+}

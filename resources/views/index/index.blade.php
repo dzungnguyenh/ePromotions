@@ -1,6 +1,8 @@
 
 @include('include.header')
 
+@include('index.promotion-slide')
+
 @include('index.promotion')
 
 @include('index.event')
