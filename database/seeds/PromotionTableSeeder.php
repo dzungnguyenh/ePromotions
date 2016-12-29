@@ -31,6 +31,7 @@ class PromotionTableSeeder extends Seeder
               'product_id' => $faker->randomElement($products->toArray()),
               'created_at' => $created,
               'updated_at' => $updated,
+              'image' =>"",
           ]);
         } else {
           $i--;
