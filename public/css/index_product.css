@@ -12,8 +12,6 @@
 .detail-product{
     display: none;
     position: fixed;
-    height: 300px;
-    width: 400px;
     border: 1px solid #b19696;
     top:10%;
     left: 40%;

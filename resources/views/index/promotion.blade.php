@@ -56,6 +56,7 @@
                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>{{trans('body.book')}}
                        </button>
                     </div>
+                    fix conflict
                     <!-- end book -->
                   </div>
                 </div>
