@@ -29,3 +29,16 @@
 	font-weight: bold;
 	color: red;
 }
+.fa-chevron-circle-right{
+	color: #FAB005;
+}
+.spec a,.join-event{
+	text-decoration: none !important;
+}
+.join-event h3{
+    transition: color 1s;
+}
+.join-event h3:hover{
+    color: #FAB005;
+}
+

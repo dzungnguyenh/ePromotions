@@ -49,7 +49,7 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
         ->join('products', 'book_details.product_id', 'products.id')
         ->join('user', 'books.user_id', 'user.id')
         ->where('products.user_id', Auth::user()->id)
-        ->select('*', 'book_details.id', 'book_details.id as bookDetailId', 'book_details.quantity as book_quantity')
+        ->select('*', 'book_details.id', 'book_details.id as bookDetailId', 'book_details.quantity as book_quantity', 'book_details.created_at', 'book_details.price')
         ->get();
     }
 
@@ -85,6 +85,7 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
     public function handleAcceptOrder($orderId, $pointBook)
     {
         $this->updateQuantityProduc($orderId);
+        $this->updateQttPromotion($orderId);
         DB::table('book_details')->where('id', $orderId)->update(['status'=>config('constants.STATUS_ONE')]);
         $newPoint = Auth::user()->point + $pointBook;
         DB::table('user')->where('id', Auth::user()->id)->update(['point' => $newPoint]);
@@ -144,5 +145,31 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
             DB::table('user')->where('id', Auth::user()->id)->update(['point' => $newPoint]);
         }
         return response()->json($newPoint);
+    }
+  
+    /**
+     * [updateQttPromotion at accept order]
+     *
+     * @param [type] $orderId [id of order detail]
+     *
+     * @return [type]          [null]
+     */
+    public function updateQttPromotion($orderId)
+    {
+        $getBookDetail=DB::table('book_details')
+        ->join('products', 'products.id', 'book_details.product_id')
+        ->select('book_details.price as price_book', 'book_details.quantity', 'products.price as price_product', 'book_details.created_at as date_create')
+        ->where('book_details.id', '=', $orderId)
+        ->first();
+        if (($getBookDetail->price_book/$getBookDetail->quantity) != ($getBookDetail->price_product)) {
+            $promotion=DB::table('promotions')
+            ->select('quantity', 'id')
+            ->where('date_start', '<=', $getBookDetail->date_create)
+            ->where('date_end', '>=', $getBookDetail->date_create)
+            ->first();
+            DB::table('promotions')
+            ->where('id', $promotion->id)
+            ->update(['quantity'=>($promotion->quantity - $getBookDetail->quantity)]);
+        }
     }
 }

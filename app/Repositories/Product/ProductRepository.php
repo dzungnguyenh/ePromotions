@@ -216,4 +216,18 @@ class ProductRepository extends BaseRepository
         ->take(config('constants.LIMIT_PRODUCT_INDEX'))->get();
         return $list;
     }
+
+    /**
+     * Filter list of products by id category
+     *
+     * @param integer $id Id category
+     *
+     * @return array     List of products
+     */
+    public function getAllByIdCategory($id)
+    {
+        return $this->model
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->where('categories.id', $id)->select('*', 'products.id')->paginate(config('constants.PAGE_PRODUCT_BUSINESS'));
+    }
 }
