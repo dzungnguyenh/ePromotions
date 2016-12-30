@@ -157,4 +157,22 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         }
         return $data;
     }
+
+    /**
+     * Search list user by name or email or address
+     *
+     * @param string $name description
+     * @return list
+     */
+    public function search($name)
+    {
+        $data = User::where('name', 'like', '%'.$name.'%')->orwhere('email', 'like', '%'.$name.'%' )->orwhere('address', 'like', '%'.$name.'%')->paginate(config('constants.LIMIT'));
+        return $data;
+    }
+
+    public function searchOrder($name)
+    {
+        $data = Products::where('product', 'like','%'.$name.'%');
+        dd($data);
+    }
 }

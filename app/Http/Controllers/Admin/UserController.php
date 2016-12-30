@@ -140,4 +140,14 @@ class UserController extends Controller
         $listHistoryVotes = $this->voteProRepository->getHistoryVoted();
         return view('user.history.index', compact('listHistoryVotes'));
     }
+
+    /**
+     * Search list user by username
+     */
+    public function search(Request $request)
+    {
+        $name = $request->search;
+        $user = $this->userRepository->search($name);
+        return view('admin.user.index')->with('users',$user);
+    }
 }
