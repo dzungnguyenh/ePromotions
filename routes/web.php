@@ -61,6 +61,7 @@ Route::group(['middleware' => ['auth', 'checkuser']], function()
             'as' => 'user.history.voted',
         ]);
     Route::get('user/orders','Book\BookDetailController@showList');
+    Route::get('user/orders/destroy/{id}','Book\BookDetailController@delete')->name('delete-book');
 
 });
 

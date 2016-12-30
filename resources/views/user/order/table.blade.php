@@ -23,7 +23,7 @@
             </td>
             <td>
                 <div class='btn-group'>
-                    <a href="" alt="{{ trans('message.are_you_sure') }}" class='btn btn-default btn-xs btn-delete-voucher'><i class="glyphicon glyphicon-remove"></i></a>
+                    <a href="{{route('delete-book',$listOrder->id)}}" alt="{{ trans('message.are_you_sure') }}" class='btn btn-default btn-xs btn-delete-books' name="{{$listOrder->id}}"><i class="glyphicon glyphicon-remove" ></i></a>
                 </div>
             </td>
         </tr>
