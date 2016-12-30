@@ -122,7 +122,11 @@
       <li class="treeview">
         <a href="/user/orders"><i class="fa fa-book"></i> <span>{!! trans('left_bar.order') !!}</span>
         </a>
+      </li>
 
+      <li class="treeview">
+        <a href="{{ route('user.voucher') }}"><i class="fa fa-credit-card"></i> <span>{!! trans('left_bar.voucher') !!}</span>
+        </a>
       </li>
 
       <li class="treeview">

@@ -67,6 +67,9 @@ Route::group(['middleware' => ['auth', 'checkuser']], function()
 Route::group(['middleware' => 'user', 'prefix' => 'user'],function()
 {
     Route::resource('userorder','User\UserOrderController');
+    Route::get('/voucher', 'User\UserController@listVoucher')->name('user.voucher');
+    Route::get('/register-voucher/{id}', 'API\VoucherController@handledRegisterVoucher');
+    Route::get('/delete-voucher/{id}', 'API\VoucherController@handledDelVoucher');
 });
 
 Route::get('/redirect/{provider}', 'SocialAccountController@redirect');

@@ -30,4 +30,6 @@ return [
     'point' => 'Point: ',
     'disabled' => 'disabled',
     'null' => '',
+    'register' => 'Register',
+    'delete' => 'Delete',
 ];

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\User\UserRepository;
+use App\Repositories\Voucher\VoucherRepository;
+use App\Repositories\ExchangeVoucher\ExchangeVoucherRepository;
 use App\Http\Requests\UpdateUserRequest;
 use Session;
 use Hash;
@@ -20,15 +22,33 @@ class UserController extends Controller
     protected $userRepository;
 
     /**
-     * Create a new UserRepository instance
+     * The VoucherRepository instance
      *
-     * @param UserRepository $userRepository description
+     * @param VoucherRepository
+     */
+    protected $voucherRepository;
+
+    /**
+     * The ExchangeVoucherRepository instance
+     *
+     * @param ExchangeVoucherRepository
+     */
+    protected $exchangeVoucherRepository;
+
+    /**
+     * Construct of UserController
+     *
+     * @param UserRepository            $userRepository            description
+     * @param VoucherRepository         $voucherRepository         description
+     * @param ExchangeVoucherRepository $exchangeVoucherRepository description
      *
      * @return void
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, VoucherRepository $voucherRepository, ExchangeVoucherRepository $exchangeVoucherRepository)
     {
         $this->userRepository = $userRepository;
+        $this->voucherRepository = $voucherRepository;
+        $this->exchangeVoucherRepository = $exchangeVoucherRepository;
     }
 
     /**
@@ -78,5 +98,17 @@ class UserController extends Controller
         $user = $this->userRepository->update($input, $id);
         Session::flash('msg', trans('user.update_user_successfully'));
         return redirect(route('user.index'));
+    }
+
+    /**
+     * List voucher of user
+     *
+     * @return mixed
+     */
+    public function listVoucher()
+    {
+        $listVouchersUser = $this->exchangeVoucherRepository->listVouchersUser();
+        $listVouchers = $this->voucherRepository->listVouchers();
+        return view('user.voucher.index', compact('listVouchersUser', 'listVouchers'));
     }
 }
