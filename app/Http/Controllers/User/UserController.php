@@ -33,22 +33,22 @@ class UserController extends Controller
      *
      * @param ExchangeVoucherRepository
      */
-    protected $exchangeVoucherRepository;
+    protected $exVoucherRepository;
 
     /**
      * Construct of UserController
      *
-     * @param UserRepository            $userRepository            description
-     * @param VoucherRepository         $voucherRepository         description
-     * @param ExchangeVoucherRepository $exchangeVoucherRepository description
+     * @param UserRepository            $userRepository      description
+     * @param VoucherRepository         $voucherRepository   description
+     * @param ExchangeVoucherRepository $exVoucherRepository description
      *
      * @return void
      */
-    public function __construct(UserRepository $userRepository, VoucherRepository $voucherRepository, ExchangeVoucherRepository $exchangeVoucherRepository)
+    public function __construct(UserRepository $userRepository, VoucherRepository $voucherRepository, ExchangeVoucherRepository $exVoucherRepository)
     {
         $this->userRepository = $userRepository;
         $this->voucherRepository = $voucherRepository;
-        $this->exchangeVoucherRepository = $exchangeVoucherRepository;
+        $this->exVoucherRepository = $exVoucherRepository;
     }
 
     /**
@@ -107,7 +107,7 @@ class UserController extends Controller
      */
     public function listVoucher()
     {
-        $listVouchersUser = $this->exchangeVoucherRepository->listVouchersUser();
+        $listVouchersUser = $this->exVoucherRepository->listVouchersUser();
         $listVouchers = $this->voucherRepository->listVouchers();
         return view('user.voucher.index', compact('listVouchersUser', 'listVouchers'));
     }

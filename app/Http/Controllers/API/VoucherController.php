@@ -21,9 +21,9 @@ class VoucherController extends Controller
     /**
      * The ExchangeVoucherRepository instance
      *
-     * @var exchangeVoucherRepository
+     * @var exVoucherRepository
      */
-    protected $exchangeVoucherRepository;
+    protected $exVoucherRepository;
 
     /**
      * The UserRepository instance
@@ -35,14 +35,14 @@ class VoucherController extends Controller
     /**
     * Create a new controller instance.
     *
-    * @param VoucherRepository         $voucherRepository         [description]
-    * @param ExchangeVoucherRepository $exchangeVoucherRepository [description]
-    * @param UserRepository            $userRepository            [description]
+    * @param VoucherRepository         $voucherRepository   [description]
+    * @param ExchangeVoucherRepository $exVoucherRepository [description]
+    * @param UserRepository            $userRepository      [description]
     */
-    public function __construct(VoucherRepository $voucherRepository, ExchangeVoucherRepository $exchangeVoucherRepository, UserRepository $userRepository)
+    public function __construct(VoucherRepository $voucherRepository, ExchangeVoucherRepository $exVoucherRepository, UserRepository $userRepository)
     {
         $this->voucherRepository = $voucherRepository;
-        $this->exchangeVoucherRepository = $exchangeVoucherRepository;
+        $this->exVoucherRepository = $exVoucherRepository;
         $this->userRepository = $userRepository;
     }
 
@@ -55,9 +55,9 @@ class VoucherController extends Controller
      */
     public function handledRegisterVoucher($voucherId)
     {
-        $this->exchangeVoucherRepository->registerVoucher($voucherId);
+        $this->exVoucherRepository->registerVoucher($voucherId);
         $voucher = $this->voucherRepository->find($voucherId);
-        $exchangeVoucher = $this->exchangeVoucherRepository->listVouchersUser();
+        $exchangeVoucher = $this->exVoucherRepository->listVouchersUser();
         $newPoint = Auth::user()->point - $voucher->point;
         $this->userRepository->updatePoint($newPoint);
         return response()->json(['newPoint' => $newPoint, 'exchangeVoucher' => $exchangeVoucher->last()]);
@@ -72,7 +72,7 @@ class VoucherController extends Controller
      */
     public function handledDelVoucher($exchangeVoucherId)
     {
-        $this->exchangeVoucherRepository->delete($exchangeVoucherId);
+        $this->exVoucherRepository->delete($exchangeVoucherId);
         return null;
     }
 }
