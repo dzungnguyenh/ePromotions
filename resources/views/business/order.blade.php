@@ -45,7 +45,7 @@
                         <a href="{{route('product.show', [$order->product_id])}}"> {{$order->product_name}}</a>
                     </td>
                     <td><a href="">{{$order->name}}</a></td>
-                    <td>{{number_format($order->price)}}</td>
+                    <td>{{$order->price}}</td>
                     <td>{{$order->book_quantity}}</td>
                     <td>{{$order->created_at->format(config('date.date_system'))}}</td>
                     <td>
