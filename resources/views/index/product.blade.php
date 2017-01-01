@@ -1,4 +1,13 @@
 @include('include.header')
+        @if($totalProduct)
+          <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                </button>
+                <h4>{{trans('product.message_research_head')}} {{$totalProduct}} {{trans('product.message_research_body')}}: "{{$search}}".
+                </h4>
+          </div>
+        @endif
         <div class="container panel-product-index">
             <div class="row row-product">
                 @foreach($products as $product)

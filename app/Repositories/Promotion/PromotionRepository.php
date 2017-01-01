@@ -6,6 +6,7 @@ use App\Repositories\BaseRepository;
 use App\Repositories\Promotion\PromotionRepositoryInterface;
 use App\Models\Promotion;
 use Carbon\Carbon;
+use BD;
 
 class PromotionRepository extends BaseRepository implements PromotionRepositoryInterface
 {
@@ -178,13 +179,19 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
      */
     public function getNeartest()
     {
-        $now = Carbon::now();
         $list = $this->model->with('product.voteProducts')
-        ->where('promotions.date_end', '>=', $now)
+        ->where([['promotions.date_end', '>=', date(config('date.date_system'))], ['promotions.date_start', '<=', date(config('date.date_system'))]])
         ->take(config('constants.LIMIT_PROMOTION_INDEX'))->get();
         if (count($list) < config('constants.LIMIT_PROMOTION_INDEX')) {
             $list = $this->model->with('product.voteProducts')
-            ->latest()->take(config('constants.LIMIT_PROMOTION_INDEX'))->get();
+            ->where('promotions.date_end', '>=', date(config('date.date_system')))
+            ->take(config('constants.LIMIT_PROMOTION_INDEX'))->get();
+            if (count($list) < config('constants.LIMIT_PROMOTION_INDEX')) {
+                $list = $this->model->with('product.voteProducts')
+                ->latest()
+                ->take(config('constants.LIMIT_PROMOTION_INDEX'))
+                ->get();
+            }
         }
         return $list;
     }
@@ -213,5 +220,26 @@ class PromotionRepository extends BaseRepository implements PromotionRepositoryI
     {
         $time = $this->getTime();
         return $this->model->where('date_start', '>', $time)->take(10)->get();
+    }
+    /**
+    * [promotion description]
+    *
+    * @param [type] $id [description]
+    *
+    * @return [type]     [description]
+    */
+    public function promotion($id)
+    {
+        $productPromotion =$this->model->with('product')
+        ->where('product_id', '=', $id)
+        ->where('date_start', '<=', date(config('date.date_system')))
+        ->where('date_end', '>=', date(config('date.date_system')))
+        ->first();
+        if (!is_null($productPromotion)) {
+            $moneyPromotion = ($productPromotion->product->price*$productPromotion->percent)/config('promotion.hundred');
+        } else {
+                $moneyPromotion=config('promotion.zero');
+        }
+        return $moneyPromotion;
     }
 }

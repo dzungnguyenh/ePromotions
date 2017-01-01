@@ -85,6 +85,9 @@ class HomeController extends Controller
         $promotionSlide= $this->promotionRepository->filterIndex();
         $promotions = $this->promotionRepository->getNeartest();
         $products = $this->productRepository->getProductTopVote();
+        foreach ($products as $product) {
+            $product->promotion = $this->promotionRepository->promotion($product->id);
+        }
         $voteProducts = $this->voteProRepository->all();
         $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
         $events = $this->eventRepository->getEventNewest();

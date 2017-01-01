@@ -10,5 +10,6 @@
     'IMAGE_PATH' => 'image'.DIRECTORY_SEPARATOR.'promotion'.DIRECTORY_SEPARATOR,
     'ERROR_DATE' => 'Date start must be greater than time now and less than date end',
     'place' => '0',
+    'zero' => '0',
     'hundred' => '100',
 ];

@@ -31,7 +31,11 @@
                       </div>
                       <!-- begin Price-->
                       <div class="mid-2">
-                        <p ><em class="item_price">{{trans('body.currency')}}{{$product->price}}</em></p>
+                         @if($product->promotion != 0)
+                         <p ><em class="item_price" style="text-decoration: line-through">{{trans('body.currency')}}{{$product->price}}</em></p></br>
+                         @endif
+                         <p ><em class="item_price" style="color: red">{{trans('body.currency')}}
+                         <?php echo $product->price - $product->promotion ?></em></p>
                           <div class="block">
                             @if ($product->quantity > 0)
                               <div class="starbox small ghosting">{{trans('body.quantity')}}{{$product->quantity}}

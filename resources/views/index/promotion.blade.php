@@ -35,7 +35,7 @@
                       <p >
                         <em class="item_price">
                           <b>
-                            {{trans('body.currency')}}{{$promotion->percent * $promotion->product->price / 100}}
+                            {{trans('body.currency')}}<?php echo $promotion->product->price - $promotion->percent * $promotion->product->price / 100 ?>
                           </b>
                         </em>
                         <br/>
