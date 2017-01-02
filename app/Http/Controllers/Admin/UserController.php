@@ -143,11 +143,15 @@ class UserController extends Controller
 
     /**
      * Search list user by username
+     *
+     * @param string $request description
+     *
+     * @return list
      */
     public function search(Request $request)
     {
         $name = $request->search;
         $user = $this->userRepository->search($name);
-        return view('admin.user.index')->with('users',$user);
+        return view('admin.user.index')->with('users', $user);
     }
 }
