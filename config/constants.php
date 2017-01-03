@@ -36,4 +36,5 @@
     'length_titile_event' => 15,
     'length_description' => 130,
     'STATUS_ONE' => 1,
+    'status_zero' => 0,
 ];
