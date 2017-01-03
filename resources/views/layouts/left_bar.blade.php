@@ -16,17 +16,32 @@
         <p>{{ Auth::user()->name }}</p>
       </div>
     </div>
-
+      
+    @if (Auth::user()->role_id == Config::get('constants.ROLEADMIN')){
     <!-- search form (Optional) -->
-    <form action="#" method="post" class="sidebar-form">
+    <form action="{{ route('search_admin') }}" method="get" class="sidebar-form">
       <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
+        <input type="text" name="search" class="form-control" placeholder="Search...">
         <span class="input-group-btn">
-          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+          <button type="submit" name="btn-search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
           </button>
         </span>
       </div>
     </form>
+  } @else {
+  <!-- search form (Optional) -->
+  <form action="#" method="get" class="sidebar-form">
+    <div class="input-group">
+      <input type="text" name="search" class="form-control" placeholder="Search...">
+      <span class="input-group-btn">
+        <button type="submit" name="btn-search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+        </button>
+      </span>
+    </div>
+  </form>
+  }
+  @endif
+
     <!-- /.search form -->
     @if (Auth::user()->role_id == Config::get('constants.ROLEADMIN'))
     <!-- Sidebar Menu -->

@@ -164,7 +164,7 @@ class ProductController extends Controller
             $products = $this->productRepository->getByIdCategory($product->category_id, config('constants.LIMIT_PRODUCT_INDEX'));
             $voteProducts = $this->voteProRepository->all();
             $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
-            return view('index.product-detail', compact('categories', 'childs', 'product', 'products', 'voteProducts', 'arPointVote'));
+            return view('index.product-detail', compact('id', 'categories', 'childs', 'product', 'products', 'voteProducts', 'arPointVote'));
         }
     }
 

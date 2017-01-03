@@ -120,17 +120,20 @@ class HomeController extends Controller
         $cate = $request->input('category_name');
         $search = $request->input('search');
         $categories = $this->categoryRepository->allRoot();
+        $voteProducts = $this->voteProRepository->all();
         foreach ($categories as $key => $category) {
             $childs[$key] = $this->categoryRepository->findDescendants($category->id);
         };
         if ($cate==config('constants.Promotion')) {
             $products = $this->productRepository->getByPromotion($search)->paginate(config('constants.limit_product'));
             $totalProduct = $this->productRepository->getByPromotion($search)->count();
-            return view('index.product', compact('products', 'categories', 'childs', 'totalProduct', 'search'));
+            $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
+            return view('index.product', compact('products', 'categories', 'childs', 'totalProduct', 'search', 'voteProducts', 'arPointVote'));
         } else {
             $products = $this->productRepository->findLike('product_name', $search)->paginate(config('constants.limit_product'));
             $totalProduct = $this->productRepository->findLike('product_name', $search)->count();
-            return view('index.product', compact('products', 'categories', 'childs', 'totalProduct', 'search'));
+            $arPointVote = $this->voteProRepository->getArPointVote($products, $voteProducts);
+            return view('index.product', compact('products', 'categories', 'childs', 'totalProduct', 'search', 'voteProducts', 'arPointVote'));
         }
     }
 

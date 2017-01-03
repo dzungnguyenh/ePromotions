@@ -27,7 +27,7 @@
                         <ul class="dropdown-menu dropdown-menu-right">
                             @if (Auth::user()->role_id == Config::get('constants.ROLEUSER') || Auth::user()->role_id == Config::get('constants.ROLEBUSSINESS') )
                             <li>
-                                <a href="#" >
+                                <a href="#" id="pointOfUser">
                                 <i class="glyphicon glyphicon-heart" aria-hidden="true"></i>{{trans('header.point')}}{!! Auth::user()->point !!}
                                 </a>
                             </li>

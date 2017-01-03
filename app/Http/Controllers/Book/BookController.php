@@ -63,7 +63,7 @@ class BookController extends Controller
         $bookDetail = $request->only('quantity', 'book_id', 'price', 'product_id', 'status');
         $this->bookDetail->create($bookDetail);
         Session::flash('message', trans('book.booking_successful'));
-        return redirect()->back()->with('bookId', $bookId);
+        return redirect(route('home'));
     }
 
     /**

@@ -30,6 +30,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
     Route::resource('voucher', 'Admin\VoucherController', ['except' => ['delete']]);
     Route::get('voucher/del/{id}', ['uses' => 'Admin\VoucherController@destroy', 'as' => 'admin.voucher.del']);
     Route::resource('category', 'Category\CategoryController');
+    Route::get('/search/', 'Admin\UserController@search')->name('search_admin');
 });
 
 Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
@@ -61,6 +62,7 @@ Route::group(['middleware' => ['auth', 'checkuser']], function()
             'as' => 'user.history.voted',
         ]);
     Route::get('user/orders','Book\BookDetailController@showList');
+    Route::get('user/orders/destroy/{id}','Book\BookDetailController@delete')->name('delete-book');
 
 });
 
@@ -78,7 +80,7 @@ Route::get('/callback/{provider}', 'SocialAccountController@callback');
 Auth::routes();
 
 Route::get('/filter/{id}','Product\ProductController@filterProduct');
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/product', 'HomeController@product');
 Route::get('/event', 'HomeController@event');
 Route::get('/event-detail/{id}', 'HomeController@eventDetail');
@@ -90,3 +92,4 @@ Route::get('/research', 'HomeController@research')->name('research');
 
 Route::get('/product/{id}', 'Product\ProductController@showDetail');
 Route::get('/promotion/{promotionId}', 'Business\PromotionController@showDetail')->name('show-detail');
+Route::get('/share-product/{id}', 'API\ProductController@handleShare');

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\VoteProduct\VoteProductRepository;
 use App\Repositories\Point\PointRepository;
 use App\Repositories\Book\BookRepository;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -71,5 +72,23 @@ class ProductController extends Controller
         $pointLatest = $this->pointRepository->getLatestPoint();
         $pointBook = $pointLatest[config('constants.ZERO')]["book"];
         return $this->bookRepository->handleAcceptOrder($orderId, $pointBook);
+    }
+
+    /**
+     * Handle share of user
+     *
+     * @param int $productId description
+     *
+     * @return response
+     */
+    public function handleShare($productId)
+    {
+        if (!(Auth::guest())) {
+            $pointLatest = $this->pointRepository->getLatestPoint();
+            $pointShare = $pointLatest[config('constants.ZERO')]["share"];
+            return $this->bookRepository->handleShare($productId, $pointShare);
+        } else {
+            return null;
+        }
     }
 }
