@@ -180,6 +180,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     public function search($name)
     {
         $data = User::where('name', 'like', '%'.$name.'%')->orwhere('email', 'like', '%'.$name.'%')->orwhere('address', 'like', '%'.$name.'%')->paginate(config('constants.LIMIT'));
-        return $data; 
+        return $data;
     }
 }
