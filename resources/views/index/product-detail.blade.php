@@ -31,10 +31,16 @@
             <p class="reduced "><i>{{trans('body.voted')}}{{$product->vote_products_count}}</i></p>
           </div>
 
-          <ul class="social-top share">
-            <li><a  target="_blank" href="{{trans('share.FACEBOOK_SHARE')}}http://{{$_SERVER['SERVER_NAME']}}{{$_SERVER['REQUEST_URI']}}" class="icon facebook"><i class="fa fa-facebook" aria-hidden="true"></i><span></span></a></li>
-            <li><a  target="_blank" href="{{trans('share.TWITTER_SHARE')}}http://{{$_SERVER['SERVER_NAME']}}{{$_SERVER['REQUEST_URI']}}" class="icon twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a></li>
-            <li><a  target="_blank" href="{{trans('share.GOOGLE_SHARE')}}http://{{$_SERVER['SERVER_NAME']}}{{$_SERVER['REQUEST_URI']}}" class="icon google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a></li>
+          <ul class="social-top">
+            <li class="share" data-login="{{ Auth::guest() }}" value="{{$id}}">
+              <a  target="_blank" href="{{trans('share.FACEBOOK_SHARE')}}http://{{$_SERVER['SERVER_NAME']}}{{$_SERVER['REQUEST_URI']}}" class="icon facebook"><i class="fa fa-facebook" aria-hidden="true"></i><span></span></a>
+            </li>
+            <li class="share" data-login="{{ Auth::guest() }}" value="{{$id}}">
+              <a  target="_blank" href="{{trans('share.TWITTER_SHARE')}}http://{{$_SERVER['SERVER_NAME']}}{{$_SERVER['REQUEST_URI']}}" class="icon twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a>
+            </li>
+            <li class="share" data-login="{{ Auth::guest() }}" value="{{$id}}">
+              <a  target="_blank" href="{{trans('share.GOOGLE_SHARE')}}http://{{$_SERVER['SERVER_NAME']}}{{$_SERVER['REQUEST_URI']}}" class="icon google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
+            </li>
           </ul>
           <div class="add add-3">
             <button class="btn btn-danger my-cart-btn my-cart-b ">

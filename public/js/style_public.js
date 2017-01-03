@@ -26,4 +26,25 @@ $(document).ready(function(){
             alert(pleaseLogin);
         }
     });
+
+    $('.share').click(function(){
+        var urlShare = "/share-product/";
+        var dataLogin = $(this).attr('data-login');
+        var productId = $(this).val();
+        urlShare += productId;
+            var get = "GET";
+            $.ajax({
+                type: get,
+                url: urlShare,
+                dataType: 'json',
+                success: function(data) {
+                    if (!dataLogin) {
+                        $('#pointOfUser').html(data);
+                    }
+                },
+                error: function(data) {
+                    console.log('Error:', data);
+                }
+            });
+    });
 });
