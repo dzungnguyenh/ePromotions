@@ -87,8 +87,13 @@ class BookRepository extends BaseRepository implements BookRepositoryInterface
         $this->updateQuantityProduc($orderId);
         $this->updateQttPromotion($orderId);
         DB::table('book_details')->where('id', $orderId)->update(['status'=>config('constants.STATUS_ONE')]);
-        $newPoint = Auth::user()->point + $pointBook;
-        DB::table('user')->where('id', Auth::user()->id)->update(['point' => $newPoint]);
+        $idUserBooks = $this->model->join('book_details', 'book_details.book_id', '=', 'books.id')
+                    ->join('user', 'user.id', '=', 'books.user_id')
+                    ->select('books.user_id', 'user.point')
+                    ->where('book_details.id', '=', $orderId)
+                    ->first();
+        $newPoint = $idUserBooks->point + $pointBook;
+        DB::table('user')->where('id', $idUserBooks->user_id)->update(['point' => $newPoint]);
         return response()->json(trans('book.success'));
     }
 

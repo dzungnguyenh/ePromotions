@@ -40,6 +40,14 @@
         <a href="{!! route('users.show', [$exVoucher['user_id']]) !!}">
             <span>{!! $exVoucher['name'] !!}</span>
         </a>
+        @if ($exVoucher->status == 0 )
+        <span class="not-received-{{ $exVoucher->idExVoucher }}">
+            <button class="btn btn-default btn-xs btn-accept-voucher" alt="{{ trans('message.are_you_sure') }}" title="{!! trans('user.not_received') !!}" value="{{ $exVoucher->idExVoucher }}"><i class="glyphicon glyphicon-minus-sign"></i></button>
+        </span>
+        <button class="btn btn-default btn-xs status-received-{{ $exVoucher->idExVoucher }}" disabled style="display: none;" title="{!! trans('user.received') !!}"><i class="glyphicon glyphicon-ok-circle"></i></button>
+        @else
+            <button class="btn btn-default btn-xs status-received-{{ $exVoucher->idExVoucher }}" disabled title="{!! trans('user.received') !!}"><i class="glyphicon glyphicon-ok-circle"></i></button>
+        @endif
         {!! trans('label.space') !!}
     @endforeach
 </div>

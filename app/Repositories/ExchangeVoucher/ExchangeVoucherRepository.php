@@ -31,7 +31,11 @@ class ExchangeVoucherRepository extends BaseRepository implements ExchangeVouche
     public function findByIdVoucher($id)
     {
         $data['message'] = "";
-        $data['list'] = $this->model->join('user', 'exchange_vouchers.id', '=', 'user.id')->where('voucher_id', $id)->get();
+        $data['list'] = $this->model->join('user', 'exchange_vouchers.user_id', '=', 'user.id')
+                                    ->join('vouchers', 'vouchers.id', '=', 'exchange_vouchers.voucher_id')
+                                    ->select('user.*', 'exchange_vouchers.status', 'exchange_vouchers.id as idExVoucher')
+                                    ->where('vouchers.id', $id)
+                                    ->get();
         if (count($data['list']) == config('constants.ZERO')) {
             $data['message'] = trans('voucher.message_null_user_register');
         }
@@ -61,5 +65,17 @@ class ExchangeVoucherRepository extends BaseRepository implements ExchangeVouche
     public function registerVoucher($voucherId)
     {
         $this->model->create(['user_id' => Auth::user()->id, 'voucher_id' => $voucherId]);
+    }
+
+    /**
+     * Accept voucher of user
+     *
+     * @param int $exchangeVoucherId [description]
+     *
+     * @return void
+     */
+    public function acceptVoucher($exchangeVoucherId)
+    {
+        $this->model->where('id', $exchangeVoucherId)->update(['status' => config('constants.STATUS_RECEIVED')]);
     }
 }

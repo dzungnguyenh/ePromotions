@@ -31,6 +31,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
     Route::get('voucher/del/{id}', ['uses' => 'Admin\VoucherController@destroy', 'as' => 'admin.voucher.del']);
     Route::resource('category', 'Category\CategoryController');
     Route::get('/search/', 'Admin\UserController@search')->name('search_admin');
+    Route::get('/accept-voucher/{id}', 'API\VoucherController@handledAcceptVoucher');
 });
 
 Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
