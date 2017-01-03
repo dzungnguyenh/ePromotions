@@ -37,4 +37,5 @@
     'length_description' => 130,
     'STATUS_ONE' => 1,
     'status_zero' => 0,
+    'STATUS_RECEIVED' => 1,
 ];

@@ -75,4 +75,17 @@ class VoucherController extends Controller
         $this->exVoucherRepository->delete($exchangeVoucherId);
         return null;
     }
+
+    /**
+     * Handle accept voucher of user
+     *
+     * @param int $exchangeVoucherId [description]
+     *
+     * @return null
+     */
+    public function handledAcceptVoucher($exchangeVoucherId)
+    {
+        $this->exVoucherRepository->acceptVoucher($exchangeVoucherId);
+        return null;
+    }
 }
