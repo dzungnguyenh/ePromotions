@@ -14,4 +14,7 @@ return [
     'update_voucher_successfully' => 'Update voucher successful',
     'voucher' => 'Voucher',
     'message_null_user_register' => 'No Registration',
+    'voucher_for_you' => 'Voucher For You',
+    'date_register' => 'Date Register',
+    'status' => 'Status',
 ];

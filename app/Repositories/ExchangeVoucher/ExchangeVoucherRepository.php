@@ -5,6 +5,7 @@ namespace App\Repositories\ExchangeVoucher;
 use App\Repositories\BaseRepository;
 use App\Repositories\ExchangeVoucher\ExchangeVoucherRepositoryInterface;
 use App\Models\ExchangeVoucher;
+use Auth;
 
 class ExchangeVoucherRepository extends BaseRepository implements ExchangeVoucherRepositoryInterface
 {
@@ -35,5 +36,30 @@ class ExchangeVoucherRepository extends BaseRepository implements ExchangeVouche
             $data['message'] = trans('voucher.message_null_user_register');
         }
         return $data;
+    }
+
+    /**
+     * List voucher of user
+     *
+     * @return mixed
+     */
+    public function listVouchersUser()
+    {
+        return $this->model->join('vouchers', 'exchange_vouchers.voucher_id', '=', 'vouchers.id')
+                           ->where('user_id', Auth::user()->id)
+                           ->select('exchange_vouchers.*', 'vouchers.name', 'vouchers.point', 'vouchers.value')
+                           ->get();
+    }
+
+    /**
+     * Register voucher of user
+     *
+     * @param int $voucherId [description]
+     *
+     * @return void
+     */
+    public function registerVoucher($voucherId)
+    {
+        $this->model->create(['user_id' => Auth::user()->id, 'voucher_id' => $voucherId]);
     }
 }

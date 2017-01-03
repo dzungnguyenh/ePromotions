@@ -159,6 +159,18 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
     }
 
     /**
+     * Update Point for User
+     *
+     * @param int $newPoint [description]
+     *
+     * @return void
+     */
+    public function updatePoint($newPoint)
+    {
+        User::where('id', Auth::user()->id)->update(['point' => $newPoint]);
+    }
+  
+    /**
      * Search list user by name or email or address
      *
      * @param string $name description
