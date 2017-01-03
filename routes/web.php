@@ -30,6 +30,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function()
     Route::resource('voucher', 'Admin\VoucherController', ['except' => ['delete']]);
     Route::get('voucher/del/{id}', ['uses' => 'Admin\VoucherController@destroy', 'as' => 'admin.voucher.del']);
     Route::resource('category', 'Category\CategoryController');
+    Route::get('/search/', 'Admin\UserController@search')->name('search_admin');
 });
 
 Route::group(['middleware' => 'business', 'prefix' =>'business'], function(){
